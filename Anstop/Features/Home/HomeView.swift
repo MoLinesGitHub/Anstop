@@ -53,12 +53,29 @@ struct HomeView: View {
                     NavigationLink(destination: DailyJournalView()) {
                         QuickAccessButton(title: "Diario del día", icon: "book.fill")
                     }
+
+                    NavigationLink(destination: LibraryView()) {
+                        QuickAccessButton(
+                            title: "Biblioteca de Recursos", icon: "books.vertical.fill")
+                    }
+
+                    NavigationLink(destination: AIHelperView()) {
+                        QuickAccessButton(title: "Asistente IA", icon: "sparkles")
+                    }
                 }
                 .padding(.horizontal, 40)
 
                 Spacer()
             }
             .navigationTitle("Anstop")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    NavigationLink(destination: SettingsView()) {
+                        Image(systemName: "gearshape.fill")
+                            .foregroundStyle(.blue)
+                    }
+                }
+            }
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
             }

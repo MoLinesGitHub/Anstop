@@ -2,10 +2,10 @@
 
 ## ✅ Lo Que He Implementado
 
-Acabo de crear **2 archivos Swift nuevos** para Onboarding y Grounding:
+Acabo de crear **2 archivos Swift nuevos** para Legal & Privacidad:
 
-- ✅ `OnboardingView.swift` - Flujo de bienvenida
-- ✅ `GroundingView.swift` - Ejercicio 5-4-3-2-1
+- ✅ `LegalData.swift` - Textos legales (Política de Privacidad y Términos)
+- ✅ `SettingsView.swift` - Pantalla de configuración con acceso a legal y gestión de datos
 
 ---
 
@@ -24,8 +24,8 @@ Los archivos están creados pero **necesitas añadirlos al target del proyecto**
 **Archivos a marcar:**
 
 ```
-Features/Onboarding/OnboardingView.swift
-Features/Exercises/GroundingView.swift
+Core/Models/LegalData.swift
+Features/Settings/SettingsView.swift
 ```
 
 ### OPCIÓN 2: Recompilar Referencias (Más Rápido)
@@ -35,15 +35,15 @@ Features/Exercises/GroundingView.swift
 
 ```bash
 cd /Volumes/SSD/xCode_Projects/Anstop
-find Features -name "*.swift" -type f > files.txt
+find Core Features -name "*.swift" -type f > files.txt
 ```
 
 3. **Abre de nuevo Xcode**
 4. **File → Add Files to "Anstop"...**
 5. **Selecciona las carpetas:**
 
-   - `Features/Onboarding`
-   - `Features/Exercises`
+   - `Core/Models`
+   - `Features/Settings`
 
 6. **Asegúrate de:**
    - ✅ **NO** marcar "Copy items if needed"
@@ -63,19 +63,23 @@ find Features -name "*.swift" -type f > files.txt
 
 ## 🧪 Testing Rápido
 
-### 1. Onboarding
+### 1. Configuración
 
-- **Borra la app** del simulador para resetear el estado.
-- Ejecuta de nuevo.
-- Deberías ver la pantalla de "Tu espacio seguro".
-- Completa los pasos.
-- Al finalizar, deberías llegar al Home.
+- En Home, toca el icono de **engranaje** (arriba a la derecha).
+- Verifica que se abre la pantalla de Configuración.
 
-### 2. Grounding
+### 2. Legal
 
-- En Home, toca "Grounding 5-4-3-2-1".
-- Verifica que puedes navegar por los 5 pasos.
-- El último paso debe cerrar la vista.
+- En Configuración, toca "Política de Privacidad".
+- Verifica que se muestra el texto completo.
+- Cierra y toca "Términos de Uso".
+- Verifica el disclaimer médico.
+
+### 3. Borrar Datos
+
+- En Configuración, toca "Borrar todos mis datos".
+- Verifica que aparece una alerta de confirmación.
+- Cancela (NO borres los datos realmente en este test).
 
 ---
 
