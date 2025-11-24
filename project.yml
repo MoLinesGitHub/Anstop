@@ -1,0 +1,35 @@
+name: Anstop
+options:
+  bundleIdPrefix: com.anstop
+  deploymentTarget:
+    iOS: "18.0"
+  xcodeVersion: "16.1"
+
+settings:
+  SWIFT_VERSION: "6.0"
+  IPHONEOS_DEPLOYMENT_TARGET: "18.0"
+  TARGETED_DEVICE_FAMILY: "1,2"
+  ENABLE_PREVIEWS: YES
+
+targets:
+  Anstop:
+    type: application
+    platform: iOS
+    sources:
+      - path: Anstop
+        excludes:
+          - "*.md"
+    settings:
+      PRODUCT_BUNDLE_IDENTIFIER: com.anstop.app
+      PRODUCT_NAME: Anstop
+      INFOPLIST_FILE: Anstop/Info.plist
+      DEVELOPMENT_ASSET_PATHS: ""
+      ENABLE_PREVIEWS: YES
+      ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+      ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+      SWIFT_EMIT_LOC_STRINGS: YES
+      SWIFT_VERSION: "6.0"
+      CODE_SIGN_STYLE: Automatic
+    dependencies: []
+    preBuildScripts: []
+    postBuildScripts: []
