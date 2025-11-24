@@ -1,5 +1,6 @@
 // AIService.swift
 import Foundation
+import Observation
 
 struct ChatMessage: Identifiable, Equatable {
     let id = UUID()
@@ -8,9 +9,10 @@ struct ChatMessage: Identifiable, Equatable {
 }
 
 @MainActor
+@Observable
 final class AIService {
-    private(set) var messages: [ChatMessage] = []
-    private(set) var isTyping: Bool = false
+    var messages: [ChatMessage] = []
+    var isTyping: Bool = false
 
     func sendMessage(_ text: String) async {
         messages.append(ChatMessage(content: text, isUser: true))
@@ -20,3 +22,4 @@ final class AIService {
         isTyping = false
     }
 }
+

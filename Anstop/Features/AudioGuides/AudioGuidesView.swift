@@ -45,7 +45,7 @@ struct AudioGuidesView: View {
             }
             .navigationTitle("Guías de Audio")
             .sheet(isPresented: $showPaywall) {
-                PaywallView()
+                PaywallSimpleView()
             }
         }
     }

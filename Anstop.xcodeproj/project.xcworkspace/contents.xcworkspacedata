@@ -55,4 +55,10 @@
    <FileRef
       location = "group:SecondaryButtonStyle.swift">
    </FileRef>
+   <FileRef
+      location = "group:CardBackground+Adaptive.swift">
+   </FileRef>
+   <FileRef
+      location = "group:AppLogger.swift">
+   </FileRef>
 </Workspace>

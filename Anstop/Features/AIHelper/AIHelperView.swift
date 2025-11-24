@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import Observation
 
 struct AIHelperView: View {
     @State private var aiService = AIService()
     @State private var inputText = ""
     @FocusState private var isFocused: Bool
+    @Environment(\.dismiss) private var dismiss
 
     var body: some View {
         VStack(spacing: 0) {
@@ -60,6 +62,23 @@ struct AIHelperView: View {
         }
         .navigationTitle("Asistente Anstop")
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .bottomBar) {
+                HStack(spacing: 12) {
+                    Button("Limpiar conversación") {
+                        clearConversation()
+                    }
+                    .padding(.horizontal, 40)
+                    .buttonStyle(SecondaryButtonStyle(color: .orange))
+
+                    Button("Cerrar") {
+                        dismiss()
+                    }
+                    .padding(.horizontal, 40)
+                    .buttonStyle(SecondaryButtonStyle(color: .orange))
+                }
+            }
+        }
     }
 
     private func sendMessage() {
@@ -72,6 +91,12 @@ struct AIHelperView: View {
         Task {
             await aiService.sendMessage(text)
         }
+    }
+    
+    private func clearConversation() {
+        aiService.isTyping = false
+        aiService.messages.removeAll()
+        HapticManager.shared.triggerSelection()
     }
 }
 

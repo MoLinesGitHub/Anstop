@@ -2,7 +2,7 @@
 import SwiftUI
 import StoreKit
 
-struct PaywallView: View {
+struct PaywallSimpleView: View {
     @Environment(PurchaseManager.self) private var purchaseManager
     @Environment(\.dismiss) private var dismiss
 
@@ -49,6 +49,6 @@ struct PaywallView: View {
 }
 
 #Preview {
-    PaywallView()
+    PaywallSimpleView()
         .environment(PurchaseManager())
 }

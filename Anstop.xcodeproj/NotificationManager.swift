@@ -1,6 +1,7 @@
 // NotificationManager.swift
 import Foundation
 import UserNotifications
+import OSLog
 
 @MainActor
 final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
@@ -14,7 +15,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
             let granted = try await center.requestAuthorization(options: [.alert, .sound, .badge])
             return granted
         } catch {
-            print("Notification authorization error: \(error)")
+            AppLogger.notifications.error("Authorization error: \(String(describing: error))")
             return false
         }
     }
@@ -33,16 +34,20 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         content.body = "Registra tu estado en el diario de Anstop."
         content.sound = .default
 
+        let pending = await center.pendingNotificationRequests()
+        AppLogger.notifications.info("Pending before schedule: \(pending.count)")
+
         let request = UNNotificationRequest(identifier: "daily_reminder", content: content, trigger: trigger)
         do {
             try await center.add(request)
         } catch {
-            print("Failed to schedule notification: \(error)")
+            AppLogger.notifications.error("Schedule error: \(String(describing: error))")
         }
     }
 
     func cancelDailyReminder() async {
         let center = UNUserNotificationCenter.current()
-        await center.removePendingNotificationRequests(withIdentifiers: ["daily_reminder"]) 
+        await center.removePendingNotificationRequests(withIdentifiers: ["daily_reminder"])
+        AppLogger.notifications.info("Daily reminder canceled")
     }
 }
