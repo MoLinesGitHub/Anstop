@@ -36,6 +36,33 @@ struct HomeView: View {
                     .padding(.horizontal, 40)
                 }
 
+                // Programa de 30 Días - Destacado
+                NavigationLink(destination: ThirtyDayProgramView()) {
+                    HStack {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .foregroundStyle(.orange)
+                                Text("Programa de 30 Días")
+                                    .font(.headline)
+                                    .foregroundStyle(.primary)
+                            }
+                            Text("Transforma tu relación con la ansiedad")
+                                .font(.caption)
+                                .foregroundStyle(.secondary)
+                        }
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(.orange.opacity(0.1))
+                    )
+                }
+                .padding(.horizontal, 40)
+
                 // Accesos rápidos
                 VStack(spacing: 15) {
                     NavigationLink(destination: BreathingView()) {

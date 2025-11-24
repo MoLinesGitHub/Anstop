@@ -2,10 +2,12 @@
 
 ## ✅ Lo Que He Implementado
 
-Acabo de crear **2 archivos Swift nuevos** para Legal & Privacidad:
+Acabo de crear **4 archivos Swift nuevos** para el Programa de 30 Días:
 
-- ✅ `LegalData.swift` - Textos legales (Política de Privacidad y Términos)
-- ✅ `SettingsView.swift` - Pantalla de configuración con acceso a legal y gestión de datos
+- ✅ `DailyExercise.swift` - Modelo con 30 ejercicios completos
+- ✅ `ProgramProgress.swift` - Seguimiento de progreso (SwiftData)
+- ✅ `ThirtyDayProgramView.swift` - Vista principal (Grid de 30 días)
+- ✅ `DayDetailView.swift` - Detalle de cada ejercicio
 
 ---
 
@@ -24,8 +26,10 @@ Los archivos están creados pero **necesitas añadirlos al target del proyecto**
 **Archivos a marcar:**
 
 ```
-Core/Models/LegalData.swift
-Features/Settings/SettingsView.swift
+Core/Models/DailyExercise.swift
+Core/Models/ProgramProgress.swift
+Features/ThirtyDayProgram/ThirtyDayProgramView.swift
+Features/ThirtyDayProgram/DayDetailView.swift
 ```
 
 ### OPCIÓN 2: Recompilar Referencias (Más Rápido)
@@ -43,7 +47,7 @@ find Core Features -name "*.swift" -type f > files.txt
 5. **Selecciona las carpetas:**
 
    - `Core/Models`
-   - `Features/Settings`
+   - `Features/ThirtyDayProgram`
 
 6. **Asegúrate de:**
    - ✅ **NO** marcar "Copy items if needed"
@@ -63,23 +67,30 @@ find Core Features -name "*.swift" -type f > files.txt
 
 ## 🧪 Testing Rápido
 
-### 1. Configuración
+### 1. Programa de 30 Días
 
-- En Home, toca el icono de **engranaje** (arriba a la derecha).
-- Verifica que se abre la pantalla de Configuración.
+- En Home, toca la tarjeta naranja "Programa de 30 Días".
+- Verifica que se muestra el grid de 30 días.
+- **Solo el Día 1 debe estar desbloqueado** (azul).
+- Los demás deben estar bloqueados (gris).
 
-### 2. Legal
+### 2. Completar Día 1
 
-- En Configuración, toca "Política de Privacidad".
-- Verifica que se muestra el texto completo.
-- Cierra y toca "Términos de Uso".
-- Verifica el disclaimer médico.
+- Toca el Día 1.
+- Lee el ejercicio ("Respiración Consciente").
+- Toca "Marcar como Completado".
+- Verifica la animación de ✅.
+- Vuelve atrá
 
-### 3. Borrar Datos
+s y verifica que:
 
-- En Configuración, toca "Borrar todos mis datos".
-- Verifica que aparece una alerta de confirmación.
-- Cancela (NO borres los datos realmente en este test).
+- Día 1 ahora está verde (completado).
+- Día 2 ahora está azul (desbloqueado).
+- La racha muestra "1 día seguido".
+
+### 3. Progreso
+
+- Verifica que la barra de progreso muestra 1/30.
 
 ---
 

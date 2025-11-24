@@ -22,6 +22,6 @@ struct AnstopApp: App {
                 OnboardingView()
             }
         }
-        .modelContainer(for: [JournalEntry.self, AnxietyEvent.self])
+        .modelContainer(for: [JournalEntry.self, AnxietyEvent.self, ProgramProgress.self])
     }
 }
