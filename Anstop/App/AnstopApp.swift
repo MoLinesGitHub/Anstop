@@ -11,11 +11,16 @@ import SwiftUI
 @main
 struct AnstopApp: App {
     @State private var purchaseManager = PurchaseManager()
+    @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
     var body: some Scene {
         WindowGroup {
-            HomeView()
-                .environment(purchaseManager)
+            if hasCompletedOnboarding {
+                HomeView()
+                    .environment(purchaseManager)
+            } else {
+                OnboardingView()
+            }
         }
         .modelContainer(for: [JournalEntry.self, AnxietyEvent.self])
     }

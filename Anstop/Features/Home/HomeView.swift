@@ -42,7 +42,9 @@ struct HomeView: View {
                         QuickAccessButton(title: "Respiración", icon: "wind")
                     }
 
-                    QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
+                    NavigationLink(destination: GroundingView()) {
+                        QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
+                    }
 
                     NavigationLink(destination: AudioGuidesView()) {
                         QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill")
