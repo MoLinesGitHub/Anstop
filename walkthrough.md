@@ -3,7 +3,7 @@
 ## Estado Actual
 
 El proyecto **Anstop** es una aplicación iOS nativa (SwiftUI) diseñada para ayudar a usuarios con ansiedad y ataques de pánico.
-Actualmente, el proyecto está en una fase avanzada de MVP, con las features core implementadas y compilando exitosamente.
+Actualmente, el proyecto está en una **fase avanzada de MVP**, con todas las features core implementadas y compilando exitosamente.
 
 ## Features Implementadas
 
@@ -24,6 +24,7 @@ Actualmente, el proyecto está en una fase avanzada de MVP, con las features cor
 - **Home (`HomeView`)**:
   - Botón de pánico (navegación a `PanicFlowView`).
   - Accesos rápidos a: Respiración, Grounding, Audio, Diario, Biblioteca, IA.
+  - Icono de configuración en la barra de navegación.
 
 ### 3. Herramientas de Ansiedad
 
@@ -52,7 +53,16 @@ Actualmente, el proyecto está en una fase avanzada de MVP, con las features cor
   - Servicio Mock (`AIService`) con respuestas empáticas predefinidas.
   - UI de chat moderna con indicador de escritura.
 
-### 5. Monetización
+### 5. Legal & Privacidad
+
+- **Settings (`SettingsView`)**:
+  - Política de Privacidad (Enfoque: datos locales, sin servidores).
+  - Términos de Uso con disclaimer médico claro.
+  - Gestión de datos: Botón "Borrar todos mis datos" (GDPR).
+  - Información de la app.
+- **`LegalData.swift`**: Textos legales completos y listos para revisión profesional.
+
+### 6. Monetización
 
 - **Paywall (`PaywallView`)**:
   - Diseño empático, no intrusivo.
@@ -66,8 +76,26 @@ Actualmente, el proyecto está en una fase avanzada de MVP, con las features cor
 - **Simulador**: Probado en iPhone 16e.
 - **Tests**: Manuales de navegación y flujos principales.
 
-## Próximos Pasos (Roadmap)
+## Estado del Roadmap
 
-1. **Fase 6: Legal & Privacidad**: Preparar textos y vistas para GDPR/Privacidad.
-2. **Fase 8: Programa 30 Días**: Implementar estructura de curso diario.
-3. **Contenido Real**: Reemplazar placeholders de audio y textos finales.
+### ✅ Completado
+
+- **Fase 1**: Arquitectura del proyecto
+- **Fase 2**: Diseño de experiencia (Onboarding, Home, Panic Flow, etc.)
+- **Fase 3**: Implementación del MVP (Core Data, Panic Protocol, Breathing, Audio, Suscripciones)
+- **Fase 4**: Contenido terapéutico (Biblioteca de protocolos)
+- **Fase 5**: IA Helper (MVP con Mock)
+- **Fase 6**: Legal y Privacidad (Políticas, Términos, GDPR)
+
+### 📋 Pendiente (Próximas Fases)
+
+- **Fase 7**: Marketing y crecimiento
+- **Fase 8**: Programa de 30 Días
+- **Contenido Real**: Reemplazar placeholders de audio con grabaciones profesionales
+
+## Próximos Pasos Recomendados
+
+1. **Testing Manual Exhaustivo**: Probar todos los flujos en el simulador.
+2. **Programa de 30 Días (Fase 8)**: Implementar estructura de curso diario.
+3. **Contenido de Audio**: Grabar o adquirir audios profesionales.
+4. **TestFlight**: Preparar para beta testing con usuarios reales.
