@@ -65,15 +65,14 @@ struct OnboardingView: View {
 
                 Spacer()
 
-                Button(action: { withAnimation { currentTab += 1 } }) {
+                Button(action: {
+                    HapticManager.shared.triggerImpact(style: .light)
+                    withOptionalAnimation(.gentle) { currentTab += 1 }
+                }) {
                     Text("Continuar")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(RoundedRectangle(cornerRadius: 16).fill(.blue))
                         .padding(.horizontal, 40)
                 }
+                .buttonStyle(PrimaryButtonStyle())
                 .padding(.bottom, 50)
             }
             .tag(1)
@@ -105,18 +104,15 @@ struct OnboardingView: View {
                 Spacer()
 
                 Button(action: {
-                    withAnimation {
+                    HapticManager.shared.triggerNotification(.success)
+                    withOptionalAnimation(.gentle) {
                         hasCompletedOnboarding = true
                     }
                 }) {
                     Text("Comenzar")
-                        .font(.headline)
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 55)
-                        .background(RoundedRectangle(cornerRadius: 16).fill(.blue))
                         .padding(.horizontal, 40)
                 }
+                .buttonStyle(PrimaryButtonStyle())
                 .padding(.bottom, 50)
             }
             .tag(2)
@@ -155,15 +151,14 @@ struct OnboardingStepView: View {
 
             Spacer()
 
-            Button(action: nextAction) {
+            Button(action: {
+                HapticManager.shared.triggerImpact(style: .light)
+                withOptionalAnimation(.gentle) { nextAction() }
+            }) {
                 Text(isLastStep ? "Comenzar" : "Siguiente")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(RoundedRectangle(cornerRadius: 16).fill(.blue))
                     .padding(.horizontal, 40)
             }
+            .buttonStyle(PrimaryButtonStyle())
             .padding(.bottom, 50)
         }
     }

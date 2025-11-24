@@ -179,11 +179,12 @@
 				};
 			};
 			buildConfigurationList = 998A5A9C2ED4AD1A005E1458 /* Build configuration list for PBXProject "Anstop" */;
-			developmentRegion = en;
+			developmentRegion = es;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				es,
 			);
 			mainGroup = 998A5A982ED4AD1A005E1458;
 			minimizedProjectReferenceProxies = 1;

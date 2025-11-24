@@ -20,7 +20,7 @@ struct GroundingView: View {
                 title: "Cosas que ves",
                 description: "Mira a tu alrededor. Encuentra 5 objetos que no habías notado antes.",
                 color: .blue,
-                action: { withAnimation { currentStep += 1 } }
+                action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
             .tag(0)
 
@@ -31,7 +31,7 @@ struct GroundingView: View {
                 title: "Cosas que tocas",
                 description: "Siente la textura de tu ropa, la silla o el aire en tu piel.",
                 color: .green,
-                action: { withAnimation { currentStep += 1 } }
+                action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
             .tag(1)
 
@@ -43,7 +43,7 @@ struct GroundingView: View {
                 description:
                     "Escucha atentamente. ¿Puedes oír el tráfico, el viento o tu respiración?",
                 color: .orange,
-                action: { withAnimation { currentStep += 1 } }
+                action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
             .tag(2)
 
@@ -54,7 +54,7 @@ struct GroundingView: View {
                 title: "Cosas que hueles",
                 description: "Intenta percibir aromas sutiles en el ambiente.",
                 color: .purple,
-                action: { withAnimation { currentStep += 1 } }
+                action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
             .tag(3)
 
@@ -123,13 +123,9 @@ struct GroundingStepView: View {
 
             Button(action: action) {
                 Text(isLast ? "Finalizar" : "Siguiente")
-                    .font(.headline)
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 55)
-                    .background(RoundedRectangle(cornerRadius: 16).fill(color))
                     .padding(.horizontal, 40)
             }
+            .buttonStyle(PrimaryButtonStyle(color: color))
             .padding(.bottom, 50)
         }
     }

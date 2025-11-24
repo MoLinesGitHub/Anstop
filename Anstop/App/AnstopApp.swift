@@ -15,12 +15,14 @@ struct AnstopApp: App {
 
     var body: some Scene {
         WindowGroup {
-            if hasCompletedOnboarding {
-                HomeView()
-                    .environment(purchaseManager)
-            } else {
-                OnboardingView()
+            Group {
+                if hasCompletedOnboarding {
+                    HomeView()
+                } else {
+                    OnboardingView()
+                }
             }
+            .environment(purchaseManager)
         }
         .modelContainer(for: [JournalEntry.self, AnxietyEvent.self, ProgramProgress.self])
     }

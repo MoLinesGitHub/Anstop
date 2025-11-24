@@ -9,6 +9,7 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showPanicFlow = false
+    @State private var isPanicButtonPressed = false
 
     var body: some View {
         NavigationStack {
@@ -17,7 +18,9 @@ struct HomeView: View {
 
                 // Botón principal de pánico
                 Button(action: {
-                    showPanicFlow = true
+                    withOptionalAnimation(.gentle) {
+                        showPanicFlow = true
+                    }
                 }) {
                     VStack(spacing: 12) {
                         Image(systemName: "heart.circle.fill")
@@ -32,9 +35,28 @@ struct HomeView: View {
                     .background(
                         RoundedRectangle(cornerRadius: 20)
                             .fill(.blue.gradient)
+                            .shadow(
+                                color: .blue.opacity(0.3), radius: isPanicButtonPressed ? 8 : 15,
+                                x: 0, y: isPanicButtonPressed ? 2 : 8)
                     )
+                    .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
                     .padding(.horizontal, 40)
                 }
+                .buttonStyle(.plain)
+                .hapticOnTap(.impact(style: .heavy))
+                .simultaneousGesture(
+                    DragGesture(minimumDistance: 0)
+                        .onChanged { _ in
+                            withOptionalAnimation(.quick) {
+                                isPanicButtonPressed = true
+                            }
+                        }
+                        .onEnded { _ in
+                            withOptionalAnimation(.quick) {
+                                isPanicButtonPressed = false
+                            }
+                        }
+                )
 
                 // Programa de 30 Días - Destacado
                 NavigationLink(destination: ThirtyDayProgramView()) {
@@ -89,11 +111,16 @@ struct HomeView: View {
                     NavigationLink(destination: AIHelperView()) {
                         QuickAccessButton(title: "Asistente IA", icon: "sparkles")
                     }
+
+                    NavigationLink(destination: JournalHistoryView()) {
+                        QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
+                    }
                 }
                 .padding(.horizontal, 40)
 
                 Spacer()
             }
+            .prepareHapticsOnAppear()
             .navigationTitle("Anstop")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {

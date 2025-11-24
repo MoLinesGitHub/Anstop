@@ -13,13 +13,81 @@ struct SettingsView: View {
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("userName") private var userName = ""
     @AppStorage("initialAnxietyLevel") private var initialAnxietyLevel = 5.0
+    @AppStorage(HapticManager.userDefaultsKey) private var hapticsEnabled: Bool = true
 
     @State private var showingDeleteAlert = false
     @State private var showingPrivacyPolicy = false
     @State private var showingTerms = false
 
+    @State private var remindersEnabled: Bool = false
+    @State private var reminderTime: Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date()) ?? Date()
+
     var body: some View {
         List {
+            // Preferences Section
+            Section {
+                Toggle(isOn: $hapticsEnabled) {
+                    HStack {
+                        Image(systemName: "dot.radiowaves.left.and.right")
+                            .foregroundStyle(.blue)
+                        Text("Hápticos")
+                    }
+                }
+                .onChange(of: hapticsEnabled) { _ in
+                    if hapticsEnabled { HapticManager.shared.warmUp() }
+                }
+            } header: {
+                Text("Preferencias")
+            }
+
+            // Reminders Section
+            Section {
+                Toggle(isOn: $remindersEnabled) {
+                    HStack {
+                        Image(systemName: "bell.fill").foregroundStyle(.orange)
+                        Text("Recordatorio diario")
+                    }
+                }
+
+                if remindersEnabled {
+                    DatePicker("Hora", selection: $reminderTime, displayedComponents: .hourAndMinute)
+                        .datePickerStyle(.compact)
+                }
+
+                Button("Guardar recordatorio") {
+                    Task {
+                        let granted = await NotificationManager.shared.requestAuthorization()
+                        guard granted else { return }
+                        let comps = Calendar.current.dateComponents([.hour, .minute], from: reminderTime)
+                        let hour = comps.hour ?? 20
+                        let minute = comps.minute ?? 0
+                        if remindersEnabled {
+                            await NotificationManager.shared.scheduleDailyReminder(at: hour, minute: minute)
+                            HapticManager.shared.triggerNotification(.success)
+                        } else {
+                            await NotificationManager.shared.cancelDailyReminder()
+                            HapticManager.shared.triggerSelection()
+                        }
+                    }
+                }
+                .padding(.horizontal, 40)
+                .buttonStyle(PrimaryButtonStyle(color: .orange))
+                .disabled(!remindersEnabled)
+                
+                Button("Cancelar recordatorio") {
+                    Task {
+                        await NotificationManager.shared.cancelDailyReminder()
+                        HapticManager.shared.triggerSelection()
+                    }
+                }
+                .padding(.horizontal, 40)
+                .buttonStyle(SecondaryButtonStyle(color: .orange))
+            } header: {
+                Text("Recordatorios")
+            } footer: {
+                Text("Programa un recordatorio diario para registrar tu estado en el diario.")
+            }
+
             // Legal Section
             Section {
                 Button {
@@ -156,3 +224,4 @@ struct LegalTextView: View {
         SettingsView()
     }
 }
+

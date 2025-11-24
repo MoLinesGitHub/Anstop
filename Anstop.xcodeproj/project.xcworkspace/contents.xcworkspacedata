@@ -4,4 +4,55 @@
    <FileRef
       location = "self:">
    </FileRef>
+   <FileRef
+      location = "group:Haptics+SwiftUI.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Animation+App.swift">
+   </FileRef>
+   <FileRef
+      location = "group:AnxietyEvent.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ProgramProgress.swift">
+   </FileRef>
+   <FileRef
+      location = "group:BreathingCircle.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ThirtyDayProgramView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:DailyJournalView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:LibraryView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:PaywallView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:AIService.swift">
+   </FileRef>
+   <FileRef
+      location = "group:PrimaryButtonStyle.swift">
+   </FileRef>
+   <FileRef
+      location = "group:Accessibility+Helpers.swift">
+   </FileRef>
+   <FileRef
+      location = "group:JournalHistoryView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:NotificationManager.swift">
+   </FileRef>
+   <FileRef
+      location = "group:ProgramContent.swift">
+   </FileRef>
+   <FileRef
+      location = "group:DayDetailView.swift">
+   </FileRef>
+   <FileRef
+      location = "group:SecondaryButtonStyle.swift">
+   </FileRef>
 </Workspace>
