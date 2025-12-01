@@ -175,7 +175,12 @@ struct PaywallView: View {
                     .foregroundStyle(.secondary)
 
                     // Disclaimer
-                    Text("No sustituye ayuda profesional. Los pagos se cargarán a tu cuenta de Apple. La suscripción se renueva automáticamente a menos que se cancele 24h antes del fin del período.")
+                    Text("""
+                        No sustituye ayuda profesional. \
+                        Los pagos se cargarán a tu cuenta de Apple. \
+                        La suscripción se renueva automáticamente \
+                        a menos que se cancele 24h antes del fin del período.
+                        """)
                         .font(.caption2)
                         .foregroundStyle(.tertiary)
                         .multilineTextAlignment(.center)

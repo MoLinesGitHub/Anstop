@@ -135,15 +135,6 @@ struct OnboardingView: View {
         .sheet(isPresented: $showPaywall) {
             PaywallView()
         }
-        .onChange(of: showPaywall) { _, isPresented in
-            // Si cerró el paywall siendo premium, completar onboarding
-            if !isPresented {
-                // Verificar después de un pequeño delay para dar tiempo a actualizar el estado
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                    // El usuario puede continuar independientemente del resultado
-                }
-            }
-        }
     }
 }
 
