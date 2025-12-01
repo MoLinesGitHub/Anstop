@@ -10,10 +10,21 @@ import SwiftUI
 struct HomeView: View {
     @State private var showPanicFlow = false
     @State private var isPanicButtonPressed = false
+    @State private var showPaywall = false
+    @Environment(PurchaseManager.self) private var purchaseManager
 
     var body: some View {
         NavigationStack {
             VStack(spacing: 30) {
+                // Banner Premium (solo para usuarios no premium)
+                if !purchaseManager.isPremium {
+                    PremiumBanner {
+                        showPaywall = true
+                    }
+                    .padding(.horizontal, 20)
+                    .padding(.top, 10)
+                }
+                
                 Spacer()
 
                 // Botón principal de pánico
@@ -68,6 +79,16 @@ struct HomeView: View {
                                 Text("Programa de 30 Días")
                                     .font(.headline)
                                     .foregroundStyle(.primary)
+                                if !purchaseManager.isPremium {
+                                    Text("PRO")
+                                        .font(.caption2)
+                                        .bold()
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(Color.orange)
+                                        .clipShape(Capsule())
+                                }
                             }
                             Text("Transforma tu relación con la ansiedad")
                                 .font(.caption)
@@ -96,7 +117,7 @@ struct HomeView: View {
                     }
 
                     NavigationLink(destination: AudioGuidesView()) {
-                        QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill")
+                        QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
                     }
 
                     NavigationLink(destination: DailyJournalView()) {
@@ -109,7 +130,7 @@ struct HomeView: View {
                     }
 
                     NavigationLink(destination: AIHelperView()) {
-                        QuickAccessButton(title: "Asistente IA", icon: "sparkles")
+                        QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
                     }
 
                     NavigationLink(destination: JournalHistoryView()) {
@@ -133,13 +154,55 @@ struct HomeView: View {
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
             }
+            .sheet(isPresented: $showPaywall) {
+                PaywallView()
+            }
         }
+    }
+}
+
+// MARK: - Premium Banner Component
+
+struct PremiumBanner: View {
+    let onTap: () -> Void
+    
+    var body: some View {
+        Button(action: onTap) {
+            HStack(spacing: 12) {
+                Image(systemName: "crown.fill")
+                    .font(.title3)
+                    .foregroundStyle(.yellow)
+                
+                VStack(alignment: .leading, spacing: 2) {
+                    Text("Desbloquea todas las funciones")
+                        .font(.subheadline.bold())
+                        .foregroundStyle(.white)
+                    Text("7 días de prueba GRATIS")
+                        .font(.caption)
+                        .foregroundStyle(.white.opacity(0.9))
+                }
+                
+                Spacer()
+                
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.8))
+            }
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
+        }
+        .buttonStyle(.plain)
     }
 }
 
 struct QuickAccessButton: View {
     let title: String
     let icon: String
+    var isPremium: Bool = false
 
     var body: some View {
         Button(action: {}) {
@@ -148,6 +211,17 @@ struct QuickAccessButton: View {
                     .font(.title3)
                 Text(title)
                     .font(.body)
+                if isPremium {
+                    Spacer()
+                    Text("PRO")
+                        .font(.caption2)
+                        .bold()
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(Color.orange)
+                        .clipShape(Capsule())
+                }
                 Spacer()
                 Image(systemName: "chevron.right")
                     .font(.caption)
@@ -164,4 +238,5 @@ struct QuickAccessButton: View {
 
 #Preview {
     HomeView()
+        .environment(PurchaseManager())
 }

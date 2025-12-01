@@ -11,50 +11,153 @@ import SwiftUI
 
 struct PanicFlowView: View {
     @State private var currentStep = 0
+    @State private var showCompletion = false
+    @State private var showPaywall = false
     @Environment(\.dismiss) private var dismiss
+    @Environment(PurchaseManager.self) private var purchaseManager
+    @AppStorage("panicFlowCompletionCount") private var completionCount = 0
 
     var body: some View {
         VStack(spacing: 16) {
-            TabView(selection: $currentStep) {
-                PanicStepView(
-                    title: "Respira conmigo",
-                    description: "Tu cuerpo está a salvo. Vamos a respirar juntos.",
-                    showBreathing: true
+            if showCompletion {
+                // Pantalla de finalización con CTA premium
+                PanicCompletionView(
+                    isPremium: purchaseManager.isPremium,
+                    onContinue: {
+                        dismiss()
+                    },
+                    onShowPremium: {
+                        showPaywall = true
+                    }
                 )
-                .tag(0)
+            } else {
+                TabView(selection: $currentStep) {
+                    PanicStepView(
+                        title: "Respira conmigo",
+                        description: "Tu cuerpo está a salvo. Vamos a respirar juntos.",
+                        showBreathing: true
+                    )
+                    .tag(0)
 
-                PanicStepView(
-                    title: "Tu cuerpo está a salvo",
-                    description: "Lo que sientes es incómodo, pero no es peligroso.",
-                    showBreathing: false
-                )
-                .tag(1)
+                    PanicStepView(
+                        title: "Tu cuerpo está a salvo",
+                        description: "Lo que sientes es incómodo, pero no es peligroso.",
+                        showBreathing: false
+                    )
+                    .tag(1)
 
-                PanicStepView(
-                    title: "Vamos a bajar tu ritmo",
-                    description: "Estás haciendo un gran trabajo. Sigue respirando.",
-                    showBreathing: true
-                )
-                .tag(2)
+                    PanicStepView(
+                        title: "Vamos a bajar tu ritmo",
+                        description: "Estás haciendo un gran trabajo. Sigue respirando.",
+                        showBreathing: true
+                    )
+                    .tag(2)
+                }
+                .tabViewStyle(.page)
+                .indexViewStyle(.page(backgroundDisplayMode: .always))
+
+                Button(action: advance) {
+                    Text(currentStep >= 2 ? "Finalizar" : "Continuar")
+                        .padding(.horizontal, 40)
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                .padding(.bottom, 12)
             }
-            .tabViewStyle(.page)
-            .indexViewStyle(.page(backgroundDisplayMode: .always))
-
-            Button(action: advance) {
-                Text(currentStep >= 2 ? "Finalizar" : "Continuar")
-                    .padding(.horizontal, 40)
-            }
-            .buttonStyle(PrimaryButtonStyle())
-            .padding(.bottom, 12)
         }
         .navigationBarTitleDisplayMode(.inline)
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
     }
 
     private func advance() {
         if currentStep >= 2 {
-            dismiss()
+            completionCount += 1
+            withOptionalAnimation(.gentle) {
+                showCompletion = true
+            }
         } else {
             withOptionalAnimation(.gentle) { currentStep += 1 }
+        }
+    }
+}
+
+// MARK: - Pantalla de Completado con CTA Premium
+
+struct PanicCompletionView: View {
+    let isPremium: Bool
+    let onContinue: () -> Void
+    let onShowPremium: () -> Void
+    
+    var body: some View {
+        VStack(spacing: 30) {
+            Spacer()
+            
+            // Icono de éxito
+            ZStack {
+                Circle()
+                    .fill(Color.green.opacity(0.2))
+                    .frame(width: 120, height: 120)
+                
+                Image(systemName: "checkmark.circle.fill")
+                    .font(.system(size: 80))
+                    .foregroundStyle(.green)
+                    .symbolEffect(.bounce)
+            }
+            
+            Text("Lo lograste")
+                .font(.largeTitle)
+                .bold()
+            
+            Text("Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 40)
+            
+            // Mostrar CTA premium solo a usuarios no premium
+            if !isPremium {
+                VStack(spacing: 16) {
+                    Divider()
+                        .padding(.horizontal, 40)
+                    
+                    // Sugerencia Premium
+                    VStack(spacing: 12) {
+                        Text("🌟 ¿Quieres más herramientas?")
+                            .font(.headline)
+                        
+                        Text("Con Premium tendrás acceso a 20+ guías de audio, el programa de 30 días y un asistente IA disponible 24/7.")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                            .multilineTextAlignment(.center)
+                        
+                        Button(action: onShowPremium) {
+                            HStack {
+                                Image(systemName: "crown.fill")
+                                Text("Probar Premium 7 días gratis")
+                            }
+                            .font(.subheadline.bold())
+                            .foregroundStyle(.white)
+                            .frame(maxWidth: .infinity)
+                            .frame(height: 50)
+                            .background(
+                                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
+                            )
+                            .clipShape(RoundedRectangle(cornerRadius: 12))
+                        }
+                    }
+                    .padding(.horizontal, 30)
+                }
+            }
+            
+            Spacer()
+            
+            Button(action: onContinue) {
+                Text("Volver al inicio")
+                    .padding(.horizontal, 40)
+            }
+            .buttonStyle(isPremium ? PrimaryButtonStyle() : SecondaryButtonStyle())
+            .padding(.bottom, 40)
         }
     }
 }
@@ -91,5 +194,6 @@ struct PanicStepView: View {
 #Preview {
     NavigationStack {
         PanicFlowView()
+            .environment(PurchaseManager())
     }
 }
