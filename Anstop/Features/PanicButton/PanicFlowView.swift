@@ -152,12 +152,21 @@ struct PanicCompletionView: View {
             
             Spacer()
             
-            Button(action: onContinue) {
-                Text("Volver al inicio")
-                    .padding(.horizontal, 40)
+            if isPremium {
+                Button(action: onContinue) {
+                    Text("Volver al inicio")
+                        .padding(.horizontal, 40)
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                .padding(.bottom, 40)
+            } else {
+                Button(action: onContinue) {
+                    Text("Volver al inicio")
+                        .padding(.horizontal, 40)
+                }
+                .buttonStyle(SecondaryButtonStyle())
+                .padding(.bottom, 40)
             }
-            .buttonStyle(isPremium ? PrimaryButtonStyle() : SecondaryButtonStyle())
-            .padding(.bottom, 40)
         }
     }
 }
