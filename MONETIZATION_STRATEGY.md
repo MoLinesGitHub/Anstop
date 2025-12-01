@@ -181,8 +181,8 @@ c) **SettingsView.swift** - Sección de Suscripción:
 ## Contacto y Soporte
 
 Para consultas sobre monetización o partnership:
-- Email: soporte@anstop.app
-- Web: anstop.app
+- Email: admin@molinesdesigns.com
+- Web: molinesdesigns.com/anstop
 
 ---
 
