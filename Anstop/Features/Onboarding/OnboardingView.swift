@@ -13,6 +13,7 @@ struct OnboardingView: View {
     @AppStorage("initialAnxietyLevel") private var initialAnxietyLevel = 5.0
 
     @State private var currentTab = 0
+    @State private var showPaywall = false
 
     var body: some View {
         TabView(selection: $currentTab) {
@@ -104,21 +105,129 @@ struct OnboardingView: View {
                 Spacer()
 
                 Button(action: {
-                    HapticManager.shared.triggerNotification(.success)
-                    withOptionalAnimation(.gentle) {
-                        hasCompletedOnboarding = true
-                    }
+                    HapticManager.shared.triggerImpact(style: .light)
+                    withOptionalAnimation(.gentle) { currentTab += 1 }
                 }) {
-                    Text("Comenzar")
+                    Text("Continuar")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(PrimaryButtonStyle())
                 .padding(.bottom, 50)
             }
             .tag(2)
+            
+            // Paso 4: Soft Paywall - Mostrar valor premium
+            SoftPaywallStep(
+                onContinueFree: {
+                    HapticManager.shared.triggerNotification(.success)
+                    withOptionalAnimation(.gentle) {
+                        hasCompletedOnboarding = true
+                    }
+                },
+                onShowPaywall: {
+                    showPaywall = true
+                }
+            )
+            .tag(3)
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
+    }
+}
+
+// MARK: - Soft Paywall Step
+
+struct SoftPaywallStep: View {
+    let onContinueFree: () -> Void
+    let onShowPaywall: () -> Void
+    
+    var body: some View {
+        VStack(spacing: 24) {
+            Spacer()
+            
+            // Icono Premium
+            ZStack {
+                Circle()
+                    .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                    .frame(width: 100, height: 100)
+                
+                Image(systemName: "crown.fill")
+                    .font(.system(size: 45))
+                    .foregroundStyle(.white)
+            }
+            
+            Text("Obtén resultados más rápidos")
+                .font(.title)
+                .bold()
+                .multilineTextAlignment(.center)
+            
+            Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
+                .font(.body)
+                .foregroundStyle(.secondary)
+                .multilineTextAlignment(.center)
+                .padding(.horizontal, 30)
+            
+            // Beneficios Premium
+            VStack(alignment: .leading, spacing: 16) {
+                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Programa completo de 30 días")
+                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "20+ guías de audio exclusivas")
+                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Asistente IA disponible 24/7")
+                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Sin anuncios ni interrupciones")
+            }
+            .padding(.horizontal, 40)
+            .padding(.vertical, 20)
+            
+            // Oferta especial
+            VStack(spacing: 8) {
+                Text("🎁 OFERTA DE BIENVENIDA")
+                    .font(.caption)
+                    .bold()
+                    .foregroundStyle(.orange)
+                
+                Text("7 días de prueba GRATIS")
+                    .font(.title2)
+                    .bold()
+            }
+            
+            Spacer()
+            
+            // CTAs
+            VStack(spacing: 12) {
+                Button(action: onShowPaywall) {
+                    HStack {
+                        Image(systemName: "sparkles")
+                        Text("Comenzar prueba gratuita")
+                    }
+                    .padding(.horizontal, 40)
+                }
+                .buttonStyle(PrimaryButtonStyle())
+                
+                Button(action: onContinueFree) {
+                    Text("Continuar con versión básica")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
+                }
+                .padding(.top, 8)
+            }
+            .padding(.bottom, 50)
+        }
+    }
+}
+
+struct PremiumBenefitRow: View {
+    let icon: String
+    let text: String
+    
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: icon)
+                .foregroundStyle(.green)
+            Text(text)
+                .font(.subheadline)
+        }
     }
 }
 

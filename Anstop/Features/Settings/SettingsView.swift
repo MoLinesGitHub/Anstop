@@ -10,6 +10,7 @@ import SwiftUI
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
+    @Environment(PurchaseManager.self) private var purchaseManager
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("userName") private var userName = ""
     @AppStorage("initialAnxietyLevel") private var initialAnxietyLevel = 5.0
@@ -18,12 +19,57 @@ struct SettingsView: View {
     @State private var showingDeleteAlert = false
     @State private var showingPrivacyPolicy = false
     @State private var showingTerms = false
+    @State private var showPaywall = false
 
     @State private var remindersEnabled: Bool = false
     @State private var reminderTime: Date = Calendar.current.date(bySettingHour: 20, minute: 0, second: 0, of: Date()) ?? Date()
 
     var body: some View {
         List {
+            // Premium Section (solo para usuarios no premium)
+            if !purchaseManager.isPremium {
+                Section {
+                    Button {
+                        showPaywall = true
+                    } label: {
+                        HStack {
+                            Image(systemName: "crown.fill")
+                                .foregroundStyle(.yellow)
+                            VStack(alignment: .leading, spacing: 2) {
+                                Text("Obtener Premium")
+                                    .font(.headline)
+                                    .foregroundStyle(.primary)
+                                Text("7 días de prueba GRATIS")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .foregroundStyle(.secondary)
+                                .font(.caption)
+                        }
+                    }
+                } header: {
+                    Text("Suscripción")
+                } footer: {
+                    Text("Desbloquea todas las funciones premium incluyendo guías de audio ilimitadas, programa de 30 días y asistente IA.")
+                }
+            } else {
+                Section {
+                    HStack {
+                        Image(systemName: "checkmark.seal.fill")
+                            .foregroundStyle(.green)
+                        Text("Premium Activo")
+                            .font(.headline)
+                        Spacer()
+                        Text("✓")
+                            .foregroundStyle(.green)
+                    }
+                } header: {
+                    Text("Suscripción")
+                }
+            }
+            
             // Preferences Section
             Section {
                 Toggle(isOn: $hapticsEnabled) {
@@ -161,6 +207,9 @@ struct SettingsView: View {
             }
         }
         .navigationTitle("Configuración")
+        .sheet(isPresented: $showPaywall) {
+            PaywallView()
+        }
         .sheet(isPresented: $showingPrivacyPolicy) {
             LegalTextView(title: "Política de Privacidad", content: LegalData.privacyPolicy)
         }
