@@ -53,8 +53,8 @@ Aplicación iOS para ayudar en tiempo real durante ataques de ansiedad y pánico
 3. **Selecciona:** iOS → App
 4. **Configura:**
    - Product Name: `Anstop`
-   - Organization Identifier: `com.anstop`
-   - Bundle Identifier: `com.anstop.app`
+   - Organization Identifier: `com.molinesdesigns`
+   - Bundle Identifier: `com.molinesdesigns.anstop`
    - Interface: `SwiftUI`
    - Language: `Swift`
    - Storage: `None`
