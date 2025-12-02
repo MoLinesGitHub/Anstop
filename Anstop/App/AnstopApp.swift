@@ -12,6 +12,30 @@ import SwiftUI
 struct AnstopApp: App {
     @State private var purchaseManager = PurchaseManager()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    
+    let modelContainer: ModelContainer
+
+    init() {
+        do {
+            let schema = Schema([
+                JournalEntry.self,
+                AnxietyEvent.self,
+                ProgramProgress.self
+            ])
+            
+            let modelConfiguration = ModelConfiguration(
+                schema: schema,
+                isStoredInMemoryOnly: false
+            )
+            
+            modelContainer = try ModelContainer(
+                for: schema,
+                configurations: [modelConfiguration]
+            )
+        } catch {
+            fatalError("No se pudo crear ModelContainer: \(error)")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
@@ -24,6 +48,6 @@ struct AnstopApp: App {
             }
             .environment(purchaseManager)
         }
-        .modelContainer(for: [JournalEntry.self, AnxietyEvent.self, ProgramProgress.self])
+        .modelContainer(modelContainer)
     }
 }
