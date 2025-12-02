@@ -1,0 +1,24 @@
+{
+  "name": "xcode-mcp",
+  "version": "1.0.0",
+  "description": "Servidor MCP personalizado para gestión completa de Xcode",
+  "main": "dist/index.js",
+  "bin": {
+    "xcode-mcp": "dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": ["mcp", "xcode", "ios", "macos", "swift"],
+  "author": "molinesmac",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.4.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0"
+  }
+}

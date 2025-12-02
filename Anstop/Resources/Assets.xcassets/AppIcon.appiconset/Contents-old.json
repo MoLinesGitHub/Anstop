@@ -1,0 +1,980 @@
+{
+  "images" : [
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "40-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "40-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "60-light.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "iphone",
+      "filename" : "60-dark.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "58-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "58-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "87-light.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "iphone",
+      "filename" : "87-dark.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "80-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "80-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "120-light.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "iphone",
+      "filename" : "120-dark.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "120-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "120-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "180-light.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "60x60",
+      "idiom" : "iphone",
+      "filename" : "180-dark.png",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "1024-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "ios-marketing",
+      "filename" : "1024-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "20-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "20-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "40-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "20x20",
+      "idiom" : "ipad",
+      "filename" : "40-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "29-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "29-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "58-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "ipad",
+      "filename" : "58-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "40-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "40-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "80-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "40x40",
+      "idiom" : "ipad",
+      "filename" : "80-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "76-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "76-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "152-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "76x76",
+      "idiom" : "ipad",
+      "filename" : "152-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "167-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "83.5x83.5",
+      "idiom" : "ipad",
+      "filename" : "167-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "16-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "16-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "32-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "16x16",
+      "idiom" : "mac",
+      "filename" : "32-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "32-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "32-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "64-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "32x32",
+      "idiom" : "mac",
+      "filename" : "64-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "128-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "128-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "256-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "128x128",
+      "idiom" : "mac",
+      "filename" : "256-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "256-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "256-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "512-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "256x256",
+      "idiom" : "mac",
+      "filename" : "512-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "512-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "512-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "1024-light.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "512x512",
+      "idiom" : "mac",
+      "filename" : "1024-dark.png",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "role" : "notificationCenter",
+      "idiom" : "watch",
+      "filename" : "48-light.png",
+      "size" : "24x24",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "role" : "notificationCenter",
+      "idiom" : "watch",
+      "filename" : "48-dark.png",
+      "size" : "24x24",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "subtype" : "42mm",
+      "idiom" : "watch",
+      "size" : "27.5x27.5",
+      "filename" : "55-light.png",
+      "role" : "notificationCenter",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "subtype" : "42mm",
+      "idiom" : "watch",
+      "size" : "27.5x27.5",
+      "filename" : "55-dark.png",
+      "role" : "notificationCenter",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "watch",
+      "filename" : "58-light.png",
+      "role" : "companionSettings",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "watch",
+      "filename" : "58-dark.png",
+      "role" : "companionSettings",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "watch",
+      "filename" : "87-light.png",
+      "role" : "companionSettings",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "29x29",
+      "idiom" : "watch",
+      "filename" : "87-dark.png",
+      "role" : "companionSettings",
+      "scale" : "3x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "role" : "appLauncher",
+      "idiom" : "watch",
+      "filename" : "80-light.png",
+      "size" : "40x40",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "role" : "appLauncher",
+      "idiom" : "watch",
+      "filename" : "80-dark.png",
+      "size" : "40x40",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "44x44",
+      "idiom" : "watch",
+      "filename" : "88-light.png",
+      "subtype" : "40mm",
+      "role" : "appLauncher",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "44x44",
+      "idiom" : "watch",
+      "filename" : "88-dark.png",
+      "subtype" : "40mm",
+      "role" : "appLauncher",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "50x50",
+      "role" : "appLauncher",
+      "filename" : "100-light.png",
+      "idiom" : "watch",
+      "subtype" : "44mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "50x50",
+      "role" : "appLauncher",
+      "filename" : "100-dark.png",
+      "idiom" : "watch",
+      "subtype" : "44mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "86x86",
+      "idiom" : "watch",
+      "filename" : "172-light.png",
+      "role" : "quickLook",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "86x86",
+      "idiom" : "watch",
+      "filename" : "172-dark.png",
+      "role" : "quickLook",
+      "subtype" : "38mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "role" : "quickLook",
+      "idiom" : "watch",
+      "filename" : "196-light.png",
+      "size" : "98x98",
+      "subtype" : "42mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "role" : "quickLook",
+      "idiom" : "watch",
+      "filename" : "196-dark.png",
+      "size" : "98x98",
+      "subtype" : "42mm",
+      "scale" : "2x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "108x108",
+      "idiom" : "watch",
+      "filename" : "216-light.png",
+      "scale" : "2x",
+      "role" : "quickLook",
+      "subtype" : "44mm",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "108x108",
+      "idiom" : "watch",
+      "filename" : "216-dark.png",
+      "scale" : "2x",
+      "role" : "quickLook",
+      "subtype" : "44mm",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "watch-marketing",
+      "filename" : "1024-light.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ]
+    },
+    {
+      "size" : "1024x1024",
+      "idiom" : "watch-marketing",
+      "filename" : "1024-dark.png",
+      "scale" : "1x",
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "dark"
+        }
+      ]
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}

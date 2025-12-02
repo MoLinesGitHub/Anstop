@@ -1,0 +1,36 @@
+{
+  "name": "anstop-env-mcp",
+  "version": "1.0.0",
+  "description": "MCP server específico para el proyecto Anstop - aplicación iOS de gestión de clientes de masaje terapéutico",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "start": "node dist/index.js"
+  },
+  "keywords": [
+    "mcp",
+    "anstop",
+    "massage",
+    "client-management",
+    "swiftui",
+    "ios",
+    "development"
+  ],
+  "author": "MoLines Designs",
+  "license": "MIT",
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^0.6.0",
+    "@types/node": "^20.0.0",
+    "fs-extra": "^11.1.1",
+    "path": "^0.12.7"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "@types/fs-extra": "^11.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

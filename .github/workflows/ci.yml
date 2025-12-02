@@ -54,7 +54,7 @@ jobs:
       - name: Build iOS
         run: |
           xcodebuild \
-            -scheme \
+            -scheme Anstop \
             -destination "platform=iOS Simulator,name=iPhone 16e" \
             -configuration Debug \
             clean build | xcpretty
@@ -63,14 +63,14 @@ jobs:
       - name: Test iOS
         run: |
           xcodebuild test \
-            -scheme \
+            -scheme Anstop \
             -destination "platform=iOS Simulator,name=iPhone 16e" | xcpretty
 
       # BUILD PARA IPADOS
       - name: Build iPadOS
         run: |
           xcodebuild \
-            -scheme \
+            -scheme Anstop \
             -destination "platform=iOS Simulator,name=iPad Pro (12.9-inch) (7th generation)" \
             -configuration Debug \
             clean build | xcpretty
@@ -79,7 +79,7 @@ jobs:
       - name: Build iOS (Device)
         run: |
           xcodebuild \
-            -scheme \
+            -scheme Anstop \
             -sdk iphoneos \
             -configuration Release \
             clean build | xcpretty
@@ -89,5 +89,5 @@ jobs:
       # - name: Build macOS
       #   run: |
       #     xcodebuild build \
-      #       -scheme \
+      #       -scheme Anstop \
       #       -destination "platform=macOS" | xcpretty
