@@ -15,19 +15,18 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 30) {
-                // Banner Premium (solo para usuarios no premium)
-                if !purchaseManager.isPremium {
-                    PremiumBanner {
-                        showPaywall = true
+            ScrollView {
+                VStack(spacing: 30) {
+                    // Banner Premium (solo para usuarios no premium)
+                    if !purchaseManager.isPremium {
+                        PremiumBanner {
+                            showPaywall = true
+                        }
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 10)
-                }
-                
-                Spacer()
 
-                // Botón principal de pánico
+                    // Botón principal de pánico
                 Button(action: {
                     withOptionalAnimation(.gentle) {
                         showPanicFlow = true
@@ -138,8 +137,8 @@ struct HomeView: View {
                     }
                 }
                 .padding(.horizontal, 40)
-
-                Spacer()
+                .padding(.bottom, 30)
+                }
             }
             .prepareHapticsOnAppear()
             .navigationTitle("Anstop")
