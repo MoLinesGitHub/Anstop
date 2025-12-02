@@ -1,5 +1,6 @@
 import Observation
 import StoreKit
+import OSLog
 
 @MainActor
 @Observable
@@ -12,16 +13,27 @@ final class PurchaseManager {
         "premium.monthly",
         "premium.yearly",
     ]
+    
+    private var transactionUpdatesTask: Task<Void, Never>?
 
     var isPremium: Bool {
         !purchasedProductIDs.isEmpty
     }
 
     init() {
+        // Start listening for transaction updates
+        transactionUpdatesTask = Task {
+            await listenForTransactionUpdates()
+        }
+        
         Task {
             await loadProducts()
             await updatePurchasedProducts()
         }
+    }
+    
+    deinit {
+        transactionUpdatesTask?.cancel()
     }
 
     func loadProducts() async {
@@ -29,8 +41,9 @@ final class PurchaseManager {
         do {
             products = try await Product.products(for: productIdentifiers)
             products.sort { $0.price < $1.price }
+            Logger.purchases.info("Successfully loaded \(self.products.count) products")
         } catch {
-            print("Failed to load products: \(error)")
+            Logger.purchases.error("Failed to load products: \(error.localizedDescription)")
         }
         isLoading = false
     }
@@ -80,6 +93,23 @@ final class PurchaseManager {
         }
 
         purchasedProductIDs = purchasedIDs
+    }
+    
+    private func listenForTransactionUpdates() async {
+        for await result in Transaction.updates {
+            guard case .verified(let transaction) = result else {
+                Logger.purchases.warning("Received unverified transaction update")
+                continue
+            }
+            
+            Logger.purchases.info("Transaction update received for product: \(transaction.productID)")
+            
+            // Update purchased products when transaction updates
+            await updatePurchasedProducts()
+            
+            // Finish the transaction
+            await transaction.finish()
+        }
     }
 
     private func checkVerified<T>(_ result: VerificationResult<T>) throws -> T {
