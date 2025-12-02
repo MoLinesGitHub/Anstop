@@ -145,74 +145,76 @@ struct SoftPaywallStep: View {
     let onShowPaywall: () -> Void
     
     var body: some View {
-        VStack(spacing: 24) {
-            Spacer()
-            
-            // Icono Premium
-            ZStack {
-                Circle()
-                    .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
-                    .frame(width: 100, height: 100)
+        ScrollView {
+            VStack(spacing: 24) {
+                Spacer(minLength: 40)
                 
-                Image(systemName: "crown.fill")
-                    .font(.system(size: 45))
-                    .foregroundStyle(.white)
-            }
-            
-            Text("Obtén resultados más rápidos")
-                .font(.title)
-                .bold()
-                .multilineTextAlignment(.center)
-            
-            Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
-                .font(.body)
-                .foregroundStyle(.secondary)
-                .multilineTextAlignment(.center)
-                .padding(.horizontal, 30)
-            
-            // Beneficios Premium
-            VStack(alignment: .leading, spacing: 16) {
-                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Programa completo de 30 días")
-                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "20+ guías de audio exclusivas")
-                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Asistente IA disponible 24/7")
-                PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Sin anuncios ni interrupciones")
-            }
-            .padding(.horizontal, 40)
-            .padding(.vertical, 20)
-            
-            // Oferta especial
-            VStack(spacing: 8) {
-                Text("🎁 OFERTA DE BIENVENIDA")
-                    .font(.caption)
-                    .bold()
-                    .foregroundStyle(.orange)
+                // Icono Premium
+                ZStack {
+                    Circle()
+                        .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .frame(width: 100, height: 100)
+                    
+                    Image(systemName: "crown.fill")
+                        .font(.system(size: 45))
+                        .foregroundStyle(.white)
+                }
                 
-                Text("7 días de prueba GRATIS")
-                    .font(.title2)
+                Text("Obtén resultados más rápidos")
+                    .font(.title)
                     .bold()
-            }
-            
-            Spacer()
-            
-            // CTAs
-            VStack(spacing: 12) {
-                Button(action: onShowPaywall) {
-                    HStack {
-                        Image(systemName: "sparkles")
-                        Text("Comenzar prueba gratuita")
+                    .multilineTextAlignment(.center)
+                
+                Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
+                    .font(.body)
+                    .foregroundStyle(.secondary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30)
+                
+                // Beneficios Premium
+                VStack(alignment: .leading, spacing: 16) {
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Programa completo de 30 días")
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "20+ guías de audio exclusivas")
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Asistente IA disponible 24/7")
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Sin anuncios ni interrupciones")
+                }
+                .padding(.horizontal, 40)
+                .padding(.vertical, 20)
+                
+                // Oferta especial
+                VStack(spacing: 8) {
+                    Text("🎁 OFERTA DE BIENVENIDA")
+                        .font(.caption)
+                        .bold()
+                        .foregroundStyle(.orange)
+                    
+                    Text("7 días de prueba GRATIS")
+                        .font(.title2)
+                        .bold()
+                }
+                
+                Spacer(minLength: 40)
+                
+                // CTAs
+                VStack(spacing: 12) {
+                    Button(action: onShowPaywall) {
+                        HStack {
+                            Image(systemName: "sparkles")
+                            Text("Comenzar prueba gratuita")
+                        }
+                        .padding(.horizontal, 40)
                     }
-                    .padding(.horizontal, 40)
+                    .buttonStyle(PrimaryButtonStyle())
+                    
+                    Button(action: onContinueFree) {
+                        Text("Continuar con versión básica")
+                            .font(.subheadline)
+                            .foregroundStyle(.secondary)
+                    }
+                    .padding(.top, 8)
                 }
-                .buttonStyle(PrimaryButtonStyle())
-                
-                Button(action: onContinueFree) {
-                    Text("Continuar con versión básica")
-                        .font(.subheadline)
-                        .foregroundStyle(.secondary)
-                }
-                .padding(.top, 8)
+                .padding(.bottom, 50)
             }
-            .padding(.bottom, 50)
         }
     }
 }

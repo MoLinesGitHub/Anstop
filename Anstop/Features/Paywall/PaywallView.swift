@@ -382,7 +382,7 @@ struct ProductCard: View {
     private var monthlyPrice: String {
         let yearlyPrice = product.price
         let monthlyAmount = yearlyPrice / 12
-        return monthlyAmount.formatted(.currency(code: product.priceFormatStyle.currencyCode ?? "EUR"))
+        return monthlyAmount.formatted(.currency(code: product.priceFormatStyle.currencyCode))
     }
 }
 

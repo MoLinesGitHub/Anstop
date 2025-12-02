@@ -79,7 +79,7 @@ struct SettingsView: View {
                         Text("Hápticos")
                     }
                 }
-                .onChange(of: hapticsEnabled) { _ in
+                .onChange(of: hapticsEnabled) {
                     if hapticsEnabled { HapticManager.shared.warmUp() }
                 }
             } header: {
@@ -111,7 +111,7 @@ struct SettingsView: View {
                             await NotificationManager.shared.scheduleDailyReminder(at: hour, minute: minute)
                             HapticManager.shared.triggerNotification(.success)
                         } else {
-                            await NotificationManager.shared.cancelDailyReminder()
+                            NotificationManager.shared.cancelDailyReminder()
                             HapticManager.shared.triggerSelection()
                         }
                     }
@@ -122,7 +122,7 @@ struct SettingsView: View {
                 
                 Button("Cancelar recordatorio") {
                     Task {
-                        await NotificationManager.shared.cancelDailyReminder()
+                        NotificationManager.shared.cancelDailyReminder()
                         HapticManager.shared.triggerSelection()
                     }
                 }

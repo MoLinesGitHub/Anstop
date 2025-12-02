@@ -22,7 +22,7 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
 
     func scheduleDailyReminder(at hour: Int, minute: Int) async {
         let center = UNUserNotificationCenter.current()
-        await cancelDailyReminder()
+        cancelDailyReminder()
 
         var dateComponents = DateComponents()
         dateComponents.hour = hour
@@ -45,9 +45,9 @@ final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         }
     }
 
-    func cancelDailyReminder() async {
+    func cancelDailyReminder() {
         let center = UNUserNotificationCenter.current()
-        await center.removePendingNotificationRequests(withIdentifiers: ["daily_reminder"])
+        center.removePendingNotificationRequests(withIdentifiers: ["daily_reminder"])
         AppLogger.notifications.info("Daily reminder canceled")
     }
 }

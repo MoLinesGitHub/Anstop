@@ -36,6 +36,7 @@
       "size" : "38x38"
     },
     {
+      "filename" : "114-light.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -70,18 +71,21 @@
       "size" : "60x60"
     },
     {
+      "filename" : "128-light.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "64x64"
     },
     {
+      "filename" : "192-light.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "64x64"
     },
     {
+      "filename" : "136-light.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -179,6 +183,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "114-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -243,6 +248,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "128-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -255,6 +261,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "192-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -267,6 +274,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "136-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -317,6 +325,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "40-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -329,6 +338,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "60-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -341,6 +351,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "58-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -353,6 +364,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "87-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -365,6 +377,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "76-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -377,6 +390,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "114-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -389,6 +403,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "80-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -401,6 +416,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "120-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -413,6 +429,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "120-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -425,6 +442,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "180-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -437,6 +455,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "128-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -449,6 +468,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "192-Tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -461,6 +481,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "136-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -473,6 +494,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "152-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -485,6 +507,7 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "167-tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -497,8 +520,15 @@
           "value" : "tinted"
         }
       ],
+      "filename" : "1024-Tinted.png",
       "idiom" : "universal",
       "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
+      "filename" : "1024-Default.png",
+      "idiom" : "universal",
+      "platform" : "watchos",
       "size" : "1024x1024"
     }
   ],
