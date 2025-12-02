@@ -13,29 +13,27 @@ struct AnstopApp: App {
     @State private var purchaseManager = PurchaseManager()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     
-    let modelContainer: ModelContainer
-
-    init() {
+    static let sharedModelContainer: ModelContainer = {
+        let schema = Schema([
+            JournalEntry.self,
+            AnxietyEvent.self,
+            ProgramProgress.self
+        ])
+        
+        let modelConfiguration = ModelConfiguration(
+            schema: schema,
+            isStoredInMemoryOnly: false
+        )
+        
         do {
-            let schema = Schema([
-                JournalEntry.self,
-                AnxietyEvent.self,
-                ProgramProgress.self
-            ])
-            
-            let modelConfiguration = ModelConfiguration(
-                schema: schema,
-                isStoredInMemoryOnly: false
-            )
-            
-            modelContainer = try ModelContainer(
+            return try ModelContainer(
                 for: schema,
                 configurations: [modelConfiguration]
             )
         } catch {
             fatalError("No se pudo crear ModelContainer: \(error)")
         }
-    }
+    }()
 
     var body: some Scene {
         WindowGroup {
@@ -48,6 +46,6 @@ struct AnstopApp: App {
             }
             .environment(purchaseManager)
         }
-        .modelContainer(modelContainer)
+        .modelContainer(Self.sharedModelContainer)
     }
 }

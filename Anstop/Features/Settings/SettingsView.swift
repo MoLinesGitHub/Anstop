@@ -19,6 +19,7 @@ struct SettingsView: View {
     @State private var showingDeleteAlert = false
     @State private var showingPrivacyPolicy = false
     @State private var showingTerms = false
+    @State private var showingEULA = false
     @State private var showPaywall = false
 
     @State private var remindersEnabled: Bool = false
@@ -165,6 +166,21 @@ struct SettingsView: View {
                             .font(.caption)
                     }
                 }
+                
+                Button {
+                    showingEULA = true
+                } label: {
+                    HStack {
+                        Image(systemName: "doc.plaintext.fill")
+                            .foregroundStyle(.blue)
+                        Text("EULA")
+                            .foregroundStyle(.primary)
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.secondary)
+                            .font(.caption)
+                    }
+                }
             } header: {
                 Text("Legal")
             }
@@ -215,6 +231,9 @@ struct SettingsView: View {
         }
         .sheet(isPresented: $showingTerms) {
             LegalTextView(title: "Términos de Uso", content: LegalData.termsOfUse)
+        }
+        .sheet(isPresented: $showingEULA) {
+            LegalTextView(title: "EULA", content: LegalData.eula)
         }
         .alert("¿Borrar todos los datos?", isPresented: $showingDeleteAlert) {
             Button("Cancelar", role: .cancel) {}

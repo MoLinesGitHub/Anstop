@@ -11,32 +11,6 @@
         }
       },
       "idiom" : "universal"
-    },
-    {
-      "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "alpha" : "0.843",
-          "blue" : "0.236",
-          "green" : "0.519",
-          "red" : "0.684"
-        }
-      },
-      "display-gamut" : "sRGB",
-      "idiom" : "universal"
-    },
-    {
-      "color" : {
-        "color-space" : "srgb",
-        "components" : {
-          "alpha" : "0.843",
-          "blue" : "0.236",
-          "green" : "0.519",
-          "red" : "0.684"
-        }
-      },
-      "display-gamut" : "display-P3",
-      "idiom" : "universal"
     }
   ],
   "info" : {

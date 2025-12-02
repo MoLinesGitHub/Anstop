@@ -56,13 +56,7 @@
       "scale" : "3x",
       "size" : "40x40"
     },
-    {
-      "filename" : "120-light.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "2x",
-      "size" : "60x60"
-    },
+
     {
       "filename" : "180-light.png",
       "idiom" : "universal",
@@ -215,19 +209,7 @@
       "scale" : "3x",
       "size" : "40x40"
     },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "dark"
-        }
-      ],
-      "filename" : "120-dark.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "2x",
-      "size" : "60x60"
-    },
+
     {
       "appearances" : [
         {
@@ -422,19 +404,7 @@
       "scale" : "3x",
       "size" : "40x40"
     },
-    {
-      "appearances" : [
-        {
-          "appearance" : "luminosity",
-          "value" : "tinted"
-        }
-      ],
-      "filename" : "120-tinted.png",
-      "idiom" : "universal",
-      "platform" : "ios",
-      "scale" : "2x",
-      "size" : "60x60"
-    },
+
     {
       "appearances" : [
         {

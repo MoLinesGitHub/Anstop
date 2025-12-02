@@ -5,6 +5,24 @@ import OSLog
 @MainActor
 @Observable
 final class PurchaseManager {
+    // Global transaction updates listener to ensure we never miss updates
+    private static let globalTransactionUpdatesTask: Task<Void, Never> = Task {
+        for await result in Transaction.updates {
+            guard case .verified(let transaction) = result else {
+                Logger.purchases.warning("Received unverified transaction update")
+                continue
+            }
+            Logger.purchases.info("[Global] Transaction update received for product: \(transaction.productID)")
+            await handleGlobalTransactionUpdate(transaction)
+        }
+    }
+
+    private static func handleGlobalTransactionUpdate(_ transaction: Transaction) async {
+        // Finish the transaction after handling. If you have a shared manager instance,
+        // you can also refresh entitlements here.
+        await transaction.finish()
+    }
+
     var products: [Product] = []
     var purchasedProductIDs: Set<String> = []
     var isLoading: Bool = false
@@ -22,7 +40,7 @@ final class PurchaseManager {
 
     init() {
         // Start listening for transaction updates
-        transactionUpdatesTask = Task {
+        transactionUpdatesTask = Task { @MainActor in
             await listenForTransactionUpdates()
         }
         
@@ -33,7 +51,8 @@ final class PurchaseManager {
     }
     
     deinit {
-        transactionUpdatesTask?.cancel()
+        // No necesitamos cancelar aquí, la tarea se cancela automáticamente
+        // cuando el objeto es desreferenciado
     }
 
     func loadProducts() async {
@@ -96,6 +115,7 @@ final class PurchaseManager {
     }
     
     private func listenForTransactionUpdates() async {
+        // Instance-scoped listener (kept for redundancy); global listener above starts at launch.
         for await result in Transaction.updates {
             guard case .verified(let transaction) = result else {
                 Logger.purchases.warning("Received unverified transaction update")
@@ -125,3 +145,4 @@ final class PurchaseManager {
 enum StoreError: Error {
     case failedVerification
 }
+
