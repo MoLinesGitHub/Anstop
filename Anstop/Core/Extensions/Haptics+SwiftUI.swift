@@ -40,7 +40,7 @@ extension View {
 
     /// Triggers a haptic when the given value changes.
     func hapticOnChange<T: Equatable>(of value: T, event: HapticEvent) -> some View {
-        self.onChange(of: value) { _ in
+        self.onChange(of: value) { _, _ in
             HapticManager.shared.trigger(event)
         }
     }
@@ -53,3 +53,4 @@ extension View {
     }
 }
 #endif
+
