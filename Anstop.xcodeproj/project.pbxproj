@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 77;
+	objectVersion = 90;
 	objects = {
 
 /* Begin PBXContainerItemProxy section */
@@ -50,24 +50,18 @@
 /* Begin PBXFrameworksBuildPhase section */
 		998A5A9E2ED4AD1A005E1458 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AAB2ED4AD1B005E1458 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AB52ED4AD1B005E1458 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
@@ -97,14 +91,10 @@
 			);
 			buildRules = (
 			);
-			dependencies = (
-			);
 			fileSystemSynchronizedGroups = (
 				99C1FF012ED4AE6900033118 /* Anstop */,
 			);
 			name = Anstop;
-			packageProductDependencies = (
-			);
 			productName = Anstop;
 			productReference = 99C1FF202ED4AEED00033118 /* Anstop.app */;
 			productType = "com.apple.product-type.application";
@@ -126,8 +116,6 @@
 				998A5AB12ED4AD1B005E1458 /* AnstopTests */,
 			);
 			name = AnstopTests;
-			packageProductDependencies = (
-			);
 			productName = AnstopTests;
 			productReference = 9942BFD52ED4B5CC00E53933 /* AnstopTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -149,8 +137,6 @@
 				998A5ABB2ED4AD1B005E1458 /* AnstopUITests */,
 			);
 			name = AnstopUITests;
-			packageProductDependencies = (
-			);
 			productName = AnstopUITests;
 			productReference = 9942BFD62ED4B5CC00E53933 /* AnstopUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
@@ -189,7 +175,7 @@
 			);
 			mainGroup = 998A5A982ED4AD1A005E1458;
 			minimizedProjectReferenceProxies = 1;
-			preferredProjectObjectVersion = 77;
+			preferredProjectObjectVersion = 90;
 			productRefGroup = 998A5A982ED4AD1A005E1458;
 			projectDirPath = "";
 			projectRoot = "";
@@ -204,48 +190,36 @@
 /* Begin PBXResourcesBuildPhase section */
 		998A5A9F2ED4AD1A005E1458 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AAC2ED4AD1B005E1458 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AB62ED4AD1B005E1458 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		998A5A9D2ED4AD1A005E1458 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AAA2ED4AD1B005E1458 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 		998A5AB42ED4AD1B005E1458 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
@@ -263,7 +237,7 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		998A5AC02ED4AD1B005E1458 /* Debug */ = {
+		998A5AC02ED4AD1B005E1458 /* Debug configuration for PBXProject "Anstop" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -320,12 +294,14 @@
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 6.0;
 			};
 			name = Debug;
 		};
-		998A5AC12ED4AD1B005E1458 /* Release */ = {
+		998A5AC12ED4AD1B005E1458 /* Release configuration for PBXProject "Anstop" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -375,11 +351,13 @@
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
 			};
 			name = Release;
 		};
-		998A5AC32ED4AD1B005E1458 /* Debug */ = {
+		998A5AC32ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "Anstop" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -403,11 +381,12 @@
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Anstop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Anstop;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -426,9 +405,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.molinesdesigns.Anstop;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.anstop.app;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.anstop.app;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=xros*]" = com.anstop.app;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.molinesdesigns.Anstop;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=xros*]" = com.molinesdesigns.Anstop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
@@ -438,20 +416,20 @@
 				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
 				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Debug;
 		};
-		998A5AC42ED4AD1B005E1458 /* Release */ = {
+		998A5AC42ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "Anstop" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -475,11 +453,12 @@
 				ENABLE_RESOURCE_ACCESS_CAMERA = YES;
 				ENABLE_RESOURCE_ACCESS_CONTACTS = YES;
 				ENABLE_RESOURCE_ACCESS_LOCATION = NO;
-				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = NO;
+				ENABLE_RESOURCE_ACCESS_PHOTO_LIBRARY = YES;
 				ENABLE_RESOURCE_ACCESS_PRINTING = NO;
 				ENABLE_RESOURCE_ACCESS_USB = NO;
 				ENABLE_USER_SELECTED_FILES = readwrite;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Anstop/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Anstop;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
@@ -498,9 +477,8 @@
 				MACOSX_DEPLOYMENT_TARGET = 14.6;
 				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.molinesdesigns.Anstop;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.anstop.app;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=macosx*]" = com.anstop.app;
-				"PRODUCT_BUNDLE_IDENTIFIER[sdk=xros*]" = com.anstop.app;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=iphoneos*]" = com.molinesdesigns.Anstop;
+				"PRODUCT_BUNDLE_IDENTIFIER[sdk=xros*]" = com.molinesdesigns.Anstop;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				REGISTER_APP_GROUPS = YES;
@@ -510,20 +488,20 @@
 				RUNTIME_EXCEPTION_DEBUGGING_TOOL = NO;
 				RUNTIME_EXCEPTION_DISABLE_EXECUTABLE_PAGE_PROTECTION = NO;
 				RUNTIME_EXCEPTION_DISABLE_LIBRARY_VALIDATION = NO;
-				SDKROOT = auto;
+				SDKROOT = iphoneos;
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
+				TARGETED_DEVICE_FAMILY = "1,2";
 				XROS_DEPLOYMENT_TARGET = 26.0;
 			};
 			name = Release;
 		};
-		998A5AC62ED4AD1B005E1458 /* Debug */ = {
+		998A5AC62ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "AnstopTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -549,7 +527,7 @@
 			};
 			name = Debug;
 		};
-		998A5AC72ED4AD1B005E1458 /* Release */ = {
+		998A5AC72ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "AnstopTests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -575,7 +553,7 @@
 			};
 			name = Release;
 		};
-		998A5AC92ED4AD1B005E1458 /* Debug */ = {
+		998A5AC92ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "AnstopUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -600,7 +578,7 @@
 			};
 			name = Debug;
 		};
-		998A5ACA2ED4AD1B005E1458 /* Release */ = {
+		998A5ACA2ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "AnstopUITests" */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
@@ -631,37 +609,33 @@
 		998A5A9C2ED4AD1A005E1458 /* Build configuration list for PBXProject "Anstop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				998A5AC02ED4AD1B005E1458 /* Debug */,
-				998A5AC12ED4AD1B005E1458 /* Release */,
+				998A5AC02ED4AD1B005E1458 /* Debug configuration for PBXProject "Anstop" */,
+				998A5AC12ED4AD1B005E1458 /* Release configuration for PBXProject "Anstop" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		998A5AC22ED4AD1B005E1458 /* Build configuration list for PBXNativeTarget "Anstop" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				998A5AC32ED4AD1B005E1458 /* Debug */,
-				998A5AC42ED4AD1B005E1458 /* Release */,
+				998A5AC32ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "Anstop" */,
+				998A5AC42ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "Anstop" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		998A5AC52ED4AD1B005E1458 /* Build configuration list for PBXNativeTarget "AnstopTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				998A5AC62ED4AD1B005E1458 /* Debug */,
-				998A5AC72ED4AD1B005E1458 /* Release */,
+				998A5AC62ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "AnstopTests" */,
+				998A5AC72ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "AnstopTests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 		998A5AC82ED4AD1B005E1458 /* Build configuration list for PBXNativeTarget "AnstopUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				998A5AC92ED4AD1B005E1458 /* Debug */,
-				998A5ACA2ED4AD1B005E1458 /* Release */,
+				998A5AC92ED4AD1B005E1458 /* Debug configuration for PBXNativeTarget "AnstopUITests" */,
+				998A5ACA2ED4AD1B005E1458 /* Release configuration for PBXNativeTarget "AnstopUITests" */,
 			);
-			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */

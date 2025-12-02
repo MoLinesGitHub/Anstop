@@ -1,35 +1,35 @@
 {
   "images" : [
     {
-      "filename" : "40-light.png",
+      "filename" : "40.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "20x20"
     },
     {
-      "filename" : "60-light.png",
+      "filename" : "60.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "20x20"
     },
     {
-      "filename" : "58-light.png",
+      "filename" : "58.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "29x29"
     },
     {
-      "filename" : "87-light.png",
+      "filename" : "87.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "29x29"
     },
     {
-      "filename" : "76-light.png",
+      "filename" : "76.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -42,28 +42,28 @@
       "size" : "38x38"
     },
     {
-      "filename" : "80-light.png",
+      "filename" : "80.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "40x40"
     },
     {
-      "filename" : "120-light.png",
+      "filename" : "120 1.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
       "size" : "40x40"
     },
     {
-      "filename" : "120-light.png",
+      "filename" : "120.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "60x60"
     },
     {
-      "filename" : "180-light.png",
+      "filename" : "180.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -88,21 +88,21 @@
       "size" : "68x68"
     },
     {
-      "filename" : "152-light.png",
+      "filename" : "152.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "76x76"
     },
     {
-      "filename" : "167-light.png",
+      "filename" : "167.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
       "size" : "83.5x83.5"
     },
     {
-      "filename" : "1024-light.png",
+      "filename" : "1024.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
@@ -114,7 +114,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "40-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -127,7 +126,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "60-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -140,7 +138,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "58-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -153,7 +150,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "87-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -166,7 +162,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "76-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -191,7 +186,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "80-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -204,7 +198,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "120-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -217,7 +210,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "120-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -230,7 +222,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "180-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "3x",
@@ -279,7 +270,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "152-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -292,7 +282,6 @@
           "value" : "dark"
         }
       ],
-      "filename" : "167-dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "scale" : "2x",
@@ -305,7 +294,7 @@
           "value" : "dark"
         }
       ],
-      "filename" : "1024-dark.png",
+      "filename" : "Dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
