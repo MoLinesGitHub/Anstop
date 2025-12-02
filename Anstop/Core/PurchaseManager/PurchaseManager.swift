@@ -1,13 +1,7 @@
-//
-//  PurchaseManager.swift
-//  Anstop
-//
-//  Created on 2025-11-24.
-//
-
 import Observation
 import StoreKit
 
+@MainActor
 @Observable
 final class PurchaseManager {
     var products: [Product] = []
@@ -30,7 +24,6 @@ final class PurchaseManager {
         }
     }
 
-    @MainActor
     func loadProducts() async {
         isLoading = true
         do {
@@ -42,34 +35,41 @@ final class PurchaseManager {
         isLoading = false
     }
 
-    @MainActor
     func purchase(_ product: Product) async throws -> Bool {
         let result = try await product.purchase()
-
+        
         switch result {
-        case .success(let verification):
-            let transaction = try checkVerified(verification)
-            await transaction.finish()
+        case .success(let verificationResult):
+            // Validar con ReceiptValidator
+            let transaction = try ReceiptValidator.shared.validateTransaction(verificationResult)
+            
+            // Verificar que esté activa
+            guard ReceiptValidator.shared.isTransactionValid(transaction) else {
+                throw ReceiptError.transactionRevoked
+            }
+            
+            // Actualizar estado
             await updatePurchasedProducts()
+            
+            // Finalizar
+            await transaction.finish()
+            
             return true
-
+            
         case .userCancelled:
             return false
-
+            
         case .pending:
             return false
-
         @unknown default:
             return false
         }
     }
 
-    @MainActor
     func restorePurchases() async {
         await updatePurchasedProducts()
     }
 
-    @MainActor
     private func updatePurchasedProducts() async {
         var purchasedIDs: Set<String> = []
 

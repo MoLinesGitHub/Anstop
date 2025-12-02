@@ -8,6 +8,7 @@
 import AVFoundation
 import Observation
 
+@MainActor
 @Observable
 final class AudioManager {
     private var player: AVAudioPlayer?
@@ -20,7 +21,7 @@ final class AudioManager {
         configureAudioSession()
     }
 
-    private func configureAudioSession() {
+    private nonisolated func configureAudioSession() {
         let audioSession = AVAudioSession.sharedInstance()
         try? audioSession.setCategory(.playback, mode: .default)
         try? audioSession.setActive(true)

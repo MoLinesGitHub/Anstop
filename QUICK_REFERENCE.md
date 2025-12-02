@@ -165,3 +165,45 @@ cat NEXT_STEPS_DETAILED.md
 ---
 
 🚀 **¡Estamos a 15-20 días del lanzamiento!**
+
+---
+
+## 🛒 Testing de Compras In-App (StoreKit)
+
+### Configuración Rápida
+
+**Para eliminar error 404 al probar compras:**
+
+```bash
+1. Edit Scheme (⌘ + <)
+2. Run → Options
+3. StoreKit Configuration → "Configuration"
+4. Close
+5. Clean (Cmd + Shift + K)
+6. Build (Cmd + B)
+7. Run (Cmd + R)
+```
+
+**Guía completa:** `STOREKIT_CONFIGURATION_GUIDE.md`
+
+### Gestionar Transacciones de Prueba
+
+```
+Debug → StoreKit → Manage Transactions
+```
+
+Acciones:
+- Ver todas las compras simuladas
+- Cancelar suscripciones
+- Simular reembolsos
+- Limpiar transacciones
+
+### Productos Configurados
+
+- `premium.monthly` - $4.99/mes
+- `premium.yearly` - $39.99/año
+
+**Archivo:** `Configuration.storekit`
+
+---
+
