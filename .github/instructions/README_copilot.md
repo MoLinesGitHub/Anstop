@@ -1,7 +1,7 @@
-# Guía de Instrucciones Avanzadas para GitHub Copilot — Proyecto Cortes
+# Guía de Instrucciones Avanzadas para GitHub Copilot — proyecto
 ### Arquitectura modular • Swift 6.2 strict concurrency • MCP Servers integrados
 
-Este documento resume el sistema completo de agentes, reglas e instrucciones que gobiernan cómo GitHub Copilot v3.2 debe comportarse dentro del proyecto **Cortes**.
+Este documento resume el sistema completo de agentes, reglas e instrucciones que gobiernan cómo GitHub Copilot v3.2 debe comportarse dentro del proyecto.
 
 Su objetivo es garantizar:
 - código seguro y sin alucinaciones,
@@ -38,14 +38,14 @@ Cada archivo actúa como un **agente especializado**, y Copilot debe combinar su
 
 En `mcps/` existen tres MCP activos y autorizados:
 
-### 1. **cortes-dev-mcp**
+### 1. **dev-mcp**
 Enfocado en:
 - análisis de errores complejos
 - logs de compilación grandes
 - diagnósticos encadenados
 - análisis de fallos de concurrencia
 
-### 2. **cortes-env-mcp**
+### 2. **env-mcp**
 Permite:
 - ejecutar tests
 - construir el proyecto desde CLI
@@ -125,7 +125,7 @@ Copilot debe:
 
 ## 🎯 OBJETIVO DEL SISTEMA DE INSTRUCCIONES
 
-Garantizar que **Cortes** se desarrolla bajo estándares profesionales:
+Garantizar que el proyecto se desarrolla bajo estándares profesionales:
 
 - mantenible
 - robusto

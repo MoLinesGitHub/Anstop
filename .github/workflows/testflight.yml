@@ -36,12 +36,12 @@ jobs:
 
       - name: Build .xcarchive
         run: |
-          rm -rf Cortes.xcarchive
+          rm -rf.xcarchive
           xcodebuild \
-            -scheme Cortes \
+            -scheme \
             -configuration Release \
             -sdk iphoneos \
-            -archivePath Cortes.xcarchive \
+            -archivePath.xcarchive \
             clean archive
 
       - name: Export .ipa
@@ -49,7 +49,7 @@ jobs:
           rm -rf output
           mkdir -p output
           xcodebuild -exportArchive \
-            -archivePath Cortes.xcarchive \
+            -archivePath.xcarchive \
             -exportPath output \
             -exportOptionsPlist ExportOptions.plist
 
@@ -59,7 +59,7 @@ jobs:
           apiKey: ${{ secrets.APP_STORE_CONNECT_KEY }}
           issuerId: ${{ secrets.APP_STORE_CONNECT_ISSUER }}
           apiKeyId: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
-          appPath: output/Cortes.ipa
+          appPath: output/YourApp.ipa
 
       - name: Cleanup Sensitive Files
         if: always()
@@ -67,5 +67,5 @@ jobs:
           rm -f certificate.p12
           rm -f profile.mobileprovision
           security delete-keychain build.keychain || true
-          rm -rf Cortes.xcarchive
+          rm -rf.xcarchive
           rm -rf output

@@ -1,5 +1,5 @@
 # Instrucciones para Servicios (Services/)
-### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Cortes
+### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + arquitectura
 
 Estas reglas aplican a todos los servicios localizados en:
 - `Services/Network/`
@@ -152,7 +152,7 @@ Copilot puede sugerir MCP cuando:
 - existan errores largos de compilación,
 - se detecten ciclos Core Data,
 - se necesite ejecutar tests completos:
-  - `cortes_run_tests`
+  - `run_run_tests`
   - `analyze_xcode_build_logs`
 
 Nunca usar MCP para:
@@ -169,6 +169,6 @@ Copilot debe producir servicios que sean:
 - seguros con concurrencia,
 - alineados con Domain,
 - sin acceso directo a UI,
-- compatibles con la arquitectura modular de Cortes,
+- compatibles con la arquitectura modular del proyecto,
 - fáciles de evolucionar sin romper capas superiores (UI / Domain).
 

@@ -19,7 +19,7 @@ Detectar y corregir problemas de concurrencia, bloqueo o inestabilidad en flujos
    - fijar prioridades de Task
    - reestructurar flujos async
 3. Validar con MCP si hay errores:
-   - cortes_build_project
+   - run_build_project
    - analyze_swift_compilation_errors
 
 ## Resultado esperado

@@ -1,6 +1,6 @@
 ---
 name: /analyze-build-errors
-description: Analiza errores de compilación en Cortes usando MCP y propone correcciones precisas
+description: Analiza errores de compilación en usando MCP y propone correcciones precisas
 ---
 
 # Análisis profesional de errores de compilación (Swift 6.2 • Xcode 26.1 • MCP)
@@ -11,7 +11,7 @@ Identificar la causa raíz de errores de compilación, con diagnóstico preciso 
 ## Acciones que debe realizar Copilot
 
 1. Ejecutar MCP:
-   - llamar a `cortes_build_project`
+   - llamar a `run_build_project`
    - obtener logs completos
    - pasar los logs a `analyze_swift_compilation_errors`
 

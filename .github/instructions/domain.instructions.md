@@ -1,7 +1,7 @@
 # Instrucciones del Domain Layer (Domain/)
-### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Cortes
+### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + arquitectura
 
-El dominio es el **corazón de la app Cortes**. Contiene las reglas de negocio, modelos puros y comportamientos esenciales del sistema.
+El dominio es el **corazón de la app**. Contiene las reglas de negocio, modelos puros y comportamientos esenciales del sistema.
 
 Copilot debe seguir estas reglas SIEMPRE.
 

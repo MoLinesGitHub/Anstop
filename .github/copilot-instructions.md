@@ -1,7 +1,7 @@
-# Guía de Instrucciones Avanzadas para GitHub Copilot — Proyecto Cortes
+# Guía de Instrucciones Avanzadas para GitHub Copilot
 ### Arquitectura modular • Swift 6.2 strict concurrency • MCP Servers integrados
 
-Este documento resume el sistema completo de agentes, reglas e instrucciones que gobiernan cómo GitHub Copilot v3.2 debe comportarse dentro del proyecto **Cortes**.
+Este documento resume el sistema completo de agentes, reglas e instrucciones que gobiernan cómo GitHub Copilot v3.2 debe comportarse dentro del proyecto.
 
 Su objetivo es garantizar:
 - código seguro y sin alucinaciones,
@@ -36,16 +36,16 @@ Cada archivo actúa como un **agente especializado**, y Copilot debe combinar su
 
 ## 🧠 MCP SERVERS INTEGRADOS
 
-En `mcps/` existen tres MCP activos y autorizados:
+En `mcps/` existen MCP activos y autorizados:
 
-### 1. **cortes-dev-mcp**
+### 1. **dev-mcp**
 Enfocado en:
 - análisis de errores complejos
 - logs de compilación grandes
 - diagnósticos encadenados
 - análisis de fallos de concurrencia
 
-### 2. **cortes-env-mcp**
+### 2. **env-mcp**
 Permite:
 - ejecutar tests
 - construir el proyecto desde CLI
@@ -125,7 +125,7 @@ Copilot debe:
 
 ## 🎯 OBJETIVO DEL SISTEMA DE INSTRUCCIONES
 
-Garantizar que **Cortes** se desarrolla bajo estándares profesionales:
+Garantizar que el proyecto se desarrolla bajo estándares profesionales:
 
 - mantenible
 - robusto
@@ -138,7 +138,7 @@ Garantizar que **Cortes** se desarrolla bajo estándares profesionales:
 
 
 # Instrucciones para archivos de UI (SwiftUI)
-### Optimizado para Copilot v3.2 — Proyecto Cortes (Swift 6.2, arquitectura modular)
+### Optimizado para Copilot v3.2 — Swift 6.2, arquitectura modular
 
 Estas reglas aplican a todos los archivos en:
 - `UI/`
@@ -475,13 +475,13 @@ Copilot debe generar vistas:
 
 
 
-# Instrucciones para archivos de tests (CortesTests, CortesUITests)
-### Optimizado para arquitectura del proyecto Cortes + Swift 6.2
+# Instrucciones para archivos de tests
+### Optimizado para arquitectura del proyecto + Swift 6.2
 
 ## 📌 Alcance
 Estas reglas se aplican a todos los tests en:
-- `CortesTests/` (unit tests)
-- `CortesUITests/` (UI automation)
+- `Tests/` (unit tests)
+- `UITests/` (UI automation)
 
 ---
 
@@ -504,7 +504,7 @@ func test_loadExpenses_filtersCorrectlyByDate() { ... }
 ## 🧩 Principios de diseño de tests
 - Un test = **una responsabilidad**.
 - Mantener tests **pequeños, rápidos y aislados**.
-- No depender de la UI salvo en `CortesUITests`.
+- No depender de la UI salvo en `UITests`.
 - Evitar duplicación: si existe un test parecido, seguir el mismo patrón.
 
 ---
@@ -544,7 +544,7 @@ func test_loadExpenses_filtersCorrectlyByDate() { ... }
 
 ---
 
-## 📱 Tests de UI (CortesUITests)
+## 📱 Tests de UI (UITests)
 - Priorizar casos críticos: onboarding, navegación, flujo principal.
 - Mantenerlos:
   - Estables,
@@ -569,7 +569,7 @@ Copilot puede sugerir usar MCP cuando:
 - un test falla pero el log es muy largo,
 - hay múltiples fallos encadenados,
 - se requiere ejecución completa:
-  - `cortes_run_tests`
+  - `run_run_tests`
   - `analyze_xcode_build_logs`
 
 Siempre priorizar **resolver localmente primero**.
@@ -577,18 +577,18 @@ Siempre priorizar **resolver localmente primero**.
 
 
 
-# Instrucciones específicas para archivos Swift en Cortes  
+# Instrucciones específicas para archivos Swift
 ### Optimizado para Swift 6.2, arquitectura modular y MCP activos
 
 Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, incluyendo:
-- `Cortes/App/`
-- `Cortes/Features/`
-- `Cortes/Domain/`
-- `Cortes/Core/`
-- `Cortes/Services/`
-- `Cortes/UI/`
-- `Cortes/Resources/`
-- `CortesTests/` y `CortesUITests/`
+- `App/`
+- `Features/`
+- `Domain/`
+- `Core/`
+- `Services/`
+- `UI/`
+- `Resources/`
+- `Tests/` y `UITests/`
 
 ---
 
@@ -648,7 +648,7 @@ Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, i
 ## 📌 Tests y regresiones
 
 - Al modificar un `Service`, `Repository` o `ViewModel`:
-  - Revisar tests existentes y añadir/actualizar en `CortesTests`.
+  - Revisar tests existentes y añadir/actualizar en `Tests`.
 - Tests de UI solo cuando sea imprescindible; priorizar tests de ViewModel.
 - Mantener el patrón actual de los tests Core Data:
   - uso de contenedores temporales
@@ -662,10 +662,10 @@ Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, i
 ### MCP disponibles:
 - `analyze_swift_compilation_errors`
 - `analyze_xcode_build_logs`
-- `cortes_build_project`
-- `cortes_run_tests`
+- `build_project`
+- `run_tests`
 - `detect_memory_leaks`
-- `optimize_cortes_performance`
+- `optimize_performance`
 
 ### Copilot debe preferir:
 1. Resolver errores con el snippet proporcionado.
@@ -770,10 +770,10 @@ Copilot debe usar **`os.Logger`** para todo logging, siguiendo las convenciones 
   import OSLog
   
   extension Logger {
-      static let ui = Logger(subsystem: "com.cortes.app", category: "ui")
-      static let network = Logger(subsystem: "com.cortes.app", category: "network")
-      static let database = Logger(subsystem: "com.cortes.app", category: "database")
-      static let analytics = Logger(subsystem: "com.cortes.app", category: "analytics")
+      static let ui = Logger(subsystem: "com.yourcompany.app", category: "ui")
+      static let network = Logger(subsystem: "com.yourcompany.app", category: "network")
+      static let database = Logger(subsystem: "com.yourcompany.app", category: "database")
+      static let analytics = Logger(subsystem: "com.yourcompany.app", category: "analytics")
   }
   ```
 
@@ -868,7 +868,7 @@ Copilot debe usar **`os.Logger`** para todo logging, siguiendo las convenciones 
   ```swift
   import os.signpost
   
-  let signposter = OSSignposter(subsystem: "com.cortes.app", category: "performance")
+  let signposter = OSSignposter(subsystem: "com.yourcompany.app", category: "performance")
   let state = signposter.beginInterval("ExpenseFetch")
   // operación costosa
   signposter.endInterval("ExpenseFetch", state)
@@ -888,7 +888,7 @@ Copilot debe usar **`os.Logger`** para todo logging, siguiendo las convenciones 
 
 
 # Instrucciones para Servicios (Services/)
-### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Cortes
+### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency
 
 Estas reglas aplican a todos los servicios localizados en:
 - `Services/Network/`
@@ -1041,7 +1041,7 @@ Copilot puede sugerir MCP cuando:
 - existan errores largos de compilación,
 - se detecten ciclos Core Data,
 - se necesite ejecutar tests completos:
-  - `cortes_run_tests`
+  - `run_tests`
   - `analyze_xcode_build_logs`
 
 Nunca usar MCP para:
@@ -1058,13 +1058,13 @@ Copilot debe producir servicios que sean:
 - seguros con concurrencia,
 - alineados con Domain,
 - sin acceso directo a UI,
-- compatibles con la arquitectura modular de Cortes,
+- compatibles con la arquitectura modular del proyecto,
 - fáciles de evolucionar sin romper capas superiores (UI / Domain).
 
 
 
 
-# Instrucciones de Localización (Proyecto Cortes)
+# Instrucciones de Localización
 ### Optimizado para Copilot v3.2 — Swift 6.2 + Arquitectura Modular + Localizable.strings
 
 Estas reglas aplican a toda la localización del proyecto, incluyendo:
@@ -1075,7 +1075,7 @@ Estas reglas aplican a toda la localización del proyecto, incluyendo:
 ---
 
 ## 🌍 Objetivo
-Copilot debe garantizar que **toda la app Cortes es completamente localizable**, sin strings hard-coded y siguiendo buenas prácticas de iOS modernas.
+Copilot debe garantizar que **toda la app es completamente localizable**, sin strings hard-coded y siguiendo buenas prácticas de iOS modernas.
 
 ---
 
@@ -1231,9 +1231,9 @@ Copilot debe producir siempre código:
 
 
 # Instrucciones del Domain Layer (Domain/)
-### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Cortes
+### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency
 
-El dominio es el **corazón de la app Cortes**. Contiene las reglas de negocio, modelos puros y comportamientos esenciales del sistema.
+El dominio es el **corazón de la aplicación**. Contiene las reglas de negocio, modelos puros y comportamientos esenciales del sistema.
 
 Copilot debe seguir estas reglas SIEMPRE.
 
@@ -1411,7 +1411,7 @@ Copilot debe producir un Domain Layer:
 
 
 # Instrucciones para Gestión de Assets (Resources/)
-### Optimizado para Copilot v3.2 — Proyecto Cortes (Swift 6.2, arquitectura modular)
+### Optimizado para Copilot v3.2 — Swift 6.2, arquitectura modular
 
 Estas reglas aplican a todo recurso dentro de:
 - `Resources/Colors.xcassets`
@@ -1545,7 +1545,7 @@ Solo debe usarse MCP para:
 
 Herramientas recomendadas:
 - `analyze_xcode_build_logs`
-- `cortes_build_project`
+- `build_project`
 
 Nunca usar MCP para cambios simples de assets.
 
@@ -1558,13 +1558,13 @@ Copilot debe generar código y assets:
 - accesibles,
 - localizables,
 - seguros para modo claro/oscuro,
-- alineados con la arquitectura y estilo de Cortes,
+- alineados con la arquitectura y estilo del proyecto,
 - 100% compatibles con Swift 6.2 strict concurrency.
 
 
 
 
-# Instrucciones de Arquitectura (Cortes)
+# Instrucciones de Arquitectura 
 ### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Modular Real del Proyecto
 
 Estas reglas se aplican a todo el repositorio. Copilot debe respetarlas
@@ -1572,21 +1572,21 @@ Estas reglas se aplican a todo el repositorio. Copilot debe respetarlas
 
 ---
 
-## 🧱 Estructura Real del Proyecto (Cortes)
+## 🧱 Estructura del Proyecto
 
 Copilot debe comprender y respetar siempre estas capas:
 
 ```
-Cortes/
- ├─ Cortes/App/                → Punto de entrada + NavigationStack root
- ├─ Cortes/Features/           → Pantallas completas (cada feature es un módulo)
- ├─ Cortes/Domain/             → Modelos puros + lógica de negocio
- ├─ Cortes/Core/               → Core Data stack + utilidades base
- ├─ Cortes/Services/           → Servicios de infraestructura (Network, Repos, Analytics)
- ├─ Cortes/UI/                 → Componentes SwiftUI reutilizables
- ├─ Cortes/Resources/          → Colors.xcassets, Assets, Localizables
- ├─ CortesTests/               → Tests unitarios
- └─ CortesUITests/             → Tests UI
+ProjectName/
+ ├─ App/                → Punto de entrada + NavigationStack root
+ ├─ Features/           → Pantallas completas (cada feature es un módulo)
+ ├─ Domain/             → Modelos puros + lógica de negocio
+ ├─ Core/               → Core Data stack + utilidades base
+ ├─ Services/           → Servicios de infraestructura (Network, Repos, Analytics)
+ ├─ UI/                 → Componentes SwiftUI reutilizables
+ ├─ Resources/          → Colors.xcassets, Assets, Localizables
+ ├─ Tests/              → Tests unitarios
+ └─ UITests/            → Tests UI
 ```
 
 ---
@@ -1730,7 +1730,7 @@ Copilot debe producir código que:
 - compile a la primera,
 - sea modular y mantenible,
 - respete Swift 6.2,
-- siga la arquitectura real de Cortes,
+- siga la arquitectura del proyecto,
 - sea fácil de testear,
 - y evolucione el proyecto sin introducir riesgos.
 

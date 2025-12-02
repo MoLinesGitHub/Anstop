@@ -1,10 +1,10 @@
-# Instrucciones para archivos de tests (CortesTests, CortesUITests)
-### Optimizado para arquitectura del proyecto Cortes + Swift 6.2
+# Instrucciones para archivos de tests (Tests, UITests)
+### Optimizado para arquitectura del proyecto + Swift 6.2
 
 ## 📌 Alcance
 Estas reglas se aplican a todos los tests en:
-- `CortesTests/` (unit tests)
-- `CortesUITests/` (UI automation)
+- `Tests/` (unit tests)
+- `UITests/` (UI automation)
 
 ---
 
@@ -27,7 +27,7 @@ func test_loadExpenses_filtersCorrectlyByDate() { ... }
 ## 🧩 Principios de diseño de tests
 - Un test = **una responsabilidad**.
 - Mantener tests **pequeños, rápidos y aislados**.
-- No depender de la UI salvo en `CortesUITests`.
+- No depender de la UI salvo en `UITests`.
 - Evitar duplicación: si existe un test parecido, seguir el mismo patrón.
 
 ---
@@ -67,7 +67,7 @@ func test_loadExpenses_filtersCorrectlyByDate() { ... }
 
 ---
 
-## 📱 Tests de UI (CortesUITests)
+## 📱 Tests de UI (UITests)
 - Priorizar casos críticos: onboarding, navegación, flujo principal.
 - Mantenerlos:
   - Estables,
@@ -92,7 +92,7 @@ Copilot puede sugerir usar MCP cuando:
 - un test falla pero el log es muy largo,
 - hay múltiples fallos encadenados,
 - se requiere ejecución completa:
-  - `cortes_run_tests`
+  - `run_run_tests`
   - `analyze_xcode_build_logs`
 
 Siempre priorizar **resolver localmente primero**.

@@ -1,7 +1,7 @@
-# Guía de MCP Servers — Proyecto Cortes
+# Guía de MCP Servers — proyecto
 ### Arquitectura avanzada: Swift 6.2 + CI/CD + Análisis Automático
 
-Este documento describe el sistema MCP (Model Context Protocol) integrado en Cortes, y cómo Copilot debe utilizarlos para análisis avanzados sin interferir con el flujo normal de desarrollo.
+Este documento describe el sistema MCP (Model Context Protocol) integrado en, y cómo Copilot debe utilizarlos para análisis avanzados sin interferir con el flujo normal de desarrollo.
 
 ---
 
@@ -15,7 +15,7 @@ existen **tres MCP servers especializados** que amplían las capacidades de Copi
 
 ---
 
-## 🧠 1. `cortes-dev-mcp`
+## 🧠 1. `dev-mcp`
 ### Propósito
 Análisis profundo del estado del proyecto:
 
@@ -34,7 +34,7 @@ Copilot debe llamar a este MCP cuando:
 
 ---
 
-## 🧪 2. `cortes-env-mcp`
+## 🧪 2. `env-mcp`
 ### Propósito
 Automatizar operaciones habituales del entorno:
 
@@ -93,7 +93,7 @@ Los MCP:
 
 # 🎯 OBJETIVO FINAL DEL MCP
 
-Ofrecer a Cortes:
+Ofrecer a:
 
 - diagnósticos avanzados  
 - builds reproducibles  

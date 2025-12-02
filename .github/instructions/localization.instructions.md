@@ -1,4 +1,4 @@
-# Instrucciones de Localización (Proyecto Cortes)
+# Instrucciones de Localización (proyecto)
 ### Optimizado para Copilot v3.2 — Swift 6.2 + Arquitectura Modular + Localizable.strings
 
 Estas reglas aplican a toda la localización del proyecto, incluyendo:
@@ -9,7 +9,7 @@ Estas reglas aplican a toda la localización del proyecto, incluyendo:
 ---
 
 ## 🌍 Objetivo
-Copilot debe garantizar que **toda la app Cortes es completamente localizable**, sin strings hard-coded y siguiendo buenas prácticas de iOS modernas.
+Copilot debe garantizar que **toda la app es completamente localizable**, sin strings hard-coded y siguiendo buenas prácticas de iOS modernas.
 
 ---
 

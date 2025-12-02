@@ -1,7 +1,7 @@
-# Guía de CI/CD — Proyecto Cortes (GitHub Actions)
+# Guía de CI/CD — proyecto (GitHub Actions)
 ### iOS • Swift 6.2 • Xcode 26.1 • TestFlight • PR checks
 
-Este documento explica todos los workflows del repositorio de Cortes.
+Este documento explica todos los workflows del repositorio de.
 
 ---
 
@@ -105,7 +105,7 @@ Esto acelera:
 
 # 🎯 OBJETIVO FINAL DE CI/CD
 
-Garantizar que el proyecto Cortes:
+Garantizar que el proyecto:
 - se construye de forma estable  
 - es testado automáticamente  
 - sigue estándares de Apple  

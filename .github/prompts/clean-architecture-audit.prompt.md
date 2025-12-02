@@ -1,12 +1,12 @@
 ---
 name: /clean-architecture-audit
-description: Audita la arquitectura del proyecto Cortes para detectar violaciones y proponer mejoras
+description: Audita la arquitectura del proyecto para detectar violaciones y proponer mejoras
 ---
 
 # Auditoría completa de arquitectura (UI / ViewModel / Domain / Services)
 
 ## Objetivo
-Revisar estructura de archivos, responsabilidades y dependencias para garantizar que Cortes mantiene arquitectura limpia.
+Revisar estructura de archivos, responsabilidades y dependencias para garantizar que mantiene arquitectura limpia.
 
 ## Acciones que debe realizar Copilot
 1. Detectar violaciones:

@@ -1,5 +1,5 @@
 # Instrucciones para Gestión de Assets (Resources/)
-### Optimizado para Copilot v3.2 — Proyecto Cortes (Swift 6.2, arquitectura modular)
+### Optimizado para Copilot v3.2 — proyecto (Swift 6.2, arquitectura modular)
 
 Estas reglas aplican a todo recurso dentro de:
 - `Resources/Colors.xcassets`
@@ -133,7 +133,7 @@ Solo debe usarse MCP para:
 
 Herramientas recomendadas:
 - `analyze_xcode_build_logs`
-- `cortes_build_project`
+- `run_build_project`
 
 Nunca usar MCP para cambios simples de assets.
 
@@ -146,6 +146,6 @@ Copilot debe generar código y assets:
 - accesibles,
 - localizables,
 - seguros para modo claro/oscuro,
-- alineados con la arquitectura y estilo de Cortes,
+- alineados con la arquitectura y estilo del proyecto,
 - 100% compatibles con Swift 6.2 strict concurrency.
 

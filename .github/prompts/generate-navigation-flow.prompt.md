@@ -3,7 +3,7 @@ name: /generate-navigation-flow
 description: Crea flujos de navegación completos usando NavigationStack y ViewModels
 ---
 
-# Generación de flujos de navegación completos (NavigationStack • Arquitectura Cortes)
+# Generación de flujos de navegación completos (NavigationStack • arquitectura)
 
 ## Objetivo
 Crear un flujo de pantallas completamente estructurado usando NavigationStack, ViewModels y datos del dominio.
@@ -11,7 +11,7 @@ Crear un flujo de pantallas completamente estructurado usando NavigationStack, V
 ## Acciones que debe realizar Copilot
 
 1. Crear estructura del flujo:
-   Cortes/
+   ProjectName/
      ├─ UI/
      │   ├─ ScreenAView.swift
      │   ├─ ScreenBView.swift
@@ -40,4 +40,4 @@ Crear un flujo de pantallas completamente estructurado usando NavigationStack, V
    - sin lógica en la vista
 
 ## Resultado esperado
-Un flujo de navegación modular, escalable y completamente integrado en la arquitectura Cortes.
+Un flujo de navegación modular, escalable y completamente integrado en la arquitectura.

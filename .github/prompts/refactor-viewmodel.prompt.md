@@ -3,10 +3,10 @@ name: /refactor-viewmodel
 description: Refactoriza ViewModels para hacerlos limpios, testables y seguros con concurrencia
 ---
 
-# Refactor profesional de ViewModels (Swift 6.2 • MainActor • Architecture Cortes)
+# Refactor profesional de ViewModels (Swift 6.2 • MainActor • Architecture)
 
 ## Objetivo
-Transformar un ViewModel confuso o demasiado grande en una estructura limpia, estable, testable y alineada con la arquitectura Cortes.
+Transformar un ViewModel confuso o demasiado grande en una estructura limpia, estable, testable y alineada con la arquitectura.
 
 ## Acciones que debe realizar Copilot
 
@@ -33,7 +33,7 @@ Transformar un ViewModel confuso o demasiado grande en una estructura limpia, es
    - proponer TestCases adicionales
 
 4. MCP opcional:
-   - usar `cortes_build_project` si el refactor origina errores
+   - usar `run_build_project` si el refactor origina errores
    - analizar errores con `analyze_swift_compilation_errors`
 
 ## Resultado esperado

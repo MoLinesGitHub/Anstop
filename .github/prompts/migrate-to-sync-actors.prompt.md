@@ -6,7 +6,7 @@ description: Migra servicios y estados compartidos a actores Swift 6.2 con stric
 # Migración a Actores Swift 6.2 (strict concurrency)
 
 ## Objetivo
-Convertir servicios y estados compartidos en actores seguros para concurrencia, sin romper la arquitectura Cortes.
+Convertir servicios y estados compartidos en actores seguros para concurrencia, sin romper la arquitectura.
 
 ## Acciones que debe realizar Copilot
 1. Identificar:
@@ -24,7 +24,7 @@ Convertir servicios y estados compartidos en actores seguros para concurrencia, 
    - los ViewModels deben recibir dependencias ya migradas
 
 4. Validación:
-   - ejecutar MCP con `cortes_build_project` si hay errores de concurrencia
+   - ejecutar MCP con `run_build_project` si hay errores de concurrencia
    - corregir anotaciones @MainActor y Sendable
 
 ## Resultado esperado

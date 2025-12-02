@@ -1,15 +1,15 @@
-# Instrucciones específicas para archivos Swift en Cortes  
+# Instrucciones específicas para archivos Swift en  
 ### Optimizado para Swift 6.2, arquitectura modular y MCP activos
 
 Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, incluyendo:
-- `Cortes/App/`
-- `Cortes/Features/`
-- `Cortes/Domain/`
-- `Cortes/Core/`
-- `Cortes/Services/`
-- `Cortes/UI/`
-- `Cortes/Resources/`
-- `CortesTests/` y `CortesUITests/`
+- `ProjectName/App/`
+- `ProjectName/Features/`
+- `ProjectName/Domain/`
+- `ProjectName/Core/`
+- `ProjectName/Services/`
+- `ProjectName/UI/`
+- `ProjectName/Resources/`
+- `Tests/` y `UITests/`
 
 ---
 
@@ -69,7 +69,7 @@ Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, i
 ## 📌 Tests y regresiones
 
 - Al modificar un `Service`, `Repository` o `ViewModel`:
-  - Revisar tests existentes y añadir/actualizar en `CortesTests`.
+  - Revisar tests existentes y añadir/actualizar en `Tests`.
 - Tests de UI solo cuando sea imprescindible; priorizar tests de ViewModel.
 - Mantener el patrón actual de los tests Core Data:
   - uso de contenedores temporales
@@ -83,10 +83,10 @@ Estas instrucciones aplican a **todos los archivos `.swift`** del repositorio, i
 ### MCP disponibles:
 - `analyze_swift_compilation_errors`
 - `analyze_xcode_build_logs`
-- `cortes_build_project`
-- `cortes_run_tests`
+- `run_build_project`
+- `run_run_tests`
 - `detect_memory_leaks`
-- `optimize_cortes_performance`
+- `optimize_run_performance`
 
 ### Copilot debe preferir:
 1. Resolver errores con el snippet proporcionado.
@@ -191,10 +191,10 @@ Copilot debe usar **`os.Logger`** para todo logging, siguiendo las convenciones 
   import OSLog
   
   extension Logger {
-      static let ui = Logger(subsystem: "com.cortes.app", category: "ui")
-      static let network = Logger(subsystem: "com.cortes.app", category: "network")
-      static let database = Logger(subsystem: "com.cortes.app", category: "database")
-      static let analytics = Logger(subsystem: "com.cortes.app", category: "analytics")
+      static let ui = Logger(subsystem: "com.yourcompany.app", category: "ui")
+      static let network = Logger(subsystem: "com.yourcompany.app", category: "network")
+      static let database = Logger(subsystem: "com.yourcompany.app", category: "database")
+      static let analytics = Logger(subsystem: "com.yourcompany.app", category: "analytics")
   }
   ```
 
@@ -289,7 +289,7 @@ Copilot debe usar **`os.Logger`** para todo logging, siguiendo las convenciones 
   ```swift
   import os.signpost
   
-  let signposter = OSSignposter(subsystem: "com.cortes.app", category: "performance")
+  let signposter = OSSignposter(subsystem: "com.yourcompany.app", category: "performance")
   let state = signposter.beginInterval("ExpenseFetch")
   // operación costosa
   signposter.endInterval("ExpenseFetch", state)

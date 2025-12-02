@@ -1,4 +1,4 @@
-# Instrucciones de Arquitectura (Cortes)
+# Instrucciones de Arquitectura 
 ### Optimizado para Copilot v3.2 — Swift 6.2 Strict Concurrency + Arquitectura Modular Real del Proyecto
 
 Estas reglas se aplican a todo el repositorio. Copilot debe respetarlas
@@ -6,21 +6,21 @@ Estas reglas se aplican a todo el repositorio. Copilot debe respetarlas
 
 ---
 
-## 🧱 Estructura Real del Proyecto (Cortes)
+## 🧱 Estructura del Proyecto
 
 Copilot debe comprender y respetar siempre estas capas:
 
 ```
-Cortes/
- ├─ Cortes/App/                → Punto de entrada + NavigationStack root
- ├─ Cortes/Features/           → Pantallas completas (cada feature es un módulo)
- ├─ Cortes/Domain/             → Modelos puros + lógica de negocio
- ├─ Cortes/Core/               → Core Data stack + utilidades base
- ├─ Cortes/Services/           → Servicios de infraestructura (Network, Repos, Analytics)
- ├─ Cortes/UI/                 → Componentes SwiftUI reutilizables
- ├─ Cortes/Resources/          → Colors.xcassets, Assets, Localizables
- ├─ CortesTests/               → Tests unitarios
- └─ CortesUITests/             → Tests UI
+ProjectName/
+ ├─ App/                → Punto de entrada + NavigationStack root
+ ├─ Features/           → Pantallas completas (cada feature es un módulo)
+ ├─ Domain/             → Modelos puros + lógica de negocio
+ ├─ Core/               → Core Data stack + utilidades base
+ ├─ Services/           → Servicios de infraestructura (Network, Repos, Analytics)
+ ├─ UI/                 → Componentes SwiftUI reutilizables
+ ├─ Resources/          → Colors.xcassets, Assets, Localizables
+ ├─ Tests/              → Tests unitarios
+ └─ UITests/            → Tests UI
 ```
 
 ---
@@ -164,7 +164,7 @@ Copilot debe producir código que:
 - compile a la primera,
 - sea modular y mantenible,
 - respete Swift 6.2,
-- siga la arquitectura real de Cortes,
+- siga la arquitectura del proyecto,
 - sea fácil de testear,
 - y evolucione el proyecto sin introducir riesgos.
 

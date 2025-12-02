@@ -1,5 +1,5 @@
 # name: project-health
-# description: Revisa el estado general del proyecto Cortes (build, tests y warnings)
+# description: Revisa el estado general del proyecto (build, tests y warnings)
 
 ## Goals
 
@@ -11,8 +11,8 @@
 
 ## Steps (high level)
 
-1. Ejecutar el tool `cortes_build_project` (Debug, clean=false) y recoger el resultado del build.
-2. Ejecutar el tool `cortes_run_tests` con `testType: "unit"` para conocer el estado de los tests.
+1. Ejecutar el tool `build_project` (Debug, clean=false) y recoger el resultado del build.
+2. Ejecutar el tool `run_tests` con `testType: "unit"` para conocer el estado de los tests.
 3. Usar `analyze_xcode_build_logs` y/o `analyze_swift_compilation_errors` para:
    - Resumir errores y warnings principales del último build log.
 4. Preparar un informe con:

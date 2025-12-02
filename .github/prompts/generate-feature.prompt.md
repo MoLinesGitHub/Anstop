@@ -1,15 +1,15 @@
 ---
 name: /generate-feature
-description: Genera una nueva feature completa siguiendo la arquitectura modular de Cortes
+description: Genera una nueva feature completa siguiendo la arquitectura modular del proyecto
 ---
 
-# Generación completa de nuevas Features según arquitectura Cortes
+# Generación completa de nuevas Features según arquitectura
 
 ## Objetivo
 Crear una nueva Feature siguiendo:
 - separación: UI / ViewModel / Domain / Services
 - Swift 6.2 strict concurrency
-- estructura real del proyecto Cortes
+- estructura real del proyecto
 
 ## Acciones que debe realizar Copilot
 1. Crear árbol de archivos:

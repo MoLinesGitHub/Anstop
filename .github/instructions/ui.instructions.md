@@ -1,5 +1,5 @@
 # Instrucciones para archivos de UI (SwiftUI)
-### Optimizado para Copilot v3.2 — Proyecto Cortes (Swift 6.2, arquitectura modular)
+### Optimizado para Copilot v3.2 — proyecto (Swift 6.2, arquitectura modular)
 
 Estas reglas aplican a todos los archivos en:
 - `UI/`

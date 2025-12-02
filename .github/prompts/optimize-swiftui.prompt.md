@@ -3,7 +3,7 @@ name: /optimize-swiftui
 description: Optimiza vistas SwiftUI eliminando re-renderizados y mejorando rendimiento
 ---
 
-# Optimización avanzada de SwiftUI (Swift 6.2 • Strict Concurrency • Cortes)
+# Optimización avanzada de SwiftUI (Swift 6.2 • Strict Concurrency •)
 
 ## Objetivo
 Optimizar vistas SwiftUI eliminando recomputaciones, re-renderizados innecesarios y estados incorrectos.
@@ -30,7 +30,7 @@ Optimizar vistas SwiftUI eliminando recomputaciones, re-renderizados innecesario
    - sin reescribir vistas completas
 
 4. Usar MCP si la vista tiene errores que impidan compilar:
-   - cortes_build_project
+   - run_build_project
    - analyze_swift_compilation_errors
 
 ## Resultado esperado
