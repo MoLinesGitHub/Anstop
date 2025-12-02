@@ -294,6 +294,7 @@
           "value" : "dark"
         }
       ],
+      "filename" : "Dark.png",
       "idiom" : "universal",
       "platform" : "ios",
       "size" : "1024x1024"
