@@ -1,7 +1,7 @@
 import OSLog
 
 extension Logger {
-    private static let subsystem = "com.molines.Anstop"
+    private static let subsystem = "com.molinesdesigns.Anstop"
     
     static let ui = Logger(subsystem: subsystem, category: "ui")
     static let network = Logger(subsystem: subsystem, category: "network")
