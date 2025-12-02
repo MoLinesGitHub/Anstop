@@ -1,301 +1,415 @@
-# 🚀 **ROADMAP COMPLETO – App de Ansiedad / Ataques de Pánico**
+# 🚀 **ROADMAP COMPLETO – Anstop (App de Ansiedad / Ataques de Pánico)**
 ### *Objetivo: MVP en 6–8 semanas, escalable a 2.500–80.000 €/mes*
+### **📅 Última actualización: 2 de diciembre de 2025**
 
 ---
 
-# PHASE 0 — **Fundamentos del negocio (1–2 días)**
+## 📊 **ESTADO GENERAL DEL PROYECTO**
 
-### 0.1 Definir la propuesta de valor
-- App que ayuda al usuario **en tiempo real** durante ansiedad o ataques de pánico.
-- Contenido terapéutico: audio guías, respiración, grounding, técnicas instantáneas.
-- Función estrella: **“Botón rojo”** → activación inmediata de protocolos guiados.
+**✅ MVP FUNCIONAL COMPLETADO (80%)**
 
-### 0.2 Modelo de monetización
-- **Freemium**:
-  - Gratis: herramientas básicas, respiración, diario, 1 guía de pánico.
-  - Premium (5–10 €/mes o 60 €/año):  
-    - Guías completas  
-    - Programa de 30 días  
-    - Ejercicios personalizados  
-    - Asistente IA  
-    - Sonidos + herramientas avanzadas  
-    - Temas y personalización  
-
-### 0.3 Identidad del producto
-- Nombre corto, calmante, memorable: **Calma**, **Respira**, **Anxia**, **Alivia**, **PanicGo**…
-- Paleta: azul suave, blanco, transparencias.
-- Tono: seguro, amable, directo (nunca clínico).
+### Estado por Módulos:
+- ✅ **Arquitectura base**: Estructura modular, SwiftData, NavigationStack
+- ✅ **Navegación principal**: HomeView con accesos rápidos
+- ✅ **Flujo de pánico**: PanicFlowView con 3 pasos guiados
+- ✅ **Respiración**: BreathingCircle con animación
+- ✅ **Suscripciones**: PurchaseManager con StoreKit 2
+- ✅ **Onboarding**: 3 pasos personalizados
+- ✅ **Diario**: DailyJournalView con SwiftData
+- ✅ **Programa 30 días**: ThirtyDayProgramView con progreso
+- ✅ **Biblioteca**: LibraryView con protocolos
+- ✅ **Asistente IA**: AIHelperView básico
+- ✅ **Configuración**: SettingsView completo
+- ✅ **Audio**: AudioManager implementado
+- ✅ **Paywall**: PaywallView con conversión optimizada
+- ✅ **Haptics**: Sistema de retroalimentación táctil
+- 🔄 **Contenido terapéutico**: Audios y guías (en progreso)
+- 🔜 **Tests**: Unitarios y UI (pendiente)
+- 🔜 **Localización**: Multi-idioma (pendiente)
 
 ---
 
-# PHASE 1 — **Arquitectura del proyecto (1–2 días)**
+# ✅ **PHASE 0 — Fundamentos del negocio** [COMPLETADO 100%]
 
-### 1.1 Stack técnico
-- **Swift 6.2**
-- **SwiftUI**
-- **Observation API (@Observable)**
-- **NavigationStack**
-- **Core Data + @Query** (diario + progreso)
-- **StoreKit 2** (suscripciones)
-- **AVFoundation** (audio)
-- **BackgroundTasks** (recordatorio diario opcional)
-- **CloudKit** para sincronización (v2)
+### ✅ 0.1 Definir la propuesta de valor
+- ✅ App que ayuda al usuario **en tiempo real** durante ansiedad o ataques de pánico
+- ✅ Contenido terapéutico: audio guías, respiración, grounding, técnicas instantáneas
+- ✅ Función estrella: **"Botón de pánico"** → activación inmediata de protocolos guiados
 
-### 1.2 Estructura modular
+### ✅ 0.2 Modelo de monetización
+- ✅ **Freemium** implementado:
+  - ✅ Gratis: herramientas básicas, respiración, diario, 1 guía de pánico
+  - ✅ Premium (configurado en StoreKit):
+    - `premium.monthly`
+    - `premium.yearly`
+    - Guías completas de audio
+    - Programa de 30 días
+    - Ejercicios personalizados
+    - Asistente IA 24/7
+    - Sin anuncios
+
+### ✅ 0.3 Identidad del producto
+- ✅ Nombre: **Anstop**
+- ✅ Bundle ID: `com.anstop.app`
+- ✅ Paleta: azul suave, blanco, transparencias
+- ✅ Tono: seguro, amable, directo (nunca clínico)
+- ✅ Icono y assets configurados
+
+---
+
+# ✅ **PHASE 1 — Arquitectura del proyecto** [COMPLETADO 100%]
+
+### ✅ 1.1 Stack técnico
+- ✅ **Swift 6.0**
+- ✅ **SwiftUI** con NavigationStack
+- ✅ **Observation API** (@Observable)
+- ✅ **SwiftData** (@Model, @Query)
+- ✅ **StoreKit 2** (PurchaseManager)
+- ✅ **AVFoundation** (AudioManager)
+- ✅ **Haptic Feedback** (HapticManager)
+- 🔜 BackgroundTasks (recordatorios)
+- 🔜 CloudKit (sincronización v2)
+
+### ✅ 1.2 Estructura modular implementada
 ```
-App/
- ├── Features/
- │    ├── PanicButton/
- │    ├── Breathing/
- │    ├── AudioGuides/
- │    ├── DailyJournal/
- │    ├── Exercises/
- │    ├── AIHelper/
- │    ├── Settings/
- │    └── Paywall/
- ├── Core/
- │    ├── Models/
- │    ├── DataStore/
- │    ├── PurchaseManager/
- │    └── Analytics/
- ├── UI/
- │    ├── Components/
- │    └── Theme/
- └── Resources/
+Anstop/
+ ├── App/
+ │    └── AnstopApp.swift ✅
+ ├── Features/ ✅
+ │    ├── Home/ ✅
+ │    ├── PanicButton/ ✅
+ │    ├── Breathing/ ✅
+ │    ├── AudioGuides/ ✅
+ │    ├── DailyJournal/ ✅
+ │    ├── Exercises/ ✅
+ │    ├── AIHelper/ ✅
+ │    ├── ThirtyDayProgram/ ✅
+ │    ├── Onboarding/ ✅
+ │    ├── Settings/ ✅
+ │    └── Paywall/ ✅
+ ├── Core/ ✅
+ │    ├── Models/ ✅ (JournalEntry, AnxietyEvent, ProgramProgress, Protocol)
+ │    ├── AudioManager.swift ✅
+ │    ├── PurchaseManager/ ✅
+ │    ├── Services/ ✅ (AIService)
+ │    ├── Managers/ ✅ (HapticManager)
+ │    ├── Extensions/ ✅
+ │    └── Theme/ ✅
+ ├── UI/ ✅
+ │    ├── PrimaryButtonStyle.swift ✅
+ │    ├── SecondaryButtonStyle.swift ✅
+ │    └── CardBackground+Adaptive.swift ✅
+ └── Resources/ ✅
+      └── Assets.xcassets/ ✅
 ```
 
-### 1.3 Flujo principal
-- HomeView  
-  ↓  
-- Panic Protocol (guía inmediata)  
-  ↓  
-- Ejercicios calmantes (respiración, grounding, audio)  
-  ↓  
-- Diario + Progreso  
-  ↓  
-- Paywall Premium  
+### ✅ 1.3 Flujo principal
+- ✅ HomeView → acceso rápido a todas las funciones
+- ✅ Panic Protocol → PanicFlowView (3 pasos)
+- ✅ Ejercicios → BreathingCircle, Grounding, Audio
+- ✅ Diario + Progreso → SwiftData
+- ✅ Paywall Premium → con trial de 7 días
 
 ---
 
-# PHASE 2 — **Diseño de experiencia (3–5 días)**
+# ✅ **PHASE 2 — Diseño de experiencia** [COMPLETADO 95%]
 
-### 2.1 Pantallas esenciales del MVP
-1. **Onboarding**  
-   - 3 pantallas, suaves, empáticas  
-   - Preguntas sobre nivel de ansiedad → personalización inicial  
+### ✅ 2.1 Pantallas esenciales del MVP
 
-2. **HomeView**  
-   - Botón grande: **“Estoy teniendo ansiedad”**  
-   - Acceso rápido a:  
-     - Respiración  
-     - Grounding 5–4–3–2–1  
-     - Audio calmante  
-     - Diario del día  
+#### ✅ 1. OnboardingView
+- ✅ 3 pantallas empáticas
+- ✅ Pregunta sobre nivel de ansiedad inicial
+- ✅ Personalización guardada en @AppStorage
 
-3. **Panic Flow (la estrella)**  
-   - Guía paso a paso:  
-     - “Respira conmigo” (UI animada)  
-     - “Tu cuerpo está a salvo”  
-     - “Vamos a bajar tu ritmo”  
-   - Tiempo estimado: 60–180 segundos  
+#### ✅ 2. HomeView
+- ✅ Botón grande: **"Estoy teniendo ansiedad"**
+- ✅ Banner premium para usuarios no premium
+- ✅ Acceso rápido a:
+  - ✅ Respiración
+  - ✅ Grounding 5–4–3–2–1
+  - ✅ Audio calmante
+  - ✅ Diario del día
+- ✅ Navegación a todas las secciones
 
-4. **BreathingView**  
-   - Círculo animado con easing  
-   - Protocolos: 4–7–8, 4–4, 3–3–3  
+#### ✅ 3. PanicFlowView (la estrella)
+- ✅ Guía paso a paso:
+  - ✅ "Respira conmigo" (con BreathingCircle animado)
+  - ✅ "Tu cuerpo está a salvo"
+  - ✅ "Vamos a bajar tu ritmo"
+- ✅ Pantalla de completado con CTA premium
+- ✅ Contador de completados
+- ✅ Tiempo estimado: 60–180 segundos
 
-5. **AudioGuidesView**  
-   - Lista de audios  
-   - Contenido freemium/premium  
+#### ✅ 4. BreathingView
+- ✅ Círculo animado con easing suave
+- ✅ Animación de 4 segundos (inhalar/exhalar)
+- ✅ Degradado azul calmante
+- 🔄 Múltiples protocolos: 4–7–8, 4–4, 3–3–3 (pendiente)
 
-6. **DailyJournalView**  
-   - 1 pregunta por día (muy simple)  
-   - Track: estrés, sueño, triggers  
+#### ✅ 5. AudioGuidesView
+- ✅ Lista de audios
+- ✅ Contenido freemium/premium diferenciado
+- ✅ Paywall integrado para usuarios no premium
+- 🔄 Contenido de audio real (en progreso)
 
-7. **Paywall**  
-   - Página evitando texto clínico  
-   - “Ayuda inmediata cuando más la necesitas”  
+#### ✅ 6. DailyJournalView
+- ✅ Nueva entrada por día
+- ✅ Track: estrés, sueño, notas
+- ✅ Historial con SwiftData
+- ✅ Eliminación de entradas
+- ✅ Navegación a historial completo
 
-### 2.2 Animaciones clave
-- Pulsación calmada (scale con spring de 0.3)
-- Ondas de respiración (trim + timing curves)
-- Blur y degradados suaves
+#### ✅ 7. PaywallView
+- ✅ Diseño NO clínico
+- ✅ Mensaje: "Ayuda inmediata cuando más la necesitas"
+- ✅ Testimonio de usuarios
+- ✅ Estadísticas de eficacia
+- ✅ Trial de 7 días destacado
+- ✅ Dos versiones: completa y simple
+- ✅ Integración con StoreKit 2
+
+#### ✅ 8. ThirtyDayProgramView (EXTRA)
+- ✅ Grid de 30 días
+- ✅ Sistema de rachas (streaks)
+- ✅ Progreso visual
+- ✅ Navegación a contenido diario
+- ✅ Contenido programático generado
+
+#### ✅ 9. LibraryView (EXTRA)
+- ✅ Biblioteca de protocolos
+- ✅ Grounding 5-4-3-2-1
+- ✅ Respiración progresiva
+- ✅ Ansiedad nocturna
+- ✅ Pánico social
+- ✅ Navegación a detalle
+
+#### ✅ 10. AIHelperView (EXTRA)
+- ✅ Chat conversacional
+- ✅ Integración con servicio IA
+- ✅ Mensajes del usuario y asistente
+- ✅ Indicador de escritura
+- ✅ Scroll automático
+
+#### ✅ 11. SettingsView (EXTRA)
+- ✅ Gestión de cuenta premium
+- ✅ Configuración de recordatorios
+- ✅ Haptics on/off
+- ✅ Gestión de datos
+- ✅ Políticas y términos
+- ✅ Información de la app
+
+### ✅ 2.2 Animaciones clave
+- ✅ Pulsación calmada en botones (scale con spring)
+- ✅ Animación de respiración (scale con easeInOut)
+- ✅ Haptic feedback sincronizado
+- ✅ withOptionalAnimation (accesibilidad)
+- 🔄 Ondas de respiración avanzadas (pendiente)
+- 🔄 Blur y degradados dinámicos (pendiente)
 
 ---
 
-# PHASE 3 — **Implementación del MVP (3–4 semanas)**  
-Arquitectura declarativa basada en datos.
+# ✅ **PHASE 3 — Implementación del MVP** [COMPLETADO 85%]
 
----
+## ✅ 3.1 SwiftData + @Query
+**Estado: COMPLETADO**
 
-## 3.1 **Core Data + @Query**
-Modelos:
+Modelos implementados:
 ```swift
-@Model
-final class JournalEntry {
-    @Attribute(.unique) var id: UUID
-    var date: Date
-    var mood: Int
-    var notes: String?
-}
+✅ @Model JournalEntry
+   - id: UUID
+   - date: Date
+   - mood: Int
+   - stressLevel: Int
+   - sleepQuality: Int
+   - notes: String
 
-@Model
-final class AnxietyEvent {
-    @Attribute(.unique) var id: UUID
-    var date: Date
-    var intensity: Int
-}
+✅ @Model AnxietyEvent
+   - id: UUID
+   - date: Date
+   - intensity: Int
+
+✅ @Model ProgramProgress
+   - id: UUID
+   - completedDays: [Int]
+   - startDate: Date
+   - lastCompletionDate: Date?
+   - currentStreak: Int
 ```
 
 ---
 
-## 3.2 **Panic Protocol (flujo guiado)**
-Estructura:
+## ✅ 3.2 Panic Protocol (flujo guiado)
+**Estado: COMPLETADO**
+
 ```swift
-@Observable
-final class PanicViewModel {
-    var step: Int = 0
-    var steps = PanicStep.all
-}
+✅ PanicFlowView
+   - TabView con 3 pasos
+   - Navegación progresiva
+   - Pantalla de completado
+   - CTA premium integrado
+   - Contador de completados
 
-struct PanicFlowView: View {
-    @StateObject private var vm = PanicViewModel()
-
-    var body: some View {
-        TabView(selection: $vm.step) {
-            ForEach(vm.steps) { step in
-                PanicStepView(step: step)
-            }
-        }
-        .tabViewStyle(.page)
-    }
-}
+✅ PanicCompletionView
+   - Feedback visual de éxito
+   - Sugerencia premium contextual
+   - Botón de retorno
 ```
 
 ---
 
-## 3.3 **Animación de respiración**
+## ✅ 3.3 Animación de respiración
+**Estado: COMPLETADO**
+
 ```swift
-struct BreathingCircle: View {
-    @State private var scale: CGFloat = 0.4
-
-    var body: some View {
-        Circle()
-            .fill(.blue.opacity(0.3))
-            .scaleEffect(scale)
-            .onAppear {
-                withAnimation(.easeInOut(duration: 4).repeatForever(autoreverses: true)) {
-                    scale = 1.0
-                }
-            }
-    }
-}
+✅ BreathingCircle
+   - Animación scale 0.4 → 1.0
+   - EaseInOut 4 segundos
+   - Repeat forever con autoreverses
+   - Degradado azul suave
 ```
 
 ---
 
-## 3.4 **Audio Player**
+## ✅ 3.4 Audio Player
+**Estado: COMPLETADO**
+
 ```swift
-final class AudioManager: ObservableObject {
-    private var player: AVAudioPlayer?
-
-    func play(_ name: String) {
-        let url = Bundle.main.url(forResource: name, withExtension: "mp3")!
-        player = try? AVAudioPlayer(contentsOf: url)
-        player?.play()
-    }
-}
+✅ AudioManager (@Observable)
+   - play(_:) implementado
+   - pause() implementado
+   - stop() implementado
+   - resume() implementado
+   - isPlaying estado
+   - currentTime tracking
+   - duration tracking
+   - AVAudioSession configurado
 ```
 
 ---
 
-## 3.5 **Suscripciones (StoreKit 2)**
+## ✅ 3.5 Suscripciones (StoreKit 2)
+**Estado: COMPLETADO**
+
 ```swift
-@Observable
-final class PurchaseManager {
-    var products: [Product] = []
-    var purchased: Set<Product.ID> = []
-
-    func load() async throws {
-        products = try await Product.products(for: ["premium.monthly", "premium.yearly"])
-    }
-
-    func buy(_ product: Product) async throws {
-        let result = try await product.purchase()
-        // Actualizar estado
-    }
-}
+✅ PurchaseManager (@Observable)
+   - loadProducts() async
+   - purchase(_:) async throws
+   - restorePurchases() async
+   - isPremium computed property
+   - Transaction verification
+   - currentEntitlements tracking
+   
+✅ Productos configurados:
+   - premium.monthly
+   - premium.yearly
 ```
 
 ---
 
-## 3.6 **Bloqueo de contenido → Premium**
+## ✅ 3.6 Bloqueo de contenido → Premium
+**Estado: COMPLETADO**
+
 ```swift
-struct PremiumLockView: View {
-    @Environment(PurchaseManager.self) var pm
-
-    var body: some View {
-        if pm.isPremium {
-            content
-        } else {
-            PaywallView()
-        }
-    }
-}
+✅ Implementado en:
+   - AudioGuidesView → PaywallSimpleView
+   - ThirtyDayProgram → algunos días bloqueados
+   - PanicCompletionView → CTA contextual
+   - HomeView → Banner premium
 ```
 
 ---
 
-## 3.7 **Onboarding personalizado**
-- Guardar nivel inicial de ansiedad
-- Ajustar recomendaciones de audio/respiración
+## ✅ 3.7 Onboarding personalizado
+**Estado: COMPLETADO**
+
+```swift
+✅ OnboardingView
+   - 3 pasos implementados
+   - Captura de nivel de ansiedad inicial
+   - Guardado en @AppStorage
+   - hasCompletedOnboarding flag
+   - Navegación suave con animaciones
+```
 
 ---
 
-# PHASE 4 — **Contenido terapéutico (1–2 semanas en paralelo)**
+# 🔄 **PHASE 4 — Contenido terapéutico** [EN PROGRESO 30%]
 
-### 4.1 Audios calmantes
-- 10–20 audios pendientes (gratis + premium)
-- Duración 2–5 minutos
-- Narradora femenina con voz tranquila
+### 🔄 4.1 Audios calmantes
+- ✅ Estructura de AudioManager lista
+- ✅ UI de AudioGuidesView implementada
+- 🔄 **PENDIENTE**: Grabar/adquirir 10–20 audios
+  - Duración 2–5 minutos
+  - Narradora femenina con voz tranquila
+  - Formatos: mp3, AAC
+  - Temas:
+    - Respiración guiada
+    - Relajación muscular progresiva
+    - Visualización calmante
+    - Ansiedad nocturna
+    - Pánico social
+    - Grounding 5-4-3-2-1
 
-### 4.2 Protocolos escritos
-- 5–6 mini rutinas guiadas:
-  - Respiración
-  - Grounding
-  - Reestructuración inmediata
-  - Ansiedad nocturna
-  - Pánico social
+### ✅ 4.2 Protocolos escritos
+**Estado: COMPLETADO**
 
----
+```swift
+✅ Protocol model implementado
+✅ 5 protocolos disponibles:
+   1. Grounding 5-4-3-2-1
+   2. Respiración Progresiva
+   3. Ansiedad Nocturna
+   4. Pánico Social
+   5. Reestructuración de Pensamiento
 
-# PHASE 5 — **IA (versión posterior, opcional)**
-
-### MVP IA:
-- Bot simple: “¿Cómo te sientes ahora?”
-- Modelo: usar API OpenAI / Claude
-- Prompt fijo para tono calmante
-
----
-
-# PHASE 6 — **Política de privacidad & App Store (2 días)**
-
-### Requisitos clave:
-- Declarar contenido emocional (no clínico)
-- No posicionarse como tratamiento médico
-- Añadir disclaimers (“no sustituye profesionales”)
-- Privacidad estricta (datos solo en local o en iCloud)
+✅ ProtocolDetailView con contenido completo
+```
 
 ---
 
-# PHASE 7 — **Marketing y crecimiento (continuo)**
+# ✅ **PHASE 5 — IA** [COMPLETADO MVP - 70%]
 
-### Growth:
-- TikTok, Reels → contenido emocional
-- SEO: “ataques de pánico qué hacer”
-- Email onboarding
-- Icono calmante + capturas cuidadas
+### ✅ MVP IA implementado:
+- ✅ AIHelperView con chat conversacional
+- ✅ AIService básico implementado
+- ✅ Prompt system para tono calmante
+- 🔄 **PENDIENTE**: Integrar API real (OpenAI/Claude)
+  - Actualmente usa respuestas mock
+  - Prompt optimizado para contexto de ansiedad
+  - Rate limiting y manejo de errores
+  - Historial de conversación local
 
-### KPIs:
+---
+
+# 🔜 **PHASE 6 — Política de privacidad & App Store** [PENDIENTE]
+
+### 🔜 Requisitos clave:
+- 🔜 Declarar contenido emocional (no clínico)
+- 🔜 Disclaimers: "no sustituye profesionales"
+- 🔜 Política de privacidad completa
+- 🔜 Términos de uso
+- 🔜 Privacidad: datos locales + opcional iCloud
+- 🔜 Screenshots para App Store
+- 🔜 Descripción optimizada (ASO)
+- 🔜 Video preview
+
+**Notas:**
+- SettingsView ya tiene enlaces a privacidad y términos
+- Falta redactar documentos legales
+
+---
+
+# 🔜 **PHASE 7 — Marketing y crecimiento** [PENDIENTE]
+
+### 🔜 Growth:
+- 🔜 Landing page (anstop.app)
+- 🔜 TikTok, Reels → contenido emocional
+- 🔜 SEO: "ataques de pánico qué hacer"
+- 🔜 Email onboarding sequence
+- 🔜 Icono final + capturas cuidadas
+- 🔜 Press kit
+
+### 🔜 KPIs objetivo:
 - CAC < 2 €
 - Conversión premium 3–7%
 - Retención día 7 > 30%
@@ -303,274 +417,454 @@ struct PremiumLockView: View {
 
 ---
 
-# PHASE 8 — **Escalado a 80.000 €/mes**
-- Lanzar **programa de 30 días** →
+# 🔜 **PHASE 8 — Escalado a 80.000 €/mes** [PLANIFICADO]
+
+### Estrategia:
+- ✅ Programa de 30 días implementado
+- 🔜 Content marketing continuo
+- 🔜 Partnerships con psicólogos
+- 🔜 Programa de afiliados
+- 🔜 Expansión internacional
+- 🔜 B2B (empresas)
 
 ---
 
-# PHASE 9 — **Expansión Multiplataforma (2–4 semanas)**  
-### 9.1 iPadOS  
-- Layout adaptado con columnas  
-- Modo relajación con pantalla completa  
-- Widgets de respiración  
+# 🔜 **PHASE 9 — Expansión Multiplataforma** [FUTURO]
 
-### 9.2 watchOS  
-- Complicación: “Respira ahora”  
-- Mini protocolo de pánico (30–60s)  
-- Sincronización con la app principal  
+### 🔜 9.1 iPadOS
+- Layout adaptado con columnas
+- Modo relajación pantalla completa
+- Widgets de respiración
 
-### 9.3 macOS  
-- Port con SwiftUI multiplataforma  
-- Ideal para usuarios que trabajan en escritorio  
+### 🔜 9.2 watchOS
+- Complicación: "Respira ahora"
+- Mini protocolo de pánico (30–60s)
+- Sincronización con app principal
 
----
-
-# PHASE 10 — **Gamificación y Engagement (2 semanas)**  
-### 10.1 Sistema de streaks  
-- Días seguidos usando ejercicios  
-- Recompensas visuales suaves (nada infantil)  
-
-### 10.2 Logros emocionales  
-- “Semana sin ataques”  
-- “30 días de diario”  
-
-### 10.3 Modo progreso  
-- Visualización lineal y circular  
-- Insights generados localmente con CoreML  
+### 🔜 9.3 macOS
+- Port con SwiftUI multiplataforma
+- Para usuarios que trabajan en escritorio
 
 ---
 
-# PHASE 11 — **Integración con IA Avanzada (3–5 semanas)**  
-### 11.1 Coaching emocional  
-- Modelo LLM con tono calmante  
-- Análisis del diario sin subir a servidores  
+# 🔜 **PHASE 10 — Gamificación avanzada** [FUTURO]
 
-### 11.2 Sistema conversacional guiado  
-- Preguntas que reducen ansiedad progresivamente  
-- Feedback inmediato  
+### 🔜 10.1 Sistema de streaks
+- ✅ Ya implementado en ThirtyDayProgram
+- 🔜 Expandir a otros módulos
+- 🔜 Notificaciones de racha
 
-### 11.3 Motor de recomendaciones  
-- “Hoy prueba respiración 4-7-8”  
-- “Tu patrón nocturno indica estrés acumulado”  
+### 🔜 10.2 Logros emocionales
+- "Semana sin ataques"
+- "30 días de diario"
+- "10 ejercicios completados"
 
----
-
-# PHASE 12 — **Escalado Internacional (2–4 semanas por idioma)**  
-### 12.1 Localización completa  
-- Textos  
-- Audio  
-- Recursos visuales  
-
-### 12.2 Idiomas con mayor demanda  
-- Inglés  
-- Portugués  
-- Alemán  
-- Francés  
-
-### 12.3 Métodos de pago regionales  
-- Apple Pay regional  
-- Precios adaptados  
+### 🔜 10.3 Insights con CoreML
+- Análisis de patrones de ansiedad
+- Predicción de momentos críticos
+- Recomendaciones personalizadas
 
 ---
 
-# PHASE 13 — **Control de Calidad + Certificaciones (continuo)**  
-### 13.1 QA psicológico  
-- Revisión de contenido por psicólogos  
-- Validación de guías para evitar efectos no deseados  
+# 🔜 **PHASE 11 — IA Avanzada** [FUTURO]
 
-### 13.2 QA técnico  
-- Tests unitarios  
-- Tests de UI  
-- Stress tests para audio y animaciones  
+### 🔜 11.1 Coaching emocional
+- Modelo LLM personalizado
+- Análisis del diario sin subir a servidores
+- CoreML on-device
 
----
+### 🔜 11.2 Sistema conversacional guiado
+- Preguntas que reducen ansiedad progresivamente
+- Feedback inmediato contextual
 
-# PHASE 14 — **Optimización de Ingresos (continuo)**  
-### 14.1 Experimentos A/B  
-- 3 variantes de paywall  
-- 2 variantes de onboarding  
-
-### 14.2 Funneling de conversión  
-- Reducir fricción en primera sesión  
-- Mejorar retención del día 1  
-
-### 14.3 Paquetes y promociones  
-- Oferta de bienvenida  
-- Descuento por anual  
+### 🔜 11.3 Motor de recomendaciones
+- "Hoy prueba respiración 4-7-8"
+- "Tu patrón nocturno indica estrés acumulado"
+- Basado en historial local
 
 ---
 
-# PHASE 15 — **Partnerships & Ecosistema (2–6 semanas)**  
-### 15.1 Colaboración con psicólogos  
-- Sesiones grabadas premium  
+# 🔜 **PHASE 12 — Escalado Internacional** [FUTURO]
 
-### 15.2 Alianzas con influencers de salud mental  
-- TikTok  
-- Instagram  
-- YouTube  
+### 🔜 12.1 Localización completa
+- ✅ Estructura lista (Localizable.strings)
+- 🔜 Textos traducidos
+- 🔜 Audio en múltiples idiomas
+- 🔜 Recursos visuales culturales
 
-### 15.3 Integración con empresas (B2B)  
-- Packs para empleados  
-- Bienestar emocional empresarial  
+### 🔜 12.2 Idiomas prioritarios
+1. 🇪🇸 Español (actual)
+2. 🇬🇧 Inglés
+3. 🇵🇹 Portugués
+4. 🇩🇪 Alemán
+5. 🇫🇷 Francés
 
----
-
-# PHASE 16 — **Normativas Legales y Cumplimiento (1–2 semanas)**  
-### 16.1 GDPR / RGPD  
-- Minimizar recogida de datos  
-- Solo datos locales o iCloud con protección  
-- No almacenar datos de salud en servidores externos  
-- Panel interno de “Eliminar todos mis datos”  
-
-### 16.2 App Store Review Guidelines  
-- Evitar claims médicos  
-- Afirmaciones empáticas no terapéuticas  
-- Justificar uso de audio, vibración y notificaciones  
-
-### 16.3 Documentación Legal  
-- Política de privacidad  
-- Términos de uso  
-- Disclaimers de bienestar  
+### 🔜 12.3 Métodos de pago regionales
+- Apple Pay regional
+- Precios adaptados por país
 
 ---
 
-# PHASE 17 — **Accesibilidad Avanzada (2 semanas)**  
-### 17.1 Compatibilidad total con VoiceOver  
-- Secuencia de enfoque correcta en PanicFlow  
-- Botón rojo etiquetado como “Ayuda inmediata”  
+# 🔜 **PHASE 13 — Control de Calidad** [PENDIENTE]
 
-### 17.2 Dynamic Type y alto contraste  
-- Contenido adaptado a todas las escalas  
-- Modo oscuro con colores calmados  
+### 🔜 13.1 QA psicológico
+- Revisión de contenido por psicólogos
+- Validación de guías
+- Disclaimers apropiados
 
-### 17.3 Audio y vibración  
-- Feedback háptico suave sincronizado  
-- Alternativas para usuarios sensibles a vibración  
-
----
-
-# PHASE 18 — **Guía de Estilo y Estándares de Código (continuo)**  
-### 18.1 Principios Swift  
-- Datos → Estado → UI (unidireccional)  
-- Módulos independientes  
-- Evitar lógica en las Views  
-
-### 18.2 Convenciones del proyecto  
-- Nombres: BreathingView, PanicStepView, etc.  
-- ViewModels aislados del UI  
-- Reducir side-effects con async/await  
-
-### 18.3 Librerías internas  
-- Helpers de animación  
-- Wrapper para AVAudioSession  
-- Gestor unificado de haptics  
+### 🔜 13.2 QA técnico
+- 🔜 Tests unitarios
+- 🔜 Tests de UI
+- 🔜 Stress tests (audio, animaciones)
+- 🔜 Tests de accesibilidad (VoiceOver)
+- 🔜 Performance profiling
 
 ---
 
-# PHASE 19 — **Sistema de Audio Profesional (2–4 semanas)**  
-### 19.1 Producción  
-- Voz femenina calma  
-- Estudio acústico básico  
-- EQ y compresión ligera  
+# 🔜 **PHASE 14 — Optimización de Ingresos** [PLANIFICADO]
 
-### 19.2 Integración  
-- Compresión AAC para tamaño óptimo  
-- Carga diferida (lazy loading)  
-- Compatibilidad con modo silencio del iPhone  
+### 🔜 14.1 Experimentos A/B
+- 3 variantes de paywall
+- 2 variantes de onboarding
+- Precio óptimo por región
 
----
+### 🔜 14.2 Funneling de conversión
+- Reducir fricción primera sesión
+- Mejorar retención día 1
+- Optimizar trial-to-paid
 
-# PHASE 20 — **Arquitectura Profunda (2 semanas)**  
-### 20.1 State Tree de Anstop  
-- “AppState” → “FeatureState” → “ViewState”  
-- Estados guardables y restaurables  
-
-### 20.2 Diagrama de Eventos  
-- Inicio del ataque → Protocolo guiado → Recuperación  
-- Log automático de episodio (privado local)  
-
-### 20.3 Testing de flujo  
-- Tests de PanicFlow  
-- Tests de ProgressTracker  
-- Mock de audio y haptics  
+### 🔜 14.3 Paquetes y promociones
+- ✅ Trial 7 días implementado
+- 🔜 Oferta de bienvenida
+- 🔜 Descuentos estacionales
+- 🔜 Lifetime deal
 
 ---
 
-# PHASE 21 — **Infraestructura y Telemetría Ética (1 semana)**  
-### 21.1 Analítica respetuosa  
-- Métricas sin datos personales  
-- Eventos: sesión iniciada, ejercicio completado, conversión premium  
+# 🔜 **PHASE 15 — Partnerships** [FUTURO]
 
-### 21.2 Auto-diagnóstico  
-- Logs offline de fallos  
-- Indicadores de rendimiento (fps, audio lag)  
+### 🔜 15.1 Colaboración con psicólogos
+- Sesiones grabadas premium
+- Certificación de contenido
+- Co-branding
 
----
+### 🔜 15.2 Influencers de salud mental
+- TikTok campaigns
+- Instagram takeovers
+- YouTube reviews
 
-# PHASE 22 — **Estrategia de Marca: ANSTOP (2 semanas)**  
-### 22.1 Identidad  
-- Logo minimalista azul/verde  
-- Tipografía SF Pro + variantes suaves  
-
-### 22.2 Mensaje central  
-“Tu calma. Tu ritmo. Tu espacio seguro.”  
-
-### 22.3 Landing page de lanzamiento  
-- anstop.app  
-- Blog de ansiedad con SEO  
-- Vídeo de presentación calmante  
+### 🔜 15.3 B2B Empresarial
+- Packs para empleados
+- Dashboard administrativo
+- Bienestar corporativo
 
 ---
 
-# PHASE 23 — **Plan de Lanzamiento en 3 Niveles**  
-### 23.1 Suave (Soft Launch)  
-- 200 usuarios TestFlight  
-- Feedback sobre PanicFlow y Breathing  
+# 🔜 **PHASE 16 — Normativas Legales** [PENDIENTE CRÍTICO]
 
-### 23.2 Lanzamiento Público  
-- Campaña TikTok “respira conmigo”  
-- Influencers de bienestar  
-- App Store Optimization  
+### 🔜 16.1 GDPR / RGPD
+- ✅ Datos locales (SwiftData)
+- 🔜 Panel "Eliminar todos mis datos"
+- 🔜 Exportación de datos
+- 🔜 Consentimiento explícito
 
-### 23.3 Expansión  
-- iPadOS + watchOS  
-- Inglés → Portugués → Alemán  
-- Añadir nuevos audios semanales  
+### 🔜 16.2 App Store Review
+- 🔜 Evitar claims médicos
+- 🔜 Justificar permisos
+- 🔜 Disclaimers visibles
 
----
-
-# PHASE 24 — **Checklist Final Antes de Escribir Una Sola Línea de Código**  
-### 24.1 Técnicas  
-- Estructura de carpetas definida  
-- Flujos bloqueados  
-- Modelos Core Data creados  
-- Arquitectura lista (State → ViewModel → View)  
-
-### 24.2 Contenido  
-- Guiones de audio del Panic Kit  
-- Textos de onboarding  
-- Textos de Paywall  
-- Recursos visuales iniciales  
-
-### 24.3 Negocio  
-- ID del bundle: com.anstop.app  
-- Productos StoreKit configurados  
-- Página web y dominios  
-- Política de privacidad generada  
-
-### 24.4 UX  
-- Prototipo completo en Figma  
-- Versiones para iPhone SE → Pro Max  
-- Flow de Panic 100% validado  
+### 🔜 16.3 Documentación Legal
+- 🔜 Política de privacidad redactada
+- 🔜 Términos de uso
+- 🔜 Disclaimers de bienestar
 
 ---
 
-# PHASE 25 — **Inicio del Desarrollo de ANSTOP (Día 1)**  
-- Crear nuevo proyecto SwiftUI  
-- Añadir módulos por carpetas  
-- Configurar Core Data  
-- Implementar HomeView minimal  
-- Crear PanicButton → navegación directa  
-- Ensayo de primeras animaciones  
+# ✅ **PHASE 17 — Accesibilidad** [IMPLEMENTADO 80%]
+
+### ✅ 17.1 Compatibilidad VoiceOver
+- ✅ withOptionalAnimation implementado
+- ✅ Reduce Motion respetado
+- 🔜 Labels descriptivos en todos los elementos
+- 🔜 Tests con VoiceOver
+
+### ✅ 17.2 Dynamic Type y contraste
+- ✅ SwiftUI nativo (soporta Dynamic Type)
+- ✅ Modo oscuro con colores calmados
+- ✅ Contraste adecuado
+
+### ✅ 17.3 Audio y vibración
+- ✅ HapticManager implementado
+- ✅ On/off en Settings
+- ✅ Feedback sincronizado
+- ✅ AudioManager con sesión configurada
 
 ---
+
+# ✅ **PHASE 18 — Guía de Estilo** [IMPLEMENTADO]
+
+### ✅ 18.1 Principios Swift
+- ✅ Datos → Estado → UI (unidireccional)
+- ✅ Módulos independientes
+- ✅ ViewModels aislados del UI (@Observable)
+- ✅ async/await en lugar de callbacks
+
+### ✅ 18.2 Convenciones del proyecto
+- ✅ Nombres: BreathingView, PanicStepView, etc.
+- ✅ Estructura por Features
+- ✅ Core separado de UI
+- ✅ Models en SwiftData
+
+### ✅ 18.3 Librerías internas
+- ✅ AnimationExtensions (smooth, gentle, quick)
+- ✅ Haptics+SwiftUI (hapticOnTap, prepareHapticsOnAppear)
+- ✅ Accessibility+Helpers (withOptionalAnimation)
+- ✅ CardBackground+Adaptive
+- ✅ ButtonStyles (Primary, Secondary)
+
+---
+
+# 🔄 **PHASE 19 — Sistema de Audio Profesional** [EN PROGRESO]
+
+### 🔄 19.1 Producción
+- 🔜 Contratar voz femenina calma
+- 🔜 Estudio acústico o grabar en casa con calidad
+- 🔜 EQ y compresión ligera
+- 🔜 Masterización para volumen consistente
+
+### ✅ 19.2 Integración
+- ✅ AudioManager implementado
+- ✅ AVAudioSession configurado
+- 🔄 Compresión AAC para tamaño óptimo
+- 🔄 Carga diferida (lazy loading)
+- ✅ Compatibilidad con modo silencio
+
+---
+
+# ✅ **PHASE 20 — Arquitectura Profunda** [COMPLETADO]
+
+### ✅ 20.1 State Tree de Anstop
+- ✅ AppState → Feature States → View States
+- ✅ @Observable para managers
+- ✅ @AppStorage para preferencias
+- ✅ SwiftData para persistencia
+- ✅ @Environment para inyección
+
+### ✅ 20.2 Diagrama de Eventos
+```
+✅ Inicio ataque → PanicFlowView
+✅ Protocolo guiado → 3 pasos
+✅ Recuperación → PanicCompletionView
+✅ Log automático → completionCount
+```
+
+### 🔜 20.3 Testing de flujo
+- 🔜 Tests de PanicFlow
+- 🔜 Tests de ProgressTracker
+- 🔜 Mock de audio y haptics
+- 🔜 UI Tests
+
+---
+
+# ✅ **PHASE 21 — Infraestructura y Telemetría** [BÁSICO IMPLEMENTADO]
+
+### ✅ 21.1 Analítica respetuosa
+- ✅ AppLogger básico implementado
+- 🔜 Métricas sin datos personales
+- 🔜 Eventos: sesión, ejercicio completado, conversión
+- 🔜 Integración con analytics (TelemetryDeck o similar)
+
+### ✅ 21.2 Auto-diagnóstico
+- ✅ Logs offline de fallos
+- 🔜 Indicadores de rendimiento (fps, audio lag)
+- 🔜 Crash reporting
+
+---
+
+# ✅ **PHASE 22 — Estrategia de Marca: ANSTOP** [DEFINIDO]
+
+### ✅ 22.1 Identidad
+- ✅ Nombre: **Anstop**
+- ✅ Logo: minimalista azul (por definir final)
+- ✅ Tipografía: SF Pro (sistema)
+- ✅ Paleta: azul suave, blanco, verde, naranja
+
+### ✅ 22.2 Mensaje central
+**"Tu calma. Tu ritmo. Tu espacio seguro."**
+
+### 🔜 22.3 Landing page
+- 🔜 anstop.app (registrar dominio)
+- 🔜 Blog de ansiedad con SEO
+- 🔜 Vídeo de presentación calmante
+- 🔜 Testimonios
+- 🔜 FAQ
+
+---
+
+# 🔜 **PHASE 23 — Plan de Lanzamiento** [PLANIFICADO]
+
+### 🔜 23.1 Soft Launch
+- 🔜 200 usuarios TestFlight
+- 🔜 Feedback sobre PanicFlow y Breathing
+- 🔜 Ajustes pre-lanzamiento
+
+### 🔜 23.2 Lanzamiento Público
+- 🔜 Campaña TikTok "respira conmigo"
+- 🔜 Influencers de bienestar
+- 🔜 App Store Optimization
+- 🔜 Press release
+
+### 🔜 23.3 Expansión
+- 🔜 iPadOS + watchOS
+- 🔜 Inglés → Portugués → Alemán
+- 🔜 Nuevos audios semanales
+- 🔜 Contenido premium adicional
+
+---
+
+# ✅ **PHASE 24 — Checklist Pre-Código** [COMPLETADO]
+
+### ✅ 24.1 Técnicas
+- ✅ Estructura de carpetas definida e implementada
+- ✅ Flujos bloqueados y funcionales
+- ✅ Modelos SwiftData creados
+- ✅ Arquitectura State → ViewModel → View
+
+### 🔄 24.2 Contenido
+- ✅ Textos de onboarding ✅
+- ✅ Textos de Paywall ✅
+- ✅ Protocolos escritos ✅
+- 🔄 Guiones de audio (pendiente)
+- ✅ Recursos visuales iniciales ✅
+
+### ✅ 24.3 Negocio
+- ✅ Bundle ID: com.anstop.app
+- ✅ Productos StoreKit configurados
+- 🔜 Dominios registrados
+- 🔜 Política de privacidad generada
+
+### ✅ 24.4 UX
+- ✅ Flujos validados en código
+- ✅ Responsive iPhone SE → Pro Max
+- ✅ Flow de Panic 100% implementado
+- 🔜 Prototipo Figma (opcional)
+
+---
+
+# ✅ **PHASE 25 — Desarrollo de ANSTOP** [COMPLETADO 85%]
+
+### ✅ Día 1–15: Completado
+- ✅ Crear proyecto SwiftUI
+- ✅ Módulos por carpetas
+- ✅ Configurar SwiftData
+- ✅ Implementar HomeView
+- ✅ PanicButton → PanicFlowView
+- ✅ Animaciones de respiración
+- ✅ StoreKit 2 integrado
+- ✅ Onboarding completo
+- ✅ Diario funcional
+- ✅ Biblioteca de protocolos
+- ✅ Programa 30 días
+- ✅ Asistente IA básico
+- ✅ Settings completo
+- ✅ Paywall con conversión
+- ✅ Haptics y accesibilidad
+
+### 🔄 Días 16–20: En progreso
+- 🔄 Contenido de audio real
+- 🔜 Tests unitarios
+- 🔜 Tests UI
+- 🔜 Documentación legal
+
+### 🔜 Días 21–30: Pendiente
+- 🔜 Beta testing (TestFlight)
+- 🔜 Ajustes finales
+- 🔜 Screenshots y video
+- 🔜 Submission a App Store
+
+---
+
+# 📋 **PRÓXIMAS TAREAS PRIORITARIAS**
+
+## 🔴 **Críticas (antes de lanzar)**
+1. 🔜 Grabar/adquirir audios terapéuticos (10–20 piezas)
+2. 🔜 Redactar política de privacidad y términos
+3. 🔜 Tests básicos (unitarios + UI)
+4. 🔜 Screenshots y video para App Store
+5. 🔜 TestFlight con 50–200 usuarios
+
+## 🟡 **Importantes (post-MVP)**
+6. 🔜 Integrar API IA real (OpenAI/Claude)
+7. 🔜 Implementar notificaciones/recordatorios
+8. 🔜 Analytics y telemetría
+9. 🔜 Landing page anstop.app
+10. 🔜 Estrategia de marketing inicial
+
+## 🟢 **Deseables (v1.1+)**
+11. 🔜 Localización (inglés, portugués)
+12. 🔜 Más protocolos de respiración
+13. 🔜 Exportación de datos
+14. 🔜 Integración con Apple Health
+15. 🔜 Modo offline completo
+
+---
+
+# 📊 **MÉTRICAS DE ÉXITO DEL MVP**
+
+### Objetivos Mes 1:
+- ✅ App funcional en App Store
+- 🎯 500 descargas
+- 🎯 100 usuarios activos semanales
+- 🎯 5% conversión a premium
+- 🎯 50+ reviews (4.5+ estrellas)
+- 🎯 < 3% crash rate
+
+### Objetivos Mes 3:
+- 🎯 5.000 descargas
+- 🎯 1.000 usuarios activos mensuales
+- 🎯 7% conversión a premium
+- 🎯 300+ reviews (4.7+ estrellas)
+- 🎯 Retención día 7: 35%+
+- 🎯 1.000–3.000 €/mes MRR
+
+### Objetivos Mes 6:
+- 🎯 20.000 descargas
+- 🎯 5.000 usuarios activos mensuales
+- 🎯 10% conversión a premium
+- 🎯 1.000+ reviews
+- 🎯 5.000–15.000 €/mes MRR
+
+---
+
+# 🎯 **CONCLUSIÓN**
+
+## Estado Actual: **MVP FUNCIONAL (80% completado)**
+
+### ✅ Lo que funciona:
+- Arquitectura sólida y escalable
+- Todas las pantallas principales implementadas
+- Flujo de pánico completo y efectivo
+- Sistema de suscripciones funcionando
+- Onboarding personalizado
+- Diario y tracking de progreso
+- Biblioteca de protocolos
+- Asistente IA básico
+- Configuración completa
+- Haptics y accesibilidad
+
+### 🔄 Lo que falta para launch:
+- Contenido de audio real (10–20 piezas)
+- Documentación legal (privacidad, términos)
+- Tests básicos
+- Assets para App Store
+- Beta testing
+
+### 🚀 Próximo hito:
+**Lanzamiento en App Store: 15–20 días**
+
+---
+
+**Versión del ROADMAP:** 2.0  
+**Última revisión:** 2 de diciembre de 2025  
+**Autor:** Equipo Anstop  
+**Estado:** MVP en fase final de desarrollo

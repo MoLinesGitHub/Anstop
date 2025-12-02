@@ -1,0 +1,27 @@
+name: Auto Release
+
+on:
+  push:
+    tags:
+      - "v*.*.*"
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Create Release Notes
+        id: notes
+        uses: rhysd/changelog-from-commits@v2
+        with:
+          commit-template: "- %s"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "Cortes ${{ github.ref_name }}"
+          body: ${{ steps.notes.outputs.changelog }}
+          draft: false
+          prerelease: true

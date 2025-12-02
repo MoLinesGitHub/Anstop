@@ -1,0 +1,93 @@
+name: Cortes CI
+
+on:
+  pull_request:
+    branches: [ main ]
+  push:
+    branches: [ main ]
+
+jobs:
+  build-test:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # CACHE PARA SPM (x3 velocidad)
+      - name: Cache SPM
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/Library/Developer/Xcode/DerivedData
+            .swiftpm
+          key: ${{ runner.os }}-spm-${{ hashFiles('**/Package.resolved') }}
+          restore-keys: ${{ runner.os }}-spm-
+
+      - name: Select Xcode 26.1
+        run: sudo xcode-select -switch /Applications/Xcode_26.1.app
+
+      # SWIFTLINT
+      - name: Run SwiftLint
+        run: |
+          if which swiftlint >/dev/null; then
+            swiftlint
+          else
+            brew install swiftlint
+            swiftlint
+          fi
+
+      # SWIFTFORMAT
+      - name: Run SwiftFormat
+        run: |
+          if which swiftformat >/dev/null; then
+            swiftformat .
+          else
+            brew install swiftformat
+            swiftformat .
+          fi
+
+      - name: Resolve Packages
+        run: xcodebuild -resolvePackageDependencies
+
+      # BUILD PARA iOS
+      - name: Build iOS
+        run: |
+          xcodebuild \
+            -scheme Cortes \
+            -destination "platform=iOS Simulator,name=iPhone 16e" \
+            -configuration Debug \
+            clean build | xcpretty
+
+      # TEST PARA iOS
+      - name: Test iOS
+        run: |
+          xcodebuild test \
+            -scheme Cortes \
+            -destination "platform=iOS Simulator,name=iPhone 16e" | xcpretty
+
+      # BUILD PARA IPADOS
+      - name: Build iPadOS
+        run: |
+          xcodebuild \
+            -scheme Cortes \
+            -destination "platform=iOS Simulator,name=iPad Pro (12.9-inch) (7th generation)" \
+            -configuration Debug \
+            clean build | xcpretty
+            
+      # BUILD PARA DISPOSITIVO REAL (iphoneos)
+      - name: Build iOS (Device)
+        run: |
+          xcodebuild \
+            -scheme Cortes \
+            -sdk iphoneos \
+            -configuration Release \
+            clean build | xcpretty
+
+      # BUILD PARA macOS si tu proyecto es multiplataforma
+      # Descomenta si Cortes tiene target macOS
+      # - name: Build macOS
+      #   run: |
+      #     xcodebuild build \
+      #       -scheme Cortes \
+      #       -destination "platform=macOS" | xcpretty

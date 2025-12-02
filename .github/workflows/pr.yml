@@ -1,0 +1,32 @@
+name: PR Quality Gate
+
+on:
+  pull_request:
+
+jobs:
+  lint-format:
+    runs-on: macos-15
+
+    steps:
+      - name: Cache Homebrew
+        uses: actions/cache@v3
+        with:
+          path: ~/Library/Caches/Homebrew
+          key: ${{ runner.os }}-brew-cache
+
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: SwiftLint
+        run: |
+          if ! command -v swiftlint &> /dev/null; then
+            brew install swiftlint
+          fi
+          swiftlint
+
+      - name: SwiftFormat
+        run: |
+          if ! command -v swiftformat &> /dev/null; then
+            brew install swiftformat
+          fi
+          swiftformat --lint .

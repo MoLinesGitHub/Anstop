@@ -1,0 +1,71 @@
+name: TestFlight Upload
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-15
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Select Xcode 26.1
+        run: sudo xcode-select -switch /Applications/Xcode_26.1.app
+
+      - name: Decode Certificate
+        run: |
+          echo "${{ secrets.CERTIFICATE_P12 }}" | base64 --decode > certificate.p12
+
+      - name: Decode Provision Profile
+        run: |
+          echo "${{ secrets.PROVISION_PROFILE }}" | base64 --decode > profile.mobileprovision
+          mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+          cp profile.mobileprovision ~/Library/MobileDevice/Provisioning\ Profiles/
+
+      - name: Create and Configure Keychain
+        run: |
+          security create-keychain -p "" build.keychain
+          security set-keychain-settings -lut 21600 build.keychain
+          security list-keychains -s build.keychain
+          security default-keychain -s build.keychain
+          security unlock-keychain -p "" build.keychain
+          security import certificate.p12 -t agg -k build.keychain -P "${{ secrets.CERTIFICATE_PASSWORD }}" -A
+          security set-key-partition-list -S apple-tool:,apple: -s -k "" build.keychain
+
+      - name: Build .xcarchive
+        run: |
+          rm -rf Cortes.xcarchive
+          xcodebuild \
+            -scheme Cortes \
+            -configuration Release \
+            -sdk iphoneos \
+            -archivePath Cortes.xcarchive \
+            clean archive
+
+      - name: Export .ipa
+        run: |
+          rm -rf output
+          mkdir -p output
+          xcodebuild -exportArchive \
+            -archivePath Cortes.xcarchive \
+            -exportPath output \
+            -exportOptionsPlist ExportOptions.plist
+
+      - name: Upload to TestFlight
+        uses: apple-actions/app-store-connect-upload@v1
+        with:
+          apiKey: ${{ secrets.APP_STORE_CONNECT_KEY }}
+          issuerId: ${{ secrets.APP_STORE_CONNECT_ISSUER }}
+          apiKeyId: ${{ secrets.APP_STORE_CONNECT_KEY_ID }}
+          appPath: output/Cortes.ipa
+
+      - name: Cleanup Sensitive Files
+        if: always()
+        run: |
+          rm -f certificate.p12
+          rm -f profile.mobileprovision
+          security delete-keychain build.keychain || true
+          rm -rf Cortes.xcarchive
+          rm -rf output
