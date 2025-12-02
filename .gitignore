@@ -1,1 +1,35 @@
 .DS_Store
+
+# Secrets - NUNCA subir estas credenciales
+Secrets.xcconfig
+Secrets.swift
+.env
+*.p8
+*.key
+**/Secrets/
+
+# Xcode
+*.xcworkspace
+*.xcuserdata
+xcuserdata/
+DerivedData/
+.build/
+
+# CocoaPods
+Pods/
+*.lock
+
+# Carthage
+Carthage/Build
+
+# fastlane
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots
+fastlane/test_output
+
+# Scripts de setup (pueden contener paths sensibles)
+setup_p8_secure.sh
+
+# Notas personales de credenciales
+CREDENTIALS_PERSONAL.md
