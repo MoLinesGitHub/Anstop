@@ -105,38 +105,74 @@ struct HomeView: View {
                 }
                 .padding(.horizontal, 40)
 
-                // Accesos rápidos
-                VStack(spacing: 15) {
+                // Accesos rápidos con diseño glass calmante
+                VStack(spacing: 12) {
+                    Text("Herramientas de bienestar")
+                        .font(.headline)
+                        .foregroundStyle(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(.horizontal, 20)
+                        .padding(.top, 10)
+                    
                     NavigationLink(destination: BreathingView()) {
-                        QuickAccessButton(title: "Respiración", icon: "wind")
+                        GlassQuickAccessButton(
+                            title: "Respiración",
+                            icon: "wind",
+                            accentColor: .cyan
+                        )
                     }
 
                     NavigationLink(destination: GroundingView()) {
-                        QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
+                        GlassQuickAccessButton(
+                            title: "Grounding 5-4-3-2-1",
+                            icon: "hand.raised.fill",
+                            accentColor: .green
+                        )
                     }
 
                     NavigationLink(destination: AudioGuidesView()) {
-                        QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
+                        GlassQuickAccessButton(
+                            title: "Audio calmante",
+                            icon: "speaker.wave.2.fill",
+                            accentColor: .purple,
+                            isPremium: !purchaseManager.isPremium
+                        )
                     }
 
                     NavigationLink(destination: DailyJournalView()) {
-                        QuickAccessButton(title: "Diario del día", icon: "book.fill")
+                        GlassQuickAccessButton(
+                            title: "Diario del día",
+                            icon: "book.fill",
+                            accentColor: .indigo
+                        )
                     }
 
                     NavigationLink(destination: LibraryView()) {
-                        QuickAccessButton(
-                            title: "Biblioteca de Recursos", icon: "books.vertical.fill")
+                        GlassQuickAccessButton(
+                            title: "Biblioteca de Recursos",
+                            icon: "books.vertical.fill",
+                            accentColor: .teal
+                        )
                     }
 
                     NavigationLink(destination: AIHelperView()) {
-                        QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
+                        GlassQuickAccessButton(
+                            title: "Asistente IA",
+                            icon: "sparkles",
+                            accentColor: .pink,
+                            isPremium: !purchaseManager.isPremium
+                        )
                     }
 
                     NavigationLink(destination: JournalHistoryView()) {
-                        QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
+                        GlassQuickAccessButton(
+                            title: "Historial de Diario",
+                            icon: "clock.arrow.circlepath",
+                            accentColor: .orange
+                        )
                     }
                 }
-                .padding(.horizontal, 40)
+                .padding(.horizontal, 20)
                 .padding(.bottom, 30)
                 }
             }
@@ -164,74 +200,168 @@ struct HomeView: View {
 
 struct PremiumBanner: View {
     let onTap: () -> Void
+    @State private var shimmerOffset: CGFloat = -200
     
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: 12) {
-                Image(systemName: "crown.fill")
-                    .font(.title3)
-                    .foregroundStyle(.yellow)
+            HStack(spacing: 16) {
+                ZStack {
+                    Circle()
+                        .fill(
+                            LinearGradient(
+                                colors: [.yellow.opacity(0.3), .orange.opacity(0.2)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                        .frame(width: 50, height: 50)
+                    
+                    Image(systemName: "crown.fill")
+                        .font(.title2)
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [.yellow, .orange],
+                                startPoint: .top,
+                                endPoint: .bottom
+                            )
+                        )
+                }
                 
-                VStack(alignment: .leading, spacing: 2) {
+                VStack(alignment: .leading, spacing: 4) {
                     Text("Desbloquea todas las funciones")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.white)
+                        .foregroundStyle(.primary)
                     Text("7 días de prueba GRATIS")
                         .font(.caption)
-                        .foregroundStyle(.white.opacity(0.9))
+                        .foregroundStyle(.secondary)
                 }
                 
                 Spacer()
                 
-                Image(systemName: "chevron.right")
-                    .font(.caption)
-                    .foregroundStyle(.white.opacity(0.8))
+                Image(systemName: "arrow.right.circle.fill")
+                    .font(.title3)
+                    .foregroundStyle(
+                        LinearGradient(
+                            colors: [.blue, .purple],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
             }
-            .padding(.horizontal, 16)
-            .padding(.vertical, 12)
-            .background(
-                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
-            )
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .padding(16)
+            .background {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(.ultraThinMaterial)
+                    
+                    RoundedRectangle(cornerRadius: 16)
+                        .fill(
+                            LinearGradient(
+                                colors: [
+                                    .yellow.opacity(0.1),
+                                    .orange.opacity(0.08),
+                                    .purple.opacity(0.06)
+                                ],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
+                        )
+                    
+                    RoundedRectangle(cornerRadius: 16)
+                        .strokeBorder(
+                            LinearGradient(
+                                colors: [.yellow.opacity(0.4), .orange.opacity(0.3)],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            ),
+                            lineWidth: 1.5
+                        )
+                }
+            }
+            .shadow(color: .yellow.opacity(0.2), radius: 15, y: 8)
         }
         .buttonStyle(.plain)
     }
 }
 
+// MARK: - Glass Quick Access Button
+
+struct GlassQuickAccessButton: View {
+    let title: String
+    let icon: String
+    let accentColor: Color
+    var isPremium: Bool = false
+    
+    var body: some View {
+        HStack(spacing: 14) {
+            ZStack {
+                Circle()
+                    .fill(accentColor.opacity(0.15))
+                    .frame(width: 44, height: 44)
+                
+                Image(systemName: icon)
+                    .font(.title3)
+                    .foregroundStyle(accentColor)
+            }
+            
+            Text(title)
+                .font(.body)
+                .foregroundStyle(.primary)
+            
+            Spacer()
+            
+            if isPremium {
+                Text("PRO")
+                    .font(.caption2.bold())
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 8)
+                    .padding(.vertical, 4)
+                    .background(accentColor.gradient)
+                    .clipShape(Capsule())
+            }
+            
+            Image(systemName: "chevron.right")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+        }
+        .padding(16)
+        .background {
+            ZStack {
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(.ultraThinMaterial)
+                
+                RoundedRectangle(cornerRadius: 16)
+                    .fill(
+                        LinearGradient(
+                            colors: [
+                                .white.opacity(0.08),
+                                accentColor.opacity(0.04)
+                            ],
+                            startPoint: .topLeading,
+                            endPoint: .bottomTrailing
+                        )
+                    )
+                
+                RoundedRectangle(cornerRadius: 16)
+                    .strokeBorder(accentColor.opacity(0.2), lineWidth: 0.5)
+            }
+        }
+    }
+}
+
+// Legacy button - mantener para compatibilidad
 struct QuickAccessButton: View {
     let title: String
     let icon: String
     var isPremium: Bool = false
 
     var body: some View {
-        Button(action: {}) {
-            HStack {
-                Image(systemName: icon)
-                    .font(.title3)
-                Text(title)
-                    .font(.body)
-                if isPremium {
-                    Spacer()
-                    Text("PRO")
-                        .font(.caption2)
-                        .bold()
-                        .foregroundStyle(.white)
-                        .padding(.horizontal, 6)
-                        .padding(.vertical, 2)
-                        .background(Color.orange)
-                        .clipShape(Capsule())
-                }
-                Spacer()
-                Image(systemName: "chevron.right")
-                    .font(.caption)
-            }
-            .foregroundStyle(.primary)
-            .padding()
-            .background(
-                RoundedRectangle(cornerRadius: 12)
-                    .fill(.background.opacity(0.5))
-            )
-        }
+        GlassQuickAccessButton(
+            title: title,
+            icon: icon,
+            accentColor: .blue,
+            isPremium: isPremium
+        )
     }
 }
 
