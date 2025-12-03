@@ -34,7 +34,7 @@ struct Protocol: Identifiable {
                     content: "¿Hay otra forma de ver esta situación? ¿Qué le dirías a un amigo?"),
                 ProtocolStep(
                     title: "Reevalúa",
-                    content: "¿Cómo te sientes ahora respecto a ese pensamiento inicial?"),
+                    content: "¿Cómo te sientes ahora respecto a ese pensamiento inicial?")
             ]
         ),
         Protocol(
@@ -57,7 +57,7 @@ struct Protocol: Identifiable {
                     content: "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces."),
                 ProtocolStep(
                     title: "Escaneo corporal",
-                    content: "Relaja tus músculos desde los pies hasta la cabeza, poco a poco."),
+                    content: "Relaja tus músculos desde los pies hasta la cabeza, poco a poco.")
             ]
         ),
         Protocol(
@@ -81,7 +81,7 @@ struct Protocol: Identifiable {
                     title: "Pequeños pasos",
                     content:
                         "No necesitas ser el centro de atención. Solo estar presente es suficiente."
-                ),
+                )
             ]
         ),
     ]

@@ -1,5 +1,6 @@
 import Foundation
 
+// swiftlint:disable line_length
 struct LegalData {
     static let privacyPolicy = """
         **Política de Privacidad**
