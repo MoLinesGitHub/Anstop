@@ -14,10 +14,14 @@ struct BreathingView: View {
 
     var body: some View {
         ZStack {
-            // Fondo suave con partículas para transmitir calma
-            GlassKit.CrystalParticles()
-                .opacity(0.2)
-                .ignoresSafeArea()
+            // Fondo suave con gradiente para transmitir calma
+            // TODO: Reactivar GlassKit.CrystalParticles cuando se publique versión pública
+            LinearGradient(
+                colors: [.blue.opacity(0.1), .cyan.opacity(0.05)],
+                startPoint: .top,
+                endPoint: .bottom
+            )
+            .ignoresSafeArea()
             
             VStack(spacing: 40) {
                 // Selector de protocolo con diseño glass
@@ -60,12 +64,13 @@ struct BreathingView: View {
                 
                 Spacer()
                 
-                // Información del protocolo con diseño glass card
-                GlassKit.CrystalLiquidCard(
-                    title: selectedProtocol.name,
-                    accentColor: .cyan,
-                    intensity: 0.5
-                ) {
+                // Información del protocolo con diseño glassmorphic
+                // TODO: Reactivar GlassKit.CrystalLiquidCard cuando se publique versión pública
+                VStack(alignment: .leading, spacing: 16) {
+                    Text(selectedProtocol.name)
+                        .font(.title2)
+                        .fontWeight(.semibold)
+                    
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Image(systemName: "lungs.fill")
@@ -85,6 +90,8 @@ struct BreathingView: View {
                             .padding(.top, 4)
                     }
                 }
+                .padding(24)
+                .background(.ultraThinMaterial, in: RoundedRectangle(cornerRadius: 20))
                 .padding(.horizontal, 20)
             }
             .padding(.vertical, 20)
