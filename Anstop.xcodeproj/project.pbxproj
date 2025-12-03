@@ -6,6 +6,11 @@
 	objectVersion = 90;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		995251F92EE0B5F500356710 /* GlassKitPro in Frameworks */ = {isa = PBXBuildFile; productRef = 995251F82EE0B5F500356710 /* GlassKitPro */; };
+		995251FB2EE0B5F500356710 /* GlassKitProAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 995251FA2EE0B5F500356710 /* GlassKitProAnimations */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		998A5AAF2ED4AD1B005E1458 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -64,6 +69,8 @@
 		998A5A9E2ED4AD1A005E1458 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				995251F92EE0B5F500356710 /* GlassKitPro in Frameworks */,
+				995251FB2EE0B5F500356710 /* GlassKitProAnimations in Frameworks */,
 			);
 		};
 		998A5AAB2ED4AD1B005E1458 /* Frameworks */ = {
@@ -108,6 +115,10 @@
 				99C1FF012ED4AE6900033118 /* Anstop */,
 			);
 			name = Anstop;
+			packageProductDependencies = (
+				995251F82EE0B5F500356710 /* GlassKitPro */,
+				995251FA2EE0B5F500356710 /* GlassKitProAnimations */,
+			);
 			productName = Anstop;
 			productReference = 99C1FF202ED4AEED00033118 /* Anstop.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +199,9 @@
 			);
 			mainGroup = 998A5A982ED4AD1A005E1458;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				995251F72EE0B5F500356710 /* XCLocalSwiftPackageReference "../MoLines Designs - Swift Package Dependencies/GlassKitPro" */,
+			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 998A5A982ED4AD1A005E1458;
 			projectDirPath = "";
@@ -670,6 +684,24 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		995251F72EE0B5F500356710 /* XCLocalSwiftPackageReference "../MoLines Designs - Swift Package Dependencies/GlassKitPro" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = "../MoLines Designs - Swift Package Dependencies/GlassKitPro";
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		995251F82EE0B5F500356710 /* GlassKitPro */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GlassKitPro;
+		};
+		995251FA2EE0B5F500356710 /* GlassKitProAnimations */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GlassKitProAnimations;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 998A5A992ED4AD1A005E1458 /* Project object */;
 }
