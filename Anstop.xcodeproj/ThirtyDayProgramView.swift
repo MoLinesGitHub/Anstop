@@ -38,8 +38,13 @@ struct ThirtyDayProgramView: View {
                             HStack {
                                 Text("Día \(day + 1)")
                                 Spacer()
-                                if day < currentDay { Image(systemName: "checkmark.circle.fill").foregroundStyle(.green) }
-                                else if day == currentDay { Image(systemName: "arrow.right.circle.fill").foregroundStyle(.orange) }
+                                if day < currentDay {
+                                    Image(systemName: "checkmark.circle.fill")
+                                        .foregroundStyle(.green)
+                                } else if day == currentDay {
+                                    Image(systemName: "arrow.right.circle.fill")
+                                        .foregroundStyle(.orange)
+                                }
                             }
                         }
                     }

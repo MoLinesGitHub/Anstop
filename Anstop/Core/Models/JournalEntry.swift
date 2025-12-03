@@ -14,7 +14,7 @@ final class JournalEntry {
     var date: Date
     var mood: Int
     var notes: String?
-    
+
     init(id: UUID = UUID(), date: Date = Date(), mood: Int = 5, notes: String? = nil) {
         self.id = id
         self.date = date

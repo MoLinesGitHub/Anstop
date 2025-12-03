@@ -115,7 +115,7 @@ struct OnboardingView: View {
                 .padding(.bottom, 50)
             }
             .tag(2)
-            
+
             // Paso 4: Soft Paywall - Mostrar valor premium
             SoftPaywallStep(
                 onContinueFree: {
@@ -143,34 +143,34 @@ struct OnboardingView: View {
 struct SoftPaywallStep: View {
     let onContinueFree: () -> Void
     let onShowPaywall: () -> Void
-    
+
     var body: some View {
         ScrollView {
             VStack(spacing: 24) {
                 Spacer(minLength: 40)
-                
+
                 // Icono Premium
                 ZStack {
                     Circle()
                         .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 100, height: 100)
-                    
+
                     Image(systemName: "crown.fill")
                         .font(.system(size: 45))
                         .foregroundStyle(.white)
                 }
-                
+
                 Text("Obtén resultados más rápidos")
                     .font(.title)
                     .bold()
                     .multilineTextAlignment(.center)
-                
+
                 Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
                     .font(.body)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
-                
+
                 // Beneficios Premium
                 VStack(alignment: .leading, spacing: 16) {
                     PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Programa completo de 30 días")
@@ -180,21 +180,21 @@ struct SoftPaywallStep: View {
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
-                
+
                 // Oferta especial
                 VStack(spacing: 8) {
                     Text("🎁 OFERTA DE BIENVENIDA")
                         .font(.caption)
                         .bold()
                         .foregroundStyle(.orange)
-                    
+
                     Text("7 días de prueba GRATIS")
                         .font(.title2)
                         .bold()
                 }
-                
+
                 Spacer(minLength: 40)
-                
+
                 // CTAs
                 VStack(spacing: 12) {
                     Button(action: onShowPaywall) {
@@ -205,7 +205,7 @@ struct SoftPaywallStep: View {
                         .padding(.horizontal, 40)
                     }
                     .buttonStyle(PrimaryButtonStyle())
-                    
+
                     Button(action: onContinueFree) {
                         Text("Continuar con versión básica")
                             .font(.subheadline)
@@ -222,7 +222,7 @@ struct SoftPaywallStep: View {
 struct PremiumBenefitRow: View {
     let icon: String
     let text: String
-    
+
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: icon)
