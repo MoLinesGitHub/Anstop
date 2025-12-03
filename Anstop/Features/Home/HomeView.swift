@@ -68,235 +68,79 @@ struct HomeView: View {
                         }
                 )
 
-                // Programa de 30 Días - Destacado con efecto líquido
+                // Programa de 30 Días - Destacado
                 NavigationLink(destination: ThirtyDayProgramView()) {
-                    CrystalLiquidCard {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Image(systemName: "calendar")
-                                        .foregroundStyle(.orange)
-                                    Text("Programa de 30 Días")
-                                        .font(.headline)
-                                        .foregroundStyle(.primary)
-                                    if !purchaseManager.isPremium {
-                                        Text("PRO")
-                                            .font(.caption2)
-                                            .bold()
-                                            .foregroundStyle(.white)
-                                            .padding(.horizontal, 6)
-                                            .padding(.vertical, 2)
-                                            .background(Color.orange)
-                                            .clipShape(Capsule())
-                                    }
+                    HStack {
+                        VStack(alignment: .leading, spacing: 8) {
+                            HStack {
+                                Image(systemName: "calendar")
+                                    .foregroundStyle(.orange)
+                                Text("Programa de 30 Días")
+                                    .font(.headline)
+                                    .foregroundStyle(.primary)
+                                if !purchaseManager.isPremium {
+                                    Text("PRO")
+                                        .font(.caption2)
+                                        .bold()
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 6)
+                                        .padding(.vertical, 2)
+                                        .background(Color.orange)
+                                        .clipShape(Capsule())
                                 }
-                                Text("Transforma tu relación con la ansiedad")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
                             }
-                            Spacer()
-                            Image(systemName: "chevron.right")
+                            Text("Transforma tu relación con la ansiedad")
+                                .font(.caption)
                                 .foregroundStyle(.secondary)
                         }
-                        .padding()
+                        Spacer()
+                        Image(systemName: "chevron.right")
+                            .foregroundStyle(.secondary)
                     }
+                    .padding()
+                    .background(
+                        RoundedRectangle(cornerRadius: 16)
+                            .fill(.orange.opacity(0.1))
+                    )
                 }
                 .padding(.horizontal, 40)
 
-                // Herramientas de bienestar con diseño glass calmante
-                VStack(spacing: 16) {
-                    Text("Herramientas de bienestar")
-                        .font(.headline)
-                        .foregroundStyle(.secondary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding(.horizontal, 20)
-                        .padding(.top, 10)
-                    
+                // Accesos rápidos
+                VStack(spacing: 15) {
                     NavigationLink(destination: BreathingView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.cyan.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "wind")
-                                        .font(.title3)
-                                        .foregroundStyle(.cyan)
-                                }
-                                Text("Respiración")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Respiración", icon: "wind")
                     }
 
                     NavigationLink(destination: GroundingView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.green.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "hand.raised.fill")
-                                        .font(.title3)
-                                        .foregroundStyle(.green)
-                                }
-                                Text("Grounding 5-4-3-2-1")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
                     }
 
                     NavigationLink(destination: AudioGuidesView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.purple.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "speaker.wave.2.fill")
-                                        .font(.title3)
-                                        .foregroundStyle(.purple)
-                                }
-                                Text("Audio calmante")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                if !purchaseManager.isPremium {
-                                    Text("PRO")
-                                        .font(.caption2.bold())
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(Color.purple.gradient)
-                                        .clipShape(Capsule())
-                                }
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
                     }
 
                     NavigationLink(destination: DailyJournalView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.indigo.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "book.fill")
-                                        .font(.title3)
-                                        .foregroundStyle(.indigo)
-                                }
-                                Text("Diario del día")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Diario del día", icon: "book.fill")
                     }
 
                     NavigationLink(destination: LibraryView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.teal.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "books.vertical.fill")
-                                        .font(.title3)
-                                        .foregroundStyle(.teal)
-                                }
-                                Text("Biblioteca de Recursos")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(
+                            title: "Biblioteca de Recursos", icon: "books.vertical.fill")
                     }
 
                     NavigationLink(destination: AIHelperView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.pink.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "sparkles")
-                                        .font(.title3)
-                                        .foregroundStyle(.pink)
-                                }
-                                Text("Asistente IA")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                if !purchaseManager.isPremium {
-                                    Text("PRO")
-                                        .font(.caption2.bold())
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 8)
-                                        .padding(.vertical, 4)
-                                        .background(Color.pink.gradient)
-                                        .clipShape(Capsule())
-                                }
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
                     }
 
                     NavigationLink(destination: JournalHistoryView()) {
-                        AdvancedGlassCard {
-                            HStack(spacing: 14) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.orange.opacity(0.15))
-                                        .frame(width: 44, height: 44)
-                                    Image(systemName: "clock.arrow.circlepath")
-                                        .font(.title3)
-                                        .foregroundStyle(.orange)
-                                }
-                                Text("Historial de Diario")
-                                    .font(.body)
-                                    .foregroundStyle(.primary)
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                        }
+                        QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 40)
                 .padding(.bottom, 30)
-                    }
                 }
-                .prepareHapticsOnAppear()
             }
+            .prepareHapticsOnAppear()
             .navigationTitle("Anstop")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -308,6 +152,7 @@ struct HomeView: View {
             }
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
+            }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
@@ -319,103 +164,74 @@ struct HomeView: View {
 
 struct PremiumBanner: View {
     let onTap: () -> Void
-    @State private var shimmerOffset: CGFloat = -200
     
     var body: some View {
         Button(action: onTap) {
-            HStack(spacing: 16) {
-                ZStack {
-                    Circle()
-                        .fill(
-                            LinearGradient(
-                                colors: [.yellow.opacity(0.3), .orange.opacity(0.2)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                        .frame(width: 50, height: 50)
-                    
-                    Image(systemName: "crown.fill")
-                        .font(.title2)
-                        .foregroundStyle(
-                            LinearGradient(
-                                colors: [.yellow, .orange],
-                                startPoint: .top,
-                                endPoint: .bottom
-                            )
-                        )
-                }
+            HStack(spacing: 12) {
+                Image(systemName: "crown.fill")
+                    .font(.title3)
+                    .foregroundStyle(.yellow)
                 
-                VStack(alignment: .leading, spacing: 4) {
+                VStack(alignment: .leading, spacing: 2) {
                     Text("Desbloquea todas las funciones")
                         .font(.subheadline.bold())
-                        .foregroundStyle(.primary)
+                        .foregroundStyle(.white)
                     Text("7 días de prueba GRATIS")
                         .font(.caption)
-                        .foregroundStyle(.secondary)
+                        .foregroundStyle(.white.opacity(0.9))
                 }
                 
                 Spacer()
                 
-                Image(systemName: "arrow.right.circle.fill")
-                    .font(.title3)
-                    .foregroundStyle(
-                        LinearGradient(
-                            colors: [.blue, .purple],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+                    .foregroundStyle(.white.opacity(0.8))
             }
-            .padding(16)
-            .background {
-                ZStack {
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(.ultraThinMaterial)
-                    
-                    RoundedRectangle(cornerRadius: 16)
-                        .fill(
-                            LinearGradient(
-                                colors: [
-                                    .yellow.opacity(0.1),
-                                    .orange.opacity(0.08),
-                                    .purple.opacity(0.06)
-                                ],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            )
-                        )
-                    
-                    RoundedRectangle(cornerRadius: 16)
-                        .strokeBorder(
-                            LinearGradient(
-                                colors: [.yellow.opacity(0.4), .orange.opacity(0.3)],
-                                startPoint: .topLeading,
-                                endPoint: .bottomTrailing
-                            ),
-                            lineWidth: 1.5
-                        )
-                }
-            }
-            .shadow(color: .yellow.opacity(0.2), radius: 15, y: 8)
+            .padding(.horizontal, 16)
+            .padding(.vertical, 12)
+            .background(
+                LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
+            )
+            .clipShape(RoundedRectangle(cornerRadius: 12))
         }
         .buttonStyle(.plain)
     }
 }
 
-// Legacy button - mantener para compatibilidad
 struct QuickAccessButton: View {
     let title: String
     let icon: String
     var isPremium: Bool = false
 
     var body: some View {
-        GlassQuickAccessButton(
-            title: title,
-            icon: icon,
-            accentColor: .blue,
-            isPremium: isPremium
-        )
+        Button(action: {}) {
+            HStack {
+                Image(systemName: icon)
+                    .font(.title3)
+                Text(title)
+                    .font(.body)
+                if isPremium {
+                    Spacer()
+                    Text("PRO")
+                        .font(.caption2)
+                        .bold()
+                        .foregroundStyle(.white)
+                        .padding(.horizontal, 6)
+                        .padding(.vertical, 2)
+                        .background(Color.orange)
+                        .clipShape(Capsule())
+                }
+                Spacer()
+                Image(systemName: "chevron.right")
+                    .font(.caption)
+            }
+            .foregroundStyle(.primary)
+            .padding()
+            .background(
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(.background.opacity(0.5))
+            )
+        }
     }
 }
 
