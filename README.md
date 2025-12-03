@@ -98,7 +98,7 @@ open Anstop.xcodeproj
 - **Persistencia:** SwiftData (@Model)
 - **Navegación:** NavigationStack
 - **Arquitectura:** Modular MVVM con @Observable
-- **Bundle ID:** com.anstop.app
+- **Bundle ID:** com.molinesdesigns.anstop
 - **Productos IAP:** premium.monthly, premium.yearly
 
 ## 🎯 Características Implementadas
