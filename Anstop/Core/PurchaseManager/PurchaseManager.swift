@@ -5,19 +5,22 @@ import OSLog
 @MainActor
 @Observable
 final class PurchaseManager {
+    // Logger para contexto estático (nonisolated para evitar actor isolation)
+    nonisolated private static let logger = Logger(subsystem: "com.molinesdesigns.Anstop", category: "purchases")
+    
     // Global transaction updates listener to ensure we never miss updates
     private static let globalTransactionUpdatesTask: Task<Void, Never> = Task {
         for await result in Transaction.updates {
             guard case .verified(let transaction) = result else {
-                Logger.purchases.warning("Received unverified transaction update")
+                logger.warning("Received unverified transaction update")
                 continue
             }
-            Logger.purchases.info("[Global] Transaction update received for product: \(transaction.productID)")
+            logger.info("[Global] Transaction update received for product: \(transaction.productID)")
             await handleGlobalTransactionUpdate(transaction)
         }
     }
 
-    private static func handleGlobalTransactionUpdate(_ transaction: Transaction) async {
+    nonisolated private static func handleGlobalTransactionUpdate(_ transaction: Transaction) async {
         // Finish the transaction after handling. If you have a shared manager instance,
         // you can also refresh entitlements here.
         await transaction.finish()

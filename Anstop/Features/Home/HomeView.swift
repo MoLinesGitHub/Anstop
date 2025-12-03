@@ -68,45 +68,43 @@ struct HomeView: View {
                         }
                 )
 
-                // Programa de 30 Días - Destacado
+                // Programa de 30 Días - Destacado con efecto líquido
                 NavigationLink(destination: ThirtyDayProgramView()) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                Image(systemName: "calendar")
-                                    .foregroundStyle(.orange)
-                                Text("Programa de 30 Días")
-                                    .font(.headline)
-                                    .foregroundStyle(.primary)
-                                if !purchaseManager.isPremium {
-                                    Text("PRO")
-                                        .font(.caption2)
-                                        .bold()
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 6)
-                                        .padding(.vertical, 2)
-                                        .background(Color.orange)
-                                        .clipShape(Capsule())
+                    CrystalLiquidCard {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .foregroundStyle(.orange)
+                                    Text("Programa de 30 Días")
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                    if !purchaseManager.isPremium {
+                                        Text("PRO")
+                                            .font(.caption2)
+                                            .bold()
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(Color.orange)
+                                            .clipShape(Capsule())
+                                    }
                                 }
+                                Text("Transforma tu relación con la ansiedad")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
                             }
-                            Text("Transforma tu relación con la ansiedad")
-                                .font(.caption)
+                            Spacer()
+                            Image(systemName: "chevron.right")
                                 .foregroundStyle(.secondary)
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.secondary)
+                        .padding()
                     }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.orange.opacity(0.1))
-                    )
                 }
                 .padding(.horizontal, 40)
 
-                // Accesos rápidos con diseño glass calmante
-                VStack(spacing: 12) {
+                // Herramientas de bienestar con diseño glass calmante
+                VStack(spacing: 16) {
                     Text("Herramientas de bienestar")
                         .font(.headline)
                         .foregroundStyle(.secondary)
@@ -115,68 +113,190 @@ struct HomeView: View {
                         .padding(.top, 10)
                     
                     NavigationLink(destination: BreathingView()) {
-                        GlassQuickAccessButton(
-                            title: "Respiración",
-                            icon: "wind",
-                            accentColor: .cyan
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.cyan.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "wind")
+                                        .font(.title3)
+                                        .foregroundStyle(.cyan)
+                                }
+                                Text("Respiración")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: GroundingView()) {
-                        GlassQuickAccessButton(
-                            title: "Grounding 5-4-3-2-1",
-                            icon: "hand.raised.fill",
-                            accentColor: .green
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.green.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "hand.raised.fill")
+                                        .font(.title3)
+                                        .foregroundStyle(.green)
+                                }
+                                Text("Grounding 5-4-3-2-1")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: AudioGuidesView()) {
-                        GlassQuickAccessButton(
-                            title: "Audio calmante",
-                            icon: "speaker.wave.2.fill",
-                            accentColor: .purple,
-                            isPremium: !purchaseManager.isPremium
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.purple.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "speaker.wave.2.fill")
+                                        .font(.title3)
+                                        .foregroundStyle(.purple)
+                                }
+                                Text("Audio calmante")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                if !purchaseManager.isPremium {
+                                    Text("PRO")
+                                        .font(.caption2.bold())
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(Color.purple.gradient)
+                                        .clipShape(Capsule())
+                                }
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: DailyJournalView()) {
-                        GlassQuickAccessButton(
-                            title: "Diario del día",
-                            icon: "book.fill",
-                            accentColor: .indigo
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.indigo.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "book.fill")
+                                        .font(.title3)
+                                        .foregroundStyle(.indigo)
+                                }
+                                Text("Diario del día")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: LibraryView()) {
-                        GlassQuickAccessButton(
-                            title: "Biblioteca de Recursos",
-                            icon: "books.vertical.fill",
-                            accentColor: .teal
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.teal.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "books.vertical.fill")
+                                        .font(.title3)
+                                        .foregroundStyle(.teal)
+                                }
+                                Text("Biblioteca de Recursos")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: AIHelperView()) {
-                        GlassQuickAccessButton(
-                            title: "Asistente IA",
-                            icon: "sparkles",
-                            accentColor: .pink,
-                            isPremium: !purchaseManager.isPremium
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.pink.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "sparkles")
+                                        .font(.title3)
+                                        .foregroundStyle(.pink)
+                                }
+                                Text("Asistente IA")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                if !purchaseManager.isPremium {
+                                    Text("PRO")
+                                        .font(.caption2.bold())
+                                        .foregroundStyle(.white)
+                                        .padding(.horizontal, 8)
+                                        .padding(.vertical, 4)
+                                        .background(Color.pink.gradient)
+                                        .clipShape(Capsule())
+                                }
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
 
                     NavigationLink(destination: JournalHistoryView()) {
-                        GlassQuickAccessButton(
-                            title: "Historial de Diario",
-                            icon: "clock.arrow.circlepath",
-                            accentColor: .orange
-                        )
+                        AdvancedGlassCard {
+                            HStack(spacing: 14) {
+                                ZStack {
+                                    Circle()
+                                        .fill(Color.orange.opacity(0.15))
+                                        .frame(width: 44, height: 44)
+                                    Image(systemName: "clock.arrow.circlepath")
+                                        .font(.title3)
+                                        .foregroundStyle(.orange)
+                                }
+                                Text("Historial de Diario")
+                                    .font(.body)
+                                    .foregroundStyle(.primary)
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                        }
                     }
                 }
                 .padding(.horizontal, 20)
                 .padding(.bottom, 30)
+                    }
                 }
+                .prepareHapticsOnAppear()
             }
-            .prepareHapticsOnAppear()
             .navigationTitle("Anstop")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
@@ -188,7 +308,6 @@ struct HomeView: View {
             }
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
-            }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
@@ -281,71 +400,6 @@ struct PremiumBanner: View {
             .shadow(color: .yellow.opacity(0.2), radius: 15, y: 8)
         }
         .buttonStyle(.plain)
-    }
-}
-
-// MARK: - Glass Quick Access Button
-
-struct GlassQuickAccessButton: View {
-    let title: String
-    let icon: String
-    let accentColor: Color
-    var isPremium: Bool = false
-    
-    var body: some View {
-        HStack(spacing: 14) {
-            ZStack {
-                Circle()
-                    .fill(accentColor.opacity(0.15))
-                    .frame(width: 44, height: 44)
-                
-                Image(systemName: icon)
-                    .font(.title3)
-                    .foregroundStyle(accentColor)
-            }
-            
-            Text(title)
-                .font(.body)
-                .foregroundStyle(.primary)
-            
-            Spacer()
-            
-            if isPremium {
-                Text("PRO")
-                    .font(.caption2.bold())
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 8)
-                    .padding(.vertical, 4)
-                    .background(accentColor.gradient)
-                    .clipShape(Capsule())
-            }
-            
-            Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundStyle(.secondary)
-        }
-        .padding(16)
-        .background {
-            ZStack {
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(.ultraThinMaterial)
-                
-                RoundedRectangle(cornerRadius: 16)
-                    .fill(
-                        LinearGradient(
-                            colors: [
-                                .white.opacity(0.08),
-                                accentColor.opacity(0.04)
-                            ],
-                            startPoint: .topLeading,
-                            endPoint: .bottomTrailing
-                        )
-                    )
-                
-                RoundedRectangle(cornerRadius: 16)
-                    .strokeBorder(accentColor.opacity(0.2), lineWidth: 0.5)
-            }
-        }
     }
 }
 
