@@ -81,9 +81,9 @@ struct Protocol: Identifiable {
                     title: "Pequeños pasos",
                     content:
                         "No necesitas ser el centro de atención. Solo estar presente es suficiente."
-                ),
+                )
             ]
-        ),
+        )
     ]
 }
 
