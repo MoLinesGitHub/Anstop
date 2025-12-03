@@ -200,7 +200,7 @@
 			mainGroup = 998A5A982ED4AD1A005E1458;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				995251F72EE0B5F500356710 /* XCLocalSwiftPackageReference "../MoLines Designs - Swift Package Dependencies/GlassKitPro" */,
+				995251FD2EE0C4BC00356710 /* XCLocalSwiftPackageReference "../../Package_Dependencies/GlassKitPro" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 998A5A982ED4AD1A005E1458;
@@ -686,9 +686,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCLocalSwiftPackageReference section */
-		995251F72EE0B5F500356710 /* XCLocalSwiftPackageReference "../MoLines Designs - Swift Package Dependencies/GlassKitPro" */ = {
+		995251FD2EE0C4BC00356710 /* XCLocalSwiftPackageReference "../../Package_Dependencies/GlassKitPro" */ = {
 			isa = XCLocalSwiftPackageReference;
-			relativePath = "../MoLines Designs - Swift Package Dependencies/GlassKitPro";
+			relativePath = ../../Package_Dependencies/GlassKitPro;
 		};
 /* End XCLocalSwiftPackageReference section */
 
