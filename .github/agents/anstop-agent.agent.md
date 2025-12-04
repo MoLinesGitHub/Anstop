@@ -1,35 +1,16 @@
 ---
 name: anstop-agent
-description: Agente especializado para Anstop - Compila automáticamente, valida arquitectura modular y Swift 6.2 strict concurrency
-tools:
-- copilot_chat
-- copilot_coding_agent
-- copilot_spaces
-- copilot_code_review
-- copilot_pull_request_summaries
-- copilot_edits
-- next_edit_suggestions
-- mission_control_protocol
-- custom_agents
-- web_search
-- mcp_anstop-env_anstop_build_project
-- mcp_xcode-tools_xcode_build_project
-- mcp_xcode-tools_xcode_clean_project
-- mcp_anstop-dev_analyze_swift_compilation_errors
-- mcp_anstop-dev_analyze_xcode_build_logs
-- mcp_anstop-dev_detect_memory_leaks
-- mcp_anstop-dev_validate_architecture
-- mcp_anstop-env_anstop_validate_structure
-- mcp_anstop-env_anstop_check_instructions
-- mcp_anstop-dev_run_tests
-- mcp_anstop-env_anstop_run_tests
-- mcp_xcode-tools_xcode_run_tests
-- mcp_anstop-dev_optimize_performance
-- mcp_anstop-dev_validate_localization
-- mcp_anstop-dev_check_assets
-- mcp_anstop-env_anstop_project_status
+description: '>-'
+Agente especializado para Anstop - Compila automáticamente, valida: ''
+arquitectura modular y Swift 6.2 strict concurrency: ''
+tools: ['copilot_chat', 'copilot_coding_agent', 'copilot_spaces', 'copilot_code_review', 'copilot_pull_request_summaries', 'copilot_edits', 'next_edit_suggestions', 'mission_control_protocol', 'custom_agents', 'web_search', 'mcp_anstop-env_anstop_build_project', 'mcp_xcode-tools_xcode_build_project', 'mcp_xcode-tools_xcode_clean_project', 'mcp_anstop-dev_analyze_swift_compilation_errors', 'mcp_anstop-dev_analyze_xcode_build_logs', 'mcp_anstop-dev_detect_memory_leaks', 'mcp_anstop-dev_validate_architecture', 'mcp_anstop-env_anstop_validate_structure', 'mcp_anstop-env_anstop_check_instructions', 'mcp_anstop-dev_run_tests', 'mcp_anstop-env_anstop_run_tests', 'mcp_xcode-tools_xcode_run_tests', 'mcp_anstop-dev_optimize_performance', 'mcp_anstop-dev_validate_localization', 'mcp_anstop-dev_check_assets', 'mcp_anstop-env_anstop_project_status', 'anstop-dev/analyze_swift_compilation_errors', 'anstop-dev/detect_memory_leaks', 'anstop-dev/validate_architecture', 'anstop-dev/run_tests', 'anstop-dev/analyze_xcode_build_logs', 'anstop-dev/optimize_performance', 'anstop-dev/validate_localization', 'anstop-dev/check_assets', 'anstop-env/anstop_project_status', 'anstop-env/anstop_build_project', 'anstop-env/anstop_run_tests', 'anstop-env/anstop_validate_structure', 'anstop-env/anstop_check_instructions', 'anstop-env/anstop_deploy_prepare', 'xcode-tools/xcode_build_project', 'xcode-tools/xcode_clean_project', 'xcode-tools/xcode_list_schemes', 'xcode-tools/xcode_list_targets', 'xcode-tools/xcode_run_tests', 'xcode-tools/xcode_archive_project', 'xcode-tools/xcode_get_build_settings', 'xcode-tools/xcode_find_projects', 'xcode-tools/xcode_get_version', 'xcode-tools/xcode_get_simulators', 'create_file', 'insert_edit_into_file', 'fetch_webpage', 'file_search', 'grep_search', 'get_errors', 'get_terminal_output', 'list_dir', 'read_file', 'replace_string_in_file', 'run_subagent', 'run_in_terminal']
+model: Claude Sonnet 4.5 (copilot)
+handoffs:
+  - label: Start Implementation
+    agent: implementation
+    prompt: Now implement the plan outlined above.
+    send: true
 ---
-
 Agente especializado para **Anstop**, una app de gestión de ansiedad construida con Swift 6.2 strict concurrency y arquitectura modular. Compila automáticamente, valida reglas arquitectónicas, detecta problemas de concurrencia y ejecuta tests relevantes sin pedir permiso.
 
 ## 🎯 Especialización
@@ -376,6 +357,6 @@ El agente es exitoso si:
 ---
 
 **Última actualización:** 4 de Diciembre 2025  
-**Proyecto:** Anstop v1.0  
+**Proyecto:** Anstop v1.0.5
 **Swift:** 6.2 Strict Concurrency  
 **Xcode:** 17+
