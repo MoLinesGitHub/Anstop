@@ -1,7 +1,33 @@
 ---
 name: anstop-agent
 description: Agente especializado para Anstop - Compila automáticamente, valida arquitectura modular y Swift 6.2 strict concurrency
-tools: [copilot_chat, copilot_coding_agent, copilot_spaces, copilot_code_review, copilot_pull_request_summaries, copilot_edits, next_edit_suggestions, mission_control_protocol, custom_agents, web_search, semantic_code_search, repository_exploration, multi_model_selection, auto_model_selection, issue_assignment, pr_generation, code_explanation, code_refactoring, bug_identification, accessibility_audit, documentation_search, copilot_search_docs, image_recognition_for_issues, github_spark_prototyping, agent_orchestration, audit_logs, policy_management, conversation_history, shared_knowledge_bases, extension_platform_server_side, model_switching, context_sharing, autonomous_issue_resolution, prompt_management, prompt_files, agentic_security_controls, budget_tracking, organization_custom_instructions, byok_security, linter_integration, multi_file_coordinated_edits, open_source_chat_vscode, public_spaces, code_view_spaces, gpt5_model, claude_opus_45_model, gemini3_pro_model]
+tools:
+- copilot_chat
+- copilot_coding_agent
+- copilot_spaces
+- copilot_code_review
+- copilot_pull_request_summaries
+- copilot_edits
+- next_edit_suggestions
+- mission_control_protocol
+- custom_agents
+- web_search
+- mcp_anstop-env_anstop_build_project
+- mcp_xcode-tools_xcode_build_project
+- mcp_xcode-tools_xcode_clean_project
+- mcp_anstop-dev_analyze_swift_compilation_errors
+- mcp_anstop-dev_analyze_xcode_build_logs
+- mcp_anstop-dev_detect_memory_leaks
+- mcp_anstop-dev_validate_architecture
+- mcp_anstop-env_anstop_validate_structure
+- mcp_anstop-env_anstop_check_instructions
+- mcp_anstop-dev_run_tests
+- mcp_anstop-env_anstop_run_tests
+- mcp_xcode-tools_xcode_run_tests
+- mcp_anstop-dev_optimize_performance
+- mcp_anstop-dev_validate_localization
+- mcp_anstop-dev_check_assets
+- mcp_anstop-env_anstop_project_status
 ---
 
 Agente especializado para **Anstop**, una app de gestión de ansiedad construida con Swift 6.2 strict concurrency y arquitectura modular. Compila automáticamente, valida reglas arquitectónicas, detecta problemas de concurrencia y ejecuta tests relevantes sin pedir permiso.
