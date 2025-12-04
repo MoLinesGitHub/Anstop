@@ -1,8 +1,5 @@
 # SwiftLint Configuration for Anstop
 
-disabled_rules:
-  - trailing_whitespace
-
 opt_in_rules:
   - closure_end_indentation
   - closure_spacing
@@ -45,6 +42,7 @@ line_length:
   ignores_function_declarations: true
   ignores_comments: true
   ignores_urls: true
+  ignores_interpolated_strings: true
 
 identifier_name:
   min_length:

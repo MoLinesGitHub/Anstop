@@ -70,16 +70,16 @@ final class AIService {
             Puedes acceder a ejercicios guiados en la sección de Respiración.
             """,
             """
-            La respiración diafragmática activa tu sistema parasimpático, ayudándote \
+            La respiración diafragmática activa tu sistema parasimpático, ayudándote
             a relajarte naturalmente. 💙
 
-            Coloca una mano en tu pecho y otra en tu abdomen. Al inhalar, solo debe \
+            Coloca una mano en tu pecho y otra en tu abdomen. Al inhalar, solo debe
             moverse la mano del abdomen.
             """
         ],
         .grounding: [
             """
-            El grounding te ayuda a reconectarte con el presente cuando te sientes \
+            El grounding te ayuda a reconectarte con el presente cuando te sientes
             abrumado/a. 🌿
 
             Prueba la técnica 5-4-3-2-1:
@@ -92,16 +92,16 @@ final class AIService {
             ¿Lo intentamos juntos?
             """,
             """
-            Cuando los pensamientos se sienten abrumadores, anclarte en tus sentidos \
+            Cuando los pensamientos se sienten abrumadores, anclarte en tus sentidos
             puede ayudar. 🍃
 
-            Toca algo frío o caliente, siente la textura de la ropa que llevas, o \
+            Toca algo frío o caliente, siente la textura de la ropa que llevas, o
             presiona tus pies contra el suelo. Estas sensaciones te traen al aquí y ahora.
             """,
             """
             El grounding es como un ancla para tu mente. ⚓
 
-            Un ejercicio simple: nombra 3 colores que veas a tu alrededor. Esto \
+            Un ejercicio simple: nombra 3 colores que veas a tu alrededor. Esto
             interrumpe el ciclo de pensamientos ansiosos y te centra en el presente.
             """
         ],
@@ -121,7 +121,7 @@ final class AIService {
             El sueño y la ansiedad están muy conectados. 😴
 
             Intenta el 'body scan':
-            Recostado/a, recorre mentalmente tu cuerpo desde los pies hasta la cabeza, \
+            Recostado/a, recorre mentalmente tu cuerpo desde los pies hasta la cabeza,
             relajando cada zona conscientemente.
 
             También tenemos audios relajantes en la app que pueden ayudarte.
@@ -134,7 +134,7 @@ final class AIService {
             • Hacer algo tranquilo (sin pantallas)
             • Volver cuando sientas sueño
 
-            La técnica de 'paradójica' también ayuda: intenta mantenerte despierto/a \
+            La técnica de 'paradójica' también ayuda: intenta mantenerte despierto/a
             en lugar de dormirte.
             """
         ],
@@ -142,7 +142,7 @@ final class AIService {
             """
             Siento que estás pasando por un momento difícil. 💜
 
-            La ansiedad puede ser abrumadora, pero recuerda: es temporal y tú eres \
+            La ansiedad puede ser abrumadora, pero recuerda: es temporal y tú eres
             más fuerte de lo que crees.
 
             Ahora mismo, ¿puedes tomar 3 respiraciones lentas y profundas conmigo?
@@ -172,7 +172,7 @@ final class AIService {
         ],
         .negativeThoughts: [
             """
-            Los pensamientos negativos pueden sentirse muy reales, pero no siempre \
+            Los pensamientos negativos pueden sentirse muy reales, pero no siempre
             son verdad. 🧠
 
             Prueba esto:
@@ -186,7 +186,7 @@ final class AIService {
             Cuando la mente se llena de negatividad, podemos sentirnos atrapados. 🌧️
 
             Una técnica útil:
-            Imagina que tus pensamientos son nubes pasando por el cielo. Los observas, \
+            Imagina que tus pensamientos son nubes pasando por el cielo. Los observas,
             pero no tienes que aferrarte a ellos.
 
             Tú no eres tus pensamientos. 🌈
@@ -204,7 +204,7 @@ final class AIService {
         ],
         .emergency: [
             """
-            ⚠️ Si estás en crisis o tienes pensamientos de hacerte daño, por favor \
+            ⚠️ Si estás en crisis o tienes pensamientos de hacerte daño, por favor
             contacta ayuda profesional inmediatamente:
 
             🇪🇸 Teléfono de la Esperanza: 717 003 717
@@ -229,7 +229,7 @@ final class AIService {
             """
             Gracias por compartir eso conmigo. 💜
 
-            Recuerda que cuidar de tu bienestar mental es tan importante como cuidar \
+            Recuerda que cuidar de tu bienestar mental es tan importante como cuidar
             tu salud física. Estoy aquí para acompañarte en este proceso.
 
             ¿Hay algo específico en lo que te gustaría trabajar hoy?
@@ -237,7 +237,7 @@ final class AIService {
             """
             Te escucho. 🤗
 
-            Cada paso que das hacia tu bienestar cuenta, incluso los más pequeños. \
+            Cada paso que das hacia tu bienestar cuenta, incluso los más pequeños.
             El hecho de que estés aquí ya es un paso importante.
 
             ¿Te gustaría explorar alguna técnica de relajación?
@@ -245,7 +245,7 @@ final class AIService {
             """
             Aprecio que confíes en mí. 💙
 
-            Recuerda que está bien no estar bien todo el tiempo. Lo importante es \
+            Recuerda que está bien no estar bien todo el tiempo. Lo importante es
             que busques recursos y apoyo cuando lo necesites.
 
             ¿En qué puedo ayudarte hoy?
@@ -253,7 +253,7 @@ final class AIService {
             """
             Es valioso que te tomes este momento para ti. 🌟
 
-            La autocompasión es clave: trátate con la misma amabilidad que tratarías \
+            La autocompasión es clave: trátate con la misma amabilidad que tratarías
             a un amigo querido.
 
             ¿Quieres que exploremos juntos alguna herramienta de la app?
