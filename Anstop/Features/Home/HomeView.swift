@@ -1,10 +1,3 @@
-//
-//  HomeView.swift
-//  Anstop
-//
-//  Created on 2025-11-24.
-//
-
 import SwiftUI
 
 struct HomeView: View {
