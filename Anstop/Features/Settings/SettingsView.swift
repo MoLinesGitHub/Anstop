@@ -71,7 +71,7 @@ struct SettingsView: View {
                     Text("Suscripción")
                 }
             }
-            
+
             // Preferences Section
             Section {
                 Toggle(isOn: $hapticsEnabled) {
@@ -121,7 +121,7 @@ struct SettingsView: View {
                 .padding(.horizontal, 40)
                 .buttonStyle(PrimaryButtonStyle(color: .orange))
                 .disabled(!remindersEnabled)
-                
+
                 Button("Cancelar recordatorio") {
                     Task {
                         NotificationManager.shared.cancelDailyReminder()
@@ -167,7 +167,7 @@ struct SettingsView: View {
                             .font(.caption)
                     }
                 }
-                
+
                 Button {
                     showingEULA = true
                 } label: {

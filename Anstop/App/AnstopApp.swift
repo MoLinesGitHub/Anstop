@@ -12,19 +12,19 @@ import SwiftUI
 struct AnstopApp: App {
     @State private var purchaseManager = PurchaseManager()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
-    
+
     static let sharedModelContainer: ModelContainer = {
         let schema = Schema([
             JournalEntry.self,
             AnxietyEvent.self,
             ProgramProgress.self
         ])
-        
+
         let modelConfiguration = ModelConfiguration(
             schema: schema,
             isStoredInMemoryOnly: false
         )
-        
+
         do {
             return try ModelContainer(
                 for: schema,

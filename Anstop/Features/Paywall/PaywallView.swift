@@ -17,7 +17,7 @@ struct PaywallView: View {
     @State private var showError = false
     @State private var selectedProduct: Product?
     @State private var timeRemaining: Int = 15 * 60 // 15 minutos para urgencia
-    
+
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
 
     var body: some View {
@@ -39,7 +39,7 @@ struct PaywallView: View {
                         .padding(.vertical, 8)
                         .background(Color.red.gradient)
                         .clipShape(Capsule())
-                        
+
                         // Countdown timer
                         HStack(spacing: 4) {
                             Image(systemName: "clock.fill")
@@ -52,7 +52,7 @@ struct PaywallView: View {
                         .padding(.top, 4)
                     }
                     .padding(.top, 20)
-                    
+
                     // Main header
                     VStack(spacing: 12) {
                         Image(systemName: "heart.circle.fill")
@@ -74,7 +74,7 @@ struct PaywallView: View {
 
                     // Social proof - Testimonios
                     TestimonialsCarousel()
-                    
+
                     // Estadísticas
                     HStack(spacing: 20) {
                         StatBadge(value: "93%", label: "Reducen ansiedad")
@@ -88,7 +88,7 @@ struct PaywallView: View {
                         Text("Todo incluido en Premium:")
                             .font(.headline)
                             .padding(.horizontal)
-                        
+
                         FeatureRow(
                             icon: "waveform", title: "Guías completas de audio",
                             description: "20+ ejercicios de respiración y relajación"
@@ -131,7 +131,7 @@ struct PaywallView: View {
                             selectedProduct = purchaseManager.products.first
                         }
                     }
-                    
+
                     // CTA Principal
                     if let product = selectedProduct {
                         Button(action: {
@@ -153,7 +153,7 @@ struct PaywallView: View {
                         .disabled(isPurchasing)
                         .padding(.horizontal)
                     }
-                    
+
                     // Garantía
                     HStack(spacing: 8) {
                         Image(systemName: "checkmark.shield.fill")
@@ -207,7 +207,7 @@ struct PaywallView: View {
             Text("No se pudo completar la compra. Inténtalo de nuevo.")
         }
     }
-    
+
     private var timeFormatted: String {
         let minutes = timeRemaining / 60
         let seconds = timeRemaining % 60
@@ -238,7 +238,7 @@ struct TestimonialsCarousel: View {
         Testimonial(text: "El programa de 30 días cambió mi vida. Lo recomiendo 100%.", author: "Carlos R.", rating: 5),
         Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana L.", rating: 5)
     ]
-    
+
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             HStack(spacing: 16) {
@@ -260,7 +260,7 @@ struct Testimonial: Identifiable {
 
 struct TestimonialCard: View {
     let testimonial: Testimonial
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 2) {
@@ -270,12 +270,12 @@ struct TestimonialCard: View {
                         .foregroundStyle(.yellow)
                 }
             }
-            
+
             Text("\"\(testimonial.text)\"")
                 .font(.footnote)
                 .foregroundStyle(.primary)
                 .lineLimit(3)
-            
+
             Text("— \(testimonial.author)")
                 .font(.caption)
                 .foregroundStyle(.secondary)
@@ -290,7 +290,7 @@ struct TestimonialCard: View {
 struct StatBadge: View {
     let value: String
     let label: String
-    
+
     var body: some View {
         VStack(spacing: 4) {
             Text(value)
@@ -312,18 +312,18 @@ struct ProductCard: View {
     let isSelected: Bool
     @Binding var isPurchasing: Bool
     let onSelect: () -> Void
-    
+
     var isYearly: Bool {
         product.id.contains("yearly")
     }
-    
+
     var savings: String? {
         if isYearly {
             return "Ahorra 50%"
         }
         return nil
     }
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
@@ -331,7 +331,7 @@ struct ProductCard: View {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
                     .foregroundStyle(isSelected ? .blue : .secondary)
-                
+
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(product.displayName)
@@ -347,7 +347,7 @@ struct ProductCard: View {
                                 .clipShape(Capsule())
                         }
                     }
-                    
+
                     if isYearly {
                         Text("Solo \(monthlyPrice)/mes")
                             .font(.caption)
@@ -379,7 +379,7 @@ struct ProductCard: View {
         .buttonStyle(.plain)
         .disabled(isPurchasing)
     }
-    
+
     private var monthlyPrice: String {
         let yearlyPrice = product.price
         let monthlyAmount = yearlyPrice / 12
@@ -437,7 +437,7 @@ struct PaywallSimpleView: View {
                             .padding(.horizontal)
                     }
                     .padding(.top, 20)
-                    
+
                     // Estadísticas rápidas
                     HStack(spacing: 16) {
                         MiniStatBadge(value: "93%", label: "Eficacia")
@@ -469,7 +469,7 @@ struct PaywallSimpleView: View {
                                 selectedProduct = purchaseManager.products.first
                             }
                         }
-                        
+
                         // CTA
                         if let product = selectedProduct {
                             Button(action: {
@@ -495,7 +495,7 @@ struct PaywallSimpleView: View {
                             .buttonStyle(PrimaryButtonStyle(color: .orange))
                         }
                     }
-                    
+
                     // Garantía
                     HStack(spacing: 6) {
                         Image(systemName: "checkmark.shield.fill")
@@ -522,7 +522,7 @@ struct PaywallSimpleView: View {
 struct MiniStatBadge: View {
     let value: String
     let label: String
-    
+
     var body: some View {
         VStack(spacing: 2) {
             Text(value)
@@ -543,17 +543,17 @@ struct SimpleProductCard: View {
     let product: Product
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     var isYearly: Bool {
         product.id.contains("yearly")
     }
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(isSelected ? .orange : .secondary)
-                
+
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(product.displayName)
@@ -570,9 +570,9 @@ struct SimpleProductCard: View {
                         }
                     }
                 }
-                
+
                 Spacer()
-                
+
                 Text(product.displayPrice)
                     .font(.subheadline.bold())
             }

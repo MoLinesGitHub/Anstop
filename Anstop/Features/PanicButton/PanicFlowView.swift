@@ -89,49 +89,49 @@ struct PanicCompletionView: View {
     let isPremium: Bool
     let onContinue: () -> Void
     let onShowPremium: () -> Void
-    
+
     var body: some View {
         VStack(spacing: 30) {
             Spacer()
-            
+
             // Icono de éxito
             ZStack {
                 Circle()
                     .fill(Color.green.opacity(0.2))
                     .frame(width: 120, height: 120)
-                
+
                 Image(systemName: "checkmark.circle.fill")
                     .font(.system(size: 80))
                     .foregroundStyle(.green)
                     .symbolEffect(.bounce)
             }
-            
+
             Text("Lo lograste")
                 .font(.largeTitle)
                 .bold()
-            
+
             Text("Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.")
                 .font(.body)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)
-            
+
             // Mostrar CTA premium solo a usuarios no premium
             if !isPremium {
                 VStack(spacing: 16) {
                     Divider()
                         .padding(.horizontal, 40)
-                    
+
                     // Sugerencia Premium
                     VStack(spacing: 12) {
                         Text("🌟 ¿Quieres más herramientas?")
                             .font(.headline)
-                        
+
                         Text("Con Premium tendrás acceso a 20+ guías de audio, el programa de 30 días y un asistente IA disponible 24/7.")
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
-                        
+
                         Button(action: onShowPremium) {
                             HStack {
                                 Image(systemName: "crown.fill")
@@ -150,9 +150,9 @@ struct PanicCompletionView: View {
                     .padding(.horizontal, 30)
                 }
             }
-            
+
             Spacer()
-            
+
             if isPremium {
                 Button(action: onContinue) {
                     Text("Volver al inicio")

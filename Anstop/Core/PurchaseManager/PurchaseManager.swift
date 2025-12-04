@@ -7,7 +7,7 @@ import OSLog
 final class PurchaseManager {
     // Logger para contexto estático (nonisolated para evitar actor isolation)
     nonisolated private static let logger = Logger(subsystem: "com.molinesdesigns.Anstop", category: "purchases")
-    
+
     // Global transaction updates listener to ensure we never miss updates
     private static let globalTransactionUpdatesTask: Task<Void, Never> = Task {
         for await result in Transaction.updates {
@@ -37,7 +37,7 @@ final class PurchaseManager {
         "premium.monthly",
         "premium.yearly",
     ]
-    
+
     private var transactionUpdatesTask: Task<Void, Never>?
 
     var isPremium: Bool {
@@ -49,13 +49,13 @@ final class PurchaseManager {
         transactionUpdatesTask = Task { @MainActor in
             await listenForTransactionUpdates()
         }
-        
+
         Task {
             await loadProducts()
             await updatePurchasedProducts()
         }
     }
-    
+
     deinit {
         // No necesitamos cancelar aquí, la tarea se cancela automáticamente
         // cuando el objeto es desreferenciado
@@ -75,28 +75,28 @@ final class PurchaseManager {
 
     func purchase(_ product: Product) async throws -> Bool {
         let result = try await product.purchase()
-        
+
         switch result {
         case .success(let verificationResult):
             // Validar con ReceiptValidator
             let transaction = try ReceiptValidator.shared.validateTransaction(verificationResult)
-            
+
             // Verificar que esté activa
             guard ReceiptValidator.shared.isTransactionValid(transaction) else {
                 throw ReceiptError.transactionRevoked
             }
-            
+
             // Actualizar estado
             await updatePurchasedProducts()
-            
+
             // Finalizar
             await transaction.finish()
-            
+
             return true
-            
+
         case .userCancelled:
             return false
-            
+
         case .pending:
             return false
         @unknown default:
@@ -119,7 +119,7 @@ final class PurchaseManager {
 
         purchasedProductIDs = purchasedIDs
     }
-    
+
     private func listenForTransactionUpdates() async {
         // Instance-scoped listener (kept for redundancy); global listener above starts at launch.
         for await result in Transaction.updates {
@@ -127,12 +127,12 @@ final class PurchaseManager {
                 Logger.purchases.warning("Received unverified transaction update")
                 continue
             }
-            
+
             Logger.purchases.info("Transaction update received for product: \(transaction.productID)")
-            
+
             // Update purchased products when transaction updates
             await updatePurchasedProducts()
-            
+
             // Finish the transaction
             await transaction.finish()
         }

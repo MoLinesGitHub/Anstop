@@ -1,0 +1,106 @@
+# SwiftLint Configuration for Anstop
+
+disabled_rules:
+  - trailing_whitespace
+
+opt_in_rules:
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - enum_case_associated_values_count
+  - extension_access_modifier
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicitly_unwrapped_optional
+  - last_where
+  - legacy_multiple
+  - literal_expression_end_indentation
+  - multiline_arguments
+  - multiline_function_chains
+  - multiline_literal_brackets
+  - multiline_parameters
+  - operator_usage_whitespace
+  - overridden_super_call
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - prohibited_super_call
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - sorted_first_last
+  - toggle_bool
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - vertical_parameter_alignment_on_call
+
+# Configurable rules
+line_length:
+  warning: 200
+  error: 300
+  ignores_function_declarations: true
+  ignores_comments: true
+  ignores_urls: true
+
+identifier_name:
+  min_length:
+    warning: 3
+    error: 2
+  max_length:
+    warning: 60
+    error: 80
+  excluded:
+    - id
+    - ok
+    - to
+    - ID
+    - URL
+    - up
+    - db
+    - ai
+    - AI
+  allowed_symbols:
+    - _
+
+type_body_length:
+  warning: 400
+  error: 500
+
+file_length:
+  warning: 600
+  error: 1000
+
+function_body_length:
+  warning: 60
+  error: 100
+
+type_name:
+  min_length:
+    warning: 3
+    error: 0
+  max_length:
+    warning: 50
+    error: 60
+
+nesting:
+  type_level:
+    warning: 2
+  function_level:
+    warning: 3
+
+# Excluded paths
+excluded:
+  - Pods
+  - .build
+  - DerivedData
+  - Carthage
+  - Package.swift
+  - "*.generated.swift"
+  - Tests
+  - UITests
+
+reporter: xcode

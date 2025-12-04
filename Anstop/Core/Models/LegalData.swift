@@ -20,7 +20,9 @@ Tus datos se utilizan exclusivamente dentro de la aplicación para proporcionart
 No vendemos, alquilamos ni compartimos tus datos con terceros. Nunca.
 
 **4. Tus Derechos (GDPR/CCPA)**
-Tienes control total sobre tus datos. Puedes eliminar todo tu historial en cualquier momento desde la sección de Configuración de la aplicación. Al eliminar la aplicación, también se eliminan todos los datos almacenados localmente.
+Tienes control total sobre tus datos. Puedes eliminar todo tu historial en cualquier momento \
+desde la sección de Configuración de la aplicación. Al eliminar la aplicación, también se \
+eliminan todos los datos almacenados localmente.
 
 **5. Contacto**
 Si tienes preguntas sobre nuestra política de privacidad, contáctanos en privacy@anstop.app.
@@ -79,7 +81,9 @@ Usted NO puede:
 
 **2. PROPIEDAD INTELECTUAL**
 
-Todos los derechos, títulos e intereses en la Aplicación, incluyendo pero no limitado a código fuente, diseño, contenido de audio, textos e ilustraciones, son y permanecerán propiedad exclusiva del Desarrollador.
+Todos los derechos, títulos e intereses en la Aplicación, incluyendo pero no limitado a \
+código fuente, diseño, contenido de audio, textos e ilustraciones, son y permanecerán \
+propiedad exclusiva del Desarrollador.
 
 ---
 
@@ -95,7 +99,9 @@ Se ofrece un período de prueba gratuito de 7 días para nuevos suscriptores. Si
 
 **3.3. Facturación y Renovación**
 
-Las suscripciones se cobran a través de su cuenta de Apple ID. La renovación automática ocurre 24 horas antes del final del período actual. Puede cancelar en cualquier momento desde la configuración de su cuenta de Apple. No hay reembolsos por períodos no utilizados.
+Las suscripciones se cobran a través de su cuenta de Apple ID. La renovación automática \
+ocurre 24 horas antes del final del período actual. Puede cancelar en cualquier momento \
+desde la configuración de su cuenta de Apple. No hay reembolsos por períodos no utilizados.
 
 **3.4. Gestión de Suscripciones**
 
@@ -105,25 +111,33 @@ Puede gestionar y cancelar sus suscripciones en: Configuración de iOS > [Su Nom
 
 **4. PRIVACIDAD Y PROTECCIÓN DE DATOS**
 
-Todos sus datos personales se almacenan exclusivamente en su dispositivo. No transmitimos, recopilamos ni almacenamos sus datos en servidores externos. Anstop cumple con GDPR, CCPA y las directivas de privacidad de Apple.
+Todos sus datos personales se almacenan exclusivamente en su dispositivo. No transmitimos, \
+recopilamos ni almacenamos sus datos en servidores externos. Anstop cumple con GDPR, CCPA \
+y las directivas de privacidad de Apple.
 
 ---
 
 **5. DESCARGO DE RESPONSABILIDAD MÉDICA**
 
-⚠️ IMPORTANTE: Anstop NO es un dispositivo médico, no está aprobado por la FDA y NO debe utilizarse para diagnosticar o tratar condiciones de salud mental. En caso de emergencia, contacte servicios de emergencia inmediatamente.
+⚠️ IMPORTANTE: Anstop NO es un dispositivo médico, no está aprobado por la FDA y NO debe \
+utilizarse para diagnosticar o tratar condiciones de salud mental. En caso de emergencia, \
+contacte servicios de emergencia inmediatamente.
 
 ---
 
 **6. LIMITACIÓN DE RESPONSABILIDAD**
 
-En la máxima medida permitida por la ley, el Desarrollador no será responsable de daños directos, indirectos, incidentales, especiales, consecuentes o ejemplares derivados del uso o la imposibilidad de usar la Aplicación.
+En la máxima medida permitida por la ley, el Desarrollador no será responsable de daños \
+directos, indirectos, incidentales, especiales, consecuentes o ejemplares derivados del \
+uso o la imposibilidad de usar la Aplicación.
 
 ---
 
 **7. TERMINACIÓN**
 
-Este EULA es efectivo hasta que sea terminado por usted o por el Desarrollador. Sus derechos bajo este EULA terminarán automáticamente si no cumple con los términos. Al terminar, debe dejar de usar y desinstalar la Aplicación.
+Este EULA es efectivo hasta que sea terminado por usted o por el Desarrollador. Sus \
+derechos bajo este EULA terminarán automáticamente si no cumple con los términos. Al \
+terminar, debe dejar de usar y desinstalar la Aplicación.
 
 ---
 
@@ -135,7 +149,9 @@ Este EULA se regirá e interpretará de acuerdo con las leyes de España, sin da
 
 **9. CAMBIOS EN EL EULA**
 
-El Desarrollador se reserva el derecho de modificar este EULA en cualquier momento. Los cambios entrarán en vigor inmediatamente después de su publicación en la Aplicación. El uso continuado implica aceptación de los cambios.
+El Desarrollador se reserva el derecho de modificar este EULA en cualquier momento. Los \
+cambios entrarán en vigor inmediatamente después de su publicación en la Aplicación. El \
+uso continuado implica aceptación de los cambios.
 
 ---
 

@@ -18,7 +18,7 @@ struct AudioGuidesView: View {
             ZStack {
                 // Fondo Anstop con partículas púrpura
                 AnstopBackground.audio
-                
+
                 List {
                     Section("Gratis") {
                         ForEach(AudioGuide.freeGuides) { guide in
