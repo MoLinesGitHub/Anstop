@@ -293,6 +293,30 @@ Según identidad de marca:
 - ThirtyDayProgram: cálculo de rachas
 - Accesibilidad: VoiceOver
 
+## 🤝 Contributing
+
+Este proyecto utiliza **CODEOWNERS** para revisión automática de código. Cuando abres un Pull Request, los code owners serán automáticamente solicitados para revisar.
+
+### Workflow de Contribución
+
+1. **Fork el repo** y crea un branch desde `main`
+2. **Haz tus cambios** siguiendo las guías de arquitectura
+3. **Asegúrate** que el CI pasa (SwiftLint + Build + Tests)
+4. **Abre un Pull Request** - Se asignará automáticamente un reviewer
+5. **Espera aprobación** del code owner
+6. **Merge** cuando esté aprobado y el CI esté verde
+
+### Branch Protection
+
+La rama `main` está protegida con:
+- ✅ CI debe pasar (`build-test`)
+- ✅ Al menos 1 approval de code owner
+- ✅ Conversaciones deben resolverse
+- ❌ Force push prohibido
+- ❌ Direct push prohibido (usar PRs)
+
+📖 **Más info:** Ver [`.github/CODEOWNERS_README.md`](.github/CODEOWNERS_README.md)
+
 ## 📄 Licencia
 
 Proyecto privado - En desarrollo
