@@ -158,14 +158,14 @@ struct HomeView: View {
 
 struct PremiumBanner: View {
     let onTap: () -> Void
-    
+
     var body: some View {
         Button(action: onTap) {
             HStack(spacing: 12) {
                 Image(systemName: "crown.fill")
                     .font(.title3)
                     .foregroundStyle(.yellow)
-                
+
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Desbloquea todas las funciones")
                         .font(.subheadline.bold())
@@ -174,9 +174,9 @@ struct PremiumBanner: View {
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.9))
                 }
-                
+
                 Spacer()
-                
+
                 Image(systemName: "chevron.right")
                     .font(.caption)
                     .foregroundStyle(.white.opacity(0.8))

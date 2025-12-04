@@ -16,14 +16,14 @@ struct BreathingView: View {
         ZStack {
             // Fondo Anstop con ondas líquidas y partículas cyan
             AnstopBackground.breathing
-            
+
             VStack(spacing: 40) {
                 // Selector de protocolo con diseño glass
                 VStack(spacing: 16) {
                     Text("Elige tu técnica")
                         .font(.headline)
                         .foregroundStyle(.secondary)
-                    
+
                     Picker("Protocolo", selection: $selectedProtocol) {
                         ForEach(BreathingProtocol.allCases) { item in
                             Text(item.rawValue).tag(item)
@@ -32,9 +32,9 @@ struct BreathingView: View {
                     .pickerStyle(.segmented)
                     .padding(.horizontal, 20)
                 }
-                
+
                 Spacer()
-                
+
                 // Círculo de respiración con efecto glass
                 ZStack {
                     // Círculo exterior con efecto glow suave
@@ -52,32 +52,32 @@ struct BreathingView: View {
                             )
                         )
                         .frame(width: 300, height: 300)
-                    
+
                     BreathingCircle()
                 }
-                
+
                 Spacer()
-                
+
                 // Información del protocolo con diseño glassmorphic
                 // TODO: Reactivar GlassKit.CrystalLiquidCard cuando se publique versión pública
                 VStack(alignment: .leading, spacing: 16) {
                     Text(selectedProtocol.name)
                         .font(.title2)
                         .fontWeight(.semibold)
-                    
+
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Image(systemName: "lungs.fill")
                                 .font(.title2)
                                 .foregroundStyle(.cyan)
-                            
+
                             Spacer()
                         }
-                        
+
                         Text(selectedProtocol.description)
                             .font(.subheadline)
                             .foregroundStyle(.secondary)
-                        
+
                         Text(selectedProtocol.benefits)
                             .font(.caption)
                             .foregroundStyle(.tertiary)
@@ -117,7 +117,7 @@ enum BreathingProtocol: String, CaseIterable, Identifiable {
         case .threeThreeThree: return "Inhala 3s, mantén 3s, exhala 3s"
         }
     }
-    
+
     var benefits: String {
         switch self {
         case .fourSevenEight: return "Ideal para calmar la mente y reducir la ansiedad rápidamente"

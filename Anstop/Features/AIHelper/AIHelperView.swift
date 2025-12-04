@@ -18,12 +18,12 @@ struct AIHelperView: View {
     @FocusState private var isFocused: Bool
     @Environment(\.dismiss) private var dismiss
     @Environment(\.colorScheme) private var colorScheme
-    
+
     // Colores calmantes para la UI
     private let accentColor = Color(red: 0.6, green: 0.4, blue: 0.8) // Púrpura suave
     private let userBubbleColor = Color(red: 0.5, green: 0.7, blue: 0.9) // Azul calmante
     private let aiBubbleColor = Color(red: 0.85, green: 0.9, blue: 0.95) // Gris azulado muy suave
-    
+
     // Sugerencias rápidas para el usuario
     private let quickSuggestions = [
         "¿Cómo puedo calmarme rápido?",
@@ -33,28 +33,28 @@ struct AIHelperView: View {
         "Ejercicios de grounding",
         "Pensamientos negativos"
     ]
-    
+
     var body: some View {
         ZStack {
             // Fondo con gradiente calmante
             backgroundView
-            
+
             VStack(spacing: 0) {
                 // Header personalizado
                 headerView
-                
+
                 // Contenido principal
                 if aiService.messages.isEmpty {
                     emptyStateView
                 } else {
                     messagesListView
                 }
-                
+
                 // Sugerencias rápidas
                 if showSuggestions && aiService.messages.count < 3 {
                     suggestionsView
                 }
-                
+
                 // Input area
                 inputAreaView
             }
@@ -64,9 +64,9 @@ struct AIHelperView: View {
             isFocused = false
         }
     }
-    
+
     // MARK: - Background
-    
+
     private var backgroundView: some View {
         ZStack {
             // Gradiente de fondo calmante
@@ -79,7 +79,7 @@ struct AIHelperView: View {
                 endPoint: .bottom
             )
             .ignoresSafeArea()
-            
+
             // Círculos decorativos sutiles
             GeometryReader { geometry in
                 Circle()
@@ -87,7 +87,7 @@ struct AIHelperView: View {
                     .frame(width: 300, height: 300)
                     .blur(radius: 60)
                     .offset(x: -100, y: -50)
-                
+
                 Circle()
                     .fill(Color.cyan.opacity(0.05))
                     .frame(width: 250, height: 250)
@@ -97,9 +97,9 @@ struct AIHelperView: View {
             .ignoresSafeArea()
         }
     }
-    
+
     // MARK: - Header
-    
+
     private var headerView: some View {
         HStack {
             Button {
@@ -115,27 +115,27 @@ struct AIHelperView: View {
                             .fill(.ultraThinMaterial)
                     )
             }
-            
+
             Spacer()
-            
+
             VStack(spacing: 2) {
                 HStack(spacing: 6) {
                     Image(systemName: "sparkles")
                         .font(.system(size: 14))
                         .foregroundStyle(accentColor)
-                    
+
                     Text("Asistente Anstop")
                         .font(.headline)
                         .foregroundStyle(.primary)
                 }
-                
+
                 Text("Tu compañero de bienestar")
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            
+
             Spacer()
-            
+
             Button {
                 HapticManager.shared.triggerSelection()
                 clearConversation()
@@ -155,13 +155,13 @@ struct AIHelperView: View {
         .padding(.top, 8)
         .padding(.bottom, 12)
     }
-    
+
     // MARK: - Empty State
-    
+
     private var emptyStateView: some View {
         VStack(spacing: 24) {
             Spacer()
-            
+
             // Icono principal con animación
             ZStack {
                 Circle()
@@ -173,7 +173,7 @@ struct AIHelperView: View {
                         )
                     )
                     .frame(width: 120, height: 120)
-                
+
                 Image(systemName: "bubble.left.and.bubble.right.fill")
                     .font(.system(size: 48))
                     .foregroundStyle(
@@ -185,13 +185,13 @@ struct AIHelperView: View {
                     )
             }
             .shadow(color: accentColor.opacity(0.3), radius: 20, x: 0, y: 10)
-            
+
             VStack(spacing: 12) {
                 Text("¿Cómo te sientes hoy?")
                     .font(.title2)
                     .fontWeight(.semibold)
                     .foregroundStyle(.primary)
-                
+
                 Text("Estoy aquí para escucharte y ayudarte\na encontrar calma en cualquier momento.")
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
@@ -199,14 +199,14 @@ struct AIHelperView: View {
                     .lineSpacing(4)
             }
             .padding(.horizontal, 32)
-            
+
             Spacer()
         }
         .transition(.opacity.combined(with: .scale(scale: 0.95)))
     }
-    
+
     // MARK: - Messages List
-    
+
     private var messagesListView: some View {
         ScrollViewReader { proxy in
             ScrollView {
@@ -224,7 +224,7 @@ struct AIHelperView: View {
                             removal: .opacity
                         ))
                     }
-                    
+
                     if aiService.isTyping {
                         AITypingIndicatorView(color: accentColor)
                             .padding(.leading)
@@ -244,9 +244,9 @@ struct AIHelperView: View {
             }
         }
     }
-    
+
     // MARK: - Suggestions
-    
+
     private var suggestionsView: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Sugerencias")
@@ -254,7 +254,7 @@ struct AIHelperView: View {
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
                 .padding(.leading, 4)
-            
+
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
                     ForEach(quickSuggestions, id: \.self) { suggestion in
@@ -279,9 +279,9 @@ struct AIHelperView: View {
         )
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
-    
+
     // MARK: - Input Area
-    
+
     private var inputAreaView: some View {
         HStack(spacing: 12) {
             // Campo de texto
@@ -303,7 +303,7 @@ struct AIHelperView: View {
                     )
             )
             .animation(.easeInOut(duration: 0.2), value: isFocused)
-            
+
             // Botón de enviar
             Button(action: sendMessage) {
                 ZStack {
@@ -322,7 +322,7 @@ struct AIHelperView: View {
                                 )
                         )
                         .frame(width: 48, height: 48)
-                    
+
                     Image(systemName: "arrow.up")
                         .font(.system(size: 18, weight: .semibold))
                         .foregroundStyle(canSend ? .white : .gray)
@@ -341,33 +341,33 @@ struct AIHelperView: View {
                 .ignoresSafeArea(edges: .bottom)
         )
     }
-    
+
     // MARK: - Computed Properties
-    
+
     private var canSend: Bool {
         !inputText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty && !aiService.isTyping
     }
-    
+
     // MARK: - Actions
-    
+
     private func sendMessage() {
         let text = inputText.trimmingCharacters(in: .whitespacesAndNewlines)
         guard !text.isEmpty else { return }
-        
+
         HapticManager.shared.triggerImpact(style: .light)
-        
+
         withAnimation(.easeOut(duration: 0.2)) {
             showSuggestions = false
         }
-        
+
         inputText = ""
         isFocused = false
-        
+
         Task {
             await aiService.sendMessage(text)
         }
     }
-    
+
     private func clearConversation() {
         withAnimation(.spring(response: 0.4)) {
             aiService.isTyping = false
@@ -385,7 +385,7 @@ struct MessageBubbleView: View {
     let userColor: Color
     let aiColor: Color
     let accentColor: Color
-    
+
     var body: some View {
         HStack(alignment: .bottom, spacing: 8) {
             if message.isUser {
@@ -402,13 +402,13 @@ struct MessageBubbleView: View {
                             )
                         )
                         .frame(width: 32, height: 32)
-                    
+
                     Image(systemName: "sparkles")
                         .font(.system(size: 14))
                         .foregroundStyle(accentColor)
                 }
             }
-            
+
             VStack(alignment: message.isUser ? .trailing : .leading, spacing: 4) {
                 Text(message.content)
                     .font(.body)
@@ -422,14 +422,14 @@ struct MessageBubbleView: View {
                     .shadow(color: .black.opacity(0.05), radius: 5, x: 0, y: 2)
             }
             .frame(maxWidth: 280, alignment: message.isUser ? .trailing : .leading)
-            
+
             if message.isUser {
                 // Avatar del usuario
                 ZStack {
                     Circle()
                         .fill(userColor.opacity(0.3))
                         .frame(width: 32, height: 32)
-                    
+
                     Image(systemName: "person.fill")
                         .font(.system(size: 14))
                         .foregroundStyle(userColor)
@@ -445,13 +445,13 @@ struct MessageBubbleView: View {
 
 struct AIBubbleShape: Shape {
     let isUser: Bool
-    
+
     func path(in rect: CGRect) -> Path {
         let radius: CGFloat = 18
         let tailSize: CGFloat = 6
-        
+
         var path = Path()
-        
+
         if isUser {
             // Burbuja del usuario (cola a la derecha)
             path.addRoundedRect(
@@ -465,7 +465,7 @@ struct AIBubbleShape: Shape {
                 cornerSize: CGSize(width: radius, height: radius)
             )
         }
-        
+
         return path
     }
 }
@@ -475,7 +475,7 @@ struct AIBubbleShape: Shape {
 struct AITypingIndicatorView: View {
     let color: Color
     @State private var animationPhase = 0
-    
+
     var body: some View {
         HStack(spacing: 4) {
             ForEach(0..<3, id: \.self) { index in
@@ -495,7 +495,7 @@ struct AITypingIndicatorView: View {
             await startAnimation()
         }
     }
-    
+
     private func startAnimation() async {
         while !Task.isCancelled {
             try? await Task.sleep(for: .milliseconds(400))
@@ -512,7 +512,7 @@ struct AISuggestionChip: View {
     let text: String
     let color: Color
     let action: () -> Void
-    
+
     var body: some View {
         Button(action: action) {
             Text(text)

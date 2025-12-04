@@ -27,7 +27,7 @@ struct PaywallSimpleView: View {
                             .padding(.horizontal)
                     }
                     .padding(.top, 20)
-                    
+
                     // Estadísticas rápidas
                     HStack(spacing: 16) {
                         MiniStatBadge(value: "93%", label: "Eficacia")
@@ -59,7 +59,7 @@ struct PaywallSimpleView: View {
                                 selectedProduct = purchaseManager.products.first
                             }
                         }
-                        
+
                         // CTA
                         if let product = selectedProduct {
                             Button(action: {
@@ -85,7 +85,7 @@ struct PaywallSimpleView: View {
                             .buttonStyle(PrimaryButtonStyle(color: .orange))
                         }
                     }
-                    
+
                     // Garantía
                     HStack(spacing: 6) {
                         Image(systemName: "checkmark.shield.fill")
@@ -112,7 +112,7 @@ struct PaywallSimpleView: View {
 struct MiniStatBadge: View {
     let value: String
     let label: String
-    
+
     var body: some View {
         VStack(spacing: 2) {
             Text(value)
@@ -133,17 +133,17 @@ struct SimpleProductCard: View {
     let product: Product
     let isSelected: Bool
     let onSelect: () -> Void
-    
+
     var isYearly: Bool {
         product.id.contains("yearly")
     }
-    
+
     var body: some View {
         Button(action: onSelect) {
             HStack {
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .foregroundStyle(isSelected ? .orange : .secondary)
-                
+
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(product.displayName)
@@ -160,9 +160,9 @@ struct SimpleProductCard: View {
                         }
                     }
                 }
-                
+
                 Spacer()
-                
+
                 Text(product.displayPrice)
                     .font(.subheadline.bold())
             }

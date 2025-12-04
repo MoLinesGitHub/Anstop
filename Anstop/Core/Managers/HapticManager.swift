@@ -14,7 +14,7 @@ final class HapticManager {
     private var impactGenerators: [UIImpactFeedbackGenerator.FeedbackStyle: UIImpactFeedbackGenerator] = [:]
     private lazy var notificationGenerator = UINotificationFeedbackGenerator()
     private lazy var selectionGenerator = UISelectionFeedbackGenerator()
-    
+
     private var canPlayHaptics: Bool {
         // Only depend on the app-level toggle
         return isEnabled

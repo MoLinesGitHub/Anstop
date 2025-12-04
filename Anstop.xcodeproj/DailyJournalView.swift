@@ -34,7 +34,7 @@ struct DailyJournalView: View {
             Text("Tu entrada del diario se ha guardado correctamente.")
         }
     }
-    
+
     private func saveEntry() {
         let trimmedNotes = notes.trimmingCharacters(in: .whitespacesAndNewlines)
         let entry = JournalEntry(date: Date(), mood: Int(mood), notes: trimmedNotes.isEmpty ? nil : trimmedNotes)
