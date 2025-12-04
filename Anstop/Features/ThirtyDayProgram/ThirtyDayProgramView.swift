@@ -26,11 +26,7 @@ struct ThirtyDayProgramView: View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 5)
 
     var body: some View {
-        ZStack {
-            // Fondo Anstop para el programa
-            AnstopBackground.program
-            
-            ScrollView {
+        ScrollView {
             VStack(spacing: 30) {
                 // Header con Racha
                 VStack(spacing: 12) {

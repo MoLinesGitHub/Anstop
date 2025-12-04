@@ -22,7 +22,7 @@ struct AnstopBackground: View {
     var accentColor: Color
     
     /// Número de partículas (0 = sin partículas)
-    var particleCount: Int
+    var count: Int
     
     /// Opacidad de las partículas
     var particleOpacity: Double
@@ -42,7 +42,7 @@ struct AnstopBackground: View {
     
     init(
         accentColor: Color = .cyan,
-        particleCount: Int = 20,
+        count: Int = 20,
         particleOpacity: Double = 0.15,
         particleSpeed: Double = 0.4,
         showWaves: Bool = true,
@@ -73,11 +73,11 @@ struct AnstopBackground: View {
             
             // 4. Partículas cristalinas (opcional)
             if particleCount > 0 {
-                GlassKit.CrystalParticles(
-                    particleCount: particleCount,
-                    baseColor: accentColor,
+                SimpleParticlesView(
+                    count: particleCount,
+                    color: accentColor,
                     opacity: particleOpacity * intensity,
-                    speedMultiplier: particleSpeed
+                    
                 )
             }
         }
@@ -218,7 +218,7 @@ extension AnstopBackground {
     static var home: AnstopBackground {
         AnstopBackground(
             accentColor: .cyan,
-            particleCount: 25,
+            count: 25,
             particleOpacity: 0.15,
             particleSpeed: 0.4,
             showWaves: true
@@ -229,7 +229,7 @@ extension AnstopBackground {
     static var breathing: AnstopBackground {
         AnstopBackground(
             accentColor: .cyan,
-            particleCount: 15,
+            count: 15,
             particleOpacity: 0.12,
             particleSpeed: 0.3,
             showWaves: true,
@@ -241,7 +241,7 @@ extension AnstopBackground {
     static var grounding: AnstopBackground {
         AnstopBackground(
             accentColor: .green,
-            particleCount: 20,
+            count: 20,
             particleOpacity: 0.12,
             particleSpeed: 0.35,
             showWaves: true
@@ -252,7 +252,7 @@ extension AnstopBackground {
     static var journal: AnstopBackground {
         AnstopBackground(
             accentColor: .indigo,
-            particleCount: 15,
+            count: 15,
             particleOpacity: 0.10,
             particleSpeed: 0.3,
             showWaves: false,
@@ -264,7 +264,7 @@ extension AnstopBackground {
     static var audio: AnstopBackground {
         AnstopBackground(
             accentColor: .purple,
-            particleCount: 12,
+            count: 12,
             particleOpacity: 0.10,
             particleSpeed: 0.25,
             showWaves: true,
@@ -276,7 +276,7 @@ extension AnstopBackground {
     static var aiHelper: AnstopBackground {
         AnstopBackground(
             accentColor: Color(red: 0.6, green: 0.4, blue: 0.8),
-            particleCount: 15,
+            count: 15,
             particleOpacity: 0.08,
             particleSpeed: 0.3,
             showWaves: false,
@@ -288,7 +288,7 @@ extension AnstopBackground {
     static var library: AnstopBackground {
         AnstopBackground(
             accentColor: .teal,
-            particleCount: 18,
+            count: 18,
             particleOpacity: 0.10,
             particleSpeed: 0.35,
             showWaves: true
@@ -299,7 +299,7 @@ extension AnstopBackground {
     static var settings: AnstopBackground {
         AnstopBackground(
             accentColor: .gray,
-            particleCount: 10,
+            count: 10,
             particleOpacity: 0.05,
             particleSpeed: 0.2,
             showWaves: false,
@@ -311,7 +311,7 @@ extension AnstopBackground {
     static var panic: AnstopBackground {
         AnstopBackground(
             accentColor: Color(red: 0.3, green: 0.6, blue: 0.9),
-            particleCount: 20,
+            count: 20,
             particleOpacity: 0.15,
             particleSpeed: 0.35,
             showWaves: true
@@ -322,7 +322,7 @@ extension AnstopBackground {
     static var program: AnstopBackground {
         AnstopBackground(
             accentColor: .mint,
-            particleCount: 18,
+            count: 18,
             particleOpacity: 0.12,
             particleSpeed: 0.35,
             showWaves: true
@@ -333,7 +333,7 @@ extension AnstopBackground {
     static var premium: AnstopBackground {
         AnstopBackground(
             accentColor: Color(red: 0.85, green: 0.65, blue: 0.2),
-            particleCount: 25,
+            count: 25,
             particleOpacity: 0.15,
             particleSpeed: 0.4,
             showWaves: true
@@ -343,7 +343,7 @@ extension AnstopBackground {
     /// Fondo mínimo (sin partículas ni ondas)
     static var minimal: AnstopBackground {
         AnstopBackground(
-            particleCount: 0,
+            count: 0,
             showWaves: false,
             intensity: 0.3
         )
@@ -353,30 +353,34 @@ extension AnstopBackground {
 // MARK: - View Extension
 
 extension View {
-    /// Aplica el fondo Anstop a la vista como background
+    /// Aplica el fondo Anstop a la vista
     func anstopBackground(_ background: AnstopBackground = .home) -> some View {
-        self.background(background)
+        ZStack {
+            background
+            self
+        }
     }
     
-    /// Aplica el fondo Anstop con configuración personalizada como background
+    /// Aplica el fondo Anstop con configuración personalizada
     func anstopBackground(
         accentColor: Color = .cyan,
-        particleCount: Int = 20,
+        count: Int = 20,
         particleOpacity: Double = 0.15,
         particleSpeed: Double = 0.4,
         showWaves: Bool = true,
         intensity: Double = 1.0
     ) -> some View {
-        self.background(
+        ZStack {
             AnstopBackground(
                 accentColor: accentColor,
-                particleCount: particleCount,
+                count: particleCount,
                 particleOpacity: particleOpacity,
                 particleSpeed: particleSpeed,
                 showWaves: showWaves,
                 intensity: intensity
             )
-        )
+            self
+        }
     }
     
     /// Aplica el fondo Anstop a un ScrollView o List haciendo el background transparente
