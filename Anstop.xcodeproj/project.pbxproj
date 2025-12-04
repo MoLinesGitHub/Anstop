@@ -7,10 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		994035FB2EE128DB0009C0BF /* GlassKitPro in Frameworks */ = {isa = PBXBuildFile; productRef = 994035FA2EE128DB0009C0BF /* GlassKitPro */; };
-		994035FD2EE128DB0009C0BF /* GlassKitProAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 994035FC2EE128DB0009C0BF /* GlassKitProAnimations */; };
 		995251F92EE0B5F500356710 /* GlassKitPro in Frameworks */ = {isa = PBXBuildFile; productRef = 995251F82EE0B5F500356710 /* GlassKitPro */; };
 		995251FB2EE0B5F500356710 /* GlassKitProAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 995251FA2EE0B5F500356710 /* GlassKitProAnimations */; };
+		99BC804F2EE1971D0024B740 /* GlassKitPro in Frameworks */ = {isa = PBXBuildFile; productRef = 99BC804E2EE1971D0024B740 /* GlassKitPro */; };
+		99BC80512EE1971D0024B740 /* GlassKitProAnimations in Frameworks */ = {isa = PBXBuildFile; productRef = 99BC80502EE1971D0024B740 /* GlassKitProAnimations */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,8 +73,8 @@
 			files = (
 				995251F92EE0B5F500356710 /* GlassKitPro in Frameworks */,
 				995251FB2EE0B5F500356710 /* GlassKitProAnimations in Frameworks */,
-				994035FB2EE128DB0009C0BF /* GlassKitPro in Frameworks */,
-				994035FD2EE128DB0009C0BF /* GlassKitProAnimations in Frameworks */,
+				99BC804F2EE1971D0024B740 /* GlassKitPro in Frameworks */,
+				99BC80512EE1971D0024B740 /* GlassKitProAnimations in Frameworks */,
 			);
 		};
 		998A5AAB2ED4AD1B005E1458 /* Frameworks */ = {
@@ -122,8 +122,8 @@
 			packageProductDependencies = (
 				995251F82EE0B5F500356710 /* GlassKitPro */,
 				995251FA2EE0B5F500356710 /* GlassKitProAnimations */,
-				994035FA2EE128DB0009C0BF /* GlassKitPro */,
-				994035FC2EE128DB0009C0BF /* GlassKitProAnimations */,
+				99BC804E2EE1971D0024B740 /* GlassKitPro */,
+				99BC80502EE1971D0024B740 /* GlassKitProAnimations */,
 			);
 			productName = Anstop;
 			productReference = 99C1FF202ED4AEED00033118 /* Anstop.app */;
@@ -206,7 +206,7 @@
 			mainGroup = 998A5A982ED4AD1A005E1458;
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
-				995251FD2EE0C4BC00356710 /* XCRemoteSwiftPackageReference "GlassKitPro" */,
+				99BC804D2EE1971D0024B740 /* XCLocalSwiftPackageReference "GlassKitPro" */,
 			);
 			preferredProjectObjectVersion = 90;
 			productRefGroup = 998A5A982ED4AD1A005E1458;
@@ -691,33 +691,27 @@
 		};
 /* End XCConfigurationList section */
 
-/* Begin XCRemoteSwiftPackageReference section */
-		995251FD2EE0C4BC00356710 /* XCRemoteSwiftPackageReference "GlassKitPro" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/MoLinesGitHub/GlassKitPro.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.3;
-			};
+/* Begin XCLocalSwiftPackageReference section */
+		99BC804D2EE1971D0024B740 /* XCLocalSwiftPackageReference "GlassKitPro" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = GlassKitPro;
 		};
-/* End XCRemoteSwiftPackageReference section */
+/* End XCLocalSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		994035FA2EE128DB0009C0BF /* GlassKitPro */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 995251FD2EE0C4BC00356710 /* XCRemoteSwiftPackageReference "GlassKitPro" */;
-			productName = GlassKitPro;
-		};
-		994035FC2EE128DB0009C0BF /* GlassKitProAnimations */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 995251FD2EE0C4BC00356710 /* XCRemoteSwiftPackageReference "GlassKitPro" */;
-			productName = GlassKitProAnimations;
-		};
 		995251F82EE0B5F500356710 /* GlassKitPro */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GlassKitPro;
 		};
 		995251FA2EE0B5F500356710 /* GlassKitProAnimations */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GlassKitProAnimations;
+		};
+		99BC804E2EE1971D0024B740 /* GlassKitPro */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GlassKitPro;
+		};
+		99BC80502EE1971D0024B740 /* GlassKitProAnimations */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = GlassKitProAnimations;
 		};
