@@ -130,10 +130,14 @@ struct AnstopBackground: View {
             )
             .background(
                 Canvas { context, size in
+                    // Evitar rangos vacíos que causan crash
+                    guard size.width > 0, size.height > 0 else { return }
+                    
                     // Patrón de ruido sutil
-                    for _ in 0..<Int(size.width * size.height * 0.0003) {
-                        let x = CGFloat.random(in: 0..<size.width)
-                        let y = CGFloat.random(in: 0..<size.height)
+                    let noiseCount = max(1, Int(size.width * size.height * 0.0003))
+                    for _ in 0..<noiseCount {
+                        let x = CGFloat.random(in: 0...size.width)
+                        let y = CGFloat.random(in: 0...size.height)
                         let opacity = Double.random(in: 0.01...0.03) * intensity
                         
                         context.fill(
