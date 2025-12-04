@@ -1,0 +1,54 @@
+# CODEOWNERS for Anstop
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Default owners for everything in the repo
+# These owners will be requested for review when someone opens a pull request
+*       @MoLinesGitHub
+
+# Swift code (main codebase)
+*.swift @MoLinesGitHub
+
+# Xcode project files
+*.xcodeproj/** @MoLinesGitHub
+*.xcworkspace/** @MoLinesGitHub
+
+# Workflows and CI/CD
+/.github/workflows/ @MoLinesGitHub
+
+# Configuration files
+*.yml @MoLinesGitHub
+*.yaml @MoLinesGitHub
+.swiftlint.yml @MoLinesGitHub
+.swiftformat @MoLinesGitHub
+
+# Package dependencies
+Package.swift @MoLinesGitHub
+Package.resolved @MoLinesGitHub
+.gitmodules @MoLinesGitHub
+
+# Documentation
+*.md @MoLinesGitHub
+/docs/ @MoLinesGitHub
+
+# Core business logic - Require extra careful review
+/Anstop/Domain/ @MoLinesGitHub
+/Anstop/Core/PurchaseManager/ @MoLinesGitHub
+/Anstop/Core/Secrets/ @MoLinesGitHub
+
+# UI Components - Design review
+/Anstop/UI/ @MoLinesGitHub
+/Anstop/Features/ @MoLinesGitHub
+
+# Tests - Ensure test coverage
+/AnstopTests/ @MoLinesGitHub
+/AnstopUITests/ @MoLinesGitHub
+
+# Resources and Assets
+/Anstop/Resources/ @MoLinesGitHub
+
+# StoreKit Configuration (sensitive)
+Configuration.storekit @MoLinesGitHub
+
+# Legal and compliance files
+EULA.md @MoLinesGitHub
+/Anstop/Core/Models/LegalData.swift @MoLinesGitHub
