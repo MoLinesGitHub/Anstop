@@ -51,8 +51,9 @@ struct AnstopBackground: View {
                 SimpleParticlesView(
                     count: particleCount,
                     color: accentColor,
-                    opacity: particleOpacity * intensity,
-                    speed: particleSpeed
+                    opacity: particleOpacity * intensity * (colorScheme == .dark ? 1.0 : 2.0),
+                    speed: particleSpeed,
+                    colorScheme: colorScheme
                 )
             }
         }
@@ -67,11 +68,12 @@ struct AnstopBackground: View {
         )
     }
     
+    /// Colores para modo claro - usando AccentColor
     private var lightGradientColors: [Color] {
         [
-            Color(red: 0.95, green: 0.97, blue: 1.0),
-            Color(red: 0.92, green: 0.95, blue: 0.98),
-            Color(red: 0.90, green: 0.94, blue: 0.97)
+            Color.accentColor.opacity(0.12),
+            Color.accentColor.opacity(0.18),
+            Color.accentColor.opacity(0.22)
         ]
     }
     
@@ -92,11 +94,7 @@ struct AnstopBackground: View {
     
     private var noiseTexture: some View {
         Rectangle()
-            .fill(
-                colorScheme == .dark
-                    ? Color.white.opacity(0.02 * intensity)
-                    : Color.black.opacity(0.015 * intensity)
-            )
+            .fill(.clear)
             .background(
                 Canvas { context, size in
                     guard size.width > 1, size.height > 1 else { return }
@@ -106,10 +104,11 @@ struct AnstopBackground: View {
                         let x = CGFloat.random(in: 1...size.width)
                         let y = CGFloat.random(in: 1...size.height)
                         let opacity = Double.random(in: 0.01...0.03) * intensity
+                        let baseOpacity = colorScheme == .dark ? 0.02 : 0.04
                         
                         context.fill(
                             Path(ellipseIn: CGRect(x: x, y: y, width: 1, height: 1)),
-                            with: .color(colorScheme == .dark ? .white.opacity(opacity) : .black.opacity(opacity))
+                            with: .color(colorScheme == .dark ? .white.opacity(opacity) : .black.opacity(opacity * baseOpacity))
                         )
                     }
                 }
@@ -124,6 +123,7 @@ private struct SimpleParticlesView: View {
     let color: Color
     let opacity: Double
     let speed: Double
+    let colorScheme: ColorScheme
     
     @State private var particles: [Particle] = []
     
@@ -206,9 +206,10 @@ private struct LiquidWavesView: View {
     }
     
     private func drawWaves(context: GraphicsContext, size: CGSize, phase: Double) {
+        let waveOpacity = colorScheme == .dark ? 0.04 : 0.08
         let waveColor = colorScheme == .dark
-            ? Color.white.opacity(0.04 * intensity)
-            : Color.black.opacity(0.02 * intensity)
+            ? Color.white.opacity(waveOpacity * intensity)
+            : Color.black.opacity(waveOpacity * intensity)
         
         var path1 = Path()
         path1.move(to: CGPoint(x: 0, y: size.height * 0.6))
@@ -249,47 +250,47 @@ private struct LiquidWavesView: View {
 extension AnstopBackground {
     
     static var home: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 25, particleOpacity: 0.15, particleSpeed: 0.4, showWaves: true)
+        AnstopBackground(accentColor: .cyan, count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
     
     static var breathing: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 15, particleOpacity: 0.12, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
+        AnstopBackground(accentColor: .cyan, count: 20, particleOpacity: 0.15, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
     
     static var grounding: AnstopBackground {
-        AnstopBackground(accentColor: .green, count: 20, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .green, count: 25, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
     }
     
     static var journal: AnstopBackground {
-        AnstopBackground(accentColor: .indigo, count: 15, particleOpacity: 0.10, particleSpeed: 0.3, showWaves: false, intensity: 0.7)
+        AnstopBackground(accentColor: .indigo, count: 20, particleOpacity: 0.12, particleSpeed: 0.3, showWaves: true, intensity: 0.7)
     }
     
     static var audio: AnstopBackground {
-        AnstopBackground(accentColor: .purple, count: 12, particleOpacity: 0.10, particleSpeed: 0.25, showWaves: true, intensity: 0.6)
+        AnstopBackground(accentColor: .purple, count: 18, particleOpacity: 0.12, particleSpeed: 0.25, showWaves: true, intensity: 0.6)
     }
     
     static var aiHelper: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.6, green: 0.4, blue: 0.8), count: 15, particleOpacity: 0.08, particleSpeed: 0.3, showWaves: false, intensity: 0.8)
+        AnstopBackground(accentColor: Color(red: 0.6, green: 0.4, blue: 0.8), count: 20, particleOpacity: 0.10, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
     
     static var library: AnstopBackground {
-        AnstopBackground(accentColor: .teal, count: 18, particleOpacity: 0.10, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .teal, count: 22, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
     }
     
     static var settings: AnstopBackground {
-        AnstopBackground(accentColor: .gray, count: 10, particleOpacity: 0.05, particleSpeed: 0.2, showWaves: false, intensity: 0.5)
+        AnstopBackground(accentColor: .gray, count: 15, particleOpacity: 0.08, particleSpeed: 0.2, showWaves: true, intensity: 0.5)
     }
     
     static var panic: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.3, green: 0.6, blue: 0.9), count: 20, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: Color(red: 0.3, green: 0.6, blue: 0.9), count: 25, particleOpacity: 0.18, particleSpeed: 0.35, showWaves: true)
     }
     
     static var program: AnstopBackground {
-        AnstopBackground(accentColor: .mint, count: 18, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .mint, count: 22, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
     }
     
     static var premium: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.85, green: 0.65, blue: 0.2), count: 25, particleOpacity: 0.15, particleSpeed: 0.4, showWaves: true)
+        AnstopBackground(accentColor: Color(red: 0.85, green: 0.65, blue: 0.2), count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
     
     static var minimal: AnstopBackground {
