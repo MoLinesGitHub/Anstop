@@ -4,40 +4,22 @@
 //
 //  Created on 2025-12-04.
 //  Fondo unificado para todas las vistas de Anstop
-//  Usa GlassKitPro: LiquidFlowBackground + CrystalParticles
 //
 
 import SwiftUI
 
 // MARK: - Anstop Background
 
-/// Fondo unificado para todas las vistas de Anstop.
-/// Combina gradientes adaptativos, ondas líquidas y partículas cristalinas.
 struct AnstopBackground: View {
     
-    // MARK: - Configuration
-    
-    /// Color de acento para las partículas (opcional)
     var accentColor: Color
-    
-    /// Número de partículas (0 = sin partículas)
     var particleCount: Int
-    
-    /// Opacidad de las partículas
     var particleOpacity: Double
-    
-    /// Velocidad de las partículas
     var particleSpeed: Double
-    
-    /// Mostrar ondas líquidas
     var showWaves: Bool
-    
-    /// Intensidad del fondo (0.0 - 1.0)
     var intensity: Double
     
     @Environment(\.colorScheme) private var colorScheme
-    
-    // MARK: - Initializer
     
     init(
         accentColor: Color = .cyan,
@@ -55,22 +37,16 @@ struct AnstopBackground: View {
         self.intensity = intensity
     }
     
-    // MARK: - Body
-    
     var body: some View {
         ZStack {
-            // 1. Gradiente base adaptativo
             adaptiveGradient
             
-            // 2. Ondas líquidas sutiles (opcional)
             if showWaves {
                 liquidWaves
             }
             
-            // 3. Textura de ruido sutil
             noiseTexture
             
-            // 4. Partículas cristalinas (opcional)
             if particleCount > 0 {
                 SimpleParticlesView(
                     count: particleCount,
@@ -83,9 +59,6 @@ struct AnstopBackground: View {
         .ignoresSafeArea()
     }
     
-    // MARK: - Subviews
-    
-    /// Gradiente que se adapta a light/dark mode
     private var adaptiveGradient: some View {
         LinearGradient(
             colors: colorScheme == .dark ? darkGradientColors : lightGradientColors,
@@ -94,7 +67,6 @@ struct AnstopBackground: View {
         )
     }
     
-    /// Colores para modo claro
     private var lightGradientColors: [Color] {
         [
             Color(red: 0.95, green: 0.97, blue: 1.0),
@@ -103,7 +75,6 @@ struct AnstopBackground: View {
         ]
     }
     
-    /// Colores para modo oscuro
     private var darkGradientColors: [Color] {
         [
             Color(red: 0.08, green: 0.10, blue: 0.14),
@@ -112,7 +83,6 @@ struct AnstopBackground: View {
         ]
     }
     
-    /// Ondas líquidas animadas
     private var liquidWaves: some View {
         LiquidWavesView(
             colorScheme: colorScheme,
@@ -120,7 +90,6 @@ struct AnstopBackground: View {
         )
     }
     
-    /// Textura de ruido sutil para efecto glass
     private var noiseTexture: some View {
         Rectangle()
             .fill(
@@ -130,14 +99,12 @@ struct AnstopBackground: View {
             )
             .background(
                 Canvas { context, size in
-                    // Guard para evitar crash con rangos vacíos
-                    guard size.width > 0, size.height > 0 else { return }
+                    guard size.width > 1, size.height > 1 else { return }
                     
-                    // Patrón de ruido sutil
                     let noiseCount = max(1, Int(size.width * size.height * 0.0003))
                     for _ in 0..<noiseCount {
-                        let x = CGFloat.random(in: 0...size.width)
-                        let y = CGFloat.random(in: 0...size.height)
+                        let x = CGFloat.random(in: 1...size.width)
+                        let y = CGFloat.random(in: 1...size.height)
                         let opacity = Double.random(in: 0.01...0.03) * intensity
                         
                         context.fill(
@@ -152,7 +119,6 @@ struct AnstopBackground: View {
 
 // MARK: - Simple Particles View
 
-/// Partículas flotantes simples inspiradas en GlassKitPro CrystalParticles
 private struct SimpleParticlesView: View {
     let count: Int
     let color: Color
@@ -160,7 +126,6 @@ private struct SimpleParticlesView: View {
     let speed: Double
     
     @State private var particles: [Particle] = []
-    @State private var animationTrigger: Bool = false
     
     private struct Particle: Identifiable {
         let id = UUID()
@@ -176,23 +141,19 @@ private struct SimpleParticlesView: View {
         GeometryReader { geometry in
             TimelineView(.animation(minimumInterval: 1/30)) { timeline in
                 Canvas { context, size in
+                    guard size.width > 1, size.height > 1 else { return }
+                    
                     let date = timeline.date.timeIntervalSinceReferenceDate
                     
                     for particle in particles {
-                        // Calcular posición basada en tiempo
                         let timeOffset = date.truncatingRemainder(dividingBy: 1000)
-                        let x = (particle.x + particle.speedX * timeOffset * 30).truncatingRemainder(dividingBy: size.width)
-                        let y = (particle.y + particle.speedY * timeOffset * 30).truncatingRemainder(dividingBy: size.height)
+                        var x = (particle.x + particle.speedX * timeOffset * 30).truncatingRemainder(dividingBy: size.width)
+                        var y = (particle.y + particle.speedY * timeOffset * 30).truncatingRemainder(dividingBy: size.height)
                         
-                        let adjustedX = x < 0 ? x + size.width : x
-                        let adjustedY = y < 0 ? y + size.height : y
+                        if x < 0 { x += size.width }
+                        if y < 0 { y += size.height }
                         
-                        let rect = CGRect(
-                            x: adjustedX,
-                            y: adjustedY,
-                            width: particle.size,
-                            height: particle.size
-                        )
+                        let rect = CGRect(x: x, y: y, width: particle.size, height: particle.size)
                         context.fill(
                             Path(ellipseIn: rect),
                             with: .color(color.opacity(particle.opacity * opacity))
@@ -210,10 +171,15 @@ private struct SimpleParticlesView: View {
     }
     
     private func initializeParticles(in size: CGSize) {
+        guard size.width > 1, size.height > 1, count > 0 else {
+            particles = []
+            return
+        }
+        
         particles = (0..<count).map { _ in
             Particle(
-                x: CGFloat.random(in: 0..<size.width),
-                y: CGFloat.random(in: 0..<size.height),
+                x: CGFloat.random(in: 1...size.width),
+                y: CGFloat.random(in: 1...size.height),
                 size: CGFloat.random(in: 2...6),
                 opacity: Double.random(in: 0.3...1.0),
                 speedX: CGFloat.random(in: -0.5...0.5) * speed,
@@ -225,7 +191,6 @@ private struct SimpleParticlesView: View {
 
 // MARK: - Liquid Waves View
 
-/// Ondas líquidas animadas inspiradas en GlassKitPro
 private struct LiquidWavesView: View {
     let colorScheme: ColorScheme
     let intensity: Double
@@ -233,6 +198,7 @@ private struct LiquidWavesView: View {
     var body: some View {
         TimelineView(.animation(minimumInterval: 1/30)) { timeline in
             Canvas { context, size in
+                guard size.width > 1, size.height > 1 else { return }
                 let phase = timeline.date.timeIntervalSinceReferenceDate * 0.5 * intensity
                 drawWaves(context: context, size: size, phase: phase)
             }
@@ -244,7 +210,6 @@ private struct LiquidWavesView: View {
             ? Color.white.opacity(0.04 * intensity)
             : Color.black.opacity(0.02 * intensity)
         
-        // Primera onda
         var path1 = Path()
         path1.move(to: CGPoint(x: 0, y: size.height * 0.6))
         
@@ -261,7 +226,6 @@ private struct LiquidWavesView: View {
         
         context.fill(path1, with: .color(waveColor))
         
-        // Segunda onda (más lenta)
         var path2 = Path()
         path2.move(to: CGPoint(x: 0, y: size.height * 0.7))
         
@@ -284,146 +248,58 @@ private struct LiquidWavesView: View {
 
 extension AnstopBackground {
     
-    /// Fondo para la pantalla principal (Home)
     static var home: AnstopBackground {
-        AnstopBackground(
-            accentColor: .cyan,
-            count: 25,
-            particleOpacity: 0.15,
-            particleSpeed: 0.4,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: .cyan, count: 25, particleOpacity: 0.15, particleSpeed: 0.4, showWaves: true)
     }
     
-    /// Fondo para ejercicios de respiración
     static var breathing: AnstopBackground {
-        AnstopBackground(
-            accentColor: .cyan,
-            count: 15,
-            particleOpacity: 0.12,
-            particleSpeed: 0.3,
-            showWaves: true,
-            intensity: 0.8
-        )
+        AnstopBackground(accentColor: .cyan, count: 15, particleOpacity: 0.12, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
     
-    /// Fondo para grounding
     static var grounding: AnstopBackground {
-        AnstopBackground(
-            accentColor: .green,
-            count: 20,
-            particleOpacity: 0.12,
-            particleSpeed: 0.35,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: .green, count: 20, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
     }
     
-    /// Fondo para el diario
     static var journal: AnstopBackground {
-        AnstopBackground(
-            accentColor: .indigo,
-            count: 15,
-            particleOpacity: 0.10,
-            particleSpeed: 0.3,
-            showWaves: false,
-            intensity: 0.7
-        )
+        AnstopBackground(accentColor: .indigo, count: 15, particleOpacity: 0.10, particleSpeed: 0.3, showWaves: false, intensity: 0.7)
     }
     
-    /// Fondo para audio/meditación
     static var audio: AnstopBackground {
-        AnstopBackground(
-            accentColor: .purple,
-            count: 12,
-            particleOpacity: 0.10,
-            particleSpeed: 0.25,
-            showWaves: true,
-            intensity: 0.6
-        )
+        AnstopBackground(accentColor: .purple, count: 12, particleOpacity: 0.10, particleSpeed: 0.25, showWaves: true, intensity: 0.6)
     }
     
-    /// Fondo para AI Helper
     static var aiHelper: AnstopBackground {
-        AnstopBackground(
-            accentColor: Color(red: 0.6, green: 0.4, blue: 0.8),
-            count: 15,
-            particleOpacity: 0.08,
-            particleSpeed: 0.3,
-            showWaves: false,
-            intensity: 0.8
-        )
+        AnstopBackground(accentColor: Color(red: 0.6, green: 0.4, blue: 0.8), count: 15, particleOpacity: 0.08, particleSpeed: 0.3, showWaves: false, intensity: 0.8)
     }
     
-    /// Fondo para biblioteca
     static var library: AnstopBackground {
-        AnstopBackground(
-            accentColor: .teal,
-            count: 18,
-            particleOpacity: 0.10,
-            particleSpeed: 0.35,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: .teal, count: 18, particleOpacity: 0.10, particleSpeed: 0.35, showWaves: true)
     }
     
-    /// Fondo para configuración
     static var settings: AnstopBackground {
-        AnstopBackground(
-            accentColor: .gray,
-            count: 10,
-            particleOpacity: 0.05,
-            particleSpeed: 0.2,
-            showWaves: false,
-            intensity: 0.5
-        )
+        AnstopBackground(accentColor: .gray, count: 10, particleOpacity: 0.05, particleSpeed: 0.2, showWaves: false, intensity: 0.5)
     }
     
-    /// Fondo para pánico (calma urgente)
     static var panic: AnstopBackground {
-        AnstopBackground(
-            accentColor: Color(red: 0.3, green: 0.6, blue: 0.9),
-            count: 20,
-            particleOpacity: 0.15,
-            particleSpeed: 0.35,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: Color(red: 0.3, green: 0.6, blue: 0.9), count: 20, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
     }
     
-    /// Fondo para programa de 30 días
     static var program: AnstopBackground {
-        AnstopBackground(
-            accentColor: .mint,
-            count: 18,
-            particleOpacity: 0.12,
-            particleSpeed: 0.35,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: .mint, count: 18, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
     }
     
-    /// Fondo para paywall/premium
     static var premium: AnstopBackground {
-        AnstopBackground(
-            accentColor: Color(red: 0.85, green: 0.65, blue: 0.2),
-            count: 25,
-            particleOpacity: 0.15,
-            particleSpeed: 0.4,
-            showWaves: true
-        )
+        AnstopBackground(accentColor: Color(red: 0.85, green: 0.65, blue: 0.2), count: 25, particleOpacity: 0.15, particleSpeed: 0.4, showWaves: true)
     }
     
-    /// Fondo mínimo (sin partículas ni ondas)
     static var minimal: AnstopBackground {
-        AnstopBackground(
-            count: 0,
-            showWaves: false,
-            intensity: 0.3
-        )
+        AnstopBackground(count: 0, showWaves: false, intensity: 0.3)
     }
 }
 
 // MARK: - View Extension
 
 extension View {
-    /// Aplica el fondo Anstop a la vista
     func anstopBackground(_ background: AnstopBackground = .home) -> some View {
         ZStack {
             background
@@ -431,7 +307,6 @@ extension View {
         }
     }
     
-    /// Aplica el fondo Anstop con configuración personalizada
     func anstopBackground(
         accentColor: Color = .cyan,
         count: Int = 20,
@@ -453,56 +328,9 @@ extension View {
         }
     }
     
-    /// Aplica el fondo Anstop a un ScrollView o List haciendo el background transparente
     func anstopScrollBackground(_ background: AnstopBackground = .home) -> some View {
         self
             .scrollContentBackground(.hidden)
             .background(background)
     }
-}
-
-// MARK: - Preview
-
-#Preview("Light Mode") {
-    VStack {
-        Text("Anstop Background")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-        Text("Light Mode")
-            .foregroundStyle(.secondary)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .anstopBackground(.home)
-    .preferredColorScheme(.light)
-}
-
-#Preview("Dark Mode") {
-    VStack {
-        Text("Anstop Background")
-            .font(.largeTitle)
-            .fontWeight(.bold)
-        Text("Dark Mode")
-            .foregroundStyle(.secondary)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .anstopBackground(.home)
-    .preferredColorScheme(.dark)
-}
-
-#Preview("Breathing") {
-    VStack {
-        Text("Breathing")
-            .font(.largeTitle)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .anstopBackground(.breathing)
-}
-
-#Preview("Settings") {
-    VStack {
-        Text("Settings")
-            .font(.largeTitle)
-    }
-    .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .anstopBackground(.settings)
 }
