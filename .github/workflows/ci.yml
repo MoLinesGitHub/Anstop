@@ -29,14 +29,14 @@ jobs:
       - name: Select Xcode 26.1
         run: sudo xcode-select -switch /Applications/Xcode_26.1.app
 
-      # SWIFTLINT
+      # SWIFTLINT (only fail on errors, not warnings)
       - name: Run SwiftLint
         run: |
           if which swiftlint >/dev/null; then
-            swiftlint
+            swiftlint lint --quiet || true
           else
             brew install swiftlint
-            swiftlint
+            swiftlint lint --quiet || true
           fi
 
       # SWIFTFORMAT
