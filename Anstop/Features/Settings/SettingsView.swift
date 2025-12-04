@@ -11,7 +11,7 @@ import GlassKitPro
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
-    @Environment(PurchaseManager.self) private var purchaseManager
+    @State private var purchaseManager = PurchaseManager.shared
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
     @AppStorage("userName") private var userName = ""
     @AppStorage("initialAnxietyLevel") private var initialAnxietyLevel = 5.0

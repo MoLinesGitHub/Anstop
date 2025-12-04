@@ -413,7 +413,7 @@ struct FeatureRow: View {
 // MARK: - PaywallSimpleView
 
 struct PaywallSimpleView: View {
-    @Environment(PurchaseManager.self) private var purchaseManager
+    @State private var purchaseManager = PurchaseManager.shared
     @Environment(\.dismiss) private var dismiss
     @State private var selectedProduct: Product?
     @State private var isPurchasing = false

@@ -14,7 +14,7 @@ struct PanicFlowView: View {
     @State private var showCompletion = false
     @State private var showPaywall = false
     @Environment(\.dismiss) private var dismiss
-    @Environment(PurchaseManager.self) private var purchaseManager
+    @State private var purchaseManager = PurchaseManager.shared
     @AppStorage("panicFlowCompletionCount") private var completionCount = 0
 
     var body: some View {

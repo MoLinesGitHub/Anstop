@@ -4,7 +4,7 @@ struct HomeView: View {
     @State private var showPanicFlow = false
     @State private var isPanicButtonPressed = false
     @State private var showPaywall = false
-    @Environment(PurchaseManager.self) private var purchaseManager
+    @State private var purchaseManager = PurchaseManager.shared
 
     var body: some View {
         NavigationStack {

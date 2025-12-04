@@ -26,6 +26,9 @@ final class PurchaseManager {
         await transaction.finish()
     }
 
+    // Singleton instance
+    static let shared = PurchaseManager()
+
     var products: [Product] = []
     var purchasedProductIDs: Set<String> = []
     var isLoading: Bool = false

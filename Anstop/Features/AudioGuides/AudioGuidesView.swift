@@ -9,7 +9,7 @@ import SwiftUI
 import GlassKitPro
 
 struct AudioGuidesView: View {
-    @Environment(PurchaseManager.self) private var purchaseManager
+    @State private var purchaseManager = PurchaseManager.shared
     @State private var audioManager = AudioManager()
     @State private var showPaywall = false
 
