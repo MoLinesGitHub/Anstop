@@ -8,7 +8,6 @@
 //
 
 import SwiftUI
-import GlassKitPro
 
 // MARK: - Anstop Background
 
@@ -22,7 +21,7 @@ struct AnstopBackground: View {
     var accentColor: Color
     
     /// Número de partículas (0 = sin partículas)
-    var count: Int
+    var particleCount: Int
     
     /// Opacidad de las partículas
     var particleOpacity: Double
@@ -49,7 +48,7 @@ struct AnstopBackground: View {
         intensity: Double = 1.0
     ) {
         self.accentColor = accentColor
-        self.particleCount = particleCount
+        self.particleCount = count
         self.particleOpacity = particleOpacity
         self.particleSpeed = particleSpeed
         self.showWaves = showWaves
@@ -77,7 +76,7 @@ struct AnstopBackground: View {
                     count: particleCount,
                     color: accentColor,
                     opacity: particleOpacity * intensity,
-                    
+                    speed: particleSpeed
                 )
             }
         }
@@ -147,6 +146,79 @@ struct AnstopBackground: View {
     }
 }
 
+// MARK: - Simple Particles View
+
+/// Partículas flotantes simples inspiradas en GlassKitPro CrystalParticles
+private struct SimpleParticlesView: View {
+    let count: Int
+    let color: Color
+    let opacity: Double
+    let speed: Double
+    
+    @State private var particles: [Particle] = []
+    @State private var animationTrigger: Bool = false
+    
+    private struct Particle: Identifiable {
+        let id = UUID()
+        var x: CGFloat
+        var y: CGFloat
+        var size: CGFloat
+        var opacity: Double
+        var speedX: CGFloat
+        var speedY: CGFloat
+    }
+    
+    var body: some View {
+        GeometryReader { geometry in
+            TimelineView(.animation(minimumInterval: 1/30)) { timeline in
+                Canvas { context, size in
+                    let date = timeline.date.timeIntervalSinceReferenceDate
+                    
+                    for particle in particles {
+                        // Calcular posición basada en tiempo
+                        let timeOffset = date.truncatingRemainder(dividingBy: 1000)
+                        let x = (particle.x + particle.speedX * timeOffset * 30).truncatingRemainder(dividingBy: size.width)
+                        let y = (particle.y + particle.speedY * timeOffset * 30).truncatingRemainder(dividingBy: size.height)
+                        
+                        let adjustedX = x < 0 ? x + size.width : x
+                        let adjustedY = y < 0 ? y + size.height : y
+                        
+                        let rect = CGRect(
+                            x: adjustedX,
+                            y: adjustedY,
+                            width: particle.size,
+                            height: particle.size
+                        )
+                        context.fill(
+                            Path(ellipseIn: rect),
+                            with: .color(color.opacity(particle.opacity * opacity))
+                        )
+                    }
+                }
+            }
+            .onAppear {
+                initializeParticles(in: geometry.size)
+            }
+            .onChange(of: geometry.size) { _, newSize in
+                initializeParticles(in: newSize)
+            }
+        }
+    }
+    
+    private func initializeParticles(in size: CGSize) {
+        particles = (0..<count).map { _ in
+            Particle(
+                x: CGFloat.random(in: 0..<size.width),
+                y: CGFloat.random(in: 0..<size.height),
+                size: CGFloat.random(in: 2...6),
+                opacity: Double.random(in: 0.3...1.0),
+                speedX: CGFloat.random(in: -0.5...0.5) * speed,
+                speedY: CGFloat.random(in: -0.3...0.1) * speed
+            )
+        }
+    }
+}
+
 // MARK: - Liquid Waves View
 
 /// Ondas líquidas animadas inspiradas en GlassKitPro
@@ -154,22 +226,16 @@ private struct LiquidWavesView: View {
     let colorScheme: ColorScheme
     let intensity: Double
     
-    @State private var phase: CGFloat = 0
-    
     var body: some View {
         TimelineView(.animation(minimumInterval: 1/30)) { timeline in
             Canvas { context, size in
-                updatePhase()
-                drawWaves(context: context, size: size)
+                let phase = timeline.date.timeIntervalSinceReferenceDate * 0.5 * intensity
+                drawWaves(context: context, size: size, phase: phase)
             }
         }
     }
     
-    private func updatePhase() {
-        phase += 0.02 * intensity
-    }
-    
-    private func drawWaves(context: GraphicsContext, size: CGSize) {
+    private func drawWaves(context: GraphicsContext, size: CGSize, phase: Double) {
         let waveColor = colorScheme == .dark
             ? Color.white.opacity(0.04 * intensity)
             : Color.black.opacity(0.02 * intensity)
@@ -373,7 +439,7 @@ extension View {
         ZStack {
             AnstopBackground(
                 accentColor: accentColor,
-                count: particleCount,
+                count: count,
                 particleOpacity: particleOpacity,
                 particleSpeed: particleSpeed,
                 showWaves: showWaves,
