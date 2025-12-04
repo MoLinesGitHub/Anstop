@@ -17,7 +17,7 @@ final class HapticManager {
 
     private var canPlayHaptics: Bool {
         // Only depend on the app-level toggle
-        return isEnabled
+        isEnabled
     }
 
     /// Global on/off switch for haptics. Defaults to true when not set.
@@ -59,7 +59,7 @@ final class HapticManager {
         guard canPlayHaptics else { return }
         let generator = impactGenerator(for: style)
         generator.prepare()
-        if let intensity = intensity {
+        if let intensity {
             if #available(iOS 13.0, *) {
                 let clamped = min(max(intensity, 0), 1)
                 generator.impactOccurred(intensity: clamped)

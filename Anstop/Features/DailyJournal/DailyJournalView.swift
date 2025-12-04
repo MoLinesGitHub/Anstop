@@ -5,9 +5,9 @@
 //  Created on 2025-11-24.
 //
 
+import GlassKitPro
 import SwiftData
 import SwiftUI
-import GlassKitPro
 
 struct DailyJournalView: View {
     @Environment(\.modelContext) private var modelContext
@@ -80,17 +80,17 @@ struct MoodIndicator: View {
 
     var color: Color {
         switch mood {
-        case 1...3: return .red
-        case 4...6: return .orange
-        case 7...8: return .yellow
-        case 9...10: return .green
-        default: return .gray
+        case 1 ... 3: .red
+        case 4 ... 6: .orange
+        case 7 ... 8: .yellow
+        case 9 ... 10: .green
+        default: .gray
         }
     }
 
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(1...10, id: \.self) { index in
+            ForEach(1 ... 10, id: \.self) { index in
                 Circle()
                     .fill(index <= mood ? color : Color.gray.opacity(0.3))
                     .frame(width: 8, height: 8)
@@ -119,7 +119,8 @@ struct NewJournalEntryView: View {
                             value: Binding(
                                 get: { Double(mood) },
                                 set: { mood = Int($0) }
-                            ), in: 1...10, step: 1)
+                            ), in: 1 ... 10, step: 1
+                        )
                     }
                     .padding(.vertical)
                 }
@@ -147,11 +148,11 @@ struct NewJournalEntryView: View {
 
     private var moodColor: Color {
         switch mood {
-        case 1...3: return .red
-        case 4...6: return .orange
-        case 7...8: return .yellow
-        case 9...10: return .green
-        default: return .gray
+        case 1 ... 3: .red
+        case 4 ... 6: .orange
+        case 7 ... 8: .yellow
+        case 9 ... 10: .green
+        default: .gray
         }
     }
 

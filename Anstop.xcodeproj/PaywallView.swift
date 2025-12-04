@@ -1,6 +1,6 @@
 // PaywallView.swift
-import SwiftUI
 import StoreKit
+import SwiftUI
 
 struct PaywallSimpleView: View {
     @Environment(PurchaseManager.self) private var purchaseManager

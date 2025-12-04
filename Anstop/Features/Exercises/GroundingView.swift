@@ -5,8 +5,8 @@
 //  Created on 2025-11-24.
 //
 
-import SwiftUI
 import GlassKitPro
+import SwiftUI
 
 struct GroundingView: View {
     @Environment(\.dismiss) private var dismiss
@@ -42,7 +42,7 @@ struct GroundingView: View {
                 icon: "ear.fill",
                 title: "Cosas que oyes",
                 description:
-                    "Escucha atentamente. ¿Puedes oír el tráfico, el viento o tu respiración?",
+                "Escucha atentamente. ¿Puedes oír el tráfico, el viento o tu respiración?",
                 color: .orange,
                 action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )

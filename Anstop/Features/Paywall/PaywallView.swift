@@ -95,16 +95,20 @@ struct PaywallView: View {
                         )
                         FeatureRow(
                             icon: "calendar", title: "Programa de 30 días",
-                            description: "Plan estructurado que funciona")
+                            description: "Plan estructurado que funciona"
+                        )
                         FeatureRow(
                             icon: "sparkles", title: "Ejercicios personalizados",
-                            description: "Adaptados a tu nivel de ansiedad")
+                            description: "Adaptados a tu nivel de ansiedad"
+                        )
                         FeatureRow(
                             icon: "cpu", title: "Asistente IA 24/7",
-                            description: "Apoyo emocional cuando lo necesites")
+                            description: "Apoyo emocional cuando lo necesites"
+                        )
                         FeatureRow(
                             icon: "paintpalette", title: "Sin publicidad",
-                            description: "Experiencia tranquila y sin interrupciones")
+                            description: "Experiencia tranquila y sin interrupciones"
+                        )
                     }
                     .padding(.horizontal)
 
@@ -177,16 +181,16 @@ struct PaywallView: View {
 
                     // Disclaimer
                     Text("""
-                        No sustituye ayuda profesional. \
-                        Los pagos se cargarán a tu cuenta de Apple. \
-                        La suscripción se renueva automáticamente \
-                        a menos que se cancele 24h antes del fin del período.
-                        """)
-                        .font(.caption2)
-                        .foregroundStyle(.tertiary)
-                        .multilineTextAlignment(.center)
-                        .padding(.horizontal, 30)
-                        .padding(.bottom, 40)
+                    No sustituye ayuda profesional. \
+                    Los pagos se cargarán a tu cuenta de Apple. \
+                    La suscripción se renueva automáticamente \
+                    a menos que se cancele 24h antes del fin del período.
+                    """)
+                    .font(.caption2)
+                    .foregroundStyle(.tertiary)
+                    .multilineTextAlignment(.center)
+                    .padding(.horizontal, 30)
+                    .padding(.bottom, 40)
                 }
             }
             .anstopBackground(.premium)
@@ -236,7 +240,7 @@ struct TestimonialsCarousel: View {
     let testimonials = [
         Testimonial(text: "Esta app me salvó durante mis peores momentos de ansiedad. Ahora puedo manejarla.", author: "María G.", rating: 5),
         Testimonial(text: "El programa de 30 días cambió mi vida. Lo recomiendo 100%.", author: "Carlos R.", rating: 5),
-        Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana L.", rating: 5)
+        Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana L.", rating: 5),
     ]
 
     var body: some View {
@@ -264,7 +268,7 @@ struct TestimonialCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(spacing: 2) {
-                ForEach(0..<testimonial.rating, id: \.self) { _ in
+                ForEach(0 ..< testimonial.rating, id: \.self) { _ in
                     Image(systemName: "star.fill")
                         .font(.caption2)
                         .foregroundStyle(.yellow)
@@ -336,7 +340,7 @@ struct ProductCard: View {
                     HStack {
                         Text(product.displayName)
                             .font(.headline)
-                        if let savings = savings {
+                        if let savings {
                             Text(savings)
                                 .font(.caption2)
                                 .bold()

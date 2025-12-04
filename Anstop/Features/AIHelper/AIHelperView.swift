@@ -6,8 +6,8 @@
 //  Asistente de IA especializado en bienestar y manejo del estrés
 //
 
-import SwiftUI
 import Observation
+import SwiftUI
 
 // MARK: - Main View
 
@@ -31,7 +31,7 @@ struct AIHelperView: View {
         "No puedo dormir",
         "Siento mucha ansiedad",
         "Ejercicios de grounding",
-        "Pensamientos negativos"
+        "Pensamientos negativos",
     ]
 
     var body: some View {
@@ -51,7 +51,7 @@ struct AIHelperView: View {
                 }
 
                 // Sugerencias rápidas
-                if showSuggestions && aiService.messages.count < 3 {
+                if showSuggestions, aiService.messages.count < 3 {
                     suggestionsView
                 }
 
@@ -73,7 +73,7 @@ struct AIHelperView: View {
             LinearGradient(
                 colors: [
                     Color(red: 0.95, green: 0.97, blue: 1.0),
-                    Color(red: 0.9, green: 0.95, blue: 0.98)
+                    Color(red: 0.9, green: 0.95, blue: 0.98),
                 ],
                 startPoint: .top,
                 endPoint: .bottom
@@ -290,7 +290,7 @@ struct AIHelperView: View {
                     .textFieldStyle(.plain)
                     .focused($isFocused)
                     .disabled(aiService.isTyping)
-                    .lineLimit(1...5)
+                    .lineLimit(1 ... 5)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 12)
             }
@@ -478,7 +478,7 @@ struct AITypingIndicatorView: View {
 
     var body: some View {
         HStack(spacing: 4) {
-            ForEach(0..<3, id: \.self) { index in
+            ForEach(0 ..< 3, id: \.self) { index in
                 Circle()
                     .fill(color.opacity(animationPhase == index ? 1.0 : 0.3))
                     .frame(width: 8, height: 8)

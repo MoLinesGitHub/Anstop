@@ -1,17 +1,17 @@
 import Observation
-import StoreKit
 import OSLog
+import StoreKit
 
 @MainActor
 @Observable
 final class PurchaseManager {
     // Logger para contexto estático (nonisolated para evitar actor isolation)
-    nonisolated private static let logger = Logger(subsystem: "com.molinesdesigns.Anstop", category: "purchases")
+    private nonisolated static let logger = Logger(subsystem: "com.molinesdesigns.Anstop", category: "purchases")
 
     // Global transaction updates listener to ensure we never miss updates
     private static let globalTransactionUpdatesTask: Task<Void, Never> = Task {
         for await result in Transaction.updates {
-            guard case .verified(let transaction) = result else {
+            guard case let .verified(transaction) = result else {
                 logger.warning("Received unverified transaction update")
                 continue
             }
@@ -20,7 +20,7 @@ final class PurchaseManager {
         }
     }
 
-    nonisolated private static func handleGlobalTransactionUpdate(_ transaction: Transaction) async {
+    private nonisolated static func handleGlobalTransactionUpdate(_ transaction: Transaction) async {
         // Finish the transaction after handling. If you have a shared manager instance,
         // you can also refresh entitlements here.
         await transaction.finish()
@@ -66,7 +66,7 @@ final class PurchaseManager {
         do {
             products = try await Product.products(for: productIdentifiers)
             products.sort { $0.price < $1.price }
-            Logger.purchases.info("Successfully loaded \(self.products.count) products")
+            Logger.purchases.info("Successfully loaded \(products.count) products")
         } catch {
             Logger.purchases.error("Failed to load products: \(error.localizedDescription)")
         }
@@ -77,7 +77,7 @@ final class PurchaseManager {
         let result = try await product.purchase()
 
         switch result {
-        case .success(let verificationResult):
+        case let .success(verificationResult):
             // Validar con ReceiptValidator
             let transaction = try ReceiptValidator.shared.validateTransaction(verificationResult)
 
@@ -99,6 +99,7 @@ final class PurchaseManager {
 
         case .pending:
             return false
+
         @unknown default:
             return false
         }
@@ -112,7 +113,7 @@ final class PurchaseManager {
         var purchasedIDs: Set<String> = []
 
         for await result in Transaction.currentEntitlements {
-            if case .verified(let transaction) = result {
+            if case let .verified(transaction) = result {
                 purchasedIDs.insert(transaction.productID)
             }
         }
@@ -123,7 +124,7 @@ final class PurchaseManager {
     private func listenForTransactionUpdates() async {
         // Instance-scoped listener (kept for redundancy); global listener above starts at launch.
         for await result in Transaction.updates {
-            guard case .verified(let transaction) = result else {
+            guard case let .verified(transaction) = result else {
                 Logger.purchases.warning("Received unverified transaction update")
                 continue
             }
@@ -142,7 +143,7 @@ final class PurchaseManager {
         switch result {
         case .unverified:
             throw StoreError.failedVerification
-        case .verified(let safe):
+        case let .verified(safe):
             return safe
         }
     }
@@ -151,4 +152,3 @@ final class PurchaseManager {
 enum StoreError: Error {
     case failedVerification
 }
-

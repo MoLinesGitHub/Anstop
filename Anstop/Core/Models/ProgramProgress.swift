@@ -16,10 +16,10 @@ final class ProgramProgress {
     var lastCompletedDate: Date?
 
     init() {
-        self.id = UUID()
-        self.completedDays = []
-        self.currentStreak = 0
-        self.lastCompletedDate = nil
+        id = UUID()
+        completedDays = []
+        currentStreak = 0
+        lastCompletedDate = nil
     }
 
     func markDayCompleted(_ day: Int) {

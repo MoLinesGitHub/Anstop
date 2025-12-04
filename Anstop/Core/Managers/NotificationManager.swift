@@ -1,12 +1,12 @@
 // NotificationManager.swift
 import Foundation
-import UserNotifications
 import OSLog
+import UserNotifications
 
 @MainActor
 final class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
     static let shared = NotificationManager()
-    private override init() {}
+    override private init() {}
 
     func requestAuthorization() async -> Bool {
         let center = UNUserNotificationCenter.current()

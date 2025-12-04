@@ -1,6 +1,6 @@
 // DailyJournalView.swift
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct DailyJournalView: View {
     @Environment(\.modelContext) private var modelContext
@@ -14,7 +14,7 @@ struct DailyJournalView: View {
             Section("Estado") {
                 HStack {
                     Text("Ánimo: \(Int(mood))")
-                    Slider(value: $mood, in: 1...10, step: 1)
+                    Slider(value: $mood, in: 1 ... 10, step: 1)
                 }
             }
             Section("Notas") {

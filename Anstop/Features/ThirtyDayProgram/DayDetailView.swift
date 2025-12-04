@@ -76,7 +76,7 @@ struct DayDetailView: View {
                 .padding(.horizontal, 20)
 
                 // Botón de completar
-                if let progress = progress, !progress.isDayCompleted(day) {
+                if let progress, !progress.isDayCompleted(day) {
                     Button(action: completeDay) {
                         HStack {
                             Image(systemName: "checkmark.circle.fill")
@@ -118,7 +118,7 @@ struct DayDetailView: View {
     }
 
     private var exerciseIcon: String {
-        guard let exercise = exercise else { return "questionmark" }
+        guard let exercise else { return "questionmark" }
         switch exercise.exerciseType {
         case .breathing: return "wind"
         case .grounding: return "hand.raised.fill"
@@ -129,7 +129,7 @@ struct DayDetailView: View {
     }
 
     private var exerciseTypeName: String {
-        guard let exercise = exercise else { return "" }
+        guard let exercise else { return "" }
         switch exercise.exerciseType {
         case .breathing: return "Respiración"
         case .grounding: return "Grounding"
@@ -140,7 +140,7 @@ struct DayDetailView: View {
     }
 
     private func completeDay() {
-        guard let progress = progress else { return }
+        guard let progress else { return }
 
         progress.markDayCompleted(day)
 

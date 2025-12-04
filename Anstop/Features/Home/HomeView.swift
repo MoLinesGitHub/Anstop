@@ -20,117 +20,119 @@ struct HomeView: View {
                     }
 
                     // Botón principal de pánico
-                Button(action: {
-                    withOptionalAnimation(.gentle) {
-                        showPanicFlow = true
-                    }
-                }) {
-                    VStack(spacing: 12) {
-                        Image(systemName: "heart.circle.fill")
-                            .font(.system(size: 60))
-                        Text("Estoy teniendo ansiedad")
-                            .font(.title2)
-                            .bold()
-                    }
-                    .foregroundStyle(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 200)
-                    .background(
-                        RoundedRectangle(cornerRadius: 20)
-                            .fill(.blue.gradient)
-                            .shadow(
-                                color: .blue.opacity(0.3), radius: isPanicButtonPressed ? 8 : 15,
-                                x: 0, y: isPanicButtonPressed ? 2 : 8)
-                    )
-                    .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
-                    .padding(.horizontal, 40)
-                }
-                .buttonStyle(.plain)
-                .hapticOnTap(.impact(style: .heavy))
-                .simultaneousGesture(
-                    DragGesture(minimumDistance: 0)
-                        .onChanged { _ in
-                            withOptionalAnimation(.quick) {
-                                isPanicButtonPressed = true
-                            }
+                    Button(action: {
+                        withOptionalAnimation(.gentle) {
+                            showPanicFlow = true
                         }
-                        .onEnded { _ in
-                            withOptionalAnimation(.quick) {
-                                isPanicButtonPressed = false
-                            }
+                    }) {
+                        VStack(spacing: 12) {
+                            Image(systemName: "heart.circle.fill")
+                                .font(.system(size: 60))
+                            Text("Estoy teniendo ansiedad")
+                                .font(.title2)
+                                .bold()
                         }
-                )
-
-                // Programa de 30 Días - Destacado
-                NavigationLink(destination: ThirtyDayProgramView()) {
-                    HStack {
-                        VStack(alignment: .leading, spacing: 8) {
-                            HStack {
-                                Image(systemName: "calendar")
-                                    .foregroundStyle(.orange)
-                                Text("Programa de 30 Días")
-                                    .font(.headline)
-                                    .foregroundStyle(.primary)
-                                if !purchaseManager.isPremium {
-                                    Text("PRO")
-                                        .font(.caption2)
-                                        .bold()
-                                        .foregroundStyle(.white)
-                                        .padding(.horizontal, 6)
-                                        .padding(.vertical, 2)
-                                        .background(Color.orange)
-                                        .clipShape(Capsule())
+                        .foregroundStyle(.white)
+                        .frame(maxWidth: .infinity)
+                        .frame(height: 200)
+                        .background(
+                            RoundedRectangle(cornerRadius: 20)
+                                .fill(.blue.gradient)
+                                .shadow(
+                                    color: .blue.opacity(0.3), radius: isPanicButtonPressed ? 8 : 15,
+                                    x: 0, y: isPanicButtonPressed ? 2 : 8
+                                )
+                        )
+                        .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
+                        .padding(.horizontal, 40)
+                    }
+                    .buttonStyle(.plain)
+                    .hapticOnTap(.impact(style: .heavy))
+                    .simultaneousGesture(
+                        DragGesture(minimumDistance: 0)
+                            .onChanged { _ in
+                                withOptionalAnimation(.quick) {
+                                    isPanicButtonPressed = true
                                 }
                             }
-                            Text("Transforma tu relación con la ansiedad")
-                                .font(.caption)
+                            .onEnded { _ in
+                                withOptionalAnimation(.quick) {
+                                    isPanicButtonPressed = false
+                                }
+                            }
+                    )
+
+                    // Programa de 30 Días - Destacado
+                    NavigationLink(destination: ThirtyDayProgramView()) {
+                        HStack {
+                            VStack(alignment: .leading, spacing: 8) {
+                                HStack {
+                                    Image(systemName: "calendar")
+                                        .foregroundStyle(.orange)
+                                    Text("Programa de 30 Días")
+                                        .font(.headline)
+                                        .foregroundStyle(.primary)
+                                    if !purchaseManager.isPremium {
+                                        Text("PRO")
+                                            .font(.caption2)
+                                            .bold()
+                                            .foregroundStyle(.white)
+                                            .padding(.horizontal, 6)
+                                            .padding(.vertical, 2)
+                                            .background(Color.orange)
+                                            .clipShape(Capsule())
+                                    }
+                                }
+                                Text("Transforma tu relación con la ansiedad")
+                                    .font(.caption)
+                                    .foregroundStyle(.secondary)
+                            }
+                            Spacer()
+                            Image(systemName: "chevron.right")
                                 .foregroundStyle(.secondary)
                         }
-                        Spacer()
-                        Image(systemName: "chevron.right")
-                            .foregroundStyle(.secondary)
+                        .padding()
+                        .background(
+                            RoundedRectangle(cornerRadius: 16)
+                                .fill(.orange.opacity(0.1))
+                        )
                     }
-                    .padding()
-                    .background(
-                        RoundedRectangle(cornerRadius: 16)
-                            .fill(.orange.opacity(0.1))
-                    )
-                }
-                .padding(.horizontal, 40)
+                    .padding(.horizontal, 40)
 
-                // Accesos rápidos
-                VStack(spacing: 15) {
-                    NavigationLink(destination: BreathingView()) {
-                        QuickAccessButton(title: "Respiración", icon: "wind")
-                    }
+                    // Accesos rápidos
+                    VStack(spacing: 15) {
+                        NavigationLink(destination: BreathingView()) {
+                            QuickAccessButton(title: "Respiración", icon: "wind")
+                        }
 
-                    NavigationLink(destination: GroundingView()) {
-                        QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
-                    }
+                        NavigationLink(destination: GroundingView()) {
+                            QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
+                        }
 
-                    NavigationLink(destination: AudioGuidesView()) {
-                        QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
-                    }
+                        NavigationLink(destination: AudioGuidesView()) {
+                            QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
+                        }
 
-                    NavigationLink(destination: DailyJournalView()) {
-                        QuickAccessButton(title: "Diario del día", icon: "book.fill")
-                    }
+                        NavigationLink(destination: DailyJournalView()) {
+                            QuickAccessButton(title: "Diario del día", icon: "book.fill")
+                        }
 
-                    NavigationLink(destination: LibraryView()) {
-                        QuickAccessButton(
-                            title: "Biblioteca de Recursos", icon: "books.vertical.fill")
-                    }
+                        NavigationLink(destination: LibraryView()) {
+                            QuickAccessButton(
+                                title: "Biblioteca de Recursos", icon: "books.vertical.fill"
+                            )
+                        }
 
-                    NavigationLink(destination: AIHelperView()) {
-                        QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
-                    }
+                        NavigationLink(destination: AIHelperView()) {
+                            QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
+                        }
 
-                    NavigationLink(destination: JournalHistoryView()) {
-                        QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
+                        NavigationLink(destination: JournalHistoryView()) {
+                            QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
+                        }
                     }
-                }
-                .padding(.horizontal, 40)
-                .padding(.bottom, 30)
+                    .padding(.horizontal, 40)
+                    .padding(.bottom, 30)
                 }
             }
             .anstopBackground(.home)

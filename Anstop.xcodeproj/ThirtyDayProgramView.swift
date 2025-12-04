@@ -1,6 +1,6 @@
 // ThirtyDayProgramView.swift
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct ThirtyDayProgramView: View {
     @Environment(\.modelContext) private var modelContext
@@ -33,7 +33,7 @@ struct ThirtyDayProgramView: View {
                 }
 
                 Section("Días") {
-                    ForEach(0..<30, id: \.self) { day in
+                    ForEach(0 ..< 30, id: \.self) { day in
                         NavigationLink(destination: DayDetailView(day: day + 1)) {
                             HStack {
                                 Text("Día \(day + 1)")
@@ -73,7 +73,7 @@ struct ThirtyDayProgramView: View {
     }
 
     private func completeToday() {
-        guard let progress = progress else { return }
+        guard let progress else { return }
         let next = min(progress.dayCompleted + 1, 30)
         progress.dayCompleted = next
         do {

@@ -25,16 +25,20 @@ struct Protocol: Identifiable {
             steps: [
                 ProtocolStep(
                     title: "Identifica el pensamiento",
-                    content: "¿Qué estás pensando exactamente ahora? Escríbelo mentalmente."),
+                    content: "¿Qué estás pensando exactamente ahora? Escríbelo mentalmente."
+                ),
                 ProtocolStep(
                     title: "Analiza la evidencia",
-                    content: "¿Qué pruebas reales tienes de que esto sea 100% cierto?"),
+                    content: "¿Qué pruebas reales tienes de que esto sea 100% cierto?"
+                ),
                 ProtocolStep(
                     title: "Busca alternativas",
-                    content: "¿Hay otra forma de ver esta situación? ¿Qué le dirías a un amigo?"),
+                    content: "¿Hay otra forma de ver esta situación? ¿Qué le dirías a un amigo?"
+                ),
                 ProtocolStep(
                     title: "Reevalúa",
-                    content: "¿Cómo te sientes ahora respecto a ese pensamiento inicial?"),
+                    content: "¿Cómo te sientes ahora respecto a ese pensamiento inicial?"
+                ),
             ]
         ),
         Protocol(
@@ -46,18 +50,21 @@ struct Protocol: Identifiable {
                 ProtocolStep(
                     title: "Desconexión",
                     content:
-                        "Deja el móvil y cualquier pantalla. La luz azul interfiere con tu sueño."),
+                    "Deja el móvil y cualquier pantalla. La luz azul interfiere con tu sueño."
+                ),
                 ProtocolStep(
                     title: "Descarga mental",
                     content:
-                        "Si te preocupan las tareas de mañana, anótalas en un papel y olvídalas por hoy."
+                    "Si te preocupan las tareas de mañana, anótalas en un papel y olvídalas por hoy."
                 ),
                 ProtocolStep(
                     title: "Respiración 4-7-8",
-                    content: "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces."),
+                    content: "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces."
+                ),
                 ProtocolStep(
                     title: "Escaneo corporal",
-                    content: "Relaja tus músculos desde los pies hasta la cabeza, poco a poco."),
+                    content: "Relaja tus músculos desde los pies hasta la cabeza, poco a poco."
+                ),
             ]
         ),
         Protocol(
@@ -68,22 +75,24 @@ struct Protocol: Identifiable {
             steps: [
                 ProtocolStep(
                     title: "Anclaje",
-                    content: "Siente tus pies firmes en el suelo. Estás aquí y ahora."),
+                    content: "Siente tus pies firmes en el suelo. Estás aquí y ahora."
+                ),
                 ProtocolStep(
                     title: "Foco externo",
                     content:
-                        "Deja de mirar hacia adentro. Observa los colores y objetos de la habitación."
+                    "Deja de mirar hacia adentro. Observa los colores y objetos de la habitación."
                 ),
                 ProtocolStep(
                     title: "Respiración discreta",
-                    content: "Respira lento y profundo por la nariz. Nadie lo notará."),
+                    content: "Respira lento y profundo por la nariz. Nadie lo notará."
+                ),
                 ProtocolStep(
                     title: "Pequeños pasos",
                     content:
-                        "No necesitas ser el centro de atención. Solo estar presente es suficiente."
-                )
+                    "No necesitas ser el centro de atención. Solo estar presente es suficiente."
+                ),
             ]
-        )
+        ),
     ]
 }
 

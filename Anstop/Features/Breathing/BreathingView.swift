@@ -6,8 +6,8 @@
 //  Updated with GlassKitPro - 2025-12-03
 //
 
-import SwiftUI
 import GlassKitPro
+import SwiftUI
 
 struct BreathingView: View {
     @State private var selectedProtocol: BreathingProtocol = .fourSevenEight
@@ -44,7 +44,7 @@ struct BreathingView: View {
                                 colors: [
                                     .cyan.opacity(0.1),
                                     .blue.opacity(0.05),
-                                    .clear
+                                    .clear,
                                 ],
                                 center: .center,
                                 startRadius: 50,
@@ -104,25 +104,25 @@ enum BreathingProtocol: String, CaseIterable, Identifiable {
 
     var name: String {
         switch self {
-        case .fourSevenEight: return "4-7-8"
-        case .fourFour: return "4-4"
-        case .threeThreeThree: return "3-3-3"
+        case .fourSevenEight: "4-7-8"
+        case .fourFour: "4-4"
+        case .threeThreeThree: "3-3-3"
         }
     }
 
     var description: String {
         switch self {
-        case .fourSevenEight: return "Inhala 4s, mantén 7s, exhala 8s"
-        case .fourFour: return "Inhala 4s, exhala 4s"
-        case .threeThreeThree: return "Inhala 3s, mantén 3s, exhala 3s"
+        case .fourSevenEight: "Inhala 4s, mantén 7s, exhala 8s"
+        case .fourFour: "Inhala 4s, exhala 4s"
+        case .threeThreeThree: "Inhala 3s, mantén 3s, exhala 3s"
         }
     }
 
     var benefits: String {
         switch self {
-        case .fourSevenEight: return "Ideal para calmar la mente y reducir la ansiedad rápidamente"
-        case .fourFour: return "Perfecto para mantener la calma y el equilibrio"
-        case .threeThreeThree: return "Excelente para momentos de estrés intenso"
+        case .fourSevenEight: "Ideal para calmar la mente y reducir la ansiedad rápidamente"
+        case .fourFour: "Perfecto para mantener la calma y el equilibrio"
+        case .threeThreeThree: "Excelente para momentos de estrés intenso"
         }
     }
 }

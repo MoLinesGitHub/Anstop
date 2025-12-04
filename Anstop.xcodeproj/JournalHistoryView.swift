@@ -1,7 +1,7 @@
 // JournalHistoryView.swift
-import SwiftUI
-import SwiftData
 import Foundation
+import SwiftData
+import SwiftUI
 
 struct JournalHistoryView: View {
     @Environment(\.modelContext) private var modelContext
@@ -69,13 +69,13 @@ struct JournalHistoryView: View {
                     Slider(value: Binding(
                         get: { Double(minMood) },
                         set: { minMood = Int($0) }
-                    ), in: 1...Double(maxMood), step: 1)
+                    ), in: 1 ... Double(maxMood), step: 1)
                     Text("\(minMood)")
                     Divider()
                     Slider(value: Binding(
                         get: { Double(maxMood) },
                         set: { maxMood = Int($0) }
-                    ), in: Double(minMood)...10, step: 1)
+                    ), in: Double(minMood) ... 10, step: 1)
                     Text("\(maxMood)")
                 }
             }
@@ -96,7 +96,9 @@ struct JournalHistoryView: View {
     }
 
     private func delete(at offsets: IndexSet) {
-        for index in offsets { modelContext.delete(entries[index]) }
+        for index in offsets {
+            modelContext.delete(entries[index])
+        }
         try? modelContext.save()
     }
 }
@@ -120,7 +122,7 @@ struct JournalEditView: View {
                 Section("Estado") {
                     HStack {
                         Text("Ánimo: \(Int(mood))")
-                        Slider(value: $mood, in: 1...10, step: 1)
+                        Slider(value: $mood, in: 1 ... 10, step: 1)
                     }
                 }
                 Section("Notas") {

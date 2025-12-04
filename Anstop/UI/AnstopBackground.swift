@@ -11,7 +11,6 @@ import SwiftUI
 // MARK: - Anstop Background
 
 struct AnstopBackground: View {
-
     var accentColor: Color
     var particleCount: Int
     var particleOpacity: Double
@@ -30,7 +29,7 @@ struct AnstopBackground: View {
         intensity: Double = 1.0
     ) {
         self.accentColor = accentColor
-        self.particleCount = count
+        particleCount = count
         self.particleOpacity = particleOpacity
         self.particleSpeed = particleSpeed
         self.showWaves = showWaves
@@ -73,7 +72,7 @@ struct AnstopBackground: View {
         [
             Color.accentColor.opacity(0.12),
             Color.accentColor.opacity(0.18),
-            Color.accentColor.opacity(0.22)
+            Color.accentColor.opacity(0.22),
         ]
     }
 
@@ -81,7 +80,7 @@ struct AnstopBackground: View {
         [
             Color(red: 0.08, green: 0.10, blue: 0.14),
             Color(red: 0.10, green: 0.12, blue: 0.18),
-            Color(red: 0.12, green: 0.14, blue: 0.20)
+            Color(red: 0.12, green: 0.14, blue: 0.20),
         ]
     }
 
@@ -100,10 +99,10 @@ struct AnstopBackground: View {
                     guard size.width > 1, size.height > 1 else { return }
 
                     let noiseCount = max(1, Int(size.width * size.height * 0.0003))
-                    for _ in 0..<noiseCount {
-                        let xPosition = CGFloat.random(in: 1...size.width)
-                        let yPosition = CGFloat.random(in: 1...size.height)
-                        let opacity = Double.random(in: 0.01...0.03) * intensity
+                    for _ in 0 ..< noiseCount {
+                        let xPosition = CGFloat.random(in: 1 ... size.width)
+                        let yPosition = CGFloat.random(in: 1 ... size.height)
+                        let opacity = Double.random(in: 0.01 ... 0.03) * intensity
                         let baseOpacity = colorScheme == .dark ? 0.02 : 0.04
 
                         context.fill(
@@ -139,7 +138,7 @@ private struct SimpleParticlesView: View {
 
     var body: some View {
         GeometryReader { geometry in
-            TimelineView(.animation(minimumInterval: 1/30)) { timeline in
+            TimelineView(.animation(minimumInterval: 1 / 30)) { timeline in
                 Canvas { context, size in
                     guard size.width > 1, size.height > 1 else { return }
 
@@ -173,19 +172,19 @@ private struct SimpleParticlesView: View {
     }
 
     private func initializeParticles(in size: CGSize) {
-        guard size.width > 1, size.height > 1, count > 0 else {
+        guard size.width > 1, size.height > 1, count != 0 else {
             particles = []
             return
         }
 
-        particles = (0..<count).map { _ in
+        particles = (0 ..< count).map { _ in
             Particle(
-                xPos: CGFloat.random(in: 1...size.width),
-                yPos: CGFloat.random(in: 1...size.height),
-                size: CGFloat.random(in: 2...6),
-                opacity: Double.random(in: 0.3...1.0),
-                speedX: CGFloat.random(in: -0.5...0.5) * speed,
-                speedY: CGFloat.random(in: -0.3...0.1) * speed
+                xPos: CGFloat.random(in: 1 ... size.width),
+                yPos: CGFloat.random(in: 1 ... size.height),
+                size: CGFloat.random(in: 2 ... 6),
+                opacity: Double.random(in: 0.3 ... 1.0),
+                speedX: CGFloat.random(in: -0.5 ... 0.5) * speed,
+                speedY: CGFloat.random(in: -0.3 ... 0.1) * speed
             )
         }
     }
@@ -198,7 +197,7 @@ private struct LiquidWavesView: View {
     let intensity: Double
 
     var body: some View {
-        TimelineView(.animation(minimumInterval: 1/30)) { timeline in
+        TimelineView(.animation(minimumInterval: 1 / 30)) { timeline in
             Canvas { context, size in
                 guard size.width > 1, size.height > 1 else { return }
                 let phase = timeline.date.timeIntervalSinceReferenceDate * 0.5 * intensity
@@ -250,7 +249,6 @@ private struct LiquidWavesView: View {
 // MARK: - Preset Backgrounds
 
 extension AnstopBackground {
-
     static var home: AnstopBackground {
         AnstopBackground(accentColor: .cyan, count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
@@ -332,8 +330,7 @@ extension View {
     }
 
     func anstopScrollBackground(_ background: AnstopBackground = .home) -> some View {
-        self
-            .scrollContentBackground(.hidden)
+        scrollContentBackground(.hidden)
             .background(background)
     }
 }

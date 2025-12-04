@@ -1,6 +1,6 @@
 // DayDetailView.swift
-import SwiftUI
 import SwiftData
+import SwiftUI
 
 struct DayDetailView: View {
     @Environment(\.modelContext) private var modelContext
@@ -80,7 +80,7 @@ struct DayDetailView: View {
     }
 
     private func completeDay() {
-        guard let progress = progress else { return }
+        guard let progress else { return }
         guard canComplete else { return }
         progress.dayCompleted = min(progress.dayCompleted + 1, 30)
         do {
@@ -93,7 +93,7 @@ struct DayDetailView: View {
     }
 
     private func uncompleteDay() {
-        guard let progress = progress else { return }
+        guard let progress else { return }
         guard isCompleted else { return }
         // Only allow uncomplete if this is the last completed day to keep sequence consistent
         if day == progress.dayCompleted {

@@ -15,7 +15,7 @@ struct ChatMessage: Identifiable, Equatable, Sendable {
     let id = UUID()
     let content: String
     let isUser: Bool
-    let timestamp: Date = Date()
+    let timestamp: Date = .init()
 }
 
 // MARK: - AI Response Type
@@ -45,7 +45,7 @@ final class AIService {
         .greeting: [
             "¡Hola! 👋 Estoy aquí para ayudarte. ¿Cómo te sientes en este momento?",
             "Bienvenido/a. Me alegra que estés aquí. ¿En qué puedo ayudarte hoy?",
-            "Hola, soy tu asistente de bienestar. Estoy aquí para escucharte. 💜"
+            "Hola, soy tu asistente de bienestar. Estoy aquí para escucharte. 💜",
         ],
         .breathing: [
             """
@@ -75,7 +75,7 @@ final class AIService {
 
             Coloca una mano en tu pecho y otra en tu abdomen. Al inhalar, solo debe moverse la mano
             del abdomen.
-            """
+            """,
         ],
         .grounding: [
             """
@@ -101,7 +101,7 @@ final class AIService {
 
             Un ejercicio simple: nombra 3 colores que veas a tu alrededor. Esto interrumpe el ciclo de
             pensamientos ansiosos y te centra en el presente.
-            """
+            """,
         ],
         .sleep: [
             """
@@ -133,7 +133,7 @@ final class AIService {
             • Volver cuando sientas sueño
 
             La técnica de 'paradójica' también ayuda: intenta mantenerte despierto/a en lugar de dormirte.
-            """
+            """,
         ],
         .anxiety: [
             """
@@ -165,7 +165,7 @@ final class AIService {
             • Tensiona todos tus músculos por 5 segundos y suelta
 
             Estoy aquí contigo. 💙
-            """
+            """,
         ],
         .negativeThoughts: [
             """
@@ -196,7 +196,7 @@ final class AIService {
             • Haz algo con las manos (agua fría, apretar algo)
 
             Pequeñas acciones pueden tener un gran impacto. 💪
-            """
+            """,
         ],
         .emergency: [
             """
@@ -219,7 +219,7 @@ final class AIService {
             • 024 (España - Línea atención conducta suicida)
 
             Mereces apoyo y ayuda profesional. 🤗
-            """
+            """,
         ],
         .general: [
             """
@@ -252,8 +252,8 @@ final class AIService {
             La autocompasión es clave: trátate con la misma amabilidad que tratarías a un amigo querido.
 
             ¿Quieres que exploremos juntos alguna herramienta de la app?
-            """
-        ]
+            """,
+        ],
     ]
 
     // MARK: - Keywords para detectar categoría
@@ -265,7 +265,7 @@ final class AIService {
         (.sleep, ["dormir", "sueño", "insomnio", "noche", "despertar", "descansar", "cama"]),
         (.anxiety, ["ansie", "angustia", "pánico", "nervios", "preocup", "miedo", "agobio", "estres", "calm"]),
         (.negativeThoughts, ["pensamiento", "negativ", "mente", "cabeza", "rumia", "obsesi", "no puedo parar"]),
-        (.greeting, ["hola", "buenos", "hey", "saludos", "qué tal", "cómo estás"])
+        (.greeting, ["hola", "buenos", "hey", "saludos", "qué tal", "cómo estás"]),
     ]
 
     // MARK: - Public Methods
@@ -279,7 +279,7 @@ final class AIService {
         isTyping = true
 
         // Delay para simular procesamiento (más natural)
-        let thinkingTime = UInt64.random(in: 800_000_000...1_500_000_000)
+        let thinkingTime = UInt64.random(in: 800_000_000 ... 1_500_000_000)
         try? await Task.sleep(nanoseconds: thinkingTime)
 
         // Generar respuesta

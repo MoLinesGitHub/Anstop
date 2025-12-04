@@ -1,7 +1,7 @@
 // Theme.swift
 import SwiftUI
 
-struct Theme {
+enum Theme {
     // Primary colors
     static let primary = Color.blue
     static let secondary = Color.orange

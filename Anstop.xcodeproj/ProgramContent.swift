@@ -25,7 +25,7 @@ enum ProgramContent {
             objectives: [
                 "Respiración 4-7-8 (4 repeticiones)",
                 "Escribe 3 pensamientos y reevalúalos",
-                "Camina 10 minutos al aire libre"
+                "Camina 10 minutos al aire libre",
             ],
             tip: "Tip: Si notas tensión, prueba el ejercicio de grounding 5-4-3-2-1."
         )
@@ -37,7 +37,7 @@ enum ProgramContent {
             objectives: [
                 "Diario: 5 minutos de escritura libre",
                 "Respiración 4-4 (5 minutos)",
-                "Agradecimientos: anota 2 cosas positivas"
+                "Agradecimientos: anota 2 cosas positivas",
             ],
             tip: "Tip: Una pausa breve y consciente puede cambiar tu estado."
         )
@@ -49,7 +49,7 @@ enum ProgramContent {
             objectives: [
                 "Mindfulness: observar 3 sonidos",
                 "Escaneo corporal (5 minutos)",
-                "Planifica una acción amable contigo mismo"
+                "Planifica una acción amable contigo mismo",
             ],
             tip: "Tip: El cuerpo es tu ancla. Respira y vuelve al presente."
         )
@@ -61,7 +61,7 @@ enum ProgramContent {
             objectives: [
                 "Reestructuración cognitiva: 1 situación",
                 "Respiración discreta en contexto real",
-                "Contacta a un amigo o familiar"
+                "Contacta a un amigo o familiar",
             ],
             tip: "Tip: Hablarlo en voz alta puede aliviar la carga."
         )
@@ -73,7 +73,7 @@ enum ProgramContent {
             objectives: [
                 "Grounding 5-4-3-2-1",
                 "Paseo consciente (10 minutos)",
-                "Diario: 3 líneas sobre cómo te sientes"
+                "Diario: 3 líneas sobre cómo te sientes",
             ],
             tip: "Tip: Celebra los pequeños avances, suman mucho."
         )

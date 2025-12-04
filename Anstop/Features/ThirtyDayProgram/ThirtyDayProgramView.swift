@@ -5,9 +5,9 @@
 //  Created on 2025-11-24.
 //
 
+import GlassKitPro
 import SwiftData
 import SwiftUI
-import GlassKitPro
 
 struct ThirtyDayProgramView: View {
     @Environment(\.modelContext) private var modelContext
@@ -50,7 +50,7 @@ struct ThirtyDayProgramView: View {
 
                 // Grid de 30 días
                 LazyVGrid(columns: columns, spacing: 12) {
-                    ForEach(1...30, id: \.self) { day in
+                    ForEach(1 ... 30, id: \.self) { day in
                         DayCell(
                             day: day,
                             isCompleted: progress.isDayCompleted(day),
@@ -101,11 +101,11 @@ struct DayCell: View {
 
     private var backgroundColor: Color {
         if isCompleted {
-            return .green
+            .green
         } else if isUnlocked {
-            return .blue
+            .blue
         } else {
-            return Color(uiColor: .systemGray5)
+            Color(uiColor: .systemGray5)
         }
     }
 }

@@ -17,7 +17,7 @@ struct AnstopApp: App {
         let schema = Schema([
             JournalEntry.self,
             AnxietyEvent.self,
-            ProgramProgress.self
+            ProgramProgress.self,
         ])
 
         let modelConfiguration = ModelConfiguration(

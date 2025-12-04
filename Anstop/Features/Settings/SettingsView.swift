@@ -5,9 +5,9 @@
 //  Created on 2025-11-24.
 //
 
+import GlassKitPro
 import SwiftData
 import SwiftUI
-import GlassKitPro
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext
@@ -293,4 +293,3 @@ struct LegalTextView: View {
         SettingsView()
     }
 }
-

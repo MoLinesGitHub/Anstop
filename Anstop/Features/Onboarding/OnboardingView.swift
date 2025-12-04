@@ -22,7 +22,7 @@ struct OnboardingView: View {
                 image: "heart.text.square.fill",
                 title: "Tu espacio seguro",
                 description:
-                    "Anstop está aquí para ayudarte a recuperar la calma, a tu propio ritmo.",
+                "Anstop está aquí para ayudarte a recuperar la calma, a tu propio ritmo.",
                 isLastStep: false,
                 nextAction: { withAnimation { currentTab += 1 } }
             )
@@ -51,7 +51,7 @@ struct OnboardingView: View {
                         .font(.headline)
                         .foregroundStyle(.blue)
 
-                    Slider(value: $initialAnxietyLevel, in: 1...10, step: 1)
+                    Slider(value: $initialAnxietyLevel, in: 1 ... 10, step: 1)
                         .tint(.blue)
 
                     HStack {

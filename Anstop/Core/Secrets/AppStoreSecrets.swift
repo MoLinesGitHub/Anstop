@@ -30,9 +30,9 @@ enum AppStoreSecrets {
     // MARK: - Configuración de entorno
 
     #if DEBUG
-    static let environment: Environment = .sandbox
+        static let environment: Environment = .sandbox
     #else
-    static let environment: Environment = .production
+        static let environment: Environment = .production
     #endif
 
     enum Environment {
@@ -42,18 +42,18 @@ enum AppStoreSecrets {
         var verificationURL: String {
             switch self {
             case .sandbox:
-                return "https://sandbox.itunes.apple.com/verifyReceipt"
+                "https://sandbox.itunes.apple.com/verifyReceipt"
             case .production:
-                return "https://buy.itunes.apple.com/verifyReceipt"
+                "https://buy.itunes.apple.com/verifyReceipt"
             }
         }
 
         var serverNotificationURL: String {
             switch self {
             case .sandbox:
-                return "https://api.storekit-sandbox.itunes.apple.com"
+                "https://api.storekit-sandbox.itunes.apple.com"
             case .production:
-                return "https://api.storekit.itunes.apple.com"
+                "https://api.storekit.itunes.apple.com"
             }
         }
     }

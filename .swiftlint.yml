@@ -1,0 +1,60 @@
+# SwiftLint Configuration for Anstop
+# https://realm.github.io/SwiftLint/
+
+# Paths to exclude from linting
+excluded:
+  - GlassKitPro
+  - Pods
+  - .build
+  - DerivedData
+  - .swiftpm
+  - Tests/LinuxMain.swift
+
+# Enabled rules
+opt_in_rules:
+  - empty_count
+  - empty_string
+  - redundant_nil_coalescing
+
+# Disabled rules
+disabled_rules:
+  - todo # Allow TODOs during development
+
+# Rule configurations
+line_length:
+  warning: 120
+  error: 200
+  ignores_comments: true
+  ignores_urls: true
+
+file_length:
+  warning: 400
+  error: 1000
+
+type_body_length:
+  warning: 250
+  error: 500
+
+function_body_length:
+  warning: 40
+  error: 100
+
+cyclomatic_complexity:
+  warning: 10
+  error: 20
+
+identifier_name:
+  min_length:
+    warning: 3
+    error: 2
+  excluded:
+    - id
+    - x
+    - y
+    - z
+    - i
+    - j
+    - k
+
+# Reporter type
+reporter: "xcode"
