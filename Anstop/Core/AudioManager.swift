@@ -1,10 +1,3 @@
-//
-//  AudioManager.swift
-//  Anstop
-//
-//  Created on 2025-11-24.
-//
-
 import AVFoundation
 import Observation
 
