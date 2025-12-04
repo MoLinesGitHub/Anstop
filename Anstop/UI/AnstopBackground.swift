@@ -130,7 +130,7 @@ struct AnstopBackground: View {
             )
             .background(
                 Canvas { context, size in
-                    // Evitar rangos vacíos que causan crash
+                    // Guard para evitar crash con rangos vacíos
                     guard size.width > 0, size.height > 0 else { return }
                     
                     // Patrón de ruido sutil
