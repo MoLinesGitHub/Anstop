@@ -133,6 +133,7 @@ struct HomeView: View {
                 .padding(.bottom, 30)
                 }
             }
+            .anstopBackground(.home)
             .prepareHapticsOnAppear()
             .navigationTitle("Anstop")
             .toolbar {

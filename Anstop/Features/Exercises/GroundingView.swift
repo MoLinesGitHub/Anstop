@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GlassKitPro
 
 struct GroundingView: View {
     @Environment(\.dismiss) private var dismiss

@@ -14,14 +14,8 @@ struct BreathingView: View {
 
     var body: some View {
         ZStack {
-            // Fondo suave con gradiente para transmitir calma
-            // TODO: Reactivar GlassKit.CrystalParticles cuando se publique versión pública
-            LinearGradient(
-                colors: [.blue.opacity(0.1), .cyan.opacity(0.05)],
-                startPoint: .top,
-                endPoint: .bottom
-            )
-            .ignoresSafeArea()
+            // Fondo Anstop con ondas líquidas y partículas cyan
+            AnstopBackground.breathing
             
             VStack(spacing: 40) {
                 // Selector de protocolo con diseño glass

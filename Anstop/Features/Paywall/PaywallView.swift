@@ -189,6 +189,7 @@ struct PaywallView: View {
                         .padding(.bottom, 40)
                 }
             }
+            .anstopBackground(.premium)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cerrar") { dismiss() }

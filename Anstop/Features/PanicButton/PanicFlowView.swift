@@ -64,6 +64,7 @@ struct PanicFlowView: View {
                 .padding(.bottom, 12)
             }
         }
+        .anstopBackground(.panic)
         .navigationBarTitleDisplayMode(.inline)
         .sheet(isPresented: $showPaywall) {
             PaywallView()

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GlassKitPro
 
 struct LibraryView: View {
     let protocols = Protocol.all
@@ -42,6 +43,7 @@ struct LibraryView: View {
                 Text("Estos protocolos están diseñados para ayudarte en momentos específicos.")
             }
         }
+        .anstopScrollBackground(.library)
         .navigationTitle("Biblioteca")
     }
 }

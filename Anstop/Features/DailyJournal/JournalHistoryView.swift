@@ -55,6 +55,16 @@ struct JournalHistoryView: View {
             }
             .onDelete(perform: deleteFiltered)
         }
+        .anstopScrollBackground(
+            AnstopBackground(
+                accentColor: .orange,
+                particleCount: 15,
+                particleOpacity: 0.10,
+                particleSpeed: 0.3,
+                showWaves: false,
+                intensity: 0.7
+            )
+        )
         .navigationTitle("Historial de Diario")
         .sheet(isPresented: $showEdit) {
             if let entry = selectedEntry {

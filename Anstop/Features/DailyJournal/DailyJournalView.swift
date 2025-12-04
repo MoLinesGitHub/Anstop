@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import GlassKitPro
 
 struct DailyJournalView: View {
     @Environment(\.modelContext) private var modelContext
@@ -36,6 +37,7 @@ struct DailyJournalView: View {
                     .onDelete(perform: deleteEntries)
                 }
             }
+            .anstopScrollBackground(.journal)
             .navigationTitle("Diario")
             .sheet(isPresented: $showNewEntry) {
                 NewJournalEntryView()

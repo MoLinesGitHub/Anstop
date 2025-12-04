@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import GlassKitPro
 
 struct SettingsView: View {
     @Environment(\.modelContext) private var modelContext

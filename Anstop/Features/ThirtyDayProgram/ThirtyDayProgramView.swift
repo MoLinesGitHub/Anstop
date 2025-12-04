@@ -7,6 +7,7 @@
 
 import SwiftData
 import SwiftUI
+import GlassKitPro
 
 struct ThirtyDayProgramView: View {
     @Environment(\.modelContext) private var modelContext
@@ -25,7 +26,11 @@ struct ThirtyDayProgramView: View {
     let columns = Array(repeating: GridItem(.flexible(), spacing: 12), count: 5)
 
     var body: some View {
-        ScrollView {
+        ZStack {
+            // Fondo Anstop para el programa
+            AnstopBackground.program
+            
+            ScrollView {
             VStack(spacing: 30) {
                 // Header con Racha
                 VStack(spacing: 12) {
@@ -61,6 +66,7 @@ struct ThirtyDayProgramView: View {
             }
             .padding(.bottom, 30)
         }
+        .anstopBackground(.program)
         .navigationTitle("Programa de 30 Días")
         .navigationBarTitleDisplayMode(.inline)
     }

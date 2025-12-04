@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import GlassKitPro
 
 struct AudioGuidesView: View {
     @Environment(PurchaseManager.self) private var purchaseManager
@@ -14,34 +15,40 @@ struct AudioGuidesView: View {
 
     var body: some View {
         NavigationStack {
-            List {
-                Section("Gratis") {
-                    ForEach(AudioGuide.freeGuides) { guide in
-                        AudioGuideRow(guide: guide, audioManager: audioManager)
+            ZStack {
+                // Fondo Anstop con partículas púrpura
+                AnstopBackground.audio
+                
+                List {
+                    Section("Gratis") {
+                        ForEach(AudioGuide.freeGuides) { guide in
+                            AudioGuideRow(guide: guide, audioManager: audioManager)
+                        }
                     }
-                }
 
-                Section {
-                    ForEach(AudioGuide.premiumGuides) { guide in
-                        AudioGuideRow(
-                            guide: guide,
-                            audioManager: audioManager,
-                            isPremium: true,
-                            isLocked: !purchaseManager.isPremium
-                        ) {
-                            showPaywall = true
+                    Section {
+                        ForEach(AudioGuide.premiumGuides) { guide in
+                            AudioGuideRow(
+                                guide: guide,
+                                audioManager: audioManager,
+                                isPremium: true,
+                                isLocked: !purchaseManager.isPremium
+                            ) {
+                                showPaywall = true
+                            }
                         }
-                    }
-                } header: {
-                    HStack {
-                        Text("Premium")
-                        Spacer()
-                        if !purchaseManager.isPremium {
-                            Image(systemName: "lock.fill")
-                                .font(.caption)
+                    } header: {
+                        HStack {
+                            Text("Premium")
+                            Spacer()
+                            if !purchaseManager.isPremium {
+                                Image(systemName: "lock.fill")
+                                    .font(.caption)
+                            }
                         }
                     }
                 }
+                .scrollContentBackground(.hidden)
             }
             .navigationTitle("Guías de Audio")
             .sheet(isPresented: $showPaywall) {
