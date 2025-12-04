@@ -58,7 +58,7 @@ struct JournalHistoryView: View {
         .anstopScrollBackground(
             AnstopBackground(
                 accentColor: .orange,
-                particleCount: 15,
+                count: 15,
                 particleOpacity: 0.10,
                 particleSpeed: 0.3,
                 showWaves: false,
