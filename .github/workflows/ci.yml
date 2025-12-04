@@ -13,6 +13,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       # CACHE PARA SPM (x3 velocidad)
       - name: Cache SPM
