@@ -10,9 +10,7 @@ import subprocess
 from pathlib import Path
 
 # Directorio del AppIcon
-APPICON_DIR = Path(
-    "/Volumes/SSD/xCode_Projects/Anstop/Anstop/Resources/Assets.xcassets/AppIcon.appiconset"
-)
+APPICON_DIR = Path("/Volumes/SSD/xCode_Projects/Anstop/Anstop/Resources/Assets.xcassets/AppIcon.appiconset")
 
 # Iconos base (1024x1024)
 BASE_LIGHT = APPICON_DIR / "1024-light.png"
@@ -377,9 +375,7 @@ def create_contents_json():
 
     # Guardar Contents.json
     contents_path = APPICON_DIR / "Contents.json"
-    backup_path = (
-        APPICON_DIR / f"Contents.json.backup.{int(os.path.getmtime(contents_path))}"
-    )
+    backup_path = APPICON_DIR / f"Contents.json.backup.{int(os.path.getmtime(contents_path))}"
 
     # Crear backup
     if contents_path.exists():
@@ -454,15 +450,9 @@ def main():
     print("=" * 70)
     print()
     print("📊 Resumen:")
-    print(
-        f"   - Iconos iOS: {len(ICON_SIZES['ios'])} tamaños × 4 appearances = {len(ICON_SIZES['ios']) * 4} archivos"
-    )
-    print(
-        f"   - Iconos watchOS: {len(ICON_SIZES['watchos'])} tamaños × 3 appearances = {len(ICON_SIZES['watchos']) * 3} archivos"
-    )
-    print(
-        f"   - Iconos macOS: {len(ICON_SIZES['macos'])} tamaños × 3 appearances = {len(ICON_SIZES['macos']) * 3} archivos"
-    )
+    print(f"   - Iconos iOS: {len(ICON_SIZES['ios'])} tamaños × 4 appearances = {len(ICON_SIZES['ios']) * 4} archivos")
+    print(f"   - Iconos watchOS: {len(ICON_SIZES['watchos'])} tamaños × 3 appearances = {len(ICON_SIZES['watchos']) * 3} archivos")
+    print(f"   - Iconos macOS: {len(ICON_SIZES['macos'])} tamaños × 3 appearances = {len(ICON_SIZES['macos']) * 3} archivos")
     print()
     print("🎯 Próximos pasos:")
     print("   1. Abre Xcode")
