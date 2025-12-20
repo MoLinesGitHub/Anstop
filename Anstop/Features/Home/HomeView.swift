@@ -10,16 +10,7 @@ struct HomeView: View {
         NavigationStack {
             ScrollView {
                 VStack(spacing: 30) {
-                    // Banner Premium (solo para usuarios no premium)
-                    if !purchaseManager.isPremium {
-                        PremiumBanner {
-                            showPaywall = true
-                        }
-                        .padding(.horizontal, 20)
-                        .padding(.top, 10)
-                    }
-
-                    // Botón principal de pánico
+                    // Botón principal de pánico - Rojo intenso con efecto vidrio
                     Button(action: {
                         withOptionalAnimation(.gentle) {
                             showPanicFlow = true
@@ -27,24 +18,126 @@ struct HomeView: View {
                     }) {
                         VStack(spacing: 12) {
                             Image(systemName: "heart.circle.fill")
-                                .font(.system(size: 60))
-                            Text("Estoy teniendo ansiedad")
-                                .font(.title2)
-                                .bold()
-                        }
-                        .foregroundStyle(.white)
-                        .frame(maxWidth: .infinity)
-                        .frame(height: 200)
-                        .background(
-                            RoundedRectangle(cornerRadius: 66)
-                                .fill(.blue.gradient)
-                                .shadow(
-                                    color: .blue.opacity(0.3), radius: isPanicButtonPressed ? 8 : 15,
-                                    x: 0, y: isPanicButtonPressed ? 2 : 8
+                                .font(.system(size: 50))
+                                .foregroundStyle(
+                                    LinearGradient(
+                                        colors: [
+                                            .white.opacity(0.95),
+                                            .white.opacity(0.85),
+                                            Color(red: 1.0, green: 0.9, blue: 0.9).opacity(0.7)
+                                        ],
+                                        startPoint: .topLeading,
+                                        endPoint: .bottomTrailing
+                                    )
                                 )
-                        )
+                            Text("Estoy teniendo ansiedad")
+                                .font(.prometheusTitle3)
+                                .bold()
+                                .foregroundStyle(.white.opacity(0.95))
+                                .multilineTextAlignment(.center)
+                        }
+                        .frame(width: 249, height: 249)
+                        .background {
+                            ZStack {
+                                // Capa base roja profunda con gradiente radial
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color(red: 0.75, green: 0.05, blue: 0.05),
+                                                Color(red: 0.6, green: 0.02, blue: 0.02),
+                                                Color(red: 0.45, green: 0.0, blue: 0.0)
+                                            ],
+                                            center: .center,
+                                            startRadius: 0,
+                                            endRadius: 125
+                                        )
+                                    )
+                                
+                                // Sombra interna superior izquierda (relieve hundido)
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color.black.opacity(0.4),
+                                                Color.black.opacity(0.15),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.25, y: 0.25),
+                                            startRadius: 0,
+                                            endRadius: 80
+                                        )
+                                    )
+                                    .blendMode(.multiply)
+                                
+                                // Brillo rojo intenso superior - Vidrio moldeado
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.4, blue: 0.4).opacity(0.9),
+                                                Color(red: 0.95, green: 0.3, blue: 0.3).opacity(0.5),
+                                                Color(red: 0.85, green: 0.15, blue: 0.15).opacity(0.2),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.35, y: 0.25),
+                                            startRadius: 5,
+                                            endRadius: 100
+                                        )
+                                    )
+                                    .blendMode(.screen)
+                                
+                                // Reflejo blanco superior - Highlight de vidrio
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color.white.opacity(0.7),
+                                                Color.white.opacity(0.3),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.3, y: 0.2),
+                                            startRadius: 3,
+                                            endRadius: 40
+                                        )
+                                    )
+                                    .blendMode(.overlay)
+                                
+                                // Borde con relieve gradiente
+                                Circle()
+                                    .stroke(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 0.9, green: 0.2, blue: 0.2).opacity(0.8),
+                                                Color(red: 0.4, green: 0.0, blue: 0.0).opacity(0.9),
+                                                Color(red: 0.25, green: 0.0, blue: 0.0)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 3
+                                    )
+                                
+                                // Sombra interna inferior derecha (profundidad)
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color.clear,
+                                                Color.black.opacity(0.25),
+                                                Color.black.opacity(0.5)
+                                            ],
+                                            center: .init(x: 0.7, y: 0.75),
+                                            startRadius: 50,
+                                            endRadius: 125
+                                        )
+                                    )
+                                    .blendMode(.multiply)
+                            }
+                        }
                         .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
-                        .padding(.horizontal, 40)
+                        .shadow(color: Color(red: 0.8, green: 0.0, blue: 0.0).opacity(0.5), radius: isPanicButtonPressed ? 10 : 25, x: 0, y: isPanicButtonPressed ? 5 : 12)
+                        .shadow(color: .black.opacity(0.4), radius: isPanicButtonPressed ? 5 : 15, x: 0, y: isPanicButtonPressed ? 2 : 8)
                     }
                     .buttonStyle(.plain)
                     .hapticOnTap(.impact(style: .heavy))
@@ -132,8 +225,17 @@ struct HomeView: View {
                         }
                     }
                     .padding(.horizontal, 40)
-                    .padding(.bottom, 30)
+                    
+                    // Banner Premium en la parte inferior (solo para usuarios no premium)
+                    if !purchaseManager.isPremium {
+                        PremiumBanner {
+                            showPaywall = true
+                        }
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 30)
+                    }
                 }
+            }
             }
             .anstopBackground(.home)
             .prepareHapticsOnAppear()
@@ -154,7 +256,7 @@ struct HomeView: View {
             }
         }
     }
-}
+
 
 // MARK: - Premium Banner Component
 
