@@ -36,8 +36,7 @@ struct DayDetailView: View {
                         .foregroundStyle(.secondary)
 
                     Text(exercise?.title ?? "")
-                        .font(.largeTitle)
-                        .bold()
+                        .font(.prometheusLargeTitle)
 
                     Text(exercise?.description ?? "")
                         .font(.title3)
@@ -56,8 +55,8 @@ struct DayDetailView: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                .background(Color.blue.opacity(0.1))
-                .foregroundStyle(.blue)
+                .background(Color("Blue").opacity(0.1))
+                .foregroundStyle(Color("Blue"))
                 .clipShape(Capsule())
                 .padding(.horizontal, 20)
 

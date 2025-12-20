@@ -111,7 +111,7 @@ struct PanicCompletionView: View {
                 .bold()
 
             Text("Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.")
-                .font(.body)
+                .font(.futuraBody)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)

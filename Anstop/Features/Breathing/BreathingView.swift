@@ -43,7 +43,7 @@ struct BreathingView: View {
                             RadialGradient(
                                 colors: [
                                     .cyan.opacity(0.1),
-                                    .blue.opacity(0.05),
+                                    Color("Blue").opacity(0.05),
                                     .clear,
                                 ],
                                 center: .center,

@@ -110,8 +110,7 @@ struct GroundingStepView: View {
 
             VStack(spacing: 16) {
                 Text(title)
-                    .font(.largeTitle)
-                    .bold()
+                    .font(.prometheusLargeTitle)
 
                 Text(description)
                     .font(.title3)

@@ -23,7 +23,7 @@ struct DailyJournalView: View {
                         HStack {
                             Image(systemName: "plus.circle.fill")
                                 .font(.title2)
-                                .foregroundStyle(.blue)
+                                .foregroundStyle(Color("Blue"))
                             Text("Nueva entrada")
                                 .font(.headline)
                         }

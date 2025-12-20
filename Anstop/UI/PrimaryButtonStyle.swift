@@ -13,7 +13,7 @@ struct PrimaryButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .frame(height: height)
             .background(
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
                     .fill(color)
                     .opacity(configuration.isPressed ? 0.85 : 1)
             )
@@ -23,7 +23,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 }
 
 extension View {
-    func primaryButtonStyle(color: Color = .blue) -> some View {
+    func primaryButtonStyle(color: Color = Color("Blue")) -> some View {
         buttonStyle(PrimaryButtonStyle(color: color))
     }
 }

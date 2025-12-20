@@ -1,70 +1,88 @@
 {
+  "appPolicies" : {
+    "eula" : "",
+    "policies" : [
+      {
+        "locale" : "en_US",
+        "policyText" : "",
+        "policyURL" : ""
+      }
+    ]
+  },
   "identifier" : "E2C1D7C1",
-  "nonRenewingSubscriptions" : [],
-  "products" : [],
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+
+  ],
   "settings" : {
     "_applicationInternalID" : "6736733169",
+    "_askToBuyEnabled" : false,
+    "_billingGracePeriodEnabled" : true,
+    "_billingIssuesEnabled" : false,
     "_developerTeamID" : "GD6M44DYPQ",
+    "_disableDialogs" : false,
+    "_failTransactionsEnabled" : false,
     "_lastSynchronizedDate" : 754542295.46942997,
     "_locale" : "es_ES",
+    "_renewalBillingIssuesEnabled" : true,
     "_storefront" : "ESP",
     "_storeKitErrors" : [
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Load Products"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Purchase"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Verification"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Store Sync"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Subscription Status"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "App Transaction"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Manage Subscriptions Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Refund Request Sheet"
       },
       {
-        "current" : null,
         "enabled" : false,
         "name" : "Offer Code Redeem Sheet"
       }
-    ]
+    ],
+    "_timeRate" : 0
   },
   "subscriptionGroups" : [
     {
       "id" : "21512201",
-      "localizations" : [],
+      "localizations" : [
+
+      ],
       "name" : "Premium Access",
       "subscriptions" : [
         {
-          "adHocOffers" : [],
-          "codeOffers" : [],
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
           "displayPrice" : "9.99",
           "familyShareable" : false,
           "groupNumber" : 1,
@@ -87,11 +105,18 @@
           "recurringSubscriptionPeriod" : "P1M",
           "referenceName" : "Premium Monthly",
           "subscriptionGroupID" : "21512201",
-          "type" : "RecurringSubscription"
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         },
         {
-          "adHocOffers" : [],
-          "codeOffers" : [],
+          "adHocOffers" : [
+
+          ],
+          "codeOffers" : [
+
+          ],
           "displayPrice" : "59.99",
           "familyShareable" : false,
           "groupNumber" : 1,
@@ -114,7 +139,10 @@
           "recurringSubscriptionPeriod" : "P1Y",
           "referenceName" : "Premium Yearly",
           "subscriptionGroupID" : "21512201",
-          "type" : "RecurringSubscription"
+          "type" : "RecurringSubscription",
+          "winbackOffers" : [
+
+          ]
         }
       ]
     }

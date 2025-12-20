@@ -36,7 +36,7 @@ struct HomeView: View {
                         .frame(maxWidth: .infinity)
                         .frame(height: 200)
                         .background(
-                            RoundedRectangle(cornerRadius: 20)
+                            RoundedRectangle(cornerRadius: 66)
                                 .fill(.blue.gradient)
                                 .shadow(
                                     color: .blue.opacity(0.3), radius: isPanicButtonPressed ? 8 : 15,
@@ -70,7 +70,7 @@ struct HomeView: View {
                                     Image(systemName: "calendar")
                                         .foregroundStyle(.orange)
                                     Text("Programa de 30 Días")
-                                        .font(.headline)
+                                        .font(.prometheusHeadline)
                                         .foregroundStyle(.primary)
                                     if !purchaseManager.isPremium {
                                         Text("PRO")
@@ -93,7 +93,7 @@ struct HomeView: View {
                         }
                         .padding()
                         .background(
-                            RoundedRectangle(cornerRadius: 16)
+                            RoundedRectangle(cornerRadius: 26)
                                 .fill(.orange.opacity(0.1))
                         )
                     }
@@ -142,7 +142,7 @@ struct HomeView: View {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape.fill")
-                            .foregroundStyle(.blue)
+                            .foregroundStyle(Color("Blue"))
                     }
                 }
             }
@@ -188,7 +188,7 @@ struct PremiumBanner: View {
             .background(
                 LinearGradient(colors: [.blue, .purple], startPoint: .leading, endPoint: .trailing)
             )
-            .clipShape(RoundedRectangle(cornerRadius: 12))
+            .clipShape(RoundedRectangle(cornerRadius: 29))
         }
         .buttonStyle(.plain)
     }
@@ -224,7 +224,7 @@ struct QuickAccessButton: View {
             .foregroundStyle(.primary)
             .padding()
             .background(
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 29)
                     .fill(.background.opacity(0.5))
             )
         }

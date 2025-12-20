@@ -49,7 +49,7 @@ struct OnboardingView: View {
                 VStack(spacing: 10) {
                     Text("Nivel de ansiedad: \(Int(initialAnxietyLevel))")
                         .font(.headline)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color("Blue"))
 
                     Slider(value: $initialAnxietyLevel, in: 1 ... 10, step: 1)
                         .tint(.blue)
@@ -152,7 +152,7 @@ struct SoftPaywallStep: View {
                 // Icono Premium
                 ZStack {
                     Circle()
-                        .fill(LinearGradient(colors: [.blue, .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .fill(LinearGradient(colors: [Color("Blue"), .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 100, height: 100)
 
                     Image(systemName: "crown.fill")
@@ -161,8 +161,7 @@ struct SoftPaywallStep: View {
                 }
 
                 Text("Obtén resultados más rápidos")
-                    .font(.title)
-                    .bold()
+                    .font(.prometheusTitle)
                     .multilineTextAlignment(.center)
 
                 Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
@@ -246,7 +245,7 @@ struct OnboardingStepView: View {
 
             Image(systemName: image)
                 .font(.system(size: 80))
-                .foregroundStyle(.blue.gradient)
+                .foregroundStyle(Color("Blue").gradient)
                 .symbolEffect(.bounce, value: true)
 
             Text(title)
@@ -255,7 +254,7 @@ struct OnboardingStepView: View {
                 .multilineTextAlignment(.center)
 
             Text(description)
-                .font(.title3)
+                .font(.futuraBody)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 20)

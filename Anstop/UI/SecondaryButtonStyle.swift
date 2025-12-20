@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct SecondaryButtonStyle: ButtonStyle {
-    var color: Color = .blue
+    var color: Color = Color("Blue")
     var height: CGFloat = 55
     var cornerRadius: CGFloat = 16
 
@@ -13,7 +13,7 @@ struct SecondaryButtonStyle: ButtonStyle {
             .frame(maxWidth: .infinity)
             .frame(height: height)
             .background(
-                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                RoundedRectangle(cornerRadius: 28, style: .continuous)
                     .stroke(color.opacity(configuration.isPressed ? 0.6 : 1.0), lineWidth: 2)
                     .background(
                         RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
@@ -26,7 +26,7 @@ struct SecondaryButtonStyle: ButtonStyle {
 }
 
 extension View {
-    func secondaryButtonStyle(color: Color = .blue) -> some View {
+    func secondaryButtonStyle(color: Color = Color("Blue")) -> some View {
         buttonStyle(SecondaryButtonStyle(color: color))
     }
 }

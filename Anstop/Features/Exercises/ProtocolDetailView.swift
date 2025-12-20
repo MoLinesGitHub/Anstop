@@ -21,8 +21,7 @@ struct ProtocolDetailView: View {
                     .padding(.top, 40)
 
                 Text(protocolData.title)
-                    .font(.title)
-                    .bold()
+                    .font(.prometheusTitle)
                     .multilineTextAlignment(.center)
 
                 Text(protocolData.description)

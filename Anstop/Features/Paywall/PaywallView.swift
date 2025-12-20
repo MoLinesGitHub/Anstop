@@ -334,7 +334,7 @@ struct ProductCard: View {
                 // Selection indicator
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.title2)
-                    .foregroundStyle(isSelected ? .blue : .secondary)
+                    .foregroundStyle(isSelected ? Color("Blue") : .secondary)
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -433,7 +433,7 @@ struct PaywallSimpleView: View {
                             .foregroundStyle(.yellow)
 
                         Text("Desbloquea Premium")
-                            .font(.largeTitle).bold()
+                            .font(.prometheusLargeTitle)
 
                         Text("Accede a todas las guías de audio y contenido exclusivo.")
                             .multilineTextAlignment(.center)

@@ -35,8 +35,7 @@ struct ThirtyDayProgramView: View {
                         .foregroundStyle(.orange.gradient)
 
                     Text("\(progress.currentStreak) días seguidos")
-                        .font(.title2)
-                        .bold()
+                        .font(.prometheusTitle2)
 
                     Text("\(progress.completedDays.count)/30 ejercicios completados")
                         .font(.subheadline)
@@ -103,7 +102,7 @@ struct DayCell: View {
         if isCompleted {
             .green
         } else if isUnlocked {
-            .blue
+            Color("Blue")
         } else {
             Color(uiColor: .systemGray5)
         }

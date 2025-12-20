@@ -102,7 +102,7 @@ struct AudioGuideRow: View {
                 } else {
                     Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                         .font(.title2)
-                        .foregroundStyle(.blue)
+                        .foregroundStyle(Color("Blue"))
                 }
             }
         }
