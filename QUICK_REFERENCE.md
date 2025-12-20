@@ -143,7 +143,7 @@ cat NEXT_STEPS_DETAILED.md
 
 - **Swift:** 6.0
 - **iOS:** 18.0+
-- **Bundle ID:** com.anstop.app
+- **Bundle ID:** com.molinesdesigns.Anstop
 - **IAP:** premium.monthly, premium.yearly
 - **Persistencia:** SwiftData
 - **UI:** SwiftUI con NavigationStack

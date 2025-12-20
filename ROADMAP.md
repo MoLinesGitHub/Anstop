@@ -50,7 +50,7 @@
 
 ### ✅ 0.3 Identidad del producto
 - ✅ Nombre: **Anstop**
-- ✅ Bundle ID: `com.anstop.app`
+- ✅ Bundle ID: `com.molinesdesigns.Anstop`
 - ✅ Paleta: azul suave, blanco, transparencias
 - ✅ Tono: seguro, amable, directo (nunca clínico)
 - ✅ Icono y assets configurados
@@ -738,7 +738,7 @@ Modelos implementados:
 - ✅ Recursos visuales iniciales ✅
 
 ### ✅ 24.3 Negocio
-- ✅ Bundle ID: com.anstop.app
+- ✅ Bundle ID: com.molinesdesigns.Anstop
 - ✅ Productos StoreKit configurados
 - 🔜 Dominios registrados
 - 🔜 Política de privacidad generada

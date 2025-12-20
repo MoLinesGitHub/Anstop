@@ -66,7 +66,7 @@ final class PurchaseManager {
         do {
             products = try await Product.products(for: productIdentifiers)
             products.sort { $0.price < $1.price }
-            Logger.purchases.info("Successfully loaded \(products.count) products")
+            Logger.purchases.info("Successfully loaded \(self.products.count) products")
         } catch {
             Logger.purchases.error("Failed to load products: \(error.localizedDescription)")
         }

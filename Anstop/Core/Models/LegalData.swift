@@ -160,7 +160,7 @@ enum LegalData {
 
     **10. CONTACTO**
 
-    Para consultas sobre este EULA, contacte: legal@anstop.app
+    Para consultas sobre este EULA, contacte: admin@molinesdesigns.com
 
     ---
 

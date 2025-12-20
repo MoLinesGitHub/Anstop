@@ -20,7 +20,7 @@ targets:
         excludes:
           - "*.md"
     settings:
-      PRODUCT_BUNDLE_IDENTIFIER: com.anstop.app
+      PRODUCT_BUNDLE_IDENTIFIER: com.molinesdesigns.Anstop
       PRODUCT_NAME: Anstop
       INFOPLIST_FILE: Anstop/Info.plist
       DEVELOPMENT_ASSET_PATHS: ""
