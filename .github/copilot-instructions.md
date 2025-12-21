@@ -121,6 +121,27 @@ Copilot debe:
 - nunca inventar rutas, tipos o servicios
 - evitar modificar la configuración de Xcode salvo orden explícita
 
+### ⚠️ REGLA CRÍTICA: Hot Reload y Recompilación
+
+**MOTIVO ÚNICO por el cual los cambios NO se ven al hacer Run en Xcode:**
+
+Xcode usa **DerivedData cache** que NO siempre recompila archivos modificados, especialmente cuando:
+- Solo se cambian valores de propiedades (colores, opacidades, tamaños)
+- Se modifican gradientes o efectos visuales SwiftUI
+- Se editan overlays o modifiers de vistas
+
+**SOLUCIÓN OBLIGATORIA antes de diagnosticar:**
+1. **SIEMPRE ejecutar Clean Build Folder** (`Cmd+Shift+K` o `xcodebuild clean`)
+2. **Recompilar desde cero** para garantizar que los cambios se apliquen
+3. Si persiste, verificar que el archivo editado está en el target correcto
+
+**Nunca asumir** que el problema es:
+- Código incorrecto
+- Sintaxis Swift
+- Errores de lógica
+
+Primero **limpiar y recompilar**, luego diagnosticar.
+
 ---
 
 ## 🎯 OBJETIVO DEL SISTEMA DE INSTRUCCIONES

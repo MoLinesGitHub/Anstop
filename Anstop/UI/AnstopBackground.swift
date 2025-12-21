@@ -22,7 +22,7 @@ struct AnstopBackground: View {
 
     init(
         accentColor: Color = .cyan,
-        count: Int = 26,
+        count: Int = 20,
         particleOpacity: Double = 0.15,
         particleSpeed: Double = 0.4,
         showWaves: Bool = true,
@@ -135,6 +135,7 @@ private struct SimpleParticlesView: View {
         var speedX: CGFloat
         var speedY: CGFloat
         var hasGlow: Bool
+        var glowIntensity: Double
     }
 
     var body: some View {
@@ -155,28 +156,37 @@ private struct SimpleParticlesView: View {
                         if xPosition < 0 { xPosition += size.width }
                         if yPosition < 0 { yPosition += size.height }
 
-                        let rect = CGRect(x: xPosition, y: yPosition, width: particle.size, height: particle.size)
-                        let particleColor = color.opacity(particle.opacity * opacity)
+                        // Efecto de parpadeo suave (luciérnaga)
+                        let twinkle = sin(date * 2.0 + Double(particle.id.hashValue % 100)) * 0.3 + 0.7
                         
-                        // Renderizar partícula base
-                        context.fill(
-                            Path(ellipseIn: rect),
-                            with: .color(particleColor)
+                        // Color de luz mágica (blanco-dorado)
+                        let lightColor = Color(
+                            red: 1.0,
+                            green: 0.98,
+                            blue: 0.85
                         )
                         
-                        // Aplicar efecto glow luminiscente al 25% de partículas
+                        let rect = CGRect(x: xPosition, y: yPosition, width: particle.size, height: particle.size)
+                        
+                        // Núcleo brillante de la luciérnaga
+                        context.fill(
+                            Path(ellipseIn: rect),
+                            with: .color(lightColor.opacity(particle.opacity * opacity * twinkle))
+                        )
+                        
+                        // Halo de luz (todas las partículas tienen brillo)
                         if particle.hasGlow {
-                            let glowRect1 = rect.insetBy(dx: -particle.size * 0.3, dy: -particle.size * 0.3)
-                            let glowRect2 = rect.insetBy(dx: -particle.size * 0.6, dy: -particle.size * 0.6)
+                            let glowRect1 = rect.insetBy(dx: -particle.size * 0.4, dy: -particle.size * 0.4)
+                            let glowRect2 = rect.insetBy(dx: -particle.size * 0.8, dy: -particle.size * 0.8)
                             
                             context.fill(
                                 Path(ellipseIn: glowRect1),
-                                with: .color(particleColor.opacity(0.4))
+                                with: .color(lightColor.opacity(particle.opacity * opacity * twinkle * 0.5 * particle.glowIntensity))
                             )
                             
                             context.fill(
                                 Path(ellipseIn: glowRect2),
-                                with: .color(particleColor.opacity(0.15))
+                                with: .color(lightColor.opacity(particle.opacity * opacity * twinkle * 0.2 * particle.glowIntensity))
                             )
                         }
                     }
@@ -201,11 +211,12 @@ private struct SimpleParticlesView: View {
             Particle(
                 xPos: CGFloat.random(in: 1 ... size.width),
                 yPos: CGFloat.random(in: 1 ... size.height),
-                size: CGFloat.random(in: 2 ... 6),
-                opacity: Double.random(in: 0.3 ... 1.0),
+                size: CGFloat.random(in: 2 ... 5),
+                opacity: Double.random(in: 0.5 ... 1.0),
                 speedX: CGFloat.random(in: -0.5 ... 0.5) * speed,
                 speedY: CGFloat.random(in: -0.3 ... 0.1) * speed,
-                hasGlow: Double.random(in: 0 ... 1) < 0.25
+                hasGlow: Double.random(in: 0 ... 1) < 0.7, // 70% con brillo intenso
+                glowIntensity: Double.random(in: 0.6 ... 1.0)
             )
         }
     }
@@ -271,47 +282,47 @@ private struct LiquidWavesView: View {
 
 extension AnstopBackground {
     static var home: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 39, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
+        AnstopBackground(accentColor: .cyan, count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
 
     static var breathing: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 26, particleOpacity: 0.15, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
+        AnstopBackground(accentColor: .cyan, count: 20, particleOpacity: 0.15, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
 
     static var grounding: AnstopBackground {
-        AnstopBackground(accentColor: .green, count: 33, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .green, count: 25, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
     }
 
     static var journal: AnstopBackground {
-        AnstopBackground(accentColor: .indigo, count: 26, particleOpacity: 0.12, particleSpeed: 0.3, showWaves: true, intensity: 0.7)
+        AnstopBackground(accentColor: .indigo, count: 20, particleOpacity: 0.12, particleSpeed: 0.3, showWaves: true, intensity: 0.7)
     }
 
     static var audio: AnstopBackground {
-        AnstopBackground(accentColor: .purple, count: 23, particleOpacity: 0.12, particleSpeed: 0.25, showWaves: true, intensity: 0.6)
+        AnstopBackground(accentColor: .purple, count: 18, particleOpacity: 0.12, particleSpeed: 0.25, showWaves: true, intensity: 0.6)
     }
 
     static var aiHelper: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.6, green: 0.4, blue: 0.8), count: 26, particleOpacity: 0.10, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
+        AnstopBackground(accentColor: Color(red: 0.6, green: 0.4, blue: 0.8), count: 20, particleOpacity: 0.10, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
 
     static var library: AnstopBackground {
-        AnstopBackground(accentColor: .teal, count: 29, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .teal, count: 22, particleOpacity: 0.12, particleSpeed: 0.35, showWaves: true)
     }
 
     static var settings: AnstopBackground {
-        AnstopBackground(accentColor: .gray, count: 20, particleOpacity: 0.08, particleSpeed: 0.2, showWaves: true, intensity: 0.5)
+        AnstopBackground(accentColor: .gray, count: 15, particleOpacity: 0.08, particleSpeed: 0.2, showWaves: true, intensity: 0.5)
     }
 
     static var panic: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.3, green: 0.6, blue: 0.9), count: 33, particleOpacity: 0.18, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: Color(red: 0.3, green: 0.6, blue: 0.9), count: 25, particleOpacity: 0.18, particleSpeed: 0.35, showWaves: true)
     }
 
     static var program: AnstopBackground {
-        AnstopBackground(accentColor: .mint, count: 29, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
+        AnstopBackground(accentColor: .mint, count: 22, particleOpacity: 0.15, particleSpeed: 0.35, showWaves: true)
     }
 
     static var premium: AnstopBackground {
-        AnstopBackground(accentColor: Color(red: 0.85, green: 0.65, blue: 0.2), count: 39, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
+        AnstopBackground(accentColor: Color(red: 0.85, green: 0.65, blue: 0.2), count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
 
     static var minimal: AnstopBackground {
@@ -331,7 +342,7 @@ extension View {
 
     func anstopBackground(
         accentColor: Color = .cyan,
-        count: Int = 26,
+        count: Int = 20,
         particleOpacity: Double = 0.15,
         particleSpeed: Double = 0.4,
         showWaves: Bool = true,

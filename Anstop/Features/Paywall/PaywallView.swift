@@ -94,7 +94,7 @@ struct PaywallView: View {
                             description: "20+ ejercicios de respiración y relajación"
                         )
                         FeatureRow(
-                            icon: "calendar", title: "Programa de 30 días",
+                            icon: "calendar", title: "Programa de 30 días gratis",
                             description: "Plan estructurado que funciona"
                         )
                         FeatureRow(
@@ -238,9 +238,9 @@ struct PaywallView: View {
 
 struct TestimonialsCarousel: View {
     let testimonials = [
-        Testimonial(text: "Esta app me salvó durante mis peores momentos de ansiedad. Ahora puedo manejarla.", author: "María G.", rating: 5),
-        Testimonial(text: "El programa de 30 días cambió mi vida. Lo recomiendo 100%.", author: "Carlos R.", rating: 5),
-        Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana L.", rating: 5),
+        Testimonial(text: "Esta app me acaba de salvar la vida! Hasta ahora he tenido siempre unos nervios que... en fin... es otro mundo, y ahora....  es que no tengo ansiedad! Ahora puedo con ella, dormir, puedo dormir! Gracias!", author: "María G.", rating: 5),
+        Testimonial(text: "El programa de 30 días cambió mi vida. Lo recomiendo encarecidamente.", author: "Carlos Ricardo R.", rating: 5),
+        Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana Simón U.", rating: 5),
     ]
 
     var body: some View {

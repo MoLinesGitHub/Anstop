@@ -6,104 +6,140 @@ struct HomeView: View {
     @State private var showPaywall = false
     @State private var purchaseManager = PurchaseManager.shared
 
+    @State private var textRotation: Double = 0
+    @State private var selectedQuickAccess: QuickAccessItem?
+    @State private var isQuickAccessExpanded = false
+    @State private var lotusScale: CGFloat = 1.0
+    
+    enum QuickAccessItem: String, CaseIterable, Identifiable {
+        case breathing = "Respiración"
+        case grounding = "Grounding 5-4-3-2-1"
+        case audio = "Audio calmante"
+        case journal = "Diario del día"
+        case library = "Biblioteca de Recursos"
+        case ai = "Asistente IA"
+        case history = "Historial de Diario"
+        
+        var id: String { rawValue }
+        
+        var icon: String {
+            switch self {
+            case .breathing: return "wind"
+            case .grounding: return "hand.raised.fill"
+            case .audio: return "speaker.wave.2.fill"
+            case .journal: return "book.fill"
+            case .library: return "books.vertical.fill"
+            case .ai: return "sparkles"
+            case .history: return "clock.arrow.circlepath"
+            }
+        }
+        
+        var isPremium: Bool {
+            switch self {
+            case .audio, .ai: return true
+            default: return false
+            }
+        }
+    }
+    
     var body: some View {
         NavigationStack {
             ZStack {
-                // Contenido que hace scroll (por detrás del botón)
-                ScrollView {
-                    VStack(spacing: 30) {
-                        // Espacio para que el primer elemento no quede detrás del botón
-                        Spacer()
-                            .frame(height: 300)
-                        
-                        // Programa de 30 Días - Destacado
-                        NavigationLink(destination: ThirtyDayProgramView()) {
-                            HStack {
-                                VStack(alignment: .leading, spacing: 8) {
-                                    HStack {
-                                        Image(systemName: "calendar")
-                                            .foregroundStyle(.orange)
-                                        Text("Programa de 30 Días")
-                                            .font(.prometheusHeadline)
-                                            .foregroundStyle(.primary)
-                                        if !purchaseManager.isPremium {
-                                            Text("PRO")
-                                                .font(.caption2)
-                                                .bold()
-                                                .foregroundStyle(.white)
-                                                .padding(.horizontal, 6)
-                                                .padding(.vertical, 2)
-                                                .background(Color.orange)
-                                                .clipShape(Capsule())
-                                        }
-                                    }
-                                    Text("Transforma tu relación con la ansiedad")
-                                        .font(.caption)
-                                        .foregroundStyle(.secondary)
-                                }
-                                Spacer()
-                                Image(systemName: "chevron.right")
-                                    .foregroundStyle(.secondary)
-                            }
-                            .padding()
-                            .background(
-                                RoundedRectangle(cornerRadius: 26)
-                                    .fill(.orange.opacity(0.1))
-                            )
-                        }
-                        .padding(.horizontal, 40)
-
-                        // Accesos rápidos
-                        VStack(spacing: 15) {
-                            NavigationLink(destination: BreathingView()) {
-                                QuickAccessButton(title: "Respiración", icon: "wind")
-                            }
-
-                            NavigationLink(destination: GroundingView()) {
-                                QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
-                            }
-
-                            NavigationLink(destination: AudioGuidesView()) {
-                                QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
-                            }
-
-                            NavigationLink(destination: DailyJournalView()) {
-                                QuickAccessButton(title: "Diario del día", icon: "book.fill")
-                            }
-
-                            NavigationLink(destination: LibraryView()) {
-                                QuickAccessButton(
-                                    title: "Biblioteca de Recursos", icon: "books.vertical.fill"
-                                )
-                            }
-
-                            NavigationLink(destination: AIHelperView()) {
-                                QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
-                            }
-
-                            NavigationLink(destination: JournalHistoryView()) {
-                                QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
-                            }
-                        }
-                        .padding(.horizontal, 40)
-                        
-                        // Banner Premium en la parte inferior (solo para usuarios no premium)
-                        if !purchaseManager.isPremium {
-                            PremiumBanner {
-                                showPaywall = true
-                            }
-                            .padding(.horizontal, 40)
-                            .padding(.bottom, 30)
-                        }
-                    }
-                }
-                .anstopBackground(.home)
+                // Fondo
+                Color.clear
+                    .anstopBackground(.home)
                 
-                // Botón FIJO en el centro (siempre visible, capa superior)
+                // Panel de accesos rápidos FIJO debajo del botón de pánico
                 VStack {
                     Spacer()
-                        .frame(height: 120)
+                        .frame(height: 500)
                     
+                    // Panel de cristal con todos los iconos
+                    CrystalQuickAccessPanel(
+                        selectedItem: $selectedQuickAccess,
+                        isExpanded: $isQuickAccessExpanded,
+                        isPremium: purchaseManager.isPremium
+                    )
+                    .padding(.horizontal, 30)
+                    
+                    Spacer()
+                    
+                    // Banner Premium (solo si no es premium)
+                    if !purchaseManager.isPremium {
+                        PremiumBanner {
+                            showPaywall = true
+                        }
+                        .padding(.horizontal, 40)
+                        .padding(.bottom, 30)
+                    }
+                }
+                
+                // Botón FIJO en el centro (siempre visible, capa superior)
+                VStack(spacing: 20) {
+                    Spacer()
+                        .frame(height: 80)
+                    
+                    // Botón Programa de 30 Días - Liquid Glass estilo Dock macOS
+                    NavigationLink(destination: ThirtyDayProgramView()) {
+                        ZStack {
+                            Circle()
+                                .frame(width: 140, height: 140)
+                                .background(.ultraThinMaterial, in: Circle())
+                                .overlay {
+                                    // Tinte arena muy sutil (como el dock)
+                                    Circle()
+                                        .fill(Color(red: 0.85, green: 0.75, blue: 0.55).opacity(0.15))
+                                }
+                                .overlay {
+                                    // Reflejo superior tipo dock
+                                    Circle()
+                                        .fill(
+                                            LinearGradient(
+                                                colors: [
+                                                    Color.white.opacity(0.25),
+                                                    Color.clear
+                                                ],
+                                                startPoint: .top,
+                                                endPoint: .center
+                                            )
+                                        )
+                                }
+                                .overlay {
+                                    // Borde delgado tipo dock
+                                    Circle()
+                                        .strokeBorder(Color.white.opacity(0.3), lineWidth: 0.5)
+                                }
+                            
+                            // Icono central
+                            Image(systemName: "calendar")
+                                .font(.system(size: 35))
+                                .foregroundStyle(.white.opacity(0.95))
+                            
+                            // Texto giratorio alrededor
+                            ZStack {
+                                ForEach(Array("PROGRAMA DE 30 DÍAS • ".enumerated()), id: \.offset) { index, char in
+                                    Text(String(char))
+                                        .font(.system(size: 10, weight: .bold))
+                                        .foregroundStyle(.white.opacity(0.9))
+                                        .offset(y: -60)
+                                        .rotationEffect(.degrees(Double(index) * 18 + textRotation))
+                                }
+                            }
+                            .frame(width: 140, height: 140)
+                        }
+                        .shadow(color: .black.opacity(0.3), radius: 25, x: 0, y: 15)
+                    }
+                    .buttonStyle(.plain)
+                    .onAppear {
+                        withAnimation(.linear(duration: 10).repeatForever(autoreverses: false)) {
+                            textRotation = 360
+                        }
+                    }
+                    
+                    Spacer()
+                        .frame(height: 20)
+                    
+                    // Botón principal de pánico
                     Button(action: {
                         withOptionalAnimation(.gentle) {
                             showPanicFlow = true
@@ -130,135 +166,39 @@ struct HomeView: View {
                                 .multilineTextAlignment(.center)
                         }
                         .frame(width: 249, height: 249)
-                        .background {
-                            ZStack {
-                                // ...existing code... (todas las capas de vidrio rojo)
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color(red: 0.85, green: 0.1, blue: 0.1),
-                                                Color(red: 0.7, green: 0.05, blue: 0.05),
-                                                Color(red: 0.5, green: 0.0, blue: 0.0)
-                                            ],
-                                            center: .center,
-                                            startRadius: 0,
-                                            endRadius: 125
-                                        )
+                        .background(.ultraThinMaterial, in: Circle())
+                        .overlay {
+                            // Tinte rojo muy sutil (como el dock)
+                            Circle()
+                                .fill(
+                                    Color(red: 0.85, green: 0.1, blue: 0.1)
+                                        .opacity(0.18)
+                                )
+                        }
+                        .overlay {
+                            // Reflejo superior tipo dock
+                            Circle()
+                                .fill(
+                                    LinearGradient(
+                                        colors: [
+                                            Color.white.opacity(0.25),
+                                            Color.clear
+                                        ],
+                                        startPoint: .top,
+                                        endPoint: .center
                                     )
-                                
-                                Circle()
-                                    .fill(
-                                        LinearGradient(
-                                            colors: [
-                                                Color.white.opacity(0.25),
-                                                Color.white.opacity(0.08),
-                                                Color(red: 1.0, green: 0.3, blue: 0.3).opacity(0.15),
-                                                Color.clear
-                                            ],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        )
-                                    )
-                                    .blendMode(.overlay)
-                                
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color(red: 1.0, green: 0.5, blue: 0.5).opacity(0.8),
-                                                Color(red: 0.95, green: 0.35, blue: 0.35).opacity(0.4),
-                                                Color.clear
-                                            ],
-                                            center: .init(x: 0.3, y: 0.2),
-                                            startRadius: 0,
-                                            endRadius: 90
-                                        )
-                                    )
-                                    .blendMode(.screen)
-                                
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color.white.opacity(0.85),
-                                                Color.white.opacity(0.5),
-                                                Color.white.opacity(0.15),
-                                                Color.clear
-                                            ],
-                                            center: .init(x: 0.25, y: 0.18),
-                                            startRadius: 0,
-                                            endRadius: 50
-                                        )
-                                    )
-                                    .blendMode(.overlay)
-                                
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color.white.opacity(0.4),
-                                                Color.white.opacity(0.1),
-                                                Color.clear
-                                            ],
-                                            center: .init(x: 0.7, y: 0.3),
-                                            startRadius: 15,
-                                            endRadius: 60
-                                        )
-                                    )
-                                    .blendMode(.screen)
-                                
-                                Circle()
-                                    .stroke(
-                                        LinearGradient(
-                                            colors: [
-                                                Color.white.opacity(0.7),
-                                                Color(red: 1.0, green: 0.4, blue: 0.4).opacity(0.6),
-                                                Color(red: 0.6, green: 0.0, blue: 0.0).opacity(0.8),
-                                                Color.white.opacity(0.4)
-                                            ],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 2.5
-                                    )
-                                    .blendMode(.overlay)
-                                
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color.clear,
-                                                Color.clear,
-                                                Color.black.opacity(0.2),
-                                                Color.black.opacity(0.45)
-                                            ],
-                                            center: .init(x: 0.6, y: 0.7),
-                                            startRadius: 40,
-                                            endRadius: 125
-                                        )
-                                    )
-                                    .blendMode(.multiply)
-                                
-                                Circle()
-                                    .strokeBorder(
-                                        LinearGradient(
-                                            colors: [
-                                                Color(red: 1.0, green: 0.6, blue: 0.6).opacity(0.5),
-                                                Color.clear,
-                                                Color.clear,
-                                                Color(red: 0.4, green: 0.0, blue: 0.0).opacity(0.3)
-                                            ],
-                                            startPoint: .topLeading,
-                                            endPoint: .bottomTrailing
-                                        ),
-                                        lineWidth: 1
-                                    )
-                            }
+                                )
+                        }
+                        .overlay {
+                            // Borde delgado tipo dock
+                            Circle()
+                                .strokeBorder(
+                                    Color.white.opacity(0.3),
+                                    lineWidth: 0.5
+                                )
                         }
                         .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
-                        .shadow(color: Color(red: 0.8, green: 0.0, blue: 0.0).opacity(0.5), radius: isPanicButtonPressed ? 10 : 25, x: 0, y: isPanicButtonPressed ? 5 : 12)
-                        .shadow(color: .black.opacity(0.4), radius: isPanicButtonPressed ? 5 : 15, x: 0, y: isPanicButtonPressed ? 2 : 8)
+                        .shadow(color: .black.opacity(0.3), radius: isPanicButtonPressed ? 10 : 25, x: 0, y: isPanicButtonPressed ? 5 : 15)
                     }
                     .buttonStyle(.plain)
                     .hapticOnTap(.impact(style: .heavy))
@@ -294,12 +234,232 @@ struct HomeView: View {
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
             }
+            .navigationDestination(for: QuickAccessItem.self) { item in
+                switch item {
+                case .breathing:
+                    BreathingView()
+                case .grounding:
+                    GroundingView()
+                case .audio:
+                    AudioGuidesView()
+                case .journal:
+                    DailyJournalView()
+                case .library:
+                    LibraryView()
+                case .ai:
+                    AIHelperView()
+                case .history:
+                    JournalHistoryView()
+                }
+            }
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
+            }
+            .onChange(of: selectedQuickAccess) { _, newValue in
+                if let item = newValue {
+                    // Pequeño delay para permitir la animación
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                        // Trigger navigation
+                    }
+                }
             }
         }
     }
 
+
+// MARK: - Crystal Quick Access Panel
+
+struct CrystalQuickAccessPanel: View {
+    @Binding var selectedItem: HomeView.QuickAccessItem?
+    @Binding var isExpanded: Bool
+    let isPremium: Bool
+    
+    @State private var pressedIcon: HomeView.QuickAccessItem?
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            // Panel principal de cristal con iconos
+            ZStack {
+                // Fondo de cristal
+                RoundedRectangle(cornerRadius: 40)
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                Color(red: 0.95, green: 0.95, blue: 0.98).opacity(0.15),
+                                Color(red: 0.85, green: 0.88, blue: 0.92).opacity(0.12),
+                                Color(red: 0.75, green: 0.80, blue: 0.88).opacity(0.08)
+                            ],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 200
+                        )
+                    )
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.35),
+                                        Color.white.opacity(0.15),
+                                        Color.cyan.opacity(0.1),
+                                        Color.clear
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color.white.opacity(0.6),
+                                        Color.white.opacity(0.3),
+                                        Color.clear
+                                    ],
+                                    center: .init(x: 0.3, y: 0.2),
+                                    startRadius: 0,
+                                    endRadius: 100
+                                )
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.8),
+                                        Color.cyan.opacity(0.4),
+                                        Color.white.opacity(0.3),
+                                        Color.cyan.opacity(0.2)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 2
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .shadow(color: Color.cyan.opacity(0.2), radius: 20, x: 0, y: 10)
+                    .shadow(color: .black.opacity(0.15), radius: 15, x: 0, y: 8)
+                
+                // Grid de iconos
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20)
+                ], spacing: 20) {
+                    ForEach(HomeView.QuickAccessItem.allCases) { item in
+                        NavigationLink(value: item) {
+                            IconButton(
+                                item: item,
+                                isPressed: pressedIcon == item,
+                                showPremiumBadge: item.isPremium && !isPremium
+                            )
+                            .simultaneousGesture(
+                                TapGesture()
+                                    .onEnded { _ in
+                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                            pressedIcon = item
+                                            selectedItem = item
+                                        }
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                                pressedIcon = nil
+                                            }
+                                        }
+                                    }
+                            )
+                        }
+                        .buttonStyle(.plain)
+                    }
+                }
+                .padding(25)
+            }
+            .frame(height: 180)
+            
+            // Etiqueta expandible debajo
+            if let selected = selectedItem {
+                Text(selected.rawValue)
+                    .font(.prometheusHeadline)
+                    .foregroundStyle(.white.opacity(0.95))
+                    .padding(.horizontal, 20)
+                    .padding(.vertical, 10)
+                    .background(
+                        Capsule()
+                            .fill(.ultraThinMaterial)
+                            .overlay {
+                                Capsule()
+                                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
+                            }
+                    )
+                    .padding(.top, 15)
+                    .transition(.scale.combined(with: .opacity))
+            }
+        }
+    }
+}
+
+struct IconButton: View {
+    let item: HomeView.QuickAccessItem
+    let isPressed: Bool
+    let showPremiumBadge: Bool
+    
+    var body: some View {
+        ZStack(alignment: .topTrailing) {
+            // Icono
+            Image(systemName: item.icon)
+                .font(.system(size: 26))
+                .foregroundStyle(
+                    LinearGradient(
+                        colors: [
+                            Color.white.opacity(0.95),
+                            Color.cyan.opacity(0.7)
+                        ],
+                        startPoint: .topLeading,
+                        endPoint: .bottomTrailing
+                    )
+                )
+                .frame(width: 55, height: 55)
+                .background {
+                    Circle()
+                        .fill(
+                            RadialGradient(
+                                colors: [
+                                    Color.white.opacity(0.2),
+                                    Color.cyan.opacity(0.15),
+                                    Color.clear
+                                ],
+                                center: .center,
+                                startRadius: 0,
+                                endRadius: 30
+                            )
+                        )
+                }
+                .scaleEffect(isPressed ? 0.85 : 1.0)
+                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
+            
+            // Badge PRO
+            if showPremiumBadge {
+                Text("PRO")
+                    .font(.system(size: 8, weight: .bold))
+                    .foregroundStyle(.white)
+                    .padding(.horizontal, 4)
+                    .padding(.vertical, 2)
+                    .background(
+                        Capsule()
+                            .fill(Color.orange)
+                    )
+                    .offset(x: 8, y: -8)
+            }
+        }
+    }
+}
 
 // MARK: - Premium Banner Component
 
