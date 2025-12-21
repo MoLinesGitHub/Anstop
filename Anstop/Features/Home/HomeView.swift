@@ -8,9 +8,102 @@ struct HomeView: View {
 
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 30) {
-                    // Botón principal de pánico - Rojo intenso con efecto vidrio
+            ZStack {
+                // Contenido que hace scroll (por detrás del botón)
+                ScrollView {
+                    VStack(spacing: 30) {
+                        // Espacio para que el primer elemento no quede detrás del botón
+                        Spacer()
+                            .frame(height: 300)
+                        
+                        // Programa de 30 Días - Destacado
+                        NavigationLink(destination: ThirtyDayProgramView()) {
+                            HStack {
+                                VStack(alignment: .leading, spacing: 8) {
+                                    HStack {
+                                        Image(systemName: "calendar")
+                                            .foregroundStyle(.orange)
+                                        Text("Programa de 30 Días")
+                                            .font(.prometheusHeadline)
+                                            .foregroundStyle(.primary)
+                                        if !purchaseManager.isPremium {
+                                            Text("PRO")
+                                                .font(.caption2)
+                                                .bold()
+                                                .foregroundStyle(.white)
+                                                .padding(.horizontal, 6)
+                                                .padding(.vertical, 2)
+                                                .background(Color.orange)
+                                                .clipShape(Capsule())
+                                        }
+                                    }
+                                    Text("Transforma tu relación con la ansiedad")
+                                        .font(.caption)
+                                        .foregroundStyle(.secondary)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundStyle(.secondary)
+                            }
+                            .padding()
+                            .background(
+                                RoundedRectangle(cornerRadius: 26)
+                                    .fill(.orange.opacity(0.1))
+                            )
+                        }
+                        .padding(.horizontal, 40)
+
+                        // Accesos rápidos
+                        VStack(spacing: 15) {
+                            NavigationLink(destination: BreathingView()) {
+                                QuickAccessButton(title: "Respiración", icon: "wind")
+                            }
+
+                            NavigationLink(destination: GroundingView()) {
+                                QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
+                            }
+
+                            NavigationLink(destination: AudioGuidesView()) {
+                                QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
+                            }
+
+                            NavigationLink(destination: DailyJournalView()) {
+                                QuickAccessButton(title: "Diario del día", icon: "book.fill")
+                            }
+
+                            NavigationLink(destination: LibraryView()) {
+                                QuickAccessButton(
+                                    title: "Biblioteca de Recursos", icon: "books.vertical.fill"
+                                )
+                            }
+
+                            NavigationLink(destination: AIHelperView()) {
+                                QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
+                            }
+
+                            NavigationLink(destination: JournalHistoryView()) {
+                                QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
+                            }
+                        }
+                        .padding(.horizontal, 40)
+                        
+                        // Banner Premium en la parte inferior (solo para usuarios no premium)
+                        if !purchaseManager.isPremium {
+                            PremiumBanner {
+                                showPaywall = true
+                            }
+                            .padding(.horizontal, 40)
+                            .padding(.bottom, 30)
+                        }
+                    }
+                }
+                .anstopBackground(.home)
+                
+                // Botón FIJO en el centro (siempre visible, capa superior)
+                VStack {
+                    Spacer()
+                        .frame(height: 120)
+                    
                     Button(action: {
                         withOptionalAnimation(.gentle) {
                             showPanicFlow = true
@@ -39,14 +132,14 @@ struct HomeView: View {
                         .frame(width: 249, height: 249)
                         .background {
                             ZStack {
-                                // Capa base roja profunda con gradiente radial
+                                // ...existing code... (todas las capas de vidrio rojo)
                                 Circle()
                                     .fill(
                                         RadialGradient(
                                             colors: [
-                                                Color(red: 0.75, green: 0.05, blue: 0.05),
-                                                Color(red: 0.6, green: 0.02, blue: 0.02),
-                                                Color(red: 0.45, green: 0.0, blue: 0.0)
+                                                Color(red: 0.85, green: 0.1, blue: 0.1),
+                                                Color(red: 0.7, green: 0.05, blue: 0.05),
+                                                Color(red: 0.5, green: 0.0, blue: 0.0)
                                             ],
                                             center: .center,
                                             startRadius: 0,
@@ -54,85 +147,113 @@ struct HomeView: View {
                                         )
                                     )
                                 
-                                // Sombra interna superior izquierda (relieve hundido)
                                 Circle()
                                     .fill(
-                                        RadialGradient(
+                                        LinearGradient(
                                             colors: [
-                                                Color.black.opacity(0.4),
-                                                Color.black.opacity(0.15),
+                                                Color.white.opacity(0.25),
+                                                Color.white.opacity(0.08),
+                                                Color(red: 1.0, green: 0.3, blue: 0.3).opacity(0.15),
                                                 Color.clear
                                             ],
-                                            center: .init(x: 0.25, y: 0.25),
-                                            startRadius: 0,
-                                            endRadius: 80
-                                        )
-                                    )
-                                    .blendMode(.multiply)
-                                
-                                // Brillo rojo intenso superior - Vidrio moldeado
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color(red: 1.0, green: 0.4, blue: 0.4).opacity(0.9),
-                                                Color(red: 0.95, green: 0.3, blue: 0.3).opacity(0.5),
-                                                Color(red: 0.85, green: 0.15, blue: 0.15).opacity(0.2),
-                                                Color.clear
-                                            ],
-                                            center: .init(x: 0.35, y: 0.25),
-                                            startRadius: 5,
-                                            endRadius: 100
-                                        )
-                                    )
-                                    .blendMode(.screen)
-                                
-                                // Reflejo blanco superior - Highlight de vidrio
-                                Circle()
-                                    .fill(
-                                        RadialGradient(
-                                            colors: [
-                                                Color.white.opacity(0.7),
-                                                Color.white.opacity(0.3),
-                                                Color.clear
-                                            ],
-                                            center: .init(x: 0.3, y: 0.2),
-                                            startRadius: 3,
-                                            endRadius: 40
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
                                         )
                                     )
                                     .blendMode(.overlay)
                                 
-                                // Borde con relieve gradiente
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.5, blue: 0.5).opacity(0.8),
+                                                Color(red: 0.95, green: 0.35, blue: 0.35).opacity(0.4),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.3, y: 0.2),
+                                            startRadius: 0,
+                                            endRadius: 90
+                                        )
+                                    )
+                                    .blendMode(.screen)
+                                
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color.white.opacity(0.85),
+                                                Color.white.opacity(0.5),
+                                                Color.white.opacity(0.15),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.25, y: 0.18),
+                                            startRadius: 0,
+                                            endRadius: 50
+                                        )
+                                    )
+                                    .blendMode(.overlay)
+                                
+                                Circle()
+                                    .fill(
+                                        RadialGradient(
+                                            colors: [
+                                                Color.white.opacity(0.4),
+                                                Color.white.opacity(0.1),
+                                                Color.clear
+                                            ],
+                                            center: .init(x: 0.7, y: 0.3),
+                                            startRadius: 15,
+                                            endRadius: 60
+                                        )
+                                    )
+                                    .blendMode(.screen)
+                                
                                 Circle()
                                     .stroke(
                                         LinearGradient(
                                             colors: [
-                                                Color(red: 0.9, green: 0.2, blue: 0.2).opacity(0.8),
-                                                Color(red: 0.4, green: 0.0, blue: 0.0).opacity(0.9),
-                                                Color(red: 0.25, green: 0.0, blue: 0.0)
+                                                Color.white.opacity(0.7),
+                                                Color(red: 1.0, green: 0.4, blue: 0.4).opacity(0.6),
+                                                Color(red: 0.6, green: 0.0, blue: 0.0).opacity(0.8),
+                                                Color.white.opacity(0.4)
                                             ],
                                             startPoint: .topLeading,
                                             endPoint: .bottomTrailing
                                         ),
-                                        lineWidth: 3
+                                        lineWidth: 2.5
                                     )
+                                    .blendMode(.overlay)
                                 
-                                // Sombra interna inferior derecha (profundidad)
                                 Circle()
                                     .fill(
                                         RadialGradient(
                                             colors: [
                                                 Color.clear,
-                                                Color.black.opacity(0.25),
-                                                Color.black.opacity(0.5)
+                                                Color.clear,
+                                                Color.black.opacity(0.2),
+                                                Color.black.opacity(0.45)
                                             ],
-                                            center: .init(x: 0.7, y: 0.75),
-                                            startRadius: 50,
+                                            center: .init(x: 0.6, y: 0.7),
+                                            startRadius: 40,
                                             endRadius: 125
                                         )
                                     )
                                     .blendMode(.multiply)
+                                
+                                Circle()
+                                    .strokeBorder(
+                                        LinearGradient(
+                                            colors: [
+                                                Color(red: 1.0, green: 0.6, blue: 0.6).opacity(0.5),
+                                                Color.clear,
+                                                Color.clear,
+                                                Color(red: 0.4, green: 0.0, blue: 0.0).opacity(0.3)
+                                            ],
+                                            startPoint: .topLeading,
+                                            endPoint: .bottomTrailing
+                                        ),
+                                        lineWidth: 1
+                                    )
                             }
                         }
                         .scaleEffect(isPanicButtonPressed ? 0.95 : 1.0)
@@ -154,86 +275,8 @@ struct HomeView: View {
                                 }
                             }
                     )
-
-                    // Programa de 30 Días - Destacado
-                    NavigationLink(destination: ThirtyDayProgramView()) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: 8) {
-                                HStack {
-                                    Image(systemName: "calendar")
-                                        .foregroundStyle(.orange)
-                                    Text("Programa de 30 Días")
-                                        .font(.prometheusHeadline)
-                                        .foregroundStyle(.primary)
-                                    if !purchaseManager.isPremium {
-                                        Text("PRO")
-                                            .font(.caption2)
-                                            .bold()
-                                            .foregroundStyle(.white)
-                                            .padding(.horizontal, 6)
-                                            .padding(.vertical, 2)
-                                            .background(Color.orange)
-                                            .clipShape(Capsule())
-                                    }
-                                }
-                                Text("Transforma tu relación con la ansiedad")
-                                    .font(.caption)
-                                    .foregroundStyle(.secondary)
-                            }
-                            Spacer()
-                            Image(systemName: "chevron.right")
-                                .foregroundStyle(.secondary)
-                        }
-                        .padding()
-                        .background(
-                            RoundedRectangle(cornerRadius: 26)
-                                .fill(.orange.opacity(0.1))
-                        )
-                    }
-                    .padding(.horizontal, 40)
-
-                    // Accesos rápidos
-                    VStack(spacing: 15) {
-                        NavigationLink(destination: BreathingView()) {
-                            QuickAccessButton(title: "Respiración", icon: "wind")
-                        }
-
-                        NavigationLink(destination: GroundingView()) {
-                            QuickAccessButton(title: "Grounding 5-4-3-2-1", icon: "hand.raised.fill")
-                        }
-
-                        NavigationLink(destination: AudioGuidesView()) {
-                            QuickAccessButton(title: "Audio calmante", icon: "speaker.wave.2.fill", isPremium: !purchaseManager.isPremium)
-                        }
-
-                        NavigationLink(destination: DailyJournalView()) {
-                            QuickAccessButton(title: "Diario del día", icon: "book.fill")
-                        }
-
-                        NavigationLink(destination: LibraryView()) {
-                            QuickAccessButton(
-                                title: "Biblioteca de Recursos", icon: "books.vertical.fill"
-                            )
-                        }
-
-                        NavigationLink(destination: AIHelperView()) {
-                            QuickAccessButton(title: "Asistente IA", icon: "sparkles", isPremium: !purchaseManager.isPremium)
-                        }
-
-                        NavigationLink(destination: JournalHistoryView()) {
-                            QuickAccessButton(title: "Historial de Diario", icon: "clock.arrow.circlepath")
-                        }
-                    }
-                    .padding(.horizontal, 40)
                     
-                    // Banner Premium en la parte inferior (solo para usuarios no premium)
-                    if !purchaseManager.isPremium {
-                        PremiumBanner {
-                            showPaywall = true
-                        }
-                        .padding(.horizontal, 40)
-                        .padding(.bottom, 30)
-                    }
+                    Spacer()
                 }
             }
             }
