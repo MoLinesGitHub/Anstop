@@ -112,14 +112,14 @@ struct HomeView: View {
                             
                             // Icono central
                             Image(systemName: "calendar")
-                                .font(.futura(35))
+                                .font(.system(size: 35))
                                 .foregroundStyle(.white.opacity(0.95))
                             
                             // Texto giratorio alrededor
                             ZStack {
                                 ForEach(Array("PROGRAMA DE 30 DÍAS • ".enumerated()), id: \.offset) { index, char in
                                     Text(String(char))
-                                        .font(.futura(10))
+                                        .font(.system(size: 10, weight: .bold))
                                         .foregroundStyle(.white.opacity(0.9))
                                         .offset(y: -60)
                                         .rotationEffect(.degrees(Double(index) * 18 + textRotation))
@@ -147,7 +147,7 @@ struct HomeView: View {
                     }) {
                         VStack(spacing: 12) {
                             Image(systemName: "heart.circle.fill")
-                                .font(.futura(50))
+                                .font(.system(size: 50))
                                 .foregroundStyle(
                                     LinearGradient(
                                         colors: [
@@ -277,25 +277,111 @@ struct CrystalQuickAccessPanel: View {
     @State private var pressedIcon: HomeView.QuickAccessItem?
     
     var body: some View {
-        VStack(spacing: 15) {
-            // Panel circular tipo quesito
-            CircularMenuPanel(
-                items: HomeView.QuickAccessItem.allCases.map { item in
-                    MenuItem(
-                        icon: item.icon,
-                        title: item.rawValue,
-                        isPremium: item.isPremium && !isPremium
+        VStack(spacing: 0) {
+            // Panel principal de cristal con iconos
+            ZStack {
+                // Fondo de cristal
+                RoundedRectangle(cornerRadius: 40)
+                    .fill(
+                        RadialGradient(
+                            colors: [
+                                Color(red: 0.95, green: 0.95, blue: 0.98).opacity(0.15),
+                                Color(red: 0.85, green: 0.88, blue: 0.92).opacity(0.12),
+                                Color(red: 0.75, green: 0.80, blue: 0.88).opacity(0.08)
+                            ],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: 200
+                        )
                     )
-                }
-            ) { menuItem in
-                // Encontrar el QuickAccessItem correspondiente
-                if let item = HomeView.QuickAccessItem.allCases.first(where: { $0.rawValue == menuItem.title }) {
-                    withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                        selectedItem = item
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.35),
+                                        Color.white.opacity(0.15),
+                                        Color.cyan.opacity(0.1),
+                                        Color.clear
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                )
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .fill(
+                                RadialGradient(
+                                    colors: [
+                                        Color.white.opacity(0.6),
+                                        Color.white.opacity(0.3),
+                                        Color.clear
+                                    ],
+                                    center: .init(x: 0.3, y: 0.2),
+                                    startRadius: 0,
+                                    endRadius: 100
+                                )
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .overlay {
+                        RoundedRectangle(cornerRadius: 40)
+                            .stroke(
+                                LinearGradient(
+                                    colors: [
+                                        Color.white.opacity(0.8),
+                                        Color.cyan.opacity(0.4),
+                                        Color.white.opacity(0.3),
+                                        Color.cyan.opacity(0.2)
+                                    ],
+                                    startPoint: .topLeading,
+                                    endPoint: .bottomTrailing
+                                ),
+                                lineWidth: 2
+                            )
+                            .blendMode(.overlay)
+                    }
+                    .shadow(color: Color.cyan.opacity(0.2), radius: 20, x: 0, y: 10)
+                    .shadow(color: .black.opacity(0.15), radius: 15, x: 0, y: 8)
+                
+                // Grid de iconos
+                LazyVGrid(columns: [
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20),
+                    GridItem(.flexible(), spacing: 20)
+                ], spacing: 20) {
+                    ForEach(HomeView.QuickAccessItem.allCases) { item in
+                        NavigationLink(value: item) {
+                            IconButton(
+                                item: item,
+                                isPressed: pressedIcon == item,
+                                showPremiumBadge: item.isPremium && !isPremium
+                            )
+                            .simultaneousGesture(
+                                TapGesture()
+                                    .onEnded { _ in
+                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                            pressedIcon = item
+                                            selectedItem = item
+                                        }
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
+                                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
+                                                pressedIcon = nil
+                                            }
+                                        }
+                                    }
+                            )
+                        }
+                        .buttonStyle(.plain)
                     }
                 }
+                .padding(25)
             }
-            .frame(width: 320, height: 320)
+            .frame(height: 180)
             
             // Etiqueta expandible debajo
             if let selected = selectedItem {
@@ -306,26 +392,16 @@ struct CrystalQuickAccessPanel: View {
                     .padding(.vertical, 10)
                     .background(
                         Capsule()
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color.orange.opacity(0.3),
-                                        Color.orange.opacity(0.15)
-                                    ],
-                                    startPoint: .leading,
-                                    endPoint: .trailing
-                                )
-                            )
+                            .fill(.ultraThinMaterial)
                             .overlay {
                                 Capsule()
-                                    .stroke(Color.orange.opacity(0.4), lineWidth: 1.5)
+                                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
                             }
                     )
-                    .shadow(color: Color.orange.opacity(0.3), radius: 10, x: 0, y: 5)
+                    .padding(.top, 15)
                     .transition(.scale.combined(with: .opacity))
             }
         }
-        .padding(.vertical)
     }
 }
 
@@ -338,7 +414,7 @@ struct IconButton: View {
         ZStack(alignment: .topTrailing) {
             // Icono
             Image(systemName: item.icon)
-                .font(.futura(26))
+                .font(.system(size: 26))
                 .foregroundStyle(
                     LinearGradient(
                         colors: [
@@ -371,7 +447,7 @@ struct IconButton: View {
             // Badge PRO
             if showPremiumBadge {
                 Text("PRO")
-                    .font(.futura(8))
+                    .font(.system(size: 8, weight: .bold))
                     .foregroundStyle(.white)
                     .padding(.horizontal, 4)
                     .padding(.vertical, 2)
@@ -394,23 +470,22 @@ struct PremiumBanner: View {
         Button(action: onTap) {
             HStack(spacing: 12) {
                 Image(systemName: "crown.fill")
-                    .font(.futuraTitle3)
+                    .font(.title3)
                     .foregroundStyle(.yellow)
 
                 VStack(alignment: .leading, spacing: 2) {
                     Text("Desbloquea todas las funciones")
-                        .font(.futuraSubheadline)
-                        .fontWeight(.bold)
+                        .font(.subheadline.bold())
                         .foregroundStyle(.white)
                     Text("7 días de prueba GRATIS")
-                        .font(.futuraCaption)
+                        .font(.caption)
                         .foregroundStyle(.white.opacity(0.9))
                 }
 
                 Spacer()
 
                 Image(systemName: "chevron.right")
-                    .font(.futuraCaption)
+                    .font(.caption)
                     .foregroundStyle(.white.opacity(0.8))
             }
             .padding(.horizontal, 16)
@@ -433,13 +508,13 @@ struct QuickAccessButton: View {
         Button(action: {}) {
             HStack {
                 Image(systemName: icon)
-                    .font(.futuraTitle3)
+                    .font(.title3)
                 Text(title)
-                    .font(.futuraBody)
+                    .font(.body)
                 if isPremium {
                     Spacer()
                     Text("PRO")
-                        .font(.futuraCaption2)
+                        .font(.caption2)
                         .bold()
                         .foregroundStyle(.white)
                         .padding(.horizontal, 6)
@@ -449,7 +524,7 @@ struct QuickAccessButton: View {
                 }
                 Spacer()
                 Image(systemName: "chevron.right")
-                    .font(.futuraCaption)
+                    .font(.caption)
             }
             .foregroundStyle(.primary)
             .padding()
