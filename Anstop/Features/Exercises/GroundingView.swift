@@ -98,11 +98,11 @@ struct GroundingStepView: View {
 
                 VStack {
                     Image(systemName: icon)
-                        .font(.system(size: 60))
+                        .font(.futura(60))
                         .foregroundStyle(color)
 
                     Text(number)
-                        .font(.system(size: 80, weight: .bold))
+                        .font(.futura(80))
                         .foregroundStyle(color)
                 }
             }
@@ -113,7 +113,7 @@ struct GroundingStepView: View {
                     .font(.prometheusLargeTitle)
 
                 Text(description)
-                    .font(.title3)
+                    .font(.futuraTitle3)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)

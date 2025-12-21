@@ -31,7 +31,7 @@ struct PaywallView: View {
                             Image(systemName: "gift.fill")
                                 .foregroundStyle(.white)
                             Text("OFERTA DE BIENVENIDA")
-                                .font(.caption)
+                                .font(.futuraCaption)
                                 .bold()
                                 .foregroundStyle(.white)
                         }
@@ -43,9 +43,9 @@ struct PaywallView: View {
                         // Countdown timer
                         HStack(spacing: 4) {
                             Image(systemName: "clock.fill")
-                                .font(.caption)
+                                .font(.futuraCaption)
                             Text("Oferta termina en: \(timeFormatted)")
-                                .font(.subheadline)
+                                .font(.futuraSubheadline)
                                 .bold()
                         }
                         .foregroundStyle(.red)
@@ -56,17 +56,17 @@ struct PaywallView: View {
                     // Main header
                     VStack(spacing: 12) {
                         Image(systemName: "heart.circle.fill")
-                            .font(.system(size: 70))
+                            .font(.futura(70))
                             .foregroundStyle(.blue.gradient)
                             .symbolEffect(.pulse, options: .repeating)
 
                         Text("Tu calma, siempre contigo")
-                            .font(.title)
+                            .font(.futuraTitle)
                             .bold()
                             .multilineTextAlignment(.center)
 
                         Text("Únete a +50,000 personas que han transformado su relación con la ansiedad")
-                            .font(.subheadline)
+                            .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
                             .padding(.horizontal)
@@ -86,7 +86,7 @@ struct PaywallView: View {
                     // Features
                     VStack(alignment: .leading, spacing: 16) {
                         Text("Todo incluido en Premium:")
-                            .font(.headline)
+                            .font(.futuraHeadline)
                             .padding(.horizontal)
 
                         FeatureRow(
@@ -143,9 +143,9 @@ struct PaywallView: View {
                         }) {
                             VStack(spacing: 4) {
                                 Text("Comenzar 7 días GRATIS")
-                                    .font(.headline)
+                                    .font(.futuraHeadline)
                                 Text("Luego \(product.displayPrice)/\(product.id.contains("yearly") ? "año" : "mes")")
-                                    .font(.caption)
+                                    .font(.futuraCaption)
                                     .opacity(0.9)
                             }
                             .foregroundStyle(.white)
@@ -163,7 +163,7 @@ struct PaywallView: View {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundStyle(.green)
                         Text("Cancela cuando quieras • Sin compromiso")
-                            .font(.footnote)
+                            .font(.futuraFootnote)
                             .foregroundStyle(.secondary)
                     }
 
@@ -176,7 +176,7 @@ struct PaywallView: View {
                             }
                         }
                     }
-                    .font(.footnote)
+                    .font(.futuraFootnote)
                     .foregroundStyle(.secondary)
 
                     // Disclaimer
@@ -186,7 +186,7 @@ struct PaywallView: View {
                     La suscripción se renueva automáticamente \
                     a menos que se cancele 24h antes del fin del período.
                     """)
-                    .font(.caption2)
+                    .font(.futuraCaption2)
                     .foregroundStyle(.tertiary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
@@ -270,18 +270,18 @@ struct TestimonialCard: View {
             HStack(spacing: 2) {
                 ForEach(0 ..< testimonial.rating, id: \.self) { _ in
                     Image(systemName: "star.fill")
-                        .font(.caption2)
+                        .font(.futuraCaption2)
                         .foregroundStyle(.yellow)
                 }
             }
 
             Text("\"\(testimonial.text)\"")
-                .font(.footnote)
+                .font(.futuraFootnote)
                 .foregroundStyle(.primary)
                 .lineLimit(3)
 
             Text("— \(testimonial.author)")
-                .font(.caption)
+                .font(.futuraCaption)
                 .foregroundStyle(.secondary)
         }
         .padding()
@@ -298,10 +298,10 @@ struct StatBadge: View {
     var body: some View {
         VStack(spacing: 4) {
             Text(value)
-                .font(.headline)
+                .font(.futuraHeadline)
                 .foregroundStyle(.blue)
             Text(label)
-                .font(.caption2)
+                .font(.futuraCaption2)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -333,16 +333,16 @@ struct ProductCard: View {
             HStack {
                 // Selection indicator
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
-                    .font(.title2)
+                    .font(.futuraTitle2)
                     .foregroundStyle(isSelected ? Color("Blue") : .secondary)
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(product.displayName)
-                            .font(.headline)
+                            .font(.futuraHeadline)
                         if let savings {
                             Text(savings)
-                                .font(.caption2)
+                                .font(.futuraCaption2)
                                 .bold()
                                 .padding(.horizontal, 8)
                                 .padding(.vertical, 4)
@@ -354,7 +354,7 @@ struct ProductCard: View {
 
                     if isYearly {
                         Text("Solo \(monthlyPrice)/mes")
-                            .font(.caption)
+                            .font(.futuraCaption)
                             .foregroundStyle(.secondary)
                     }
                 }
@@ -363,10 +363,10 @@ struct ProductCard: View {
 
                 VStack(alignment: .trailing) {
                     Text(product.displayPrice)
-                        .font(.title3)
+                        .font(.futuraTitle3)
                         .bold()
                     Text(isYearly ? "/año" : "/mes")
-                        .font(.caption)
+                        .font(.futuraCaption)
                         .foregroundStyle(.secondary)
                 }
             }
@@ -399,15 +399,15 @@ struct FeatureRow: View {
     var body: some View {
         HStack(alignment: .top, spacing: 15) {
             Image(systemName: icon)
-                .font(.title2)
+                .font(.futuraTitle2)
                 .foregroundStyle(.blue)
                 .frame(width: 30)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(title)
-                    .font(.headline)
+                    .font(.futuraHeadline)
                 Text(description)
-                    .font(.subheadline)
+                    .font(.futuraSubheadline)
                     .foregroundStyle(.secondary)
             }
         }
@@ -429,7 +429,7 @@ struct PaywallSimpleView: View {
                     // Header
                     VStack(spacing: 12) {
                         Image(systemName: "sparkles")
-                            .font(.system(size: 60))
+                            .font(.futura(60))
                             .foregroundStyle(.yellow)
 
                         Text("Desbloquea Premium")
@@ -488,9 +488,9 @@ struct PaywallSimpleView: View {
                             }) {
                                 VStack(spacing: 2) {
                                     Text("Comenzar 7 días GRATIS")
-                                        .font(.headline)
+                                        .font(.futuraHeadline)
                                     Text("Luego \(product.displayPrice)")
-                                        .font(.caption)
+                                        .font(.futuraCaption)
                                         .opacity(0.9)
                                 }
                             }
@@ -504,9 +504,9 @@ struct PaywallSimpleView: View {
                     HStack(spacing: 6) {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundStyle(.green)
-                            .font(.caption)
+                            .font(.futuraCaption)
                         Text("Cancela cuando quieras")
-                            .font(.caption)
+                            .font(.futuraCaption)
                             .foregroundStyle(.secondary)
                     }
 
@@ -530,10 +530,10 @@ struct MiniStatBadge: View {
     var body: some View {
         VStack(spacing: 2) {
             Text(value)
-                .font(.subheadline.bold())
+                .font(.futuraSubheadline)
                 .foregroundStyle(.orange)
             Text(label)
-                .font(.caption2)
+                .font(.futuraCaption2)
                 .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
@@ -561,10 +561,10 @@ struct SimpleProductCard: View {
                 VStack(alignment: .leading, spacing: 2) {
                     HStack {
                         Text(product.displayName)
-                            .font(.subheadline.bold())
+                            .font(.futuraSubheadline)
                         if isYearly {
                             Text("50% OFF")
-                                .font(.caption2)
+                                .font(.futuraCaption2)
                                 .bold()
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 6)
@@ -578,7 +578,7 @@ struct SimpleProductCard: View {
                 Spacer()
 
                 Text(product.displayPrice)
-                    .font(.subheadline.bold())
+                    .font(.futuraSubheadline)
             }
             .padding()
             .background(

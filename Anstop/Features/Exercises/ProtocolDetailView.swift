@@ -16,7 +16,7 @@ struct ProtocolDetailView: View {
             // Header
             VStack(spacing: 20) {
                 Image(systemName: protocolData.icon)
-                    .font(.system(size: 60))
+                    .font(.futura(60))
                     .foregroundStyle(protocolData.color.gradient)
                     .padding(.top, 40)
 
@@ -25,7 +25,7 @@ struct ProtocolDetailView: View {
                     .multilineTextAlignment(.center)
 
                 Text(protocolData.description)
-                    .font(.body)
+                    .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal)
@@ -60,7 +60,7 @@ struct ProtocolStepCard: View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
                 Text("Paso \(index + 1)/\(total)")
-                    .font(.caption)
+                    .font(.futuraCaption)
                     .fontWeight(.bold)
                     .foregroundStyle(color)
                     .padding(8)
@@ -71,11 +71,11 @@ struct ProtocolStepCard: View {
             }
 
             Text(step.title)
-                .font(.title2)
+                .font(.futuraTitle2)
                 .bold()
 
             Text(step.content)
-                .font(.body)
+                .font(.futuraBody)
                 .foregroundStyle(.secondary)
                 .lineSpacing(6)
 

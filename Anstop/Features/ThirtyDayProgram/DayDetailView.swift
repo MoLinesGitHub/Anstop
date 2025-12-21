@@ -31,7 +31,7 @@ struct DayDetailView: View {
                 // Header
                 VStack(alignment: .leading, spacing: 12) {
                     Text("Día \(day)")
-                        .font(.caption)
+                        .font(.futuraCaption)
                         .fontWeight(.semibold)
                         .foregroundStyle(.secondary)
 
@@ -39,7 +39,7 @@ struct DayDetailView: View {
                         .font(.prometheusLargeTitle)
 
                     Text(exercise?.description ?? "")
-                        .font(.title3)
+                        .font(.futuraTitle3)
                         .foregroundStyle(.secondary)
                 }
                 .padding(.horizontal, 20)
@@ -48,9 +48,9 @@ struct DayDetailView: View {
                 // Badge de tipo
                 HStack {
                     Image(systemName: exerciseIcon)
-                        .font(.caption)
+                        .font(.futuraCaption)
                     Text(exerciseTypeName)
-                        .font(.caption)
+                        .font(.futuraCaption)
                         .fontWeight(.semibold)
                 }
                 .padding(.horizontal, 12)
@@ -63,10 +63,10 @@ struct DayDetailView: View {
                 // Contenido
                 VStack(alignment: .leading, spacing: 16) {
                     Text("Instrucciones")
-                        .font(.headline)
+                        .font(.futuraHeadline)
 
                     Text(exercise?.content ?? "")
-                        .font(.body)
+                        .font(.futuraBody)
                         .lineSpacing(6)
                 }
                 .padding(20)
@@ -81,7 +81,7 @@ struct DayDetailView: View {
                             Image(systemName: "checkmark.circle.fill")
                             Text("Marcar como Completado")
                         }
-                        .font(.headline)
+                        .font(.futuraHeadline)
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 55)
@@ -95,7 +95,7 @@ struct DayDetailView: View {
                         Text("Completado")
                             .foregroundStyle(.secondary)
                     }
-                    .font(.headline)
+                    .font(.futuraHeadline)
                     .frame(maxWidth: .infinity)
                     .frame(height: 55)
                     .background(
@@ -164,11 +164,11 @@ struct CompletionOverlay: View {
 
             VStack(spacing: 20) {
                 Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 80))
+                    .font(.futura(80))
                     .foregroundStyle(.green)
 
                 Text("¡Día completado!")
-                    .font(.title)
+                    .font(.futuraTitle)
                     .bold()
                     .foregroundStyle(.white)
             }

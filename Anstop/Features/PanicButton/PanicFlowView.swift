@@ -101,13 +101,13 @@ struct PanicCompletionView: View {
                     .frame(width: 120, height: 120)
 
                 Image(systemName: "checkmark.circle.fill")
-                    .font(.system(size: 80))
+                    .font(.futura(80))
                     .foregroundStyle(.green)
                     .symbolEffect(.bounce)
             }
 
             Text("Lo lograste")
-                .font(.largeTitle)
+                .font(.futuraLargeTitle)
                 .bold()
 
             Text("Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.")
@@ -125,10 +125,10 @@ struct PanicCompletionView: View {
                     // Sugerencia Premium
                     VStack(spacing: 12) {
                         Text("🌟 ¿Quieres más herramientas?")
-                            .font(.headline)
+                            .font(.futuraHeadline)
 
                         Text("Con Premium tendrás acceso a 20+ guías de audio, el programa de 30 días y un asistente IA disponible 24/7.")
-                            .font(.subheadline)
+                            .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
 
@@ -137,7 +137,7 @@ struct PanicCompletionView: View {
                                 Image(systemName: "crown.fill")
                                 Text("Probar Premium 7 días gratis")
                             }
-                            .font(.subheadline.bold())
+                            .font(.futuraSubheadline)
                             .foregroundStyle(.white)
                             .frame(maxWidth: .infinity)
                             .frame(height: 50)
@@ -186,12 +186,12 @@ struct PanicStepView: View {
             }
 
             Text(title)
-                .font(.largeTitle)
+                .font(.futuraLargeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
 
             Text(description)
-                .font(.title3)
+                .font(.futuraTitle3)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
                 .padding(.horizontal, 40)

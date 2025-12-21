@@ -43,7 +43,7 @@ struct AudioGuidesView: View {
                             Spacer()
                             if !purchaseManager.isPremium {
                                 Image(systemName: "lock.fill")
-                                    .font(.caption)
+                                    .font(.futuraCaption)
                             }
                         }
                     }
@@ -79,18 +79,18 @@ struct AudioGuideRow: View {
         }) {
             HStack {
                 Image(systemName: guide.icon)
-                    .font(.title2)
+                    .font(.futuraTitle2)
                     .foregroundStyle(isPremium ? .orange : .blue)
                     .frame(width: 40)
 
                 VStack(alignment: .leading, spacing: 4) {
                     Text(guide.title)
-                        .font(.headline)
+                        .font(.futuraHeadline)
                     Text(guide.description)
-                        .font(.subheadline)
+                        .font(.futuraSubheadline)
                         .foregroundStyle(.secondary)
                     Text(guide.duration)
-                        .font(.caption)
+                        .font(.futuraCaption)
                         .foregroundStyle(.tertiary)
                 }
 
@@ -101,7 +101,7 @@ struct AudioGuideRow: View {
                         .foregroundStyle(.secondary)
                 } else {
                     Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
-                        .font(.title2)
+                        .font(.futuraTitle2)
                         .foregroundStyle(Color("Blue"))
                 }
             }

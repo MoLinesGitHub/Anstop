@@ -18,7 +18,7 @@ struct LibraryView: View {
                     NavigationLink(destination: ProtocolDetailView(protocolData: item)) {
                         HStack(spacing: 16) {
                             Image(systemName: item.icon)
-                                .font(.title2)
+                                .font(.futuraTitle2)
                                 .foregroundStyle(item.color)
                                 .frame(width: 40, height: 40)
                                 .background(item.color.opacity(0.1))
@@ -26,10 +26,10 @@ struct LibraryView: View {
 
                             VStack(alignment: .leading, spacing: 4) {
                                 Text(item.title)
-                                    .font(.headline)
+                                    .font(.futuraHeadline)
 
                                 Text(item.description)
-                                    .font(.caption)
+                                    .font(.futuraCaption)
                                     .foregroundStyle(.secondary)
                                     .lineLimit(2)
                             }

@@ -33,22 +33,22 @@ struct OnboardingView: View {
                 Spacer()
 
                 Image(systemName: "waveform.path.ecg")
-                    .font(.system(size: 80))
+                    .font(.futura(80))
                     .foregroundStyle(.blue.gradient)
 
                 Text("¿Cómo te sientes hoy?")
-                    .font(.largeTitle)
+                    .font(.futuraLargeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
 
                 Text("Esto nos ayuda a personalizar tu experiencia.")
-                    .font(.body)
+                    .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
                 VStack(spacing: 10) {
                     Text("Nivel de ansiedad: \(Int(initialAnxietyLevel))")
-                        .font(.headline)
+                        .font(.futuraHeadline)
                         .foregroundStyle(Color("Blue"))
 
                     Slider(value: $initialAnxietyLevel, in: 1 ... 10, step: 1)
@@ -59,7 +59,7 @@ struct OnboardingView: View {
                         Spacer()
                         Text("Alta")
                     }
-                    .font(.caption)
+                    .font(.futuraCaption)
                     .foregroundStyle(.secondary)
                 }
                 .padding(.horizontal, 40)
@@ -83,22 +83,22 @@ struct OnboardingView: View {
                 Spacer()
 
                 Image(systemName: "person.crop.circle.fill")
-                    .font(.system(size: 80))
+                    .font(.futura(80))
                     .foregroundStyle(.blue.gradient)
 
                 Text("¿Cómo te llamas?")
-                    .font(.largeTitle)
+                    .font(.futuraLargeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
 
                 Text("Opcional. Solo para dirigirnos a ti.")
-                    .font(.body)
+                    .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
                 TextField("Tu nombre", text: $userName)
                     .textFieldStyle(.roundedBorder)
-                    .font(.title3)
+                    .font(.futuraTitle3)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 40)
 
@@ -156,7 +156,7 @@ struct SoftPaywallStep: View {
                         .frame(width: 100, height: 100)
 
                     Image(systemName: "crown.fill")
-                        .font(.system(size: 45))
+                        .font(.futura(45))
                         .foregroundStyle(.white)
                 }
 
@@ -165,7 +165,7 @@ struct SoftPaywallStep: View {
                     .multilineTextAlignment(.center)
 
                 Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
-                    .font(.body)
+                    .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .padding(.horizontal, 30)
@@ -183,12 +183,12 @@ struct SoftPaywallStep: View {
                 // Oferta especial
                 VStack(spacing: 8) {
                     Text("🎁 OFERTA DE BIENVENIDA")
-                        .font(.caption)
+                        .font(.futuraCaption)
                         .bold()
                         .foregroundStyle(.orange)
 
                     Text("7 días de prueba GRATIS")
-                        .font(.title2)
+                        .font(.futuraTitle2)
                         .bold()
                 }
 
@@ -207,7 +207,7 @@ struct SoftPaywallStep: View {
 
                     Button(action: onContinueFree) {
                         Text("Continuar con versión básica")
-                            .font(.subheadline)
+                            .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                     }
                     .padding(.top, 8)
@@ -227,7 +227,7 @@ struct PremiumBenefitRow: View {
             Image(systemName: icon)
                 .foregroundStyle(.green)
             Text(text)
-                .font(.subheadline)
+                .font(.futuraSubheadline)
         }
     }
 }
@@ -244,12 +244,12 @@ struct OnboardingStepView: View {
             Spacer()
 
             Image(systemName: image)
-                .font(.system(size: 80))
+                .font(.futura(80))
                 .foregroundStyle(Color("Blue").gradient)
                 .symbolEffect(.bounce, value: true)
 
             Text(title)
-                .font(.largeTitle)
+                .font(.futuraLargeTitle)
                 .bold()
                 .multilineTextAlignment(.center)
 

@@ -8,7 +8,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.headline)
+            .font(.futuraHeadline)
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .frame(height: height)

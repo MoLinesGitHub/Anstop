@@ -21,7 +21,7 @@ struct BreathingView: View {
                 // Selector de protocolo con diseño glass
                 VStack(spacing: 16) {
                     Text("Elige tu técnica")
-                        .font(.headline)
+                        .font(.futuraHeadline)
                         .foregroundStyle(.secondary)
 
                     Picker("Protocolo", selection: $selectedProtocol) {
@@ -62,24 +62,24 @@ struct BreathingView: View {
                 // TODO: Reactivar GlassKit.CrystalLiquidCard cuando se publique versión pública
                 VStack(alignment: .leading, spacing: 16) {
                     Text(selectedProtocol.name)
-                        .font(.title2)
+                        .font(.futuraTitle2)
                         .fontWeight(.semibold)
 
                     VStack(alignment: .leading, spacing: 12) {
                         HStack {
                             Image(systemName: "lungs.fill")
-                                .font(.title2)
+                                .font(.futuraTitle2)
                                 .foregroundStyle(.cyan)
 
                             Spacer()
                         }
 
                         Text(selectedProtocol.description)
-                            .font(.subheadline)
+                            .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
 
                         Text(selectedProtocol.benefits)
-                            .font(.caption)
+                            .font(.futuraCaption)
                             .foregroundStyle(.tertiary)
                             .padding(.top, 4)
                     }

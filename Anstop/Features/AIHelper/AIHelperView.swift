@@ -107,7 +107,7 @@ struct AIHelperView: View {
                 dismiss()
             } label: {
                 Image(systemName: "chevron.left")
-                    .font(.system(size: 18, weight: .semibold))
+                    .font(.futuraSemibold18)
                     .foregroundStyle(accentColor)
                     .frame(width: 44, height: 44)
                     .background(
@@ -121,16 +121,16 @@ struct AIHelperView: View {
             VStack(spacing: 2) {
                 HStack(spacing: 6) {
                     Image(systemName: "sparkles")
-                        .font(.system(size: 14))
+                        .font(.futuraRegular14)
                         .foregroundStyle(accentColor)
 
                     Text("Asistente Anstop")
-                        .font(.headline)
+                        .font(.futuraHeadline)
                         .foregroundStyle(.primary)
                 }
 
                 Text("Tu compañero de bienestar")
-                    .font(.caption)
+                    .font(.futuraCaption)
                     .foregroundStyle(.secondary)
             }
 
@@ -141,7 +141,7 @@ struct AIHelperView: View {
                 clearConversation()
             } label: {
                 Image(systemName: "arrow.counterclockwise")
-                    .font(.system(size: 16, weight: .medium))
+                    .font(.futuraMedium16)
                     .foregroundStyle(aiService.messages.isEmpty ? .gray : accentColor)
                     .frame(width: 44, height: 44)
                     .background(
@@ -175,7 +175,7 @@ struct AIHelperView: View {
                     .frame(width: 120, height: 120)
 
                 Image(systemName: "bubble.left.and.bubble.right.fill")
-                    .font(.system(size: 48))
+                    .font(.futuraLarge48)
                     .foregroundStyle(
                         LinearGradient(
                             colors: [accentColor, accentColor.opacity(0.7)],
@@ -188,12 +188,12 @@ struct AIHelperView: View {
 
             VStack(spacing: 12) {
                 Text("¿Cómo te sientes hoy?")
-                    .font(.title2)
+                    .font(.futuraTitle2)
                     .fontWeight(.semibold)
                     .foregroundStyle(.primary)
 
                 Text("Estoy aquí para escucharte y ayudarte\na encontrar calma en cualquier momento.")
-                    .font(.subheadline)
+                    .font(.futuraSubheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
                     .lineSpacing(4)
@@ -250,7 +250,7 @@ struct AIHelperView: View {
     private var suggestionsView: some View {
         VStack(alignment: .leading, spacing: 8) {
             Text("Sugerencias")
-                .font(.caption)
+                .font(.futuraCaption)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
                 .padding(.leading, 4)
@@ -324,7 +324,7 @@ struct AIHelperView: View {
                         .frame(width: 48, height: 48)
 
                     Image(systemName: "arrow.up")
-                        .font(.system(size: 18, weight: .semibold))
+                        .font(.futuraSemibold18)
                         .foregroundStyle(canSend ? .white : .gray)
                 }
             }
@@ -404,14 +404,14 @@ struct MessageBubbleView: View {
                         .frame(width: 32, height: 32)
 
                     Image(systemName: "sparkles")
-                        .font(.system(size: 14))
+                        .font(.futuraRegular14)
                         .foregroundStyle(accentColor)
                 }
             }
 
             VStack(alignment: message.isUser ? .trailing : .leading, spacing: 4) {
                 Text(message.content)
-                    .font(.body)
+                    .font(.futuraBody)
                     .foregroundStyle(message.isUser ? .white : .primary)
                     .padding(.horizontal, 16)
                     .padding(.vertical, 12)
@@ -431,7 +431,7 @@ struct MessageBubbleView: View {
                         .frame(width: 32, height: 32)
 
                     Image(systemName: "person.fill")
-                        .font(.system(size: 14))
+                        .font(.futuraRegular14)
                         .foregroundStyle(userColor)
                 }
             } else {
@@ -516,7 +516,7 @@ struct AISuggestionChip: View {
     var body: some View {
         Button(action: action) {
             Text(text)
-                .font(.subheadline)
+                .font(.futuraSubheadline)
                 .fontWeight(.medium)
                 .foregroundStyle(color)
                 .padding(.horizontal, 16)

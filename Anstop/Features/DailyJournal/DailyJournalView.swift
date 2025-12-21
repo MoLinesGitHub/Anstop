@@ -22,10 +22,10 @@ struct DailyJournalView: View {
                     Button(action: { showNewEntry = true }) {
                         HStack {
                             Image(systemName: "plus.circle.fill")
-                                .font(.title2)
+                                .font(.futuraTitle2)
                                 .foregroundStyle(Color("Blue"))
                             Text("Nueva entrada")
-                                .font(.headline)
+                                .font(.futuraHeadline)
                         }
                     }
                 }
@@ -59,7 +59,7 @@ struct JournalEntryRow: View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
                 Text(entry.date, style: .date)
-                    .font(.subheadline)
+                    .font(.futuraSubheadline)
                     .foregroundStyle(.secondary)
                 Spacer()
                 MoodIndicator(mood: entry.mood)
@@ -67,7 +67,7 @@ struct JournalEntryRow: View {
 
             if let notes = entry.notes, !notes.isEmpty {
                 Text(notes)
-                    .font(.body)
+                    .font(.futuraBody)
                     .lineLimit(2)
             }
         }
@@ -112,7 +112,7 @@ struct NewJournalEntryView: View {
                 Section("¿Cómo te sientes hoy?") {
                     VStack(spacing: 20) {
                         Text("\(mood)/10")
-                            .font(.system(size: 48, weight: .bold))
+                            .font(.futura(48))
                             .foregroundStyle(moodColor)
 
                         Slider(

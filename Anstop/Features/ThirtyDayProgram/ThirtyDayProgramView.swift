@@ -31,14 +31,14 @@ struct ThirtyDayProgramView: View {
                 // Header con Racha
                 VStack(spacing: 12) {
                     Image(systemName: "flame.fill")
-                        .font(.system(size: 50))
+                        .font(.futura(50))
                         .foregroundStyle(.orange.gradient)
 
                     Text("\(progress.currentStreak) días seguidos")
                         .font(.prometheusTitle2)
 
                     Text("\(progress.completedDays.count)/30 ejercicios completados")
-                        .font(.subheadline)
+                        .font(.futuraSubheadline)
                         .foregroundStyle(.secondary)
 
                     ProgressView(value: progress.progressPercentage)
@@ -80,15 +80,15 @@ struct DayCell: View {
 
                 if isCompleted {
                     Image(systemName: "checkmark.circle.fill")
-                        .font(.title)
+                        .font(.futuraTitle)
                         .foregroundStyle(.white)
                 } else {
                     VStack(spacing: 4) {
                         Text("\(day)")
-                            .font(.title2)
+                            .font(.futuraTitle2)
                             .bold()
                         Text("Día")
-                            .font(.caption2)
+                            .font(.futuraCaption2)
                     }
                     .foregroundStyle(isUnlocked ? .white : .secondary)
                 }

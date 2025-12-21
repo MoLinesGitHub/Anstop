@@ -38,16 +38,16 @@ struct SettingsView: View {
                                .foregroundStyle(.yellow)
                            VStack(alignment: .leading, spacing: 2) {
                                Text("Obtener Premium")
-                                   .font(.headline)
+                                   .font(.futuraHeadline)
                                    .foregroundStyle(.primary)
                                Text("7 días de prueba GRATIS")
-                                   .font(.caption)
+                                   .font(.futuraCaption)
                                    .foregroundStyle(.secondary)
                            }
                            Spacer()
                            Image(systemName: "chevron.right")
                                .foregroundStyle(.secondary)
-                               .font(.caption)
+                               .font(.futuraCaption)
                        }
                    }
                } header: {
@@ -61,7 +61,7 @@ struct SettingsView: View {
                        Image(systemName: "checkmark.seal.fill")
                            .foregroundStyle(.green)
                        Text("Premium Activo")
-                           .font(.headline)
+                           .font(.futuraHeadline)
                        Spacer()
                        Text("✓")
                            .foregroundStyle(.green)
@@ -148,7 +148,7 @@ struct SettingsView: View {
                        Spacer()
                        Image(systemName: "chevron.right")
                            .foregroundStyle(.secondary)
-                           .font(.caption)
+                           .font(.futuraCaption)
                    }
                }
 
@@ -163,7 +163,7 @@ struct SettingsView: View {
                        Spacer()
                        Image(systemName: "chevron.right")
                            .foregroundStyle(.secondary)
-                           .font(.caption)
+                           .font(.futuraCaption)
                    }
                }
 
@@ -178,7 +178,7 @@ struct SettingsView: View {
                        Spacer()
                        Image(systemName: "chevron.right")
                            .foregroundStyle(.secondary)
-                           .font(.caption)
+                           .font(.futuraCaption)
                    }
                }
            } header: {

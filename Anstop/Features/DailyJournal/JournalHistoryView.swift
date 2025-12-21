@@ -38,12 +38,12 @@ struct JournalHistoryView: View {
                         VStack(alignment: .leading, spacing: 4) {
                             Text(entry.date, style: .date) + Text(" · ") + Text(entry.date, style: .time)
                             Text("Ánimo: \(entry.mood)")
-                                .font(.caption)
+                                .font(.futuraCaption)
                                 .foregroundStyle(.secondary)
                             if let notes = entry.notes, !notes.isEmpty {
                                 Text(notes)
                                     .lineLimit(1)
-                                    .font(.caption)
+                                    .font(.futuraCaption)
                                     .foregroundStyle(.secondary)
                             }
                         }
