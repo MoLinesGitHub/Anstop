@@ -21,10 +21,10 @@ struct AnstopBackground: View {
     @Environment(\.colorScheme) private var colorScheme
 
     init(
-        accentColor: Color = .cyan,
+        accentColor: Color = .yellow,
         count: Int = 20,
         particleOpacity: Double = 0.15,
-        particleSpeed: Double = 0.4,
+        particleSpeed: Double = 0.5,
         showWaves: Bool = true,
         intensity: Double = 1.0
     ) {
@@ -282,11 +282,11 @@ private struct LiquidWavesView: View {
 
 extension AnstopBackground {
     static var home: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
+        AnstopBackground(accentColor: .red, count: 30, particleOpacity: 0.18, particleSpeed: 0.4, showWaves: true)
     }
 
     static var breathing: AnstopBackground {
-        AnstopBackground(accentColor: .cyan, count: 20, particleOpacity: 0.15, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
+        AnstopBackground(accentColor: .yellow, count: 20, particleOpacity: 0.15, particleSpeed: 0.3, showWaves: true, intensity: 0.8)
     }
 
     static var grounding: AnstopBackground {
@@ -341,7 +341,7 @@ extension View {
     }
 
     func anstopBackground(
-        accentColor: Color = .cyan,
+        accentColor: Color = .yellow,
         count: Int = 20,
         particleOpacity: Double = 0.15,
         particleSpeed: Double = 0.4,

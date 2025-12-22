@@ -8,7 +8,7 @@ struct PrimaryButtonStyle: ButtonStyle {
 
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .font(.futuraHeadline)
+            .font(.headline)
             .foregroundStyle(.white)
             .frame(maxWidth: .infinity)
             .frame(height: height)
@@ -33,7 +33,7 @@ extension View {
         Button("Continuar") {}
             .buttonStyle(PrimaryButtonStyle())
         Button("Acción secundaria") {}
-            .buttonStyle(PrimaryButtonStyle(color: .orange))
+            .buttonStyle(PrimaryButtonStyle(color: Color("Brown")))
     }
     .padding()
 }

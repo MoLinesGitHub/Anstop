@@ -1,0 +1,14 @@
+/* Localizable.strings (Español) - Anstop */
+
+// General
+"app_name" = "Anstop";
+"ok" = "OK";
+"cancel" = "Cancelar";
+
+// Home
+"home_panic_button" = "Estoy teniendo ansiedad";
+
+// Features
+"breathing_title" = "Respiración";
+"grounding_title" = "Grounding 5-4-3-2-1";
+

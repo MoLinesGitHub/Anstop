@@ -49,18 +49,27 @@ struct HomeView: View {
                 Color.clear
                     .anstopBackground(.home)
                 
-                // Panel de accesos rápidos FIJO debajo del botón de pánico
+                // Rueda circular de quesitos FIJO debajo del botón de pánico
                 VStack {
                     Spacer()
                         .frame(height: 500)
                     
-                    // Panel de cristal con todos los iconos
-                    CrystalQuickAccessPanel(
-                        selectedItem: $selectedQuickAccess,
-                        isExpanded: $isQuickAccessExpanded,
-                        isPremium: purchaseManager.isPremium
-                    )
-                    .padding(.horizontal, 30)
+                    // Rueda circular de funciones (quesitos)
+                    CircularMenuPanel(
+                        items: QuickAccessItem.allCases.map { item in
+                            MenuItem(
+                                icon: item.icon,
+                                title: item.rawValue,
+                                isPremium: item.isPremium
+                            )
+                        }
+                    ) { menuItem in
+                        // Encontrar el QuickAccessItem correspondiente
+                        if let quickItem = QuickAccessItem.allCases.first(where: { $0.rawValue == menuItem.title }) {
+                            selectedQuickAccess = quickItem
+                        }
+                    }
+                    .frame(width: 280, height: 280)
                     
                     Spacer()
                     
@@ -265,202 +274,6 @@ struct HomeView: View {
             }
         }
     }
-
-
-// MARK: - Crystal Quick Access Panel
-
-struct CrystalQuickAccessPanel: View {
-    @Binding var selectedItem: HomeView.QuickAccessItem?
-    @Binding var isExpanded: Bool
-    let isPremium: Bool
-    
-    @State private var pressedIcon: HomeView.QuickAccessItem?
-    
-    var body: some View {
-        VStack(spacing: 0) {
-            // Panel principal de cristal con iconos
-            ZStack {
-                // Fondo de cristal
-                RoundedRectangle(cornerRadius: 40)
-                    .fill(
-                        RadialGradient(
-                            colors: [
-                                Color(red: 0.95, green: 0.95, blue: 0.98).opacity(0.15),
-                                Color(red: 0.85, green: 0.88, blue: 0.92).opacity(0.12),
-                                Color(red: 0.75, green: 0.80, blue: 0.88).opacity(0.08)
-                            ],
-                            center: .center,
-                            startRadius: 0,
-                            endRadius: 200
-                        )
-                    )
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 40)
-                            .fill(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.35),
-                                        Color.white.opacity(0.15),
-                                        Color.cyan.opacity(0.1),
-                                        Color.clear
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                )
-                            )
-                            .blendMode(.overlay)
-                    }
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 40)
-                            .fill(
-                                RadialGradient(
-                                    colors: [
-                                        Color.white.opacity(0.6),
-                                        Color.white.opacity(0.3),
-                                        Color.clear
-                                    ],
-                                    center: .init(x: 0.3, y: 0.2),
-                                    startRadius: 0,
-                                    endRadius: 100
-                                )
-                            )
-                            .blendMode(.overlay)
-                    }
-                    .overlay {
-                        RoundedRectangle(cornerRadius: 40)
-                            .stroke(
-                                LinearGradient(
-                                    colors: [
-                                        Color.white.opacity(0.8),
-                                        Color.cyan.opacity(0.4),
-                                        Color.white.opacity(0.3),
-                                        Color.cyan.opacity(0.2)
-                                    ],
-                                    startPoint: .topLeading,
-                                    endPoint: .bottomTrailing
-                                ),
-                                lineWidth: 2
-                            )
-                            .blendMode(.overlay)
-                    }
-                    .shadow(color: Color.cyan.opacity(0.2), radius: 20, x: 0, y: 10)
-                    .shadow(color: .black.opacity(0.15), radius: 15, x: 0, y: 8)
-                
-                // Grid de iconos
-                LazyVGrid(columns: [
-                    GridItem(.flexible(), spacing: 20),
-                    GridItem(.flexible(), spacing: 20),
-                    GridItem(.flexible(), spacing: 20),
-                    GridItem(.flexible(), spacing: 20)
-                ], spacing: 20) {
-                    ForEach(HomeView.QuickAccessItem.allCases) { item in
-                        NavigationLink(value: item) {
-                            IconButton(
-                                item: item,
-                                isPressed: pressedIcon == item,
-                                showPremiumBadge: item.isPremium && !isPremium
-                            )
-                            .simultaneousGesture(
-                                TapGesture()
-                                    .onEnded { _ in
-                                        withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                            pressedIcon = item
-                                            selectedItem = item
-                                        }
-                                        
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.15) {
-                                            withAnimation(.spring(response: 0.3, dampingFraction: 0.7)) {
-                                                pressedIcon = nil
-                                            }
-                                        }
-                                    }
-                            )
-                        }
-                        .buttonStyle(.plain)
-                    }
-                }
-                .padding(25)
-            }
-            .frame(height: 180)
-            
-            // Etiqueta expandible debajo
-            if let selected = selectedItem {
-                Text(selected.rawValue)
-                    .font(.prometheusHeadline)
-                    .foregroundStyle(.white.opacity(0.95))
-                    .padding(.horizontal, 20)
-                    .padding(.vertical, 10)
-                    .background(
-                        Capsule()
-                            .fill(.ultraThinMaterial)
-                            .overlay {
-                                Capsule()
-                                    .stroke(Color.white.opacity(0.3), lineWidth: 1)
-                            }
-                    )
-                    .padding(.top, 15)
-                    .transition(.scale.combined(with: .opacity))
-            }
-        }
-    }
-}
-
-struct IconButton: View {
-    let item: HomeView.QuickAccessItem
-    let isPressed: Bool
-    let showPremiumBadge: Bool
-    
-    var body: some View {
-        ZStack(alignment: .topTrailing) {
-            // Icono
-            Image(systemName: item.icon)
-                .font(.system(size: 26))
-                .foregroundStyle(
-                    LinearGradient(
-                        colors: [
-                            Color.white.opacity(0.95),
-                            Color.cyan.opacity(0.7)
-                        ],
-                        startPoint: .topLeading,
-                        endPoint: .bottomTrailing
-                    )
-                )
-                .frame(width: 55, height: 55)
-                .background {
-                    Circle()
-                        .fill(
-                            RadialGradient(
-                                colors: [
-                                    Color.white.opacity(0.2),
-                                    Color.cyan.opacity(0.15),
-                                    Color.clear
-                                ],
-                                center: .center,
-                                startRadius: 0,
-                                endRadius: 30
-                            )
-                        )
-                }
-                .scaleEffect(isPressed ? 0.85 : 1.0)
-                .animation(.spring(response: 0.3, dampingFraction: 0.6), value: isPressed)
-            
-            // Badge PRO
-            if showPremiumBadge {
-                Text("PRO")
-                    .font(.system(size: 8, weight: .bold))
-                    .foregroundStyle(.white)
-                    .padding(.horizontal, 4)
-                    .padding(.vertical, 2)
-                    .background(
-                        Capsule()
-                            .fill(Color.orange)
-                    )
-                    .offset(x: 8, y: -8)
-            }
-        }
-    }
-}
-
 // MARK: - Premium Banner Component
 
 struct PremiumBanner: View {
