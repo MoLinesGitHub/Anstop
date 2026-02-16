@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "anstop-env": {
+      "command": "npm",
+      "args": ["run", "start"],
+      "cwd": "/Volumes/SSD/xCode_Projects/Anstop/mcps/anstop-env-mcp",
+      "timeout": 30000
+    },
+    "anstop-dev": {
+      "command": "npm",
+      "args": ["run", "start"],
+      "cwd": "/Volumes/SSD/xCode_Projects/Anstop/mcps/anstop-dev-mcp",
+      "timeout": 30000
+    },
+    "anstop-xcode-tools": {
+      "command": "npm",
+      "args": ["run", "start"],
+      "cwd": "/Volumes/SSD/xCode_Projects/Anstop/mcps/xcode-mcp",
+      "timeout": 30000
+    }
+  }
+}
