@@ -20,9 +20,8 @@ struct OnboardingView: View {
             // Paso 1: Bienvenida
             OnboardingStepView(
                 image: "heart.text.square.fill",
-                title: "Tu espacio seguro",
-                description:
-                "Anstop está aquí para ayudarte a recuperar la calma, a tu propio ritmo.",
+                title: String(localized: "onboarding_step_safe_space_title"),
+                description: String(localized: "onboarding_step_safe_space_description"),
                 isLastStep: false,
                 nextAction: { withAnimation { currentTab += 1 } }
             )
@@ -36,28 +35,33 @@ struct OnboardingView: View {
                     .font(.futura(80))
                     .foregroundStyle(.blue.gradient)
 
-                Text("¿Cómo te sientes hoy?")
+                Text("onboarding_how_do_you_feel_today")
                     .font(.futuraLargeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
 
-                Text("Esto nos ayuda a personalizar tu experiencia.")
+                Text("onboarding_personalize_experience")
                     .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
                 VStack(spacing: 10) {
-                    Text("Nivel de ansiedad: \(Int(initialAnxietyLevel))")
+                    Text(
+                        String(
+                            format: String(localized: "onboarding_anxiety_level_format"),
+                            Int(initialAnxietyLevel)
+                        )
+                    )
                         .font(.futuraHeadline)
-                        .foregroundStyle(Color("Blue"))
+                        .foregroundStyle(Color("AnstopBlue"))
 
                     Slider(value: $initialAnxietyLevel, in: 1 ... 10, step: 1)
                         .tint(.blue)
 
                     HStack {
-                        Text("Baja")
+                        Text("onboarding_low")
                         Spacer()
-                        Text("Alta")
+                        Text("onboarding_high")
                     }
                     .font(.futuraCaption)
                     .foregroundStyle(.secondary)
@@ -70,10 +74,11 @@ struct OnboardingView: View {
                     HapticManager.shared.triggerImpact(style: .light)
                     withOptionalAnimation(.gentle) { currentTab += 1 }
                 }) {
-                    Text("Continuar")
+                    Text("onboarding_continue")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .accessibilityIdentifier("onboarding.continue_button")
                 .padding(.bottom, 50)
             }
             .tag(1)
@@ -86,17 +91,17 @@ struct OnboardingView: View {
                     .font(.futura(80))
                     .foregroundStyle(.blue.gradient)
 
-                Text("¿Cómo te llamas?")
+                Text("onboarding_whats_your_name")
                     .font(.futuraLargeTitle)
                     .bold()
                     .multilineTextAlignment(.center)
 
-                Text("Opcional. Solo para dirigirnos a ti.")
+                Text("onboarding_name_optional")
                     .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
 
-                TextField("Tu nombre", text: $userName)
+                TextField("onboarding_your_name", text: $userName)
                     .textFieldStyle(.roundedBorder)
                     .font(.futuraTitle3)
                     .multilineTextAlignment(.center)
@@ -108,10 +113,11 @@ struct OnboardingView: View {
                     HapticManager.shared.triggerImpact(style: .light)
                     withOptionalAnimation(.gentle) { currentTab += 1 }
                 }) {
-                    Text("Continuar")
+                    Text("onboarding_continue")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .accessibilityIdentifier("onboarding.continue_button")
                 .padding(.bottom, 50)
             }
             .tag(2)
@@ -152,7 +158,7 @@ struct SoftPaywallStep: View {
                 // Icono Premium
                 ZStack {
                     Circle()
-                        .fill(LinearGradient(colors: [Color("Blue"), .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
+                        .fill(LinearGradient(colors: [Color("AnstopBlue"), .purple], startPoint: .topLeading, endPoint: .bottomTrailing))
                         .frame(width: 100, height: 100)
 
                     Image(systemName: "crown.fill")
@@ -160,11 +166,11 @@ struct SoftPaywallStep: View {
                         .foregroundStyle(.white)
                 }
 
-                Text("Obtén resultados más rápidos")
+                Text("onboarding_soft_paywall_title")
                     .font(.prometheusTitle)
                     .multilineTextAlignment(.center)
 
-                Text("El 93% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas")
+                Text("onboarding_soft_paywall_subtitle")
                     .font(.futuraBody)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -172,22 +178,22 @@ struct SoftPaywallStep: View {
 
                 // Beneficios Premium
                 VStack(alignment: .leading, spacing: 16) {
-                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Programa completo de 30 días")
-                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "20+ guías de audio exclusivas")
-                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Asistente IA disponible 24/7")
-                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: "Sin anuncios ni interrupciones")
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: String(localized: "onboarding_soft_paywall_benefit_program"))
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: String(localized: "onboarding_soft_paywall_benefit_audio"))
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: String(localized: "onboarding_soft_paywall_benefit_ai"))
+                    PremiumBenefitRow(icon: "checkmark.circle.fill", text: String(localized: "onboarding_soft_paywall_benefit_no_ads"))
                 }
                 .padding(.horizontal, 40)
                 .padding(.vertical, 20)
 
                 // Oferta especial
                 VStack(spacing: 8) {
-                    Text("🎁 OFERTA DE BIENVENIDA")
+                    Text("onboarding_soft_paywall_offer_badge")
                         .font(.futuraCaption)
                         .bold()
                         .foregroundStyle(.orange)
 
-                    Text("7 días de prueba GRATIS")
+                    Text("onboarding_soft_paywall_trial")
                         .font(.futuraTitle2)
                         .bold()
                 }
@@ -199,17 +205,19 @@ struct SoftPaywallStep: View {
                     Button(action: onShowPaywall) {
                         HStack {
                             Image(systemName: "sparkles")
-                            Text("Comenzar prueba gratuita")
+                            Text("onboarding_soft_paywall_start_trial")
                         }
                         .padding(.horizontal, 40)
                     }
                     .buttonStyle(PrimaryButtonStyle())
+                    .accessibilityIdentifier("onboarding.start_trial_button")
 
                     Button(action: onContinueFree) {
-                        Text("Continuar con versión básica")
+                        Text("onboarding_soft_paywall_continue_basic")
                             .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                     }
+                    .accessibilityIdentifier("onboarding.continue_basic_button")
                     .padding(.top, 8)
                 }
                 .padding(.bottom, 50)
@@ -245,7 +253,7 @@ struct OnboardingStepView: View {
 
             Image(systemName: image)
                 .font(.futura(80))
-                .foregroundStyle(Color("Blue").gradient)
+                .foregroundStyle(Color("AnstopBlue").gradient)
                 .symbolEffect(.bounce, value: true)
 
             Text(title)
@@ -265,10 +273,11 @@ struct OnboardingStepView: View {
                 HapticManager.shared.triggerImpact(style: .light)
                 withOptionalAnimation(.gentle) { nextAction() }
             }) {
-                Text(isLastStep ? "Comenzar" : "Siguiente")
+                Text(isLastStep ? "onboarding_start" : "onboarding_next")
                     .padding(.horizontal, 40)
             }
             .buttonStyle(PrimaryButtonStyle())
+            .accessibilityIdentifier(isLastStep ? "onboarding.start_button" : "onboarding.next_button")
             .padding(.bottom, 50)
         }
     }

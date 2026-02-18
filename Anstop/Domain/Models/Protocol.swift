@@ -10,87 +10,55 @@ import SwiftUI
 
 struct Protocol: Identifiable {
     let id = UUID()
-    let title: String
-    let description: String
+    let titleKey: String
+    let descriptionKey: String
     let icon: String
     let color: Color
     let steps: [ProtocolStep]
 
+    var title: String {
+        NSLocalizedString(titleKey, comment: "")
+    }
+
+    var description: String {
+        NSLocalizedString(descriptionKey, comment: "")
+    }
+
     static let all: [Protocol] = [
         Protocol(
-            title: "Reestructuración Cognitiva",
-            description: "Cuestiona tus pensamientos negativos automáticos.",
+            titleKey: "protocol_1_title",
+            descriptionKey: "protocol_1_description",
             icon: "brain.head.profile",
             color: .purple,
             steps: [
-                ProtocolStep(
-                    title: "Identifica el pensamiento",
-                    content: "¿Qué estás pensando exactamente ahora? Escríbelo mentalmente."
-                ),
-                ProtocolStep(
-                    title: "Analiza la evidencia",
-                    content: "¿Qué pruebas reales tienes de que esto sea 100% cierto?"
-                ),
-                ProtocolStep(
-                    title: "Busca alternativas",
-                    content: "¿Hay otra forma de ver esta situación? ¿Qué le dirías a un amigo?"
-                ),
-                ProtocolStep(
-                    title: "Reevalúa",
-                    content: "¿Cómo te sientes ahora respecto a ese pensamiento inicial?"
-                ),
+                ProtocolStep(titleKey: "protocol_1_step_1_title", contentKey: "protocol_1_step_1_content"),
+                ProtocolStep(titleKey: "protocol_1_step_2_title", contentKey: "protocol_1_step_2_content"),
+                ProtocolStep(titleKey: "protocol_1_step_3_title", contentKey: "protocol_1_step_3_content"),
+                ProtocolStep(titleKey: "protocol_1_step_4_title", contentKey: "protocol_1_step_4_content"),
             ]
         ),
         Protocol(
-            title: "Ansiedad Nocturna",
-            description: "Técnicas para calmar la mente antes de dormir.",
+            titleKey: "protocol_2_title",
+            descriptionKey: "protocol_2_description",
             icon: "moon.stars.fill",
             color: .indigo,
             steps: [
-                ProtocolStep(
-                    title: "Desconexión",
-                    content:
-                    "Deja el móvil y cualquier pantalla. La luz azul interfiere con tu sueño."
-                ),
-                ProtocolStep(
-                    title: "Descarga mental",
-                    content:
-                    "Si te preocupan las tareas de mañana, anótalas en un papel y olvídalas por hoy."
-                ),
-                ProtocolStep(
-                    title: "Respiración 4-7-8",
-                    content: "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces."
-                ),
-                ProtocolStep(
-                    title: "Escaneo corporal",
-                    content: "Relaja tus músculos desde los pies hasta la cabeza, poco a poco."
-                ),
+                ProtocolStep(titleKey: "protocol_2_step_1_title", contentKey: "protocol_2_step_1_content"),
+                ProtocolStep(titleKey: "protocol_2_step_2_title", contentKey: "protocol_2_step_2_content"),
+                ProtocolStep(titleKey: "protocol_2_step_3_title", contentKey: "protocol_2_step_3_content"),
+                ProtocolStep(titleKey: "protocol_2_step_4_title", contentKey: "protocol_2_step_4_content"),
             ]
         ),
         Protocol(
-            title: "Pánico Social",
-            description: "Gestión de la ansiedad en situaciones sociales.",
+            titleKey: "protocol_3_title",
+            descriptionKey: "protocol_3_description",
             icon: "person.3.fill",
             color: .orange,
             steps: [
-                ProtocolStep(
-                    title: "Anclaje",
-                    content: "Siente tus pies firmes en el suelo. Estás aquí y ahora."
-                ),
-                ProtocolStep(
-                    title: "Foco externo",
-                    content:
-                    "Deja de mirar hacia adentro. Observa los colores y objetos de la habitación."
-                ),
-                ProtocolStep(
-                    title: "Respiración discreta",
-                    content: "Respira lento y profundo por la nariz. Nadie lo notará."
-                ),
-                ProtocolStep(
-                    title: "Pequeños pasos",
-                    content:
-                    "No necesitas ser el centro de atención. Solo estar presente es suficiente."
-                ),
+                ProtocolStep(titleKey: "protocol_3_step_1_title", contentKey: "protocol_3_step_1_content"),
+                ProtocolStep(titleKey: "protocol_3_step_2_title", contentKey: "protocol_3_step_2_content"),
+                ProtocolStep(titleKey: "protocol_3_step_3_title", contentKey: "protocol_3_step_3_content"),
+                ProtocolStep(titleKey: "protocol_3_step_4_title", contentKey: "protocol_3_step_4_content"),
             ]
         ),
     ]
@@ -98,6 +66,14 @@ struct Protocol: Identifiable {
 
 struct ProtocolStep: Identifiable {
     let id = UUID()
-    let title: String
-    let content: String
+    let titleKey: String
+    let contentKey: String
+
+    var title: String {
+        NSLocalizedString(titleKey, comment: "")
+    }
+
+    var content: String {
+        NSLocalizedString(contentKey, comment: "")
+    }
 }

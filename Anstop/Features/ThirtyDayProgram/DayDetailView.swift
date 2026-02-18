@@ -30,7 +30,7 @@ struct DayDetailView: View {
             VStack(alignment: .leading, spacing: 30) {
                 // Header
                 VStack(alignment: .leading, spacing: 12) {
-                    Text("Día \(day)")
+                    Text(String(format: String(localized: "program_day_label_format"), day))
                         .font(.futuraCaption)
                         .fontWeight(.semibold)
                         .foregroundStyle(.secondary)
@@ -55,14 +55,14 @@ struct DayDetailView: View {
                 }
                 .padding(.horizontal, 12)
                 .padding(.vertical, 6)
-                .background(Color("Blue").opacity(0.1))
-                .foregroundStyle(Color("Blue"))
+                .background(Color("AnstopBlue").opacity(0.1))
+                .foregroundStyle(Color("AnstopBlue"))
                 .clipShape(Capsule())
                 .padding(.horizontal, 20)
 
                 // Contenido
                 VStack(alignment: .leading, spacing: 16) {
-                    Text("Instrucciones")
+                    Text("program_instructions")
                         .font(.futuraHeadline)
 
                     Text(exercise?.content ?? "")
@@ -79,7 +79,7 @@ struct DayDetailView: View {
                     Button(action: completeDay) {
                         HStack {
                             Image(systemName: "checkmark.circle.fill")
-                            Text("Marcar como Completado")
+                            Text("program_mark_completed")
                         }
                         .font(.futuraHeadline)
                         .foregroundStyle(.white)
@@ -92,7 +92,7 @@ struct DayDetailView: View {
                     HStack {
                         Image(systemName: "checkmark.circle.fill")
                             .foregroundStyle(.green)
-                        Text("Completado")
+                        Text("program_completed")
                             .foregroundStyle(.secondary)
                     }
                     .font(.futuraHeadline)
@@ -130,11 +130,11 @@ struct DayDetailView: View {
     private var exerciseTypeName: String {
         guard let exercise else { return "" }
         switch exercise.exerciseType {
-        case .breathing: return "Respiración"
-        case .grounding: return "Grounding"
-        case .reflection: return "Reflexión"
-        case .journaling: return "Diario"
-        case .mindfulness: return "Mindfulness"
+        case .breathing: return String(localized: "program_type_breathing")
+        case .grounding: return String(localized: "program_type_grounding")
+        case .reflection: return String(localized: "program_type_reflection")
+        case .journaling: return String(localized: "program_type_journaling")
+        case .mindfulness: return String(localized: "program_type_mindfulness")
         }
     }
 
@@ -167,7 +167,7 @@ struct CompletionOverlay: View {
                     .font(.futura(80))
                     .foregroundStyle(.green)
 
-                Text("¡Día completado!")
+                Text("program_day_completed_title")
                     .font(.futuraTitle)
                     .bold()
                     .foregroundStyle(.white)

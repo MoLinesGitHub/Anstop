@@ -23,14 +23,14 @@ struct DailyJournalView: View {
                         HStack {
                             Image(systemName: "plus.circle.fill")
                                 .font(.futuraTitle2)
-                                .foregroundStyle(Color("Blue"))
-                            Text("Nueva entrada")
+                                .foregroundStyle(Color("AnstopBlue"))
+                            Text("journal_new_entry")
                                 .font(.futuraHeadline)
                         }
                     }
                 }
 
-                Section("Historial") {
+                Section("journal_history") {
                     ForEach(entries) { entry in
                         JournalEntryRow(entry: entry)
                     }
@@ -38,7 +38,7 @@ struct DailyJournalView: View {
                 }
             }
             .anstopScrollBackground(.journal)
-            .navigationTitle("Diario")
+            .navigationTitle("journal_navigation_title")
             .sheet(isPresented: $showNewEntry) {
                 NewJournalEntryView()
             }
@@ -109,9 +109,9 @@ struct NewJournalEntryView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("¿Cómo te sientes hoy?") {
+                Section("journal_how_do_you_feel_today") {
                     VStack(spacing: 20) {
-                        Text("\(mood)/10")
+                        Text(String(format: String(localized: "journal_mood_value_format"), mood))
                             .font(.futura(48))
                             .foregroundStyle(moodColor)
 
@@ -125,19 +125,19 @@ struct NewJournalEntryView: View {
                     .padding(.vertical)
                 }
 
-                Section("Notas (opcional)") {
+                Section("journal_notes_optional") {
                     TextEditor(text: $notes)
                         .frame(minHeight: 100)
                 }
             }
-            .navigationTitle("Nueva Entrada")
+            .navigationTitle("journal_new_entry_navigation_title")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancelar") { dismiss() }
+                    Button("cancel") { dismiss() }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Guardar") {
+                    Button("journal_save") {
                         saveEntry()
                         dismiss()
                     }

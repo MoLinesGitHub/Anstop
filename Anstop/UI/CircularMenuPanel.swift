@@ -202,7 +202,7 @@ struct CircularMenuPanel: View {
                     VStack {
                         HStack {
                             Spacer()
-                            Text("PRO")
+                            Text("premium_badge")
                                 .font(.futura(7))
                                 .foregroundStyle(.white)
                                 .padding(.horizontal, 3)
@@ -270,13 +270,13 @@ struct MenuItem: Identifiable {
         VStack {
             CircularMenuPanel(
                 items: [
-                    MenuItem(icon: "wind", title: "Respiración"),
-                    MenuItem(icon: "hand.raised.fill", title: "Grounding"),
-                    MenuItem(icon: "speaker.wave.2.fill", title: "Audio", isPremium: true),
-                    MenuItem(icon: "book.fill", title: "Diario"),
-                    MenuItem(icon: "books.vertical.fill", title: "Biblioteca"),
-                    MenuItem(icon: "sparkles", title: "IA", isPremium: true),
-                    MenuItem(icon: "clock.arrow.circlepath", title: "Historial")
+                    MenuItem(icon: "wind", title: String(localized: "home_quick_access_breathing")),
+                    MenuItem(icon: "hand.raised.fill", title: String(localized: "home_quick_access_grounding")),
+                    MenuItem(icon: "speaker.wave.2.fill", title: String(localized: "home_quick_access_audio"), isPremium: true),
+                    MenuItem(icon: "book.fill", title: String(localized: "home_quick_access_journal")),
+                    MenuItem(icon: "books.vertical.fill", title: String(localized: "home_quick_access_library")),
+                    MenuItem(icon: "sparkles", title: String(localized: "home_quick_access_ai"), isPremium: true),
+                    MenuItem(icon: "clock.arrow.circlepath", title: String(localized: "home_quick_access_history"))
                 ]
             ) { item in
                 print("Selected: \(item.title)")

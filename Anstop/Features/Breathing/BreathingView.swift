@@ -20,11 +20,11 @@ struct BreathingView: View {
             VStack(spacing: 40) {
                 // Selector de protocolo con diseño glass
                 VStack(spacing: 16) {
-                    Text("Elige tu técnica")
+                    Text("breathing_choose_technique")
                         .font(.futuraHeadline)
                         .foregroundStyle(.secondary)
 
-                    Picker("Protocolo", selection: $selectedProtocol) {
+                    Picker("breathing_protocol_picker", selection: $selectedProtocol) {
                         ForEach(BreathingProtocol.allCases) { item in
                             Text(item.rawValue).tag(item)
                         }
@@ -43,7 +43,7 @@ struct BreathingView: View {
                             RadialGradient(
                                 colors: [
                                     .cyan.opacity(0.1),
-                                    Color("Blue").opacity(0.05),
+                                    Color("AnstopBlue").opacity(0.05),
                                     .clear,
                                 ],
                                 center: .center,
@@ -90,7 +90,7 @@ struct BreathingView: View {
             }
             .padding(.vertical, 20)
         }
-        .navigationTitle("Respiración")
+        .navigationTitle("breathing_title")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -112,17 +112,17 @@ enum BreathingProtocol: String, CaseIterable, Identifiable {
 
     var description: String {
         switch self {
-        case .fourSevenEight: "Inhala 4s, mantén 7s, exhala 8s"
-        case .fourFour: "Inhala 4s, exhala 4s"
-        case .threeThreeThree: "Inhala 3s, mantén 3s, exhala 3s"
+        case .fourSevenEight: String(localized: "breathing_protocol_478_description")
+        case .fourFour: String(localized: "breathing_protocol_44_description")
+        case .threeThreeThree: String(localized: "breathing_protocol_333_description")
         }
     }
 
     var benefits: String {
         switch self {
-        case .fourSevenEight: "Ideal para calmar la mente y reducir la ansiedad rápidamente"
-        case .fourFour: "Perfecto para mantener la calma y el equilibrio"
-        case .threeThreeThree: "Excelente para momentos de estrés intenso"
+        case .fourSevenEight: String(localized: "breathing_protocol_478_benefits")
+        case .fourFour: String(localized: "breathing_protocol_44_benefits")
+        case .threeThreeThree: String(localized: "breathing_protocol_333_benefits")
         }
     }
 }

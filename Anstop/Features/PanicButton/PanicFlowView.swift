@@ -33,22 +33,22 @@ struct PanicFlowView: View {
             } else {
                 TabView(selection: $currentStep) {
                     PanicStepView(
-                        title: "Respira conmigo",
-                        description: "Tu cuerpo está a salvo. Vamos a respirar juntos.",
+                        title: String(localized: "panic_step_1_title"),
+                        description: String(localized: "panic_step_1_description"),
                         showBreathing: true
                     )
                     .tag(0)
 
                     PanicStepView(
-                        title: "Tu cuerpo está a salvo",
-                        description: "Lo que sientes es incómodo, pero no es peligroso.",
+                        title: String(localized: "panic_step_2_title"),
+                        description: String(localized: "panic_step_2_description"),
                         showBreathing: false
                     )
                     .tag(1)
 
                     PanicStepView(
-                        title: "Vamos a bajar tu ritmo",
-                        description: "Estás haciendo un gran trabajo. Sigue respirando.",
+                        title: String(localized: "panic_step_3_title"),
+                        description: String(localized: "panic_step_3_description"),
                         showBreathing: true
                     )
                     .tag(2)
@@ -57,10 +57,11 @@ struct PanicFlowView: View {
                 .indexViewStyle(.page(backgroundDisplayMode: .always))
 
                 Button(action: advance) {
-                    Text(currentStep >= 2 ? "Finalizar" : "Continuar")
+                    Text(currentStep >= 2 ? "panic_finish" : "panic_continue")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .accessibilityIdentifier("panic.advance_button")
                 .padding(.bottom, 12)
             }
         }
@@ -106,11 +107,11 @@ struct PanicCompletionView: View {
                     .symbolEffect(.bounce)
             }
 
-            Text("Lo lograste")
+            Text("panic_completion_title")
                 .font(.futuraLargeTitle)
                 .bold()
 
-            Text("Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.")
+            Text("panic_completion_description")
                 .font(.futuraBody)
                 .foregroundStyle(.secondary)
                 .multilineTextAlignment(.center)
@@ -124,10 +125,10 @@ struct PanicCompletionView: View {
 
                     // Sugerencia Premium
                     VStack(spacing: 12) {
-                        Text("🌟 ¿Quieres más herramientas?")
+                        Text("panic_completion_premium_title")
                             .font(.futuraHeadline)
 
-                        Text("Con Premium tendrás acceso a 20+ guías de audio, el programa de 30 días y un asistente IA disponible 24/7.")
+                        Text("panic_completion_premium_description")
                             .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -135,7 +136,7 @@ struct PanicCompletionView: View {
                         Button(action: onShowPremium) {
                             HStack {
                                 Image(systemName: "crown.fill")
-                                Text("Probar Premium 7 días gratis")
+                                Text("panic_completion_premium_cta")
                             }
                             .font(.futuraSubheadline)
                             .foregroundStyle(.white)
@@ -146,6 +147,7 @@ struct PanicCompletionView: View {
                             )
                             .clipShape(RoundedRectangle(cornerRadius: 12))
                         }
+                        .accessibilityIdentifier("panic.premium_cta_button")
                     }
                     .padding(.horizontal, 30)
                 }
@@ -155,17 +157,19 @@ struct PanicCompletionView: View {
 
             if isPremium {
                 Button(action: onContinue) {
-                    Text("Volver al inicio")
+                    Text("panic_back_home")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(PrimaryButtonStyle())
+                .accessibilityIdentifier("panic.back_home_button")
                 .padding(.bottom, 40)
             } else {
                 Button(action: onContinue) {
-                    Text("Volver al inicio")
+                    Text("panic_back_home")
                         .padding(.horizontal, 40)
                 }
                 .buttonStyle(SecondaryButtonStyle())
+                .accessibilityIdentifier("panic.back_home_button")
                 .padding(.bottom, 40)
             }
         }

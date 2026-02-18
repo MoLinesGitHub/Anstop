@@ -10,8 +10,10 @@ final class AudioManager {
     var duration: TimeInterval = 0
     var currentTime: TimeInterval = 0
 
-    init() {
-        configureAudioSession()
+    init(configureAudioSessionOnInit: Bool = true) {
+        if configureAudioSessionOnInit {
+            configureAudioSession()
+        }
     }
 
     private nonisolated func configureAudioSession() {

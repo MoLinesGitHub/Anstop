@@ -44,15 +44,16 @@ final class PurchaseManager {
         !purchasedProductIDs.isEmpty
     }
 
-    init() {
-        // Start listening for transaction updates
+    init(autoStart: Bool = true) {
+        guard autoStart else { return }
+
         transactionUpdatesTask = Task { @MainActor in
             await listenForTransactionUpdates()
         }
 
         Task {
-            await loadProducts()
-            await updatePurchasedProducts()
+            await self.loadProducts()
+            await self.updatePurchasedProducts()
         }
     }
 

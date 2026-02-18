@@ -30,7 +30,7 @@ struct PaywallView: View {
                         HStack {
                             Image(systemName: "gift.fill")
                                 .foregroundStyle(.white)
-                            Text("OFERTA DE BIENVENIDA")
+                            Text("paywall_welcome_offer")
                                 .font(.futuraCaption)
                                 .bold()
                                 .foregroundStyle(.white)
@@ -44,7 +44,12 @@ struct PaywallView: View {
                         HStack(spacing: 4) {
                             Image(systemName: "clock.fill")
                                 .font(.futuraCaption)
-                            Text("Oferta termina en: \(timeFormatted)")
+                            Text(
+                                String(
+                                    format: String(localized: "paywall_offer_ends_in_format"),
+                                    timeFormatted
+                                )
+                            )
                                 .font(.futuraSubheadline)
                                 .bold()
                         }
@@ -60,12 +65,12 @@ struct PaywallView: View {
                             .foregroundStyle(.blue.gradient)
                             .symbolEffect(.pulse, options: .repeating)
 
-                        Text("Tu calma, siempre contigo")
+                        Text("paywall_main_title")
                             .font(.futuraTitle)
                             .bold()
                             .multilineTextAlignment(.center)
 
-                        Text("Únete a +50,000 personas que han transformado su relación con la ansiedad")
+                        Text("paywall_main_subtitle")
                             .font(.futuraSubheadline)
                             .foregroundStyle(.secondary)
                             .multilineTextAlignment(.center)
@@ -77,37 +82,42 @@ struct PaywallView: View {
 
                     // Estadísticas
                     HStack(spacing: 20) {
-                        StatBadge(value: "93%", label: "Reducen ansiedad")
-                        StatBadge(value: "4.9★", label: "Valoración")
-                        StatBadge(value: "7 días", label: "Prueba gratis")
+                        StatBadge(value: "93%", label: String(localized: "paywall_stat_reduce_anxiety"))
+                        StatBadge(value: "4.9★", label: String(localized: "paywall_stat_rating"))
+                        StatBadge(value: String(localized: "paywall_simple_trial_value"), label: String(localized: "paywall_simple_trial_label"))
                     }
                     .padding(.horizontal)
 
                     // Features
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Todo incluido en Premium:")
+                        Text("paywall_features_title")
                             .font(.futuraHeadline)
                             .padding(.horizontal)
 
                         FeatureRow(
-                            icon: "waveform", title: "Guías completas de audio",
-                            description: "20+ ejercicios de respiración y relajación"
+                            icon: "waveform",
+                            title: String(localized: "paywall_feature_audio_title"),
+                            description: String(localized: "paywall_feature_audio_description")
                         )
                         FeatureRow(
-                            icon: "calendar", title: "Programa de 30 días gratis",
-                            description: "Plan estructurado que funciona"
+                            icon: "calendar",
+                            title: String(localized: "paywall_feature_program_title"),
+                            description: String(localized: "paywall_feature_program_description")
                         )
                         FeatureRow(
-                            icon: "sparkles", title: "Ejercicios personalizados",
-                            description: "Adaptados a tu nivel de ansiedad"
+                            icon: "sparkles",
+                            title: String(localized: "paywall_feature_personalized_title"),
+                            description: String(localized: "paywall_feature_personalized_description")
                         )
                         FeatureRow(
-                            icon: "cpu", title: "Asistente IA 24/7",
-                            description: "Apoyo emocional cuando lo necesites"
+                            icon: "cpu",
+                            title: String(localized: "paywall_feature_ai_title"),
+                            description: String(localized: "paywall_feature_ai_description")
                         )
                         FeatureRow(
-                            icon: "paintpalette", title: "Sin publicidad",
-                            description: "Experiencia tranquila y sin interrupciones"
+                            icon: "paintpalette",
+                            title: String(localized: "paywall_feature_ads_title"),
+                            description: String(localized: "paywall_feature_ads_description")
                         )
                     }
                     .padding(.horizontal)
@@ -142,9 +152,17 @@ struct PaywallView: View {
                             Task { await purchase(product) }
                         }) {
                             VStack(spacing: 4) {
-                                Text("Comenzar 7 días GRATIS")
+                                Text("paywall_start_free_trial")
                                     .font(.futuraHeadline)
-                                Text("Luego \(product.displayPrice)/\(product.id.contains("yearly") ? "año" : "mes")")
+                                Text(
+                                    String(
+                                        format: String(localized: "paywall_then_price_period_format"),
+                                        product.displayPrice,
+                                        product.id.contains("yearly")
+                                            ? String(localized: "paywall_period_year")
+                                            : String(localized: "paywall_period_month")
+                                    )
+                                )
                                     .font(.futuraCaption)
                                     .opacity(0.9)
                             }
@@ -162,13 +180,13 @@ struct PaywallView: View {
                     HStack(spacing: 8) {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundStyle(.green)
-                        Text("Cancela cuando quieras • Sin compromiso")
+                        Text("paywall_cancel_anytime")
                             .font(.futuraFootnote)
                             .foregroundStyle(.secondary)
                     }
 
                     // Restore
-                    Button("Restaurar compras") {
+                    Button("paywall_restore_purchases") {
                         Task {
                             await purchaseManager.restorePurchases()
                             if purchaseManager.isPremium {
@@ -180,12 +198,7 @@ struct PaywallView: View {
                     .foregroundStyle(.secondary)
 
                     // Disclaimer
-                    Text("""
-                    No sustituye ayuda profesional. \
-                    Los pagos se cargarán a tu cuenta de Apple. \
-                    La suscripción se renueva automáticamente \
-                    a menos que se cancele 24h antes del fin del período.
-                    """)
+                    Text("paywall_disclaimer")
                     .font(.futuraCaption2)
                     .foregroundStyle(.tertiary)
                     .multilineTextAlignment(.center)
@@ -196,7 +209,8 @@ struct PaywallView: View {
             .anstopBackground(.premium)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cerrar") { dismiss() }
+                    Button("close") { dismiss() }
+                        .accessibilityIdentifier("paywall.close_button")
                 }
             }
         }
@@ -205,10 +219,10 @@ struct PaywallView: View {
                 timeRemaining -= 1
             }
         }
-        .alert("Error", isPresented: $showError) {
-            Button("OK") {}
+        .alert("paywall_error_title", isPresented: $showError) {
+            Button("ok") {}
         } message: {
-            Text("No se pudo completar la compra. Inténtalo de nuevo.")
+            Text("paywall_error_message")
         }
     }
 
@@ -238,9 +252,9 @@ struct PaywallView: View {
 
 struct TestimonialsCarousel: View {
     let testimonials = [
-        Testimonial(text: "Esta app me acaba de salvar la vida! Hasta ahora he tenido siempre unos nervios que... en fin... es otro mundo, y ahora....  es que no tengo ansiedad! Ahora puedo con ella, dormir, puedo dormir! Gracias!", author: "María G.", rating: 5),
-        Testimonial(text: "El programa de 30 días cambió mi vida. Lo recomiendo encarecidamente.", author: "Carlos Ricardo R.", rating: 5),
-        Testimonial(text: "Simple pero muy efectiva. Las guías de respiración son increíbles.", author: "Ana Simón U.", rating: 5),
+        Testimonial(textKey: "paywall_testimonial_1_text", authorKey: "paywall_testimonial_1_author", rating: 5),
+        Testimonial(textKey: "paywall_testimonial_2_text", authorKey: "paywall_testimonial_2_author", rating: 5),
+        Testimonial(textKey: "paywall_testimonial_3_text", authorKey: "paywall_testimonial_3_author", rating: 5),
     ]
 
     var body: some View {
@@ -257,9 +271,17 @@ struct TestimonialsCarousel: View {
 
 struct Testimonial: Identifiable {
     let id = UUID()
-    let text: String
-    let author: String
+    let textKey: String
+    let authorKey: String
     let rating: Int
+
+    var text: String {
+        String(localized: String.LocalizationValue(textKey))
+    }
+
+    var author: String {
+        String(localized: String.LocalizationValue(authorKey))
+    }
 }
 
 struct TestimonialCard: View {
@@ -280,7 +302,7 @@ struct TestimonialCard: View {
                 .foregroundStyle(.primary)
                 .lineLimit(3)
 
-            Text("— \(testimonial.author)")
+            Text(String(format: String(localized: "paywall_testimonial_author_format"), testimonial.author))
                 .font(.futuraCaption)
                 .foregroundStyle(.secondary)
         }
@@ -323,7 +345,7 @@ struct ProductCard: View {
 
     var savings: String? {
         if isYearly {
-            return "Ahorra 50%"
+            return String(localized: "paywall_save_50")
         }
         return nil
     }
@@ -334,7 +356,7 @@ struct ProductCard: View {
                 // Selection indicator
                 Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                     .font(.futuraTitle2)
-                    .foregroundStyle(isSelected ? Color("Blue") : .secondary)
+                    .foregroundStyle(isSelected ? Color("AnstopBlue") : .secondary)
 
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
@@ -353,7 +375,12 @@ struct ProductCard: View {
                     }
 
                     if isYearly {
-                        Text("Solo \(monthlyPrice)/mes")
+                        Text(
+                            String(
+                                format: String(localized: "paywall_only_monthly_price_format"),
+                                monthlyPrice
+                            )
+                        )
                             .font(.futuraCaption)
                             .foregroundStyle(.secondary)
                     }
@@ -365,7 +392,11 @@ struct ProductCard: View {
                     Text(product.displayPrice)
                         .font(.futuraTitle3)
                         .bold()
-                    Text(isYearly ? "/año" : "/mes")
+                    Text(
+                        isYearly
+                            ? String(localized: "paywall_per_year")
+                            : String(localized: "paywall_per_month")
+                    )
                         .font(.futuraCaption)
                         .foregroundStyle(.secondary)
                 }
@@ -432,10 +463,10 @@ struct PaywallSimpleView: View {
                             .font(.futura(60))
                             .foregroundStyle(.yellow)
 
-                        Text("Desbloquea Premium")
+                        Text("paywall_simple_title")
                             .font(.prometheusLargeTitle)
 
-                        Text("Accede a todas las guías de audio y contenido exclusivo.")
+                        Text("paywall_simple_subtitle")
                             .multilineTextAlignment(.center)
                             .foregroundStyle(.secondary)
                             .padding(.horizontal)
@@ -444,13 +475,13 @@ struct PaywallSimpleView: View {
 
                     // Estadísticas rápidas
                     HStack(spacing: 16) {
-                        MiniStatBadge(value: "93%", label: "Eficacia")
-                        MiniStatBadge(value: "7 días", label: "Prueba gratis")
+                        MiniStatBadge(value: "93%", label: String(localized: "paywall_simple_effectiveness"))
+                        MiniStatBadge(value: String(localized: "paywall_simple_trial_value"), label: String(localized: "paywall_simple_trial_label"))
                     }
                     .padding(.horizontal)
 
                     if purchaseManager.products.isEmpty {
-                        ProgressView("Cargando...")
+                        ProgressView("paywall_loading")
                             .padding()
                     } else {
                         VStack(spacing: 12) {
@@ -487,9 +518,14 @@ struct PaywallSimpleView: View {
                                 }
                             }) {
                                 VStack(spacing: 2) {
-                                    Text("Comenzar 7 días GRATIS")
+                                    Text("paywall_start_free_trial")
                                         .font(.futuraHeadline)
-                                    Text("Luego \(product.displayPrice)")
+                                    Text(
+                                        String(
+                                            format: String(localized: "paywall_simple_then_price_format"),
+                                            product.displayPrice
+                                        )
+                                    )
                                         .font(.futuraCaption)
                                         .opacity(0.9)
                                 }
@@ -505,19 +541,20 @@ struct PaywallSimpleView: View {
                         Image(systemName: "checkmark.shield.fill")
                             .foregroundStyle(.green)
                             .font(.futuraCaption)
-                        Text("Cancela cuando quieras")
+                        Text("paywall_simple_cancel_anytime")
                             .font(.futuraCaption)
                             .foregroundStyle(.secondary)
                     }
 
-                    Button("Cerrar") { dismiss() }
+                    Button("close") { dismiss() }
+                        .accessibilityIdentifier("paywall.simple_close_button")
                         .padding(.horizontal, 40)
                         .buttonStyle(SecondaryButtonStyle(color: .orange))
                         .padding(.top, 8)
                 }
                 .padding()
             }
-            .navigationTitle("Premium")
+            .navigationTitle("paywall_navigation_title")
             .navigationBarTitleDisplayMode(.inline)
         }
     }
@@ -563,7 +600,7 @@ struct SimpleProductCard: View {
                         Text(product.displayName)
                             .font(.futuraSubheadline)
                         if isYearly {
-                            Text("50% OFF")
+                            Text("paywall_50_off")
                                 .font(.futuraCaption2)
                                 .bold()
                                 .foregroundStyle(.white)

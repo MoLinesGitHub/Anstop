@@ -3,13 +3,13 @@ import SwiftUI
 
 enum Theme {
     // Primary colors
-    static let primary = Color("Blue")
+    static let primary = Color("AnstopBlue")
     static let secondary = Color.orange
     static let accent = Color.purple
 
     // Gradients
     static let backgroundGradient = LinearGradient(
-        gradient: Gradient(colors: [Color.white.opacity(0.9), Color("Blue").opacity(0.1)]),
+        gradient: Gradient(colors: [Color.white.opacity(0.9), Color("AnstopBlue").opacity(0.1)]),
         startPoint: .topLeading,
         endPoint: .bottomTrailing
     )

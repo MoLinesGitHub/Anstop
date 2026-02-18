@@ -11,21 +11,45 @@ import Foundation
 /// Credenciales de App Store Connect para validación de compras
 /// ⚠️ NO compartir estas claves públicamente
 enum AppStoreSecrets {
+    private static func readValue(for key: String) -> String {
+        if let envValue = ProcessInfo.processInfo.environment[key], !envValue.isEmpty {
+            return envValue
+        }
+
+        if let plistValue = Bundle.main.object(forInfoDictionaryKey: key) as? String, !plistValue.isEmpty {
+            return plistValue
+        }
+
+        return ""
+    }
+
     /// App Store Connect API - Key ID
     /// Usado para autenticar solicitudes al servidor de App Store
-    static let keyID = "Y7F67CN793"
+    static var keyID: String {
+        readValue(for: "APPSTORE_KEY_ID")
+    }
 
     /// App Store Connect API - Issuer ID
     /// Identifica tu organización en App Store Connect
-    static let issuerID = "c4fe5a62-60af-43b1-af9b-369dad9f52a0"
+    static var issuerID: String {
+        readValue(for: "APPSTORE_ISSUER_ID")
+    }
 
     /// Shared Secret para validación de recibos de suscripciones
     /// Usado en verifyReceipt API para validar auto-renewable subscriptions
-    static let sharedSecret = "15afc8166469465fb4c2216ff81c28e8"
+    static var sharedSecret: String {
+        readValue(for: "APPSTORE_SHARED_SECRET")
+    }
 
     /// Path relativo a la clave privada .p8 (si la tienes)
     /// La clave .p8 NUNCA debe incluirse en el repositorio
-    static let privateKeyFileName = "SubscriptionKey_32U569DVAD.p8"
+    static var privateKeyFileName: String {
+        readValue(for: "APPSTORE_PRIVATE_KEY_FILENAME")
+    }
+
+    static var isConfigured: Bool {
+        !keyID.isEmpty && !issuerID.isEmpty && !sharedSecret.isEmpty
+    }
 
     // MARK: - Configuración de entorno
 

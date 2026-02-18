@@ -14,12 +14,12 @@ struct BreathingCircle: View {
     var body: some View {
         ZStack {
             Circle()
-                .fill(Color("Blue").opacity(opacity))
+                .fill(Color("AnstopBlue").opacity(opacity))
                 .frame(width: 200, height: 200)
                 .scaleEffect(scale)
 
             Circle()
-                .stroke(Color("Blue"), lineWidth: 2)
+                .stroke(Color("AnstopBlue"), lineWidth: 2)
                 .frame(width: 200, height: 200)
                 .scaleEffect(scale)
         }

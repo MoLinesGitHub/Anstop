@@ -20,7 +20,7 @@ struct AudioGuidesView: View {
                 AnstopBackground.audio
 
                 List {
-                    Section("Gratis") {
+                    Section("audio_guides_section_free") {
                         ForEach(AudioGuide.freeGuides) { guide in
                             AudioGuideRow(guide: guide, audioManager: audioManager)
                         }
@@ -39,7 +39,7 @@ struct AudioGuidesView: View {
                         }
                     } header: {
                         HStack {
-                            Text("Premium")
+                            Text("audio_guides_section_premium")
                             Spacer()
                             if !purchaseManager.isPremium {
                                 Image(systemName: "lock.fill")
@@ -50,7 +50,7 @@ struct AudioGuidesView: View {
                 }
                 .scrollContentBackground(.hidden)
             }
-            .navigationTitle("Guías de Audio")
+            .navigationTitle("audio_guides_navigation_title")
             .sheet(isPresented: $showPaywall) {
                 PaywallSimpleView()
             }
@@ -102,7 +102,7 @@ struct AudioGuideRow: View {
                 } else {
                     Image(systemName: isPlaying ? "pause.circle.fill" : "play.circle.fill")
                         .font(.futuraTitle2)
-                        .foregroundStyle(Color("Blue"))
+                        .foregroundStyle(Color("AnstopBlue"))
                 }
             }
         }
@@ -120,27 +120,39 @@ struct AudioGuideRow: View {
 
 struct AudioGuide: Identifiable {
     let id = UUID()
-    let title: String
-    let description: String
+    let titleKey: String
+    let descriptionKey: String
     let fileName: String
-    let duration: String
+    let durationKey: String
     let icon: String
     let isPremium: Bool
 
+    var title: String {
+        NSLocalizedString(titleKey, comment: "")
+    }
+
+    var description: String {
+        NSLocalizedString(descriptionKey, comment: "")
+    }
+
+    var duration: String {
+        NSLocalizedString(durationKey, comment: "")
+    }
+
     static let freeGuides: [AudioGuide] = [
         AudioGuide(
-            title: "Respiración básica",
-            description: "Ejercicio de respiración 4-7-8",
+            titleKey: "audio_guide_basic_breathing_title",
+            descriptionKey: "audio_guide_basic_breathing_description",
             fileName: "breathing_basic",
-            duration: "3 min",
+            durationKey: "audio_guide_duration_3_min",
             icon: "wind",
             isPremium: false
         ),
         AudioGuide(
-            title: "Primer auxilio emocional",
-            description: "Guía rápida para momentos de crisis",
+            titleKey: "audio_guide_emotional_first_aid_title",
+            descriptionKey: "audio_guide_emotional_first_aid_description",
             fileName: "emergency_calm",
-            duration: "5 min",
+            durationKey: "audio_guide_duration_5_min",
             icon: "cross.circle",
             isPremium: false
         ),
@@ -148,26 +160,26 @@ struct AudioGuide: Identifiable {
 
     static let premiumGuides: [AudioGuide] = [
         AudioGuide(
-            title: "Relajación profunda",
-            description: "Meditación guiada completa",
+            titleKey: "audio_guide_deep_relaxation_title",
+            descriptionKey: "audio_guide_deep_relaxation_description",
             fileName: "deep_relaxation",
-            duration: "15 min",
+            durationKey: "audio_guide_duration_15_min",
             icon: "moon.stars",
             isPremium: true
         ),
         AudioGuide(
-            title: "Ansiedad nocturna",
-            description: "Ejercicio especial para dormir",
+            titleKey: "audio_guide_night_anxiety_title",
+            descriptionKey: "audio_guide_night_anxiety_description",
             fileName: "night_anxiety",
-            duration: "20 min",
+            durationKey: "audio_guide_duration_20_min",
             icon: "bed.double",
             isPremium: true
         ),
         AudioGuide(
-            title: "Técnicas avanzadas",
-            description: "Mindfulness y reestructuración cognitiva",
+            titleKey: "audio_guide_advanced_techniques_title",
+            descriptionKey: "audio_guide_advanced_techniques_description",
             fileName: "advanced_techniques",
-            duration: "12 min",
+            durationKey: "audio_guide_duration_12_min",
             icon: "brain.head.profile",
             isPremium: true
         ),

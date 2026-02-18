@@ -2,25 +2,29 @@ import SwiftUI
 
 struct HomeView: View {
     @State private var showPanicFlow = false
+    @State private var showPanicFlowCoverForUITest = false
     @State private var isPanicButtonPressed = false
     @State private var showPaywall = false
     @State private var purchaseManager = PurchaseManager.shared
 
     @State private var textRotation: Double = 0
     @State private var selectedQuickAccess: QuickAccessItem?
-    @State private var isQuickAccessExpanded = false
-    @State private var lotusScale: CGFloat = 1.0
+    private let isUITesting = ProcessInfo.processInfo.arguments.contains("UI_TESTING")
     
     enum QuickAccessItem: String, CaseIterable, Identifiable {
-        case breathing = "Respiración"
-        case grounding = "Grounding 5-4-3-2-1"
-        case audio = "Audio calmante"
-        case journal = "Diario del día"
-        case library = "Biblioteca de Recursos"
-        case ai = "Asistente IA"
-        case history = "Historial de Diario"
+        case breathing = "home_quick_access_breathing"
+        case grounding = "home_quick_access_grounding"
+        case audio = "home_quick_access_audio"
+        case journal = "home_quick_access_journal"
+        case library = "home_quick_access_library"
+        case ai = "home_quick_access_ai"
+        case history = "home_quick_access_history"
         
         var id: String { rawValue }
+
+        var title: String {
+            NSLocalizedString(rawValue, comment: "")
+        }
         
         var icon: String {
             switch self {
@@ -48,6 +52,29 @@ struct HomeView: View {
                 // Fondo
                 Color.clear
                     .anstopBackground(.home)
+
+                if isUITesting {
+                    VStack {
+                        HStack {
+                            Button(action: {
+                                showPanicFlowCoverForUITest = true
+                            }) {
+                                Image(systemName: "wrench.and.screwdriver.fill")
+                                    .font(.caption.bold())
+                                    .foregroundStyle(.black)
+                                    .frame(width: 44, height: 44)
+                                    .background(Color.white.opacity(0.9))
+                                    .clipShape(Circle())
+                            }
+                            .accessibilityIdentifier("home.debug_open_panic_button")
+                            .padding(.leading, 8)
+                            .padding(.top, 8)
+                            .zIndex(1000)
+                            Spacer()
+                        }
+                        Spacer()
+                    }
+                }
                 
                 // Rueda circular de quesitos FIJO debajo del botón de pánico
                 VStack {
@@ -59,13 +86,13 @@ struct HomeView: View {
                         items: QuickAccessItem.allCases.map { item in
                             MenuItem(
                                 icon: item.icon,
-                                title: item.rawValue,
+                                title: item.title,
                                 isPremium: item.isPremium
                             )
                         }
                     ) { menuItem in
                         // Encontrar el QuickAccessItem correspondiente
-                        if let quickItem = QuickAccessItem.allCases.first(where: { $0.rawValue == menuItem.title }) {
+                        if let quickItem = QuickAccessItem.allCases.first(where: { $0.title == menuItem.title }) {
                             selectedQuickAccess = quickItem
                         }
                     }
@@ -126,7 +153,7 @@ struct HomeView: View {
                             
                             // Texto giratorio alrededor
                             ZStack {
-                                ForEach(Array("PROGRAMA DE 30 DÍAS • ".enumerated()), id: \.offset) { index, char in
+                                ForEach(Array(String(localized: "home_program_ring_text").enumerated()), id: \.offset) { index, char in
                                     Text(String(char))
                                         .font(.system(size: 10, weight: .bold))
                                         .foregroundStyle(.white.opacity(0.9))
@@ -149,7 +176,7 @@ struct HomeView: View {
                         .frame(height: 20)
                     
                     // Botón principal de pánico
-                    Button(action: {
+                    let panicButton = Button(action: {
                         withOptionalAnimation(.gentle) {
                             showPanicFlow = true
                         }
@@ -168,7 +195,7 @@ struct HomeView: View {
                                         endPoint: .bottomTrailing
                                     )
                                 )
-                            Text("Estoy teniendo ansiedad")
+                            Text("home_panic_button")
                                 .font(.prometheusTitle3)
                                 .bold()
                                 .foregroundStyle(.white.opacity(0.95))
@@ -210,20 +237,27 @@ struct HomeView: View {
                         .shadow(color: .black.opacity(0.3), radius: isPanicButtonPressed ? 10 : 25, x: 0, y: isPanicButtonPressed ? 5 : 15)
                     }
                     .buttonStyle(.plain)
-                    .hapticOnTap(.impact(style: .heavy))
-                    .simultaneousGesture(
-                        DragGesture(minimumDistance: 0)
-                            .onChanged { _ in
-                                withOptionalAnimation(.quick) {
-                                    isPanicButtonPressed = true
-                                }
-                            }
-                            .onEnded { _ in
-                                withOptionalAnimation(.quick) {
-                                    isPanicButtonPressed = false
-                                }
-                            }
-                    )
+                    .accessibilityIdentifier("home.panic_button")
+
+                    if isUITesting {
+                        panicButton
+                    } else {
+                        panicButton
+                            .hapticOnTap(.impact(style: .heavy))
+                            .simultaneousGesture(
+                                DragGesture(minimumDistance: 0)
+                                    .onChanged { _ in
+                                        withOptionalAnimation(.quick) {
+                                            isPanicButtonPressed = true
+                                        }
+                                    }
+                                    .onEnded { _ in
+                                        withOptionalAnimation(.quick) {
+                                            isPanicButtonPressed = false
+                                        }
+                                    }
+                            )
+                    }
                     
                     Spacer()
                 }
@@ -231,19 +265,19 @@ struct HomeView: View {
             }
             .anstopBackground(.home)
             .prepareHapticsOnAppear()
-            .navigationTitle("Anstop")
+            .navigationTitle("home_navigation_title")
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
                     NavigationLink(destination: SettingsView()) {
                         Image(systemName: "gearshape.fill")
-                            .foregroundStyle(Color("Blue"))
+                            .foregroundStyle(Color("AnstopBlue"))
                     }
                 }
             }
             .navigationDestination(isPresented: $showPanicFlow) {
                 PanicFlowView()
             }
-            .navigationDestination(for: QuickAccessItem.self) { item in
+            .navigationDestination(item: $selectedQuickAccess) { item in
                 switch item {
                 case .breathing:
                     BreathingView()
@@ -264,12 +298,9 @@ struct HomeView: View {
             .sheet(isPresented: $showPaywall) {
                 PaywallView()
             }
-            .onChange(of: selectedQuickAccess) { _, newValue in
-                if let item = newValue {
-                    // Pequeño delay para permitir la animación
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                        // Trigger navigation
-                    }
+            .fullScreenCover(isPresented: $showPanicFlowCoverForUITest) {
+                NavigationStack {
+                    PanicFlowView()
                 }
             }
         }
@@ -287,10 +318,10 @@ struct PremiumBanner: View {
                     .foregroundStyle(.yellow)
 
                 VStack(alignment: .leading, spacing: 2) {
-                    Text("Desbloquea todas las funciones")
+                    Text("home_premium_banner_title")
                         .font(.subheadline.bold())
                         .foregroundStyle(.white)
-                    Text("7 días de prueba GRATIS")
+                    Text("home_premium_banner_subtitle")
                         .font(.caption)
                         .foregroundStyle(.white.opacity(0.9))
                 }
@@ -309,6 +340,7 @@ struct PremiumBanner: View {
             .clipShape(RoundedRectangle(cornerRadius: 29))
         }
         .buttonStyle(.plain)
+        .accessibilityIdentifier("home.premium_banner_button")
     }
 }
 
@@ -326,7 +358,7 @@ struct QuickAccessButton: View {
                     .font(.body)
                 if isPremium {
                     Spacer()
-                    Text("PRO")
+                    Text("premium_badge")
                         .font(.caption2)
                         .bold()
                         .foregroundStyle(.white)

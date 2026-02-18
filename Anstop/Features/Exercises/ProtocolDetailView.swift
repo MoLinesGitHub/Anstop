@@ -59,7 +59,7 @@ struct ProtocolStepCard: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 20) {
             HStack {
-                Text("Paso \(index + 1)/\(total)")
+                Text(String(format: String(localized: "protocol_step_format"), index + 1, total))
                     .font(.futuraCaption)
                     .fontWeight(.bold)
                     .foregroundStyle(color)

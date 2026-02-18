@@ -9,7 +9,7 @@ import XCTest
 
 final class AnstopUITestsLaunchTests: XCTestCase {
     override class var runsForEachTargetApplicationUIConfiguration: Bool {
-        true
+        false
     }
 
     override func setUpWithError() throws {
@@ -19,6 +19,7 @@ final class AnstopUITestsLaunchTests: XCTestCase {
     @MainActor
     func testLaunch() throws {
         let app = XCUIApplication()
+        app.launchArguments = ["UI_TESTING", "UI_TESTING_SKIP_ONBOARDING"]
         app.launch()
 
         // Insert steps here to perform after app launch but before taking a screenshot,

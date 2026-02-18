@@ -38,13 +38,13 @@ struct LibraryView: View {
                     }
                 }
             } header: {
-                Text("Guías Prácticas")
+                Text("library_guides_header")
             } footer: {
-                Text("Estos protocolos están diseñados para ayudarte en momentos específicos.")
+                Text("library_guides_footer")
             }
         }
         .anstopScrollBackground(.library)
-        .navigationTitle("Biblioteca")
+        .navigationTitle("library_navigation_title")
     }
 }
 

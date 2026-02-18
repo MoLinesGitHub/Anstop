@@ -37,10 +37,10 @@ struct SettingsView: View {
                            Image(systemName: "crown.fill")
                                .foregroundStyle(.yellow)
                            VStack(alignment: .leading, spacing: 2) {
-                               Text("Obtener Premium")
+                               Text("settings_get_premium")
                                    .font(.futuraHeadline)
                                    .foregroundStyle(.primary)
-                               Text("7 días de prueba GRATIS")
+                               Text("settings_trial_subtitle")
                                    .font(.futuraCaption)
                                    .foregroundStyle(.secondary)
                            }
@@ -51,23 +51,23 @@ struct SettingsView: View {
                        }
                    }
                } header: {
-                   Text("Suscripción")
+                   Text("settings_subscription")
                } footer: {
-                   Text("Desbloquea todas las funciones premium incluyendo guías de audio ilimitadas, programa de 30 días y asistente IA.")
+                   Text("settings_subscription_footer")
                }
            } else {
                Section {
                    HStack {
                        Image(systemName: "checkmark.seal.fill")
                            .foregroundStyle(.green)
-                       Text("Premium Activo")
+                       Text("settings_premium_active")
                            .font(.futuraHeadline)
                        Spacer()
-                       Text("✓")
+                       Text("settings_checkmark")
                            .foregroundStyle(.green)
                    }
                } header: {
-                   Text("Suscripción")
+                   Text("settings_subscription")
                }
            }
 
@@ -76,15 +76,15 @@ struct SettingsView: View {
                Toggle(isOn: $hapticsEnabled) {
                    HStack {
                        Image(systemName: "dot.radiowaves.left.and.right")
-                           .foregroundStyle(Color("Blue"))
-                       Text("Hápticos")
+                           .foregroundStyle(Color("AnstopBlue"))
+                       Text("settings_haptics")
                    }
                }
                .onChange(of: hapticsEnabled) {
                    if hapticsEnabled { HapticManager.shared.warmUp() }
                }
            } header: {
-               Text("Preferencias")
+               Text("settings_preferences")
            }
 
            // Reminders Section
@@ -92,16 +92,16 @@ struct SettingsView: View {
                Toggle(isOn: $remindersEnabled) {
                    HStack {
                        Image(systemName: "bell.fill").foregroundStyle(.orange)
-                       Text("Recordatorio diario")
+                       Text("settings_daily_reminder")
                    }
                }
 
                if remindersEnabled {
-                   DatePicker("Hora", selection: $reminderTime, displayedComponents: .hourAndMinute)
+                   DatePicker("settings_time", selection: $reminderTime, displayedComponents: .hourAndMinute)
                        .datePickerStyle(.compact)
                }
 
-               Button("Guardar recordatorio") {
+               Button("settings_save_reminder") {
                    Task {
                        let granted = await NotificationManager.shared.requestAuthorization()
                        guard granted else { return }
@@ -121,7 +121,7 @@ struct SettingsView: View {
                .buttonStyle(PrimaryButtonStyle(color: .orange))
                .disabled(!remindersEnabled)
 
-               Button("Cancelar recordatorio") {
+               Button("settings_cancel_reminder") {
                    Task {
                        NotificationManager.shared.cancelDailyReminder()
                        HapticManager.shared.triggerSelection()
@@ -130,9 +130,9 @@ struct SettingsView: View {
                .padding(.horizontal, 40)
                .buttonStyle(SecondaryButtonStyle(color: .orange))
            } header: {
-               Text("Recordatorios")
+               Text("settings_reminders")
            } footer: {
-               Text("Programa un recordatorio diario para registrar tu estado en el diario.")
+               Text("settings_reminders_footer")
            }
 
            // Legal Section
@@ -142,8 +142,8 @@ struct SettingsView: View {
                } label: {
                    HStack {
                        Image(systemName: "hand.raised.fill")
-                           .foregroundStyle(Color("Blue"))
-                       Text("Política de Privacidad")
+                           .foregroundStyle(Color("AnstopBlue"))
+                       Text("settings_privacy_policy")
                            .foregroundStyle(.primary)
                        Spacer()
                        Image(systemName: "chevron.right")
@@ -157,8 +157,8 @@ struct SettingsView: View {
                } label: {
                    HStack {
                        Image(systemName: "doc.text.fill")
-                           .foregroundStyle(Color("Blue"))
-                       Text("Términos de Uso")
+                           .foregroundStyle(Color("AnstopBlue"))
+                       Text("settings_terms_of_use")
                            .foregroundStyle(.primary)
                        Spacer()
                        Image(systemName: "chevron.right")
@@ -172,8 +172,8 @@ struct SettingsView: View {
                } label: {
                    HStack {
                        Image(systemName: "doc.plaintext.fill")
-                           .foregroundStyle(Color("Blue"))
-                       Text("EULA")
+                           .foregroundStyle(Color("AnstopBlue"))
+                       Text("settings_eula")
                            .foregroundStyle(.primary)
                        Spacer()
                        Image(systemName: "chevron.right")
@@ -182,7 +182,7 @@ struct SettingsView: View {
                    }
                }
            } header: {
-               Text("Legal")
+               Text("settings_legal")
            }
 
            // Data Management Section
@@ -192,58 +192,54 @@ struct SettingsView: View {
                } label: {
                    HStack {
                        Image(systemName: "trash.fill")
-                       Text("Borrar todos mis datos")
+                       Text("settings_delete_all_data")
                    }
                }
            } header: {
-               Text("Datos")
+               Text("settings_data")
            } footer: {
-               Text(
-                   "Esto eliminará tu diario, registros y preferencias permanentemente. Esta acción no se puede deshacer."
-               )
+               Text("settings_data_footer")
            }
 
            // App Info
            Section {
                HStack {
-                   Text("Versión")
+                   Text("settings_version")
                    Spacer()
-                   Text("1.0.0")
+                   Text("settings_version_value")
                        .foregroundStyle(.secondary)
                }
 
                HStack {
-                   Text("Desarrollado con")
+                   Text("settings_developed_with")
                    Spacer()
-                   Text("❤️ y SwiftUI")
+                   Text("settings_developed_with_value")
                        .foregroundStyle(.secondary)
                }
            } header: {
-               Text("Información")
+               Text("settings_information")
            }
        }
-       .navigationTitle("Configuración")
+       .navigationTitle("settings_navigation_title")
        .sheet(isPresented: $showPaywall) {
            PaywallView()
        }
        .sheet(isPresented: $showingPrivacyPolicy) {
-           LegalTextView(title: "Política de Privacidad", content: LegalData.privacyPolicy)
+           LegalTextView(title: String(localized: "settings_privacy_policy"), content: LegalData.privacyPolicy)
        }
        .sheet(isPresented: $showingTerms) {
-           LegalTextView(title: "Términos de Uso", content: LegalData.termsOfUse)
+           LegalTextView(title: String(localized: "settings_terms_of_use"), content: LegalData.termsOfUse)
        }
        .sheet(isPresented: $showingEULA) {
-           LegalTextView(title: "EULA", content: LegalData.eula)
+           LegalTextView(title: String(localized: "settings_eula"), content: LegalData.eula)
        }
-       .alert("¿Borrar todos los datos?", isPresented: $showingDeleteAlert) {
-           Button("Cancelar", role: .cancel) {}
-           Button("Borrar Todo", role: .destructive) {
+       .alert("settings_delete_alert_title", isPresented: $showingDeleteAlert) {
+           Button("settings_delete_alert_cancel", role: .cancel) {}
+           Button("settings_delete_alert_confirm", role: .destructive) {
                deleteAllData()
            }
        } message: {
-           Text(
-               "Esto eliminará tu diario, registros de ansiedad y todas tus preferencias. No podrás recuperar esta información."
-           )
+           Text("settings_delete_alert_message")
        }
    }
 
@@ -278,7 +274,7 @@ struct LegalTextView: View {
            .navigationBarTitleDisplayMode(.inline)
            .toolbar {
                ToolbarItem(placement: .confirmationAction) {
-                   Button("Cerrar") {
+                   Button("close") {
                        dismiss()
                    }
                }

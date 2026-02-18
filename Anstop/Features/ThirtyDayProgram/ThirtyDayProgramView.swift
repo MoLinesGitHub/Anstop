@@ -34,10 +34,20 @@ struct ThirtyDayProgramView: View {
                         .font(.futura(50))
                         .foregroundStyle(.orange.gradient)
 
-                    Text("\(progress.currentStreak) días seguidos")
+                    Text(
+                        String(
+                            format: String(localized: "program_streak_days_format"),
+                            progress.currentStreak
+                        )
+                    )
                         .font(.prometheusTitle2)
 
-                    Text("\(progress.completedDays.count)/30 ejercicios completados")
+                    Text(
+                        String(
+                            format: String(localized: "program_completed_exercises_format"),
+                            progress.completedDays.count
+                        )
+                    )
                         .font(.futuraSubheadline)
                         .foregroundStyle(.secondary)
 
@@ -62,7 +72,7 @@ struct ThirtyDayProgramView: View {
             .padding(.bottom, 30)
         }
         .anstopBackground(.program)
-        .navigationTitle("Programa de 30 Días")
+        .navigationTitle("program_navigation_title")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -87,7 +97,7 @@ struct DayCell: View {
                         Text("\(day)")
                             .font(.futuraTitle2)
                             .bold()
-                        Text("Día")
+                        Text("program_day_short")
                             .font(.futuraCaption2)
                     }
                     .foregroundStyle(isUnlocked ? .white : .secondary)
@@ -102,7 +112,7 @@ struct DayCell: View {
         if isCompleted {
             .green
         } else if isUnlocked {
-            Color("Blue")
+            Color("AnstopBlue")
         } else {
             Color(uiColor: .systemGray5)
         }

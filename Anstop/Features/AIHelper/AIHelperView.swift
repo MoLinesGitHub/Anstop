@@ -25,13 +25,13 @@ struct AIHelperView: View {
     private let aiBubbleColor = Color(red: 0.85, green: 0.9, blue: 0.95) // Gris azulado muy suave
 
     // Sugerencias rápidas para el usuario
-    private let quickSuggestions = [
-        "¿Cómo puedo calmarme rápido?",
-        "Técnicas de respiración",
-        "No puedo dormir",
-        "Siento mucha ansiedad",
-        "Ejercicios de grounding",
-        "Pensamientos negativos",
+    private let quickSuggestionKeys = [
+        "ai_helper_suggestion_calm_fast",
+        "ai_helper_suggestion_breathing_techniques",
+        "ai_helper_suggestion_cant_sleep",
+        "ai_helper_suggestion_high_anxiety",
+        "ai_helper_suggestion_grounding",
+        "ai_helper_suggestion_negative_thoughts",
     ]
 
     var body: some View {
@@ -124,12 +124,12 @@ struct AIHelperView: View {
                         .font(.futuraRegular14)
                         .foregroundStyle(accentColor)
 
-                    Text("Asistente Anstop")
+                    Text("ai_helper_title")
                         .font(.futuraHeadline)
                         .foregroundStyle(.primary)
                 }
 
-                Text("Tu compañero de bienestar")
+                Text("ai_helper_subtitle")
                     .font(.futuraCaption)
                     .foregroundStyle(.secondary)
             }
@@ -187,12 +187,12 @@ struct AIHelperView: View {
             .shadow(color: accentColor.opacity(0.3), radius: 20, x: 0, y: 10)
 
             VStack(spacing: 12) {
-                Text("¿Cómo te sientes hoy?")
+                Text("ai_helper_empty_title")
                     .font(.futuraTitle2)
                     .fontWeight(.semibold)
                     .foregroundStyle(.primary)
 
-                Text("Estoy aquí para escucharte y ayudarte\na encontrar calma en cualquier momento.")
+                Text("ai_helper_empty_description")
                     .font(.futuraSubheadline)
                     .foregroundStyle(.secondary)
                     .multilineTextAlignment(.center)
@@ -249,7 +249,7 @@ struct AIHelperView: View {
 
     private var suggestionsView: some View {
         VStack(alignment: .leading, spacing: 8) {
-            Text("Sugerencias")
+            Text("ai_helper_suggestions")
                 .font(.futuraCaption)
                 .fontWeight(.medium)
                 .foregroundStyle(.secondary)
@@ -257,7 +257,8 @@ struct AIHelperView: View {
 
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 8) {
-                    ForEach(quickSuggestions, id: \.self) { suggestion in
+                    ForEach(quickSuggestionKeys, id: \.self) { suggestionKey in
+                        let suggestion = NSLocalizedString(suggestionKey, comment: "")
                         AISuggestionChip(
                             text: suggestion,
                             color: accentColor
@@ -286,7 +287,7 @@ struct AIHelperView: View {
         HStack(spacing: 12) {
             // Campo de texto
             HStack {
-                TextField("Escribe cómo te sientes...", text: $inputText, axis: .vertical)
+                TextField("ai_helper_input_placeholder", text: $inputText, axis: .vertical)
                     .textFieldStyle(.plain)
                     .focused($isFocused)
                     .disabled(aiService.isTyping)

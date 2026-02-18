@@ -13,7 +13,24 @@ struct AnstopApp: App {
     @State private var purchaseManager = PurchaseManager()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
 
+    init() {
+        let arguments = ProcessInfo.processInfo.arguments
+        let defaults = UserDefaults.standard
+
+        if arguments.contains("UI_TESTING_RESET") {
+            defaults.removeObject(forKey: "hasCompletedOnboarding")
+            defaults.removeObject(forKey: "userName")
+            defaults.removeObject(forKey: "initialAnxietyLevel")
+            defaults.removeObject(forKey: "panicFlowCompletionCount")
+        }
+
+        if arguments.contains("UI_TESTING_SKIP_ONBOARDING") {
+            defaults.set(true, forKey: "hasCompletedOnboarding")
+        }
+    }
+
     static let sharedModelContainer: ModelContainer = {
+        let isUITesting = ProcessInfo.processInfo.arguments.contains("UI_TESTING")
         let schema = Schema([
             JournalEntry.self,
             AnxietyEvent.self,
@@ -22,7 +39,7 @@ struct AnstopApp: App {
 
         let modelConfiguration = ModelConfiguration(
             schema: schema,
-            isStoredInMemoryOnly: false
+            isStoredInMemoryOnly: isUITesting
         )
 
         do {

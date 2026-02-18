@@ -2,7 +2,7 @@
 import SwiftUI
 
 struct SecondaryButtonStyle: ButtonStyle {
-    var color: Color = Color("Blue")
+    var color: Color = Color("AnstopBlue")
     var height: CGFloat = 55
     var cornerRadius: CGFloat = 16
 
@@ -26,7 +26,7 @@ struct SecondaryButtonStyle: ButtonStyle {
 }
 
 extension View {
-    func secondaryButtonStyle(color: Color = Color("Blue")) -> some View {
+    func secondaryButtonStyle(color: Color = Color("AnstopBlue")) -> some View {
         buttonStyle(SecondaryButtonStyle(color: color))
     }
 }

@@ -1,14 +1,410 @@
 /* Localizable.strings (Español) - Anstop */
 
-// General
+/* General */
 "app_name" = "Anstop";
 "ok" = "OK";
 "cancel" = "Cancelar";
+"close" = "Cerrar";
+"premium_badge" = "PRO";
 
-// Home
+/* Home */
+"home_navigation_title" = "Anstop";
 "home_panic_button" = "Estoy teniendo ansiedad";
+"home_premium_banner_title" = "Desbloquea todas las funciones";
+"home_premium_banner_subtitle" = "7 días de prueba GRATIS";
 
-// Features
+/* Onboarding */
+"onboarding_step_safe_space_title" = "Tu espacio seguro";
+"onboarding_step_safe_space_description" = "Anstop está aquí para ayudarte a recuperar la calma, a tu propio ritmo.";
+"onboarding_how_do_you_feel_today" = "¿Cómo te sientes hoy?";
+"onboarding_personalize_experience" = "Esto nos ayuda a personalizar tu experiencia.";
+"onboarding_anxiety_level_format" = "Nivel de ansiedad: %d";
+"onboarding_low" = "Baja";
+"onboarding_high" = "Alta";
+"onboarding_continue" = "Continuar";
+"onboarding_whats_your_name" = "¿Cómo te llamas?";
+"onboarding_name_optional" = "Opcional. Solo para dirigirnos a ti.";
+"onboarding_your_name" = "Tu nombre";
+"onboarding_soft_paywall_title" = "Obtén resultados más rápidos";
+"onboarding_soft_paywall_subtitle" = "El 93%% de usuarios premium reportan una reducción significativa de la ansiedad en 2 semanas";
+"onboarding_soft_paywall_benefit_program" = "Programa completo de 30 días";
+"onboarding_soft_paywall_benefit_audio" = "20+ guías de audio exclusivas";
+"onboarding_soft_paywall_benefit_ai" = "Asistente IA disponible 24/7";
+"onboarding_soft_paywall_benefit_no_ads" = "Sin anuncios ni interrupciones";
+"onboarding_soft_paywall_offer_badge" = "🎁 OFERTA DE BIENVENIDA";
+"onboarding_soft_paywall_trial" = "7 días de prueba GRATIS";
+"onboarding_soft_paywall_start_trial" = "Comenzar prueba gratuita";
+"onboarding_soft_paywall_continue_basic" = "Continuar con versión básica";
+"onboarding_start" = "Comenzar";
+"onboarding_next" = "Siguiente";
+
+/* Panic Flow */
+"panic_step_1_title" = "Respira conmigo";
+"panic_step_1_description" = "Tu cuerpo está a salvo. Vamos a respirar juntos.";
+"panic_step_2_title" = "Tu cuerpo está a salvo";
+"panic_step_2_description" = "Lo que sientes es incómodo, pero no es peligroso.";
+"panic_step_3_title" = "Vamos a bajar tu ritmo";
+"panic_step_3_description" = "Estás haciendo un gran trabajo. Sigue respirando.";
+"panic_continue" = "Continuar";
+"panic_finish" = "Finalizar";
+"panic_completion_title" = "Lo lograste";
+"panic_completion_description" = "Has completado el ejercicio. Tu cuerpo y mente están más tranquilos ahora.";
+"panic_completion_premium_title" = "🌟 ¿Quieres más herramientas?";
+"panic_completion_premium_description" = "Con Premium tendrás acceso a 20+ guías de audio, el programa de 30 días y un asistente IA disponible 24/7.";
+"panic_completion_premium_cta" = "Probar Premium 7 días gratis";
+"panic_back_home" = "Volver al inicio";
+
+/* Settings */
+"settings_navigation_title" = "Configuración";
+"settings_get_premium" = "Obtener Premium";
+"settings_trial_subtitle" = "7 días de prueba GRATIS";
+"settings_subscription" = "Suscripción";
+"settings_subscription_footer" = "Desbloquea todas las funciones premium incluyendo guías de audio ilimitadas, programa de 30 días y asistente IA.";
+"settings_premium_active" = "Premium Activo";
+"settings_checkmark" = "✓";
+"settings_haptics" = "Hápticos";
+"settings_preferences" = "Preferencias";
+"settings_daily_reminder" = "Recordatorio diario";
+"settings_time" = "Hora";
+"settings_save_reminder" = "Guardar recordatorio";
+"settings_cancel_reminder" = "Cancelar recordatorio";
+"settings_reminders" = "Recordatorios";
+"settings_reminders_footer" = "Programa un recordatorio diario para registrar tu estado en el diario.";
+"settings_privacy_policy" = "Política de Privacidad";
+"settings_terms_of_use" = "Términos de Uso";
+"settings_eula" = "EULA";
+"settings_legal" = "Legal";
+"settings_delete_all_data" = "Borrar todos mis datos";
+"settings_data" = "Datos";
+"settings_data_footer" = "Esto eliminará tu diario, registros y preferencias permanentemente. Esta acción no se puede deshacer.";
+"settings_version" = "Versión";
+"settings_version_value" = "1.0.0";
+"settings_developed_with" = "Desarrollado con";
+"settings_developed_with_value" = "❤️ y SwiftUI";
+"settings_information" = "Información";
+"settings_delete_alert_title" = "¿Borrar todos los datos?";
+"settings_delete_alert_cancel" = "Cancelar";
+"settings_delete_alert_confirm" = "Borrar Todo";
+"settings_delete_alert_message" = "Esto eliminará tu diario, registros de ansiedad y todas tus preferencias. No podrás recuperar esta información.";
+
+"legal_privacy_policy" = "**Política de Privacidad**\n\nÚltima actualización: 24 de Noviembre, 2025\n\nEn Anstop, tu privacidad es nuestra prioridad absoluta. Creemos que tu salud mental es un asunto privado, por lo que hemos diseñado nuestra aplicación para que tus datos permanezcan bajo tu control.\n\n**1. Recopilación de Datos**\nAnstop no recopila, almacena ni transmite tus datos personales a servidores externos.\n- Diario y Registros: Todo lo que escribes en tu diario y tus registros de ansiedad se almacena localmente en tu dispositivo utilizando tecnologías seguras de Apple (SwiftData/CoreData).\n- Suscripciones: Las transacciones se procesan directamente por Apple a través de la App Store. Nosotros solo recibimos un estado anónimo de \"Premium activo\" o \"Inactivo\".\n\n**2. Uso de Datos**\nTus datos se utilizan exclusivamente dentro de la aplicación para proporcionarte funcionalidades como el historial de tu diario o el seguimiento de tu progreso.\n\n**3. Compartir Datos**\nNo vendemos, alquilamos ni compartimos tus datos con terceros.\n\n**4. Tus Derechos (GDPR/CCPA)**\nTienes control total sobre tus datos. Puedes eliminar todo tu historial en cualquier momento desde la sección de Configuración de la aplicación. Al eliminar la aplicación, también se eliminan todos los datos almacenados localmente.\n\n**5. Contacto**\nSi tienes preguntas sobre nuestra política de privacidad, contáctanos en privacy@anstop.app.";
+"legal_terms_of_use" = "**Términos de Uso y Descargo de Responsabilidad**\n\n**1. Naturaleza del Servicio**\nAnstop es una herramienta de autogestión para el bienestar emocional. Proporciona ejercicios guiados, técnicas de respiración y recursos educativos.\n\n**2. NO ES UN DISPOSITIVO MÉDICO**\nIMPORTANTE: Anstop NO es un dispositivo médico ni sustituye el consejo, diagnóstico o tratamiento de un profesional de la salud.\n- Si estás experimentando una crisis de salud mental, pensamientos suicidas o una emergencia médica, llama inmediatamente a los servicios de emergencia (112/911) o acude al hospital más cercano.\n- Nunca ignores el consejo médico profesional ni retrases su búsqueda debido a algo que hayas leído o utilizado en esta aplicación.\n\n**3. Uso de la Aplicación**\nAl usar Anstop, aceptas que eres responsable de tu propio bienestar. El uso de los ejercicios y técnicas es bajo tu propio riesgo.\n\n**4. Propiedad Intelectual**\nTodo el contenido, diseño y código de Anstop son propiedad exclusiva de sus creadores y están protegidos por leyes de derechos de autor.\n\n**5. Cambios en los Términos**\nNos reservamos el derecho de modificar estos términos en cualquier momento. El uso continuado de la aplicación implica la aceptación de dichos cambios.";
+"legal_eula" = "**Acuerdo de Licencia de Usuario Final (EULA)**\n\nÚltima actualización: 2 de Diciembre, 2025\n\nEste Acuerdo es un contrato entre tú (Usuario) y Molines Designs (Desarrollador) por el uso de la aplicación móvil Anstop.\n\n**1. Concesión de licencia**\nMolines Designs te otorga una licencia personal, no exclusiva, intransferible y revocable para descargar, instalar y usar la aplicación en dispositivos compatibles que controles y para usarla con fines personales no comerciales.\n\n**1.1 Restricciones**\nNo puedes copiar, modificar, distribuir, vender o arrendar ninguna parte de la aplicación, ni realizar ingeniería inversa ni usarla para fines ilegales.\n\n**2. Propiedad intelectual**\nTodos los derechos, títulos e intereses sobre el código, diseño, contenidos y audiovisuales pertenecen al Desarrollador.\n\n**3. Suscripciones y pagos**\nLa app ofrece versión gratuita y Anstop Premium con renovación automática que desbloquea audios ilimitados, el programa de 30 días, asistente IA y análisis. Se ofrece prueba gratuita de 7 días; si no cancelas, se cobra automáticamente. La facturación se gestiona a través de Apple ID y se renueva 24 h antes de finalizar el periodo actual; puedes cancelar desde la configuración de Apple sin reembolsos por periodos ya iniciados.\n\n**4. Privacidad y protección de datos**\nTus datos personales se almacenan exclusivamente en tu dispositivo. No transmitimos ni almacenamos información fuera del dispositivo. Cumplimos con GDPR, CCPA y las directrices de privacidad de Apple.\n\n**5. Descargo médico**\nAnstop NO es un dispositivo médico ni está aprobado por la FDA. No debe usarse para diagnosticar o tratar condiciones médicas. En emergencias, contacta con servicios médicos inmediatamente.\n\n**6. Limitación de responsabilidad**\nEn la máxima medida permitida por la ley, el Desarrollador no será responsable por daños directos o indirectos derivados del uso o imposibilidad de usar la aplicación.\n\n**7. Terminación**\nEl EULA permanece vigente hasta que tú o el Desarrollador lo termine. Si incumples los términos, tus derechos terminarán automáticamente y debes dejar de usar la app.\n\n**8. Ley aplicable**\nEste acuerdo se rige por las leyes de España, sin aplicar principios de conflicto de leyes.\n\n**9. Cambios**\nEl Desarrollador puede modificar el EULA en cualquier momento. Los cambios entrarán en vigor al ser publicados en la app y el uso continuado implica aceptación.\n\n**10. Contacto**\nPara consultas escribe a admin@molinesdesigns.com.\n\n© 2025 Molines Designs. Todos los derechos reservados.";
+
+/* Paywall */
+"paywall_navigation_title" = "Premium";
+"paywall_welcome_offer" = "OFERTA DE BIENVENIDA";
+"paywall_offer_ends_in_format" = "Oferta termina en: %@";
+"paywall_main_title" = "Tu calma, siempre contigo";
+"paywall_main_subtitle" = "Únete a +50,000 personas que han transformado su relación con la ansiedad";
+"paywall_stat_reduce_anxiety" = "Reducen ansiedad";
+"paywall_stat_rating" = "Valoración";
+"paywall_features_title" = "Todo incluido en Premium:";
+"paywall_feature_audio_title" = "Guías completas de audio";
+"paywall_feature_audio_description" = "20+ ejercicios de respiración y relajación";
+"paywall_feature_program_title" = "Programa de 30 días gratis";
+"paywall_feature_program_description" = "Plan estructurado que funciona";
+"paywall_feature_personalized_title" = "Ejercicios personalizados";
+"paywall_feature_personalized_description" = "Adaptados a tu nivel de ansiedad";
+"paywall_feature_ai_title" = "Asistente IA 24/7";
+"paywall_feature_ai_description" = "Apoyo emocional cuando lo necesites";
+"paywall_feature_ads_title" = "Sin publicidad";
+"paywall_feature_ads_description" = "Experiencia tranquila y sin interrupciones";
+"paywall_start_free_trial" = "Comenzar 7 días GRATIS";
+"paywall_then_price_period_format" = "Luego %@/%@";
+"paywall_period_year" = "año";
+"paywall_period_month" = "mes";
+"paywall_cancel_anytime" = "Cancela cuando quieras • Sin compromiso";
+"paywall_restore_purchases" = "Restaurar compras";
+"paywall_disclaimer" = "No sustituye ayuda profesional. Los pagos se cargarán a tu cuenta de Apple. La suscripción se renueva automáticamente a menos que se cancele 24h antes del fin del período.";
+"paywall_error_title" = "Error";
+"paywall_error_message" = "No se pudo completar la compra. Inténtalo de nuevo.";
+"paywall_save_50" = "Ahorra 50%%";
+"paywall_only_monthly_price_format" = "Solo %@/mes";
+"paywall_per_year" = "/año";
+"paywall_per_month" = "/mes";
+"paywall_simple_title" = "Desbloquea Premium";
+"paywall_simple_subtitle" = "Accede a todas las guías de audio y contenido exclusivo.";
+"paywall_simple_effectiveness" = "Eficacia";
+"paywall_simple_trial_value" = "7 días";
+"paywall_simple_trial_label" = "Prueba gratis";
+"paywall_loading" = "Cargando...";
+"paywall_simple_then_price_format" = "Luego %@";
+"paywall_simple_cancel_anytime" = "Cancela cuando quieras";
+"paywall_50_off" = "50%% OFF";
+"paywall_testimonial_1_text" = "Esta app me acaba de salvar la vida. Hasta ahora siempre tenía unos nervios terribles y ahora siento que puedo dormir y volver a estar en calma. Gracias.";
+"paywall_testimonial_1_author" = "María G.";
+"paywall_testimonial_2_text" = "El programa de 30 días cambió mi vida. Lo recomiendo encarecidamente.";
+"paywall_testimonial_2_author" = "Carlos Ricardo R.";
+"paywall_testimonial_3_text" = "Simple pero muy efectiva. Las guías de respiración son increíbles.";
+"paywall_testimonial_3_author" = "Ana Simón U.";
+
+/* Notifications */
+"notifications_daily_title" = "Momento de tu check-in";
+"notifications_daily_body" = "Registra tu estado en el diario de Anstop.";
+
+/* Home - Quick Access */
+"home_program_ring_text" = "PROGRAMA DE 30 DÍAS • ";
+"home_quick_access_breathing" = "Respiración";
+"home_quick_access_grounding" = "Grounding 5-4-3-2-1";
+"home_quick_access_audio" = "Audio calmante";
+"home_quick_access_journal" = "Diario del día";
+"home_quick_access_library" = "Biblioteca de Recursos";
+"home_quick_access_ai" = "Asistente IA";
+"home_quick_access_history" = "Historial de Diario";
+
+/* Audio Guides */
+"audio_guides_section_free" = "Gratis";
+"audio_guides_section_premium" = "Premium";
+"audio_guides_navigation_title" = "Guías de Audio";
+"audio_guide_basic_breathing_title" = "Respiración básica";
+"audio_guide_basic_breathing_description" = "Ejercicio de respiración 4-7-8";
+"audio_guide_duration_3_min" = "3 min";
+"audio_guide_emotional_first_aid_title" = "Primer auxilio emocional";
+"audio_guide_emotional_first_aid_description" = "Guía rápida para momentos de crisis";
+"audio_guide_duration_5_min" = "5 min";
+"audio_guide_deep_relaxation_title" = "Relajación profunda";
+"audio_guide_deep_relaxation_description" = "Meditación guiada completa";
+"audio_guide_duration_15_min" = "15 min";
+"audio_guide_night_anxiety_title" = "Ansiedad nocturna";
+"audio_guide_night_anxiety_description" = "Ejercicio especial para dormir";
+"audio_guide_duration_20_min" = "20 min";
+"audio_guide_advanced_techniques_title" = "Técnicas avanzadas";
+"audio_guide_advanced_techniques_description" = "Mindfulness y reestructuración cognitiva";
+"audio_guide_duration_12_min" = "12 min";
+
+/* Journal */
+"journal_new_entry" = "Nueva entrada";
+"journal_history" = "Historial";
+"journal_navigation_title" = "Diario";
+"journal_how_do_you_feel_today" = "¿Cómo te sientes hoy?";
+"journal_mood_value_format" = "%d/10";
+"journal_notes_optional" = "Notas (opcional)";
+"journal_new_entry_navigation_title" = "Nueva Entrada";
+"journal_save" = "Guardar";
+"journal_history_date_separator" = " · ";
+"journal_history_mood_format" = "Ánimo: %d";
+"journal_history_navigation_title" = "Historial de Diario";
+"journal_history_search_prompt" = "Buscar notas";
+"journal_history_mood" = "Ánimo";
+"journal_edit_state" = "Estado";
+"journal_edit_notes" = "Notas";
+"journal_edit_navigation_title" = "Editar entrada";
+
+/* Grounding */
+"grounding_step_5_title" = "Cosas que ves";
+"grounding_step_5_description" = "Mira a tu alrededor. Encuentra 5 objetos que no habías notado antes.";
+"grounding_step_4_title" = "Cosas que tocas";
+"grounding_step_4_description" = "Siente la textura de tu ropa, la silla o el aire en tu piel.";
+"grounding_step_3_title" = "Cosas que oyes";
+"grounding_step_3_description" = "Escucha atentamente. ¿Puedes oír el tráfico, el viento o tu respiración?";
+"grounding_step_2_title" = "Cosas que hueles";
+"grounding_step_2_description" = "Intenta percibir aromas sutiles en el ambiente.";
+"grounding_step_1_title" = "Cosa que saboreas";
+"grounding_step_1_description" = "Concéntrate en el sabor de tu boca o toma un sorbo de agua.";
+"grounding_next" = "Siguiente";
+"grounding_finish" = "Finalizar";
+
+/* Library */
+"library_guides_header" = "Guías Prácticas";
+"library_guides_footer" = "Estos protocolos están diseñados para ayudarte en momentos específicos.";
+"library_navigation_title" = "Biblioteca";
+"protocol_step_format" = "Paso %d/%d";
+
+/* Breathing */
+"breathing_choose_technique" = "Elige tu técnica";
+"breathing_protocol_picker" = "Protocolo";
+"breathing_protocol_478_description" = "Inhala 4s, mantén 7s, exhala 8s";
+"breathing_protocol_44_description" = "Inhala 4s, exhala 4s";
+"breathing_protocol_333_description" = "Inhala 3s, mantén 3s, exhala 3s";
+"breathing_protocol_478_benefits" = "Ideal para calmar la mente y reducir la ansiedad rápidamente";
+"breathing_protocol_44_benefits" = "Perfecto para mantener la calma y el equilibrio";
+"breathing_protocol_333_benefits" = "Excelente para momentos de estrés intenso";
+
+/* Program 30 días */
+"program_day_label_format" = "Día %d";
+"program_instructions" = "Instrucciones";
+"program_mark_completed" = "Marcar como Completado";
+"program_completed" = "Completado";
+"program_type_breathing" = "Respiración";
+"program_type_grounding" = "Grounding";
+"program_type_reflection" = "Reflexión";
+"program_type_journaling" = "Diario";
+"program_type_mindfulness" = "Mindfulness";
+"program_day_completed_title" = "¡Día completado!";
+"program_streak_days_format" = "%d días seguidos";
+"program_completed_exercises_format" = "%d/30 ejercicios completados";
+"program_navigation_title" = "Programa de 30 Días";
+"program_day_short" = "Día";
+
+/* AI Helper */
+"ai_helper_title" = "Asistente Anstop";
+"ai_helper_subtitle" = "Tu compañero de bienestar";
+"ai_helper_empty_title" = "¿Cómo te sientes hoy?";
+"ai_helper_empty_description" = "Estoy aquí para escucharte y ayudarte\na encontrar calma en cualquier momento.";
+"ai_helper_suggestions" = "Sugerencias";
+"ai_helper_input_placeholder" = "Escribe cómo te sientes...";
+"ai_helper_suggestion_calm_fast" = "¿Cómo puedo calmarme rápido?";
+"ai_helper_suggestion_breathing_techniques" = "Técnicas de respiración";
+"ai_helper_suggestion_cant_sleep" = "No puedo dormir";
+"ai_helper_suggestion_high_anxiety" = "Siento mucha ansiedad";
+"ai_helper_suggestion_grounding" = "Ejercicios de grounding";
+"ai_helper_suggestion_negative_thoughts" = "Pensamientos negativos";
+
+/* UI previews */
+"primary_button_secondary_preview" = "Acción secundaria";
+
+/* Features */
 "breathing_title" = "Respiración";
 "grounding_title" = "Grounding 5-4-3-2-1";
+"paywall_testimonial_author_format" = "— %@";
 
+/* Daily Exercises */
+"daily_exercise_1_title" = "Respiración Consciente";
+"daily_exercise_1_description" = "Aprende la base de todo: respirar correctamente.";
+"daily_exercise_1_content" = "Durante 5 minutos, concéntrate únicamente en tu respiración. Inhala en 4, retén en 4, exhala en 4. No juzgues tu mente, solo observa. Esta es tu ancla.";
+"daily_exercise_2_title" = "Identificar Sensaciones";
+"daily_exercise_2_description" = "Reconoce cómo se siente la ansiedad en tu cuerpo.";
+"daily_exercise_2_content" = "Escribe 3 sensaciones físicas que sientes cuando estás ansioso. Por ejemplo: presión en el pecho, manos frías, estómago tenso. Reconocerlas es el primer paso para gestionarlas.";
+"daily_exercise_3_title" = "Grounding Básico";
+"daily_exercise_3_description" = "Conéctate con el presente.";
+"daily_exercise_3_content" = "Practica 5-4-3-2-1: 5 cosas que ves, 4 que tocas, 3 que oyes, 2 que hueles, 1 que saboreas. Hazlo lentamente. Este ejercicio te devuelve al ahora.";
+"daily_exercise_4_title" = "Diario de Gratitud";
+"daily_exercise_4_description" = "Cambia el foco de tu mente.";
+"daily_exercise_4_content" = "Escribe 3 cosas por las que estás agradecido hoy. Pueden ser pequeñas: el café de la mañana, una conversación amable, el sol. Tu cerebro aprenderá a buscar lo positivo.";
+"daily_exercise_5_title" = "Escaneo Corporal";
+"daily_exercise_5_description" = "Relaja tu cuerpo paso a paso.";
+"daily_exercise_5_content" = "Acuéstate. Tensa y relaja cada parte del cuerpo, desde los pies hasta la cabeza. Dedica 1 minuto a cada zona. Esto libera la tensión acumulada.";
+"daily_exercise_6_title" = "Pensamiento Automático";
+"daily_exercise_6_description" = "Identifica tus patrones mentales.";
+"daily_exercise_6_content" = "Cuando sientas ansiedad, anota el pensamiento exacto que tuviste antes. Por ejemplo: 'Voy a fracasar'. Solo identificarlo, sin juzgar. Esto es autoconocimiento.";
+"daily_exercise_7_title" = "Revisión de la Semana";
+"daily_exercise_7_description" = "Reflexiona sobre tu progreso.";
+"daily_exercise_7_content" = "¿Qué aprendiste de ti mismo esta semana? ¿Qué ejercicio te ayudó más? No hay respuestas incorrectas. Solo honestidad.";
+"daily_exercise_8_title" = "Cuestiona tus Miedos";
+"daily_exercise_8_description" = "¿Son reales o imaginarios?";
+"daily_exercise_8_content" = "Elige un miedo recurrente. Pregunta: ¿Qué evidencia real tengo de que esto pasará? ¿Cuántas veces ha pasado antes? Separa hechos de suposiciones.";
+"daily_exercise_9_title" = "Respiración 4-7-8";
+"daily_exercise_9_description" = "Una técnica más avanzada.";
+"daily_exercise_9_content" = "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces. Esta respiración activa tu sistema nervioso parasimpático, calmando tu cuerpo.";
+"daily_exercise_10_title" = "Escribe a tu Yo Ansioso";
+"daily_exercise_10_description" = "Habla con tu ansiedad como si fuera alguien más.";
+"daily_exercise_10_content" = "Escribe una carta a tu ansiedad. Pregúntale qué intenta protegerte. A veces, el miedo solo quiere cuidarte, pero exagera.";
+"daily_exercise_11_title" = "Mindfulness en Movimiento";
+"daily_exercise_11_description" = "Camina con atención plena.";
+"daily_exercise_11_content" = "Sal a caminar 10 minutos sin móvil. Siente cada paso. Observa los sonidos, el viento. No pienses en tareas. Solo camina.";
+"daily_exercise_12_title" = "Reformular Pensamientos";
+"daily_exercise_12_description" = "Cambia la narrativa.";
+"daily_exercise_12_content" = "Toma un pensamiento negativo de ayer. Reescríbelo de forma neutral o positiva. Ejemplo: 'Soy un fracaso' → 'Estoy aprendiendo y mejorando'.";
+"daily_exercise_13_title" = "Diario de Logros";
+"daily_exercise_13_description" = "Reconoce tus victorias.";
+"daily_exercise_13_content" = "Escribe logros de esta semana, por pequeños que sean. Levantarte, ducharte, hacer ejercicio. Todo cuenta. Tu cerebro necesita verlos.";
+"daily_exercise_14_title" = "Revisión de Progreso";
+"daily_exercise_14_description" = "Evalúa tu evolución.";
+"daily_exercise_14_content" = "Compara tu ansiedad de hoy con la del Día 1. ¿Notas algún cambio? ¿Qué técnica usas más? Celebra tu esfuerzo.";
+"daily_exercise_15_title" = "Meditación Guiada";
+"daily_exercise_15_description" = "Silencia la mente.";
+"daily_exercise_15_content" = "Dedica 10 minutos a meditar. Siéntate cómodo, cierra los ojos, respira. Cuando un pensamiento llegue, déjalo pasar como una nube. No lo sigas.";
+"daily_exercise_16_title" = "Visualización Positiva";
+"daily_exercise_16_description" = "Entrena tu mente para el éxito.";
+"daily_exercise_16_content" = "Imagina una situación que te da ansiedad, pero visualízate manejándola con calma. Repite esto 3 veces. Tu cerebro no diferencia entre práctica real e imaginada.";
+"daily_exercise_17_title" = "Grounding con Objetos";
+"daily_exercise_17_description" = "Usa el tacto como ancla.";
+"daily_exercise_17_content" = "Lleva un objeto pequeño contigo (piedra, moneda). Cuando sientas ansiedad, tócalo. Siente su textura, temperatura, peso. Esto te devuelve al presente.";
+"daily_exercise_18_title" = "Carta de Autocompasión";
+"daily_exercise_18_description" = "Sé amable contigo mismo.";
+"daily_exercise_18_content" = "Escribe una carta a ti mismo como si fueras tu mejor amigo. ¿Qué le dirías? Usa ese mismo tono contigo siempre.";
+"daily_exercise_19_title" = "Respiración Alterna";
+"daily_exercise_19_description" = "Equilibra tu sistema nervioso.";
+"daily_exercise_19_content" = "Tapa tu fosa nasal derecha, inhala por la izquierda. Tapa la izquierda, exhala por la derecha. Alterna 5 minutos. Esto balancea tu energía.";
+"daily_exercise_20_title" = "Identifica Triggers";
+"daily_exercise_20_description" = "Conoce qué dispara tu ansiedad.";
+"daily_exercise_20_content" = "Anota 3 situaciones o pensamientos que activan tu ansiedad. Reconocer tus triggers te da control sobre ellos.";
+"daily_exercise_21_title" = "Revisión de Medio Camino";
+"daily_exercise_21_description" = "Has llegado lejos.";
+"daily_exercise_21_content" = "¿Cómo te sientes hoy vs Día 1? ¿Qué has descubierto de ti? Estás a mitad del camino. Sigue adelante.";
+"daily_exercise_22_title" = "Mindfulness al Comer";
+"daily_exercise_22_description" = "Lleva atención a lo cotidiano.";
+"daily_exercise_22_content" = "Come una comida en silencio, sin pantallas. Saborea cada bocado. Esto entrena tu mente para estar presente en todo.";
+"daily_exercise_23_title" = "Plan de Acción";
+"daily_exercise_23_description" = "Prepárate para el futuro.";
+"daily_exercise_23_content" = "Escribe un mini plan de acción para cuando sientas ansiedad: 1) Respirar, 2) Grounding, 3) Llamar a alguien. Tener un plan reduce el miedo.";
+"daily_exercise_24_title" = "Gratitud Profunda";
+"daily_exercise_24_description" = "Agradece lo invisible.";
+"daily_exercise_24_content" = "Escribe sobre una persona que te ayudó sin saberlo. Tal vez con una sonrisa o un gesto. Reconecta con la bondad humana.";
+"daily_exercise_25_title" = "Respiración Consciente Avanzada";
+"daily_exercise_25_description" = "Domina tu respiración.";
+"daily_exercise_25_content" = "Combina 4-7-8 con visualización: al inhalar, imagina luz entrando. Al exhalar, imagina estrés saliendo. Hazlo 10 minutos.";
+"daily_exercise_26_title" = "Perdónate";
+"daily_exercise_26_description" = "Suelta el pasado.";
+"daily_exercise_26_content" = "Piensa en algo que te lamentes. Escribe: 'Me perdono por...'. Repetir esto libera la culpa que alimenta la ansiedad.";
+"daily_exercise_27_title" = "Celebra tus Fortalezas";
+"daily_exercise_27_description" = "Reconoce tu poder.";
+"daily_exercise_27_content" = "Escribe 5 cualidades tuyas que te ayudan a superar la ansiedad. Resiliencia, valentía, paciencia. Mírate con admiración.";
+"daily_exercise_28_title" = "Última Semana - Reflexión";
+"daily_exercise_28_description" = "Casi terminas.";
+"daily_exercise_28_content" = "¿Qué ejercicio fue el más difícil? ¿Cuál el más útil? ¿Cómo seguirás practicando? La transformación es continua.";
+"daily_exercise_29_title" = "Carta al Futuro";
+"daily_exercise_29_description" = "Inspírate a ti mismo.";
+"daily_exercise_29_content" = "Escribe una carta a tu yo de dentro de 6 meses. Cuéntale cómo te sientes ahora y qué esperas haber logrado. Sella esta carta mentalmente.";
+"daily_exercise_30_title" = "Celebración Final";
+"daily_exercise_30_description" = "Lo lograste.";
+"daily_exercise_30_content" = "Has completado 30 días. Reconoce tu esfuerzo. La ansiedad no desaparece, pero ahora tienes herramientas. Eres más fuerte de lo que crees. Continúa.";
+
+/* Protocol Library */
+"protocol_1_title" = "Reestructuración Cognitiva";
+"protocol_1_description" = "Cuestiona tus pensamientos negativos automáticos.";
+"protocol_1_step_1_title" = "Identifica el pensamiento";
+"protocol_1_step_1_content" = "¿Qué estás pensando exactamente ahora? Escríbelo mentalmente.";
+"protocol_1_step_2_title" = "Analiza la evidencia";
+"protocol_1_step_2_content" = "¿Qué pruebas reales tienes de que esto sea 100% cierto?";
+"protocol_1_step_3_title" = "Busca alternativas";
+"protocol_1_step_3_content" = "¿Hay otra forma de ver esta situación? ¿Qué le dirías a un amigo?";
+"protocol_1_step_4_title" = "Reevalúa";
+"protocol_1_step_4_content" = "¿Cómo te sientes ahora respecto a ese pensamiento inicial?";
+"protocol_2_title" = "Ansiedad Nocturna";
+"protocol_2_description" = "Técnicas para calmar la mente antes de dormir.";
+"protocol_2_step_1_title" = "Desconexión";
+"protocol_2_step_1_content" = "Deja el móvil y cualquier pantalla. La luz azul interfiere con tu sueño.";
+"protocol_2_step_2_title" = "Descarga mental";
+"protocol_2_step_2_content" = "Si te preocupan las tareas de mañana, anótalas en un papel y olvídalas por hoy.";
+"protocol_2_step_3_title" = "Respiración 4-7-8";
+"protocol_2_step_3_content" = "Inhala en 4, retén en 7, exhala en 8. Repite 4 veces.";
+"protocol_2_step_4_title" = "Escaneo corporal";
+"protocol_2_step_4_content" = "Relaja tus músculos desde los pies hasta la cabeza, poco a poco.";
+"protocol_3_title" = "Pánico Social";
+"protocol_3_description" = "Gestión de la ansiedad en situaciones sociales.";
+"protocol_3_step_1_title" = "Anclaje";
+"protocol_3_step_1_content" = "Siente tus pies firmes en el suelo. Estás aquí y ahora.";
+"protocol_3_step_2_title" = "Foco externo";
+"protocol_3_step_2_content" = "Deja de mirar hacia adentro. Observa los colores y objetos de la habitación.";
+"protocol_3_step_3_title" = "Respiración discreta";
+"protocol_3_step_3_content" = "Respira lento y profundo por la nariz. Nadie lo notará.";
+"protocol_3_step_4_title" = "Pequeños pasos";
+"protocol_3_step_4_content" = "No necesitas ser el centro de atención. Solo estar presente es suficiente.";
+
+/* AI Service Responses */
+"ai_response_greeting_1" = "¡Hola! 👋 Estoy aquí para ayudarte. ¿Cómo te sientes en este momento?";
+"ai_response_greeting_2" = "Bienvenido/a. Me alegra que estés aquí. ¿En qué puedo ayudarte hoy?";
+"ai_response_greeting_3" = "Hola, soy tu asistente de bienestar. Estoy aquí para escucharte. 💜";
+"ai_response_breathing_1" = "La respiración es una herramienta poderosa para calmar tu sistema nervioso. 🌬️\n\nTe recomiendo probar la técnica 4-7-8:\n• Inhala por 4 segundos\n• Mantén por 7 segundos\n• Exhala por 8 segundos\n\nRepite 4 veces. ¿Quieres que te guíe paso a paso?";
+"ai_response_breathing_2" = "Cuando sientas ansiedad, tu respiración puede ser tu ancla. 🧘‍♀️\n\nIntenta la respiración cuadrada:\n• Inhala 4 segundos\n• Mantén 4 segundos\n• Exhala 4 segundos\n• Mantén 4 segundos\n\nPuedes acceder a ejercicios guiados en la sección de Respiración.";
+"ai_response_breathing_3" = "La respiración diafragmática activa tu sistema parasimpático, ayudándote a relajarte\nnaturalmente. 💙\n\nColoca una mano en tu pecho y otra en tu abdomen. Al inhalar, solo debe moverse la mano\ndel abdomen.";
+"ai_response_grounding_1" = "El grounding te ayuda a reconectarte con el presente cuando te sientes abrumado/a. 🌿\n\nPrueba la técnica 5-4-3-2-1:\n• 5 cosas que puedes VER\n• 4 cosas que puedes TOCAR\n• 3 cosas que puedes OÍR\n• 2 cosas que puedes OLER\n• 1 cosa que puedes SABOREAR\n\n¿Lo intentamos juntos?";
+"ai_response_grounding_2" = "Cuando los pensamientos se sienten abrumadores, anclarte en tus sentidos puede ayudar. 🍃\n\nToca algo frío o caliente, siente la textura de la ropa que llevas, o presiona tus pies\ncontra el suelo. Estas sensaciones te traen al aquí y ahora.";
+"ai_response_grounding_3" = "El grounding es como un ancla para tu mente. ⚓\n\nUn ejercicio simple: nombra 3 colores que veas a tu alrededor. Esto interrumpe el ciclo de\npensamientos ansiosos y te centra en el presente.";
+"ai_response_sleep_1" = "Los problemas de sueño son muy comunes cuando hay estrés. 🌙\n\nAlgunos consejos:\n• Evita pantallas 1 hora antes de dormir\n• Mantén un horario regular\n• Prueba una meditación guiada\n• La respiración 4-7-8 es especialmente efectiva\n\n¿Quieres que te sugiera una rutina nocturna?";
+"ai_response_sleep_2" = "El sueño y la ansiedad están muy conectados. 😴\n\nIntenta el 'body scan':\nRecostado/a, recorre mentalmente tu cuerpo desde los pies hasta la cabeza, relajando cada\nzona conscientemente.\n\nTambién tenemos audios relajantes en la app que pueden ayudarte.";
+"ai_response_sleep_3" = "Cuando no puedes dormir, luchar contra el insomnio puede empeorarlo. 🌟\n\nIntenta:\n• Levantarte si llevas 20+ minutos despierto/a\n• Hacer algo tranquilo (sin pantallas)\n• Volver cuando sientas sueño\n\nLa técnica de 'paradójica' también ayuda: intenta mantenerte despierto/a en lugar de dormirte.";
+"ai_response_anxiety_1" = "Siento que estás pasando por un momento difícil. 💜\n\nLa ansiedad puede ser abrumadora, pero recuerda: es temporal y tú eres más fuerte de lo que\ncrees.\n\nAhora mismo, ¿puedes tomar 3 respiraciones lentas y profundas conmigo?\n\nInhala... y exhala... 🌬️";
+"ai_response_anxiety_2" = "Es completamente válido sentir ansiedad. No estás solo/a en esto. 🤗\n\nAlgo que puede ayudar ahora:\n1. Pon tus pies firmemente en el suelo\n2. Siente la solidez debajo de ti\n3. Recuerda: este momento pasará\n\n¿Quieres hablar sobre qué te está preocupando?";
+"ai_response_anxiety_3" = "La ansiedad a veces nos hace sentir fuera de control. 🌊\n\nPero tu cuerpo tiene la capacidad de calmarse. Activa tu sistema de relajación:\n• Enfría tus muñecas con agua fría\n• Haz un suspiro largo y audible\n• Tensiona todos tus músculos por 5 segundos y suelta\n\nEstoy aquí contigo. 💙";
+"ai_response_negative_thoughts_1" = "Los pensamientos negativos pueden sentirse muy reales, pero no siempre son verdad. 🧠\n\nPrueba esto:\n1. Identifica el pensamiento\n2. Pregúntate: ¿Es un hecho o una interpretación?\n3. ¿Qué le dirías a un amigo que pensara esto?\n\nSer amable contigo mismo/a es poderoso. 💜";
+"ai_response_negative_thoughts_2" = "Cuando la mente se llena de negatividad, podemos sentirnos atrapados. 🌧️\n\nUna técnica útil:\nImagina que tus pensamientos son nubes pasando por el cielo. Los observas, pero no tienes\nque aferrarte a ellos.\n\nTú no eres tus pensamientos. 🌈";
+"ai_response_negative_thoughts_3" = "Los pensamientos negativos suelen venir en espiral. 🌀\n\nPara interrumpir el ciclo:\n• Di en voz alta: 'Esto es un pensamiento, no un hecho'\n• Cambia tu postura física (ponte de pie, estírate)\n• Haz algo con las manos (agua fría, apretar algo)\n\nPequeñas acciones pueden tener un gran impacto. 💪";
+"ai_response_emergency_1" = "⚠️ Si estás en crisis o tienes pensamientos de hacerte daño, por favor contacta ayuda\nprofesional inmediatamente:\n\n🇪🇸 Teléfono de la Esperanza: 717 003 717\n🇲🇽 SAPTEL: 55 5259-8121\n🌍 Emergencias: 112\n\nNo tienes que pasar por esto solo/a. Hay personas que quieren ayudarte. 💜";
+"ai_response_emergency_2" = "Me preocupa lo que describes. Tu bienestar es lo más importante. 💙\n\nPor favor, considera hablar con alguien de confianza o un profesional.\n\nLíneas de ayuda 24/7:\n• 717 003 717 (España)\n• 024 (España - Línea atención conducta suicida)\n\nMereces apoyo y ayuda profesional. 🤗";
+"ai_response_general_1" = "Gracias por compartir eso conmigo. 💜\n\nRecuerda que cuidar de tu bienestar mental es tan importante como cuidar tu salud física.\nEstoy aquí para acompañarte en este proceso.\n\n¿Hay algo específico en lo que te gustaría trabajar hoy?";
+"ai_response_general_2" = "Te escucho. 🤗\n\nCada paso que das hacia tu bienestar cuenta, incluso los más pequeños. El hecho de que estés\naquí ya es un paso importante.\n\n¿Te gustaría explorar alguna técnica de relajación?";
+"ai_response_general_3" = "Aprecio que confíes en mí. 💙\n\nRecuerda que está bien no estar bien todo el tiempo. Lo importante es que busques recursos y\napoyo cuando lo necesites.\n\n¿En qué puedo ayudarte hoy?";
+"ai_response_general_4" = "Es valioso que te tomes este momento para ti. 🌟\n\nLa autocompasión es clave: trátate con la misma amabilidad que tratarías a un amigo querido.\n\n¿Quieres que exploremos juntos alguna herramienta de la app?";

@@ -23,17 +23,17 @@ struct PrimaryButtonStyle: ButtonStyle {
 }
 
 extension View {
-    func primaryButtonStyle(color: Color = Color("Blue")) -> some View {
+    func primaryButtonStyle(color: Color = Color("AnstopBlue")) -> some View {
         buttonStyle(PrimaryButtonStyle(color: color))
     }
 }
 
 #Preview {
     VStack(spacing: 20) {
-        Button("Continuar") {}
+        Button("onboarding_continue") {}
             .buttonStyle(PrimaryButtonStyle())
-        Button("Acción secundaria") {}
-            .buttonStyle(PrimaryButtonStyle(color: Color("Brown")))
+        Button("primary_button_secondary_preview") {}
+            .buttonStyle(PrimaryButtonStyle(color: Color("AnstopBrown")))
     }
     .padding()
 }

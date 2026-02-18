@@ -18,8 +18,8 @@ struct GroundingView: View {
             GroundingStepView(
                 number: "5",
                 icon: "eye.fill",
-                title: "Cosas que ves",
-                description: "Mira a tu alrededor. Encuentra 5 objetos que no habías notado antes.",
+                title: String(localized: "grounding_step_5_title"),
+                description: String(localized: "grounding_step_5_description"),
                 color: .blue,
                 action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
@@ -29,8 +29,8 @@ struct GroundingView: View {
             GroundingStepView(
                 number: "4",
                 icon: "hand.raised.fill",
-                title: "Cosas que tocas",
-                description: "Siente la textura de tu ropa, la silla o el aire en tu piel.",
+                title: String(localized: "grounding_step_4_title"),
+                description: String(localized: "grounding_step_4_description"),
                 color: .green,
                 action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
@@ -40,9 +40,8 @@ struct GroundingView: View {
             GroundingStepView(
                 number: "3",
                 icon: "ear.fill",
-                title: "Cosas que oyes",
-                description:
-                "Escucha atentamente. ¿Puedes oír el tráfico, el viento o tu respiración?",
+                title: String(localized: "grounding_step_3_title"),
+                description: String(localized: "grounding_step_3_description"),
                 color: .orange,
                 action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
@@ -52,8 +51,8 @@ struct GroundingView: View {
             GroundingStepView(
                 number: "2",
                 icon: "nose.fill",
-                title: "Cosas que hueles",
-                description: "Intenta percibir aromas sutiles en el ambiente.",
+                title: String(localized: "grounding_step_2_title"),
+                description: String(localized: "grounding_step_2_description"),
                 color: .purple,
                 action: { withOptionalAnimation(.gentle) { currentStep += 1 } }
             )
@@ -63,8 +62,8 @@ struct GroundingView: View {
             GroundingStepView(
                 number: "1",
                 icon: "mouth.fill",
-                title: "Cosa que saboreas",
-                description: "Concéntrate en el sabor de tu boca o toma un sorbo de agua.",
+                title: String(localized: "grounding_step_1_title"),
+                description: String(localized: "grounding_step_1_description"),
                 color: .red,
                 isLast: true,
                 action: { dismiss() }
@@ -73,7 +72,7 @@ struct GroundingView: View {
         }
         .tabViewStyle(.page)
         .indexViewStyle(.page(backgroundDisplayMode: .always))
-        .navigationTitle("Grounding 5-4-3-2-1")
+        .navigationTitle("grounding_title")
         .navigationBarTitleDisplayMode(.inline)
     }
 }
@@ -122,7 +121,7 @@ struct GroundingStepView: View {
             Spacer()
 
             Button(action: action) {
-                Text(isLast ? "Finalizar" : "Siguiente")
+                Text(isLast ? "grounding_finish" : "grounding_next")
                     .padding(.horizontal, 40)
             }
             .buttonStyle(PrimaryButtonStyle(color: color))

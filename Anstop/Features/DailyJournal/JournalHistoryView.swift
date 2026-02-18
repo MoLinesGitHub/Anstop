@@ -36,8 +36,8 @@ struct JournalHistoryView: View {
                 } label: {
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text(entry.date, style: .date) + Text(" · ") + Text(entry.date, style: .time)
-                            Text("Ánimo: \(entry.mood)")
+                            Text(entry.date, style: .date) + Text("journal_history_date_separator") + Text(entry.date, style: .time)
+                            Text(String(format: String(localized: "journal_history_mood_format"), entry.mood))
                                 .font(.futuraCaption)
                                 .foregroundStyle(.secondary)
                             if let notes = entry.notes, !notes.isEmpty {
@@ -65,17 +65,17 @@ struct JournalHistoryView: View {
                 intensity: 0.7
             )
         )
-        .navigationTitle("Historial de Diario")
+        .navigationTitle("journal_history_navigation_title")
         .sheet(isPresented: $showEdit) {
             if let entry = selectedEntry {
                 JournalEditView(entry: entry)
             }
         }
-        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Buscar notas")
+        .searchable(text: $searchText, placement: .navigationBarDrawer(displayMode: .automatic), prompt: String(localized: "journal_history_search_prompt"))
         .toolbar {
             ToolbarItem(placement: .bottomBar) {
                 HStack {
-                    Text("Ánimo")
+                    Text("journal_history_mood")
                     Slider(value: Binding(
                         get: { Double(minMood) },
                         set: { minMood = Int($0) }
@@ -129,27 +129,27 @@ struct JournalEditView: View {
     var body: some View {
         NavigationStack {
             Form {
-                Section("Estado") {
+                Section("journal_edit_state") {
                     HStack {
-                        Text("Ánimo: \(Int(mood))")
+                        Text(String(format: String(localized: "journal_history_mood_format"), Int(mood)))
                         Slider(value: $mood, in: 1 ... 10, step: 1)
                     }
                 }
-                Section("Notas") {
+                Section("journal_edit_notes") {
                     TextEditor(text: $notes)
                         .frame(minHeight: 120)
                 }
                 Section {
-                    Button("Guardar") { save() }
+                    Button("journal_save") { save() }
                         .padding(.horizontal, 40)
                         .buttonStyle(PrimaryButtonStyle())
 
-                    Button("Cancelar") { dismiss() }
+                    Button("cancel") { dismiss() }
                         .padding(.horizontal, 40)
                         .buttonStyle(SecondaryButtonStyle(color: .orange))
                 }
             }
-            .navigationTitle("Editar entrada")
+            .navigationTitle("journal_edit_navigation_title")
         }
     }
 
